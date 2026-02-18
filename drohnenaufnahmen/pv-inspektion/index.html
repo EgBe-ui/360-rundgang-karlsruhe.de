@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <title>PV-Inspektion Drohne | Thermografie Solaranlage | Karlsruhe</title>
+    <meta name="description" content="PV-Inspektion mit Drohne und Thermografie in Karlsruhe. Defekte Module erkennen, Erträge optimieren. Ab 179€, schnelle Termine, detaillierter Bericht.">
+    <meta name="keywords" content="PV-Inspektion Drohne, Thermografie Solaranlage, Photovoltaik Inspektion Karlsruhe, Drohne Solaranlage prüfen, PV Anlage Wärmebild, Solarpanel Defekt finden">
+    <meta name="author" content="Eugen Beck - Beck360">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://360-rundgang-karlsruhe.de/drohnenaufnahmen/pv-inspektion/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://360-rundgang-karlsruhe.de/drohnenaufnahmen/pv-inspektion/">
+    <meta property="og:title" content="PV-Inspektion mit Drohne | Thermografie | Beck360">
+    <meta property="og:description" content="Solaranlagen-Inspektion mit Drohne und Thermografie. Defekte erkennen, Erträge optimieren. Ab 179€.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "PV-Inspektion mit Drohne",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Beck360",
+            "telephone": "+491734682501"
+        },
+        "areaServed": ["Karlsruhe", "Ettlingen", "Bruchsal", "Rastatt", "Baden-Baden", "Pforzheim", "Mannheim", "Heidelberg", "Stuttgart"],
+        "description": "Professionelle PV-Inspektion mit Drohne und Thermografie. Defekte Module erkennen und Erträge optimieren.",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "179",
+            "priceValidUntil": "2026-12-31"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Was kostet eine PV-Inspektion mit Drohne?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Eine PV-Inspektion mit Thermografie kostet zwischen 179€ und 289€, abhängig von der Anlagengröße. Kleine Anlagen bis 10 kWp ab 179€, mittlere Anlagen bis 30 kWp ab 229€."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Was erkennt die Thermografie bei Solaranlagen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Die Thermografie erkennt Hotspots, defekte Zellen, Verschattungen, Verschmutzungen und Verbindungsprobleme. Diese Fehler sind mit bloßem Auge nicht sichtbar."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #0D5D57;
+            --text: #134E4A;
+            --text-secondary: #5F7A78;
+            --bg: #ffffff;
+            --bg-soft: #F0FDFA;
+            --border: #D1E4E2;
+            --font-main: 'Inter', -apple-system, sans-serif;
+            --shadow-lg: 0 12px 32px rgba(15, 118, 110, 0.12);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); color: var(--text); line-height: 1.6; background: var(--bg); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 80px 0; }
+        h1, h2, h3 { font-weight: 600; line-height: 1.2; }
+        h1 { font-size: clamp(32px, 5vw, 48px); }
+        h2 { font-size: clamp(24px, 4vw, 36px); margin-bottom: 16px; }
+        h3 { font-size: 20px; margin-bottom: 8px; }
+        p { color: var(--text-secondary); }
+        .section-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 12px; }
+
+        .header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .header .container { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--text); text-decoration: none; }
+        .logo span { color: var(--primary); }
+        .nav { display: flex; align-items: center; gap: 8px; }
+        .nav a { padding: 10px 16px; font-size: 14px; font-weight: 500; color: var(--text); text-decoration: none; border-radius: 6px; }
+        .nav a:hover { background: var(--bg-soft); color: var(--primary); }
+        .nav-cta { background: var(--primary) !important; color: white !important; }
+        @media (max-width: 768px) { .nav { display: none; } }
+
+        .breadcrumb { padding: 12px 0; background: var(--bg-soft); font-size: 13px; margin-top: 65px; }
+        .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+        .breadcrumb span { margin: 0 8px; }
+
+        .hero { min-height: 60vh; display: flex; align-items: center; padding: 100px 0 80px; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: white; }
+        .hero-content { max-width: 600px; }
+        .hero h1 { margin-bottom: 20px; color: white; }
+        .hero p { font-size: 18px; margin-bottom: 32px; color: rgba(255,255,255,0.85); }
+        .hero .section-label { color: white; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 4px; display: inline-block; }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; }
+        .btn { display: inline-flex; align-items: center; padding: 16px 32px; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 6px; transition: all 0.2s; }
+        .btn-primary { background: white; color: var(--primary); }
+        .btn-secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.4); }
+
+        .benefits { background: var(--bg-soft); }
+        .benefits-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .benefit-card { background: white; padding: 32px; border-radius: 12px; border: 1px solid var(--border); }
+        .benefit-card h3 { margin-bottom: 12px; }
+        .benefit-card p { font-size: 15px; }
+        @media (max-width: 768px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+        .defects { background: white; }
+        .defects-header { margin-bottom: 48px; }
+        .defects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .defect-card { padding: 24px; background: var(--bg-soft); border-radius: 12px; border-left: 4px solid var(--primary); }
+        .defect-card h3 { font-size: 17px; margin-bottom: 8px; }
+        .defect-card p { font-size: 14px; }
+        @media (max-width: 600px) { .defects-grid { grid-template-columns: 1fr; } }
+
+        .pricing { background: var(--bg-soft); }
+        .pricing-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+        .pricing-card { padding: 32px; background: white; border: 1px solid var(--border); border-radius: 12px; text-align: center; }
+        .pricing-card.featured { border: 2px solid var(--primary); }
+        .pricing-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .pricing-card .size { font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; }
+        .price { font-size: 42px; font-weight: 700; margin-bottom: 20px; }
+        .price span { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+        .features-list { list-style: none; margin-bottom: 24px; text-align: left; }
+        .features-list li { padding: 10px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
+        .pricing-cta { display: block; width: 100%; padding: 14px; background: var(--primary); color: white; text-decoration: none; border-radius: 6px; font-weight: 500; }
+        @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; max-width: 350px; } }
+
+        .faq { background: white; }
+        .faq-header { text-align: center; margin-bottom: 48px; }
+        .faq-grid { max-width: 700px; margin: 0 auto; }
+        .faq-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+        .faq-item h3 { font-size: 17px; margin-bottom: 12px; color: var(--text); }
+        .faq-item p { font-size: 15px; }
+
+        .cta-section { background: var(--primary); color: white; text-align: center; }
+        .cta-section h2 { color: white; margin-bottom: 16px; }
+        .cta-section p { color: rgba(255,255,255,0.8); margin-bottom: 32px; }
+        .cta-section .btn-primary { background: white; color: var(--primary); }
+
+        /* Lead Magnet Section */
+        .lead-magnet { background: var(--primary); color: white; }
+        .lead-magnet .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .lead-magnet-content h2 { color: white; font-size: clamp(24px, 3vw, 32px); margin-bottom: 12px; }
+        .lead-magnet-content p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 16px; }
+        .lead-magnet-features { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 8px; }
+        .lead-magnet-features span { font-size: 13px; color: rgba(255,255,255,0.6); }
+        .lead-magnet-form { background: white; padding: 32px; border-radius: 8px; }
+        .lead-magnet-form h3 { font-size: 18px; margin-bottom: 16px; color: var(--text); }
+        .lead-magnet-form .form-group { margin-bottom: 16px; }
+        .lead-magnet-form .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+        .lead-magnet-form .form-group input { width: 100%; padding: 12px 14px; font-size: 15px; border: 1px solid var(--border); border-radius: 6px; }
+        .lead-magnet-form .download-btn { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+        .lead-magnet-form .download-btn:hover { background: #047857; }
+        .lead-magnet-form .form-privacy { font-size: 11px; color: var(--text-secondary); margin-top: 12px; }
+        .download-success { display: none; text-align: center; padding: 20px; }
+        .download-success.show { display: block; }
+        .download-success h4 { color: var(--primary); margin-bottom: 8px; }
+        .download-link { display: inline-block; padding: 12px 24px; background: var(--primary); color: white; text-decoration: none; border-radius: 6px; font-weight: 500; }
+        @media (max-width: 768px) { .lead-magnet .container { grid-template-columns: 1fr; gap: 32px; } }
+
+        footer { padding: 24px 0; background: var(--bg-soft); border-top: 1px solid var(--border); text-align: center; }
+        footer p { font-size: 13px; }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+
+        .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; padding: 16px; background: white; border-top: 1px solid var(--border); z-index: 100; }
+        .mobile-cta a { display: block; padding: 16px; background: var(--primary); color: white; text-align: center; text-decoration: none; font-weight: 500; border-radius: 6px; }
+        @media (max-width: 768px) { .mobile-cta { display: block; } .cta-section { padding-bottom: 100px; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="/drohnenaufnahmen/" class="logo">Beck<span>360</span></a>
+            <nav class="nav">
+                <a href="/drohnenaufnahmen/">Übersicht</a>
+                <a href="/drohnenaufnahmen/#preise">Preise</a>
+                <a href="/drohnenaufnahmen/blog/">Blog</a>
+                <a href="/drohnenaufnahmen/#kontakt" class="nav-cta">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="/drohnenaufnahmen/">Drohnenaufnahmen</a>
+            <span>›</span>
+            <strong>PV-Inspektion</strong>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <p class="section-label">PV-Inspektion mit Drohne</p>
+                    <h1>Ihre Solaranlage im Blick</h1>
+                    <p>Defekte Module erkennen, bevor sie Geld kosten. Thermografie-Inspektion zeigt versteckte Probleme – schnell, sicher, ohne Gerüst.</p>
+                    <div class="hero-cta">
+                        <a href="/drohnenaufnahmen/#kontakt" class="btn btn-primary">Inspektion anfragen</a>
+                        <a href="tel:+491734682501" class="btn btn-secondary">0173 468 2501</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="container">
+                <div class="benefits-header">
+                    <p class="section-label">Vorteile</p>
+                    <h2>Warum PV-Inspektion mit Drohne?</h2>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h3>Defekte früh erkennen</h3>
+                        <p>Hotspots, defekte Zellen und Verbindungsprobleme werden sichtbar, bevor sie größere Schäden verursachen oder Ihre Erträge mindern.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Kein Gerüst nötig</h3>
+                        <p>Die Drohne inspiziert Ihre Anlage von oben – schnell, sicher und ohne aufwendige Gerüstarbeiten. Ideal auch für schwer zugängliche Dächer.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Dokumentation für Versicherung</h3>
+                        <p>Sie erhalten einen detaillierten Bericht mit Wärmebildern und Empfehlungen – perfekt für Garantieansprüche und Versicherungsfälle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="defects">
+            <div class="container">
+                <div class="defects-header">
+                    <p class="section-label">Was wir finden</p>
+                    <h2>Diese Defekte erkennt die Thermografie</h2>
+                </div>
+                <div class="defects-grid">
+                    <div class="defect-card">
+                        <h3>Hotspots</h3>
+                        <p>Überhitzte Zellen, die zu Leistungsverlust und Brandgefahr führen können.</p>
+                    </div>
+                    <div class="defect-card">
+                        <h3>Defekte Bypass-Dioden</h3>
+                        <p>Fehlerhafte Dioden, die ganze Modulbereiche lahmlegen.</p>
+                    </div>
+                    <div class="defect-card">
+                        <h3>Verschattungen</h3>
+                        <p>Teilweise Abschattungen durch Schmutz, Laub oder bauliche Veränderungen.</p>
+                    </div>
+                    <div class="defect-card">
+                        <h3>Zellbrüche</h3>
+                        <p>Mikrorisse und Brüche, die die Leistung einzelner Zellen reduzieren.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing" id="preise">
+            <div class="container">
+                <div class="pricing-header">
+                    <p class="section-label">Preise</p>
+                    <h2>PV-Inspektion Pakete</h2>
+                    <p>Transparente Festpreise nach Anlagengröße. Alle Preise zzgl. MwSt.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Kleine Anlage</h3>
+                        <p class="size">bis 10 kWp</p>
+                        <div class="price">179€</div>
+                        <ul class="features-list">
+                            <li>Thermografie-Aufnahmen</li>
+                            <li>Visuelle Inspektion</li>
+                            <li>Kurzbericht mit Befunden</li>
+                            <li>Empfehlungen</li>
+                        </ul>
+                        <a href="/drohnenaufnahmen/#kontakt" class="pricing-cta">Anfragen</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Mittlere Anlage</h3>
+                        <p class="size">10-30 kWp</p>
+                        <div class="price">229€</div>
+                        <ul class="features-list">
+                            <li>Thermografie-Aufnahmen</li>
+                            <li>Visuelle Inspektion</li>
+                            <li>Detaillierter Bericht</li>
+                            <li>Modulgenauer Fehlerplan</li>
+                        </ul>
+                        <a href="/drohnenaufnahmen/#kontakt" class="pricing-cta">Anfragen</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Große Anlage</h3>
+                        <p class="size">ab 30 kWp</p>
+                        <div class="price">289€+</div>
+                        <ul class="features-list">
+                            <li>Thermografie-Aufnahmen</li>
+                            <li>Visuelle Inspektion</li>
+                            <li>Ausführlicher Bericht</li>
+                            <li>Angebot auf Anfrage</li>
+                        </ul>
+                        <a href="/drohnenaufnahmen/#kontakt" class="pricing-cta">Anfragen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lead-magnet" id="infomaterial">
+            <div class="container">
+                <div class="lead-magnet-content">
+                    <h2>Kostenlose Preisübersicht PV-Inspektion</h2>
+                    <p>Alle Preise und Pakete als PDF für die Thermografie-Inspektion Ihrer Solaranlage, mit Checkliste zur Vorbereitung.</p>
+                    <div class="lead-magnet-features">
+                        <span>✓ Preise nach Anlagengröße</span>
+                        <span>✓ Vorbereitungs-Checkliste</span>
+                        <span>✓ Was wird geprüft</span>
+                    </div>
+                </div>
+                <div class="lead-magnet-form" id="download-form-container">
+                    <form id="download-form">
+                        <h3>PDF herunterladen</h3>
+                        <div class="form-group">
+                            <label for="dl-name">Name / Firma</label>
+                            <input type="text" id="dl-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dl-email">E-Mail</label>
+                            <input type="email" id="dl-email" name="email" required>
+                        </div>
+                        <button type="submit" class="download-btn">Jetzt herunterladen</button>
+                        <p class="form-privacy">Kein Spam. Ihre Daten werden nicht weitergegeben.</p>
+                    </form>
+                    <div class="download-success" id="download-success">
+                        <h4>Vielen Dank!</h4>
+                        <p style="margin-bottom: 16px; color: var(--text-secondary);">Ihr Download startet automatisch.</p>
+                        <a href="/downloads/Beck360_Drohnenaufnahmen_Pv_Inspektion.pdf" download class="download-link">Erneut herunterladen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <div class="container">
+                <div class="faq-header">
+                    <p class="section-label">FAQ</p>
+                    <h2>Häufige Fragen</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Wann ist der beste Zeitpunkt für eine Inspektion?</h3>
+                        <p>Idealerweise bei Sonnenschein, da die Module unter Last sein müssen. Die beste Zeit ist vormittags oder nachmittags bei klarem Himmel.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Wie oft sollte man eine PV-Anlage inspizieren?</h3>
+                        <p>Wir empfehlen eine Inspektion alle 2-3 Jahre oder nach besonderen Ereignissen wie Hagel, Sturm oder bei unerklärlichem Ertragsrückgang.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Kann ich den Bericht für die Versicherung nutzen?</h3>
+                        <p>Ja, der Bericht dokumentiert alle Befunde mit Wärmebildern und ist für Versicherungen und Garantieansprüche verwendbar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ihre Anlage verdient einen Check</h2>
+                <p>Kostenloses Angebot innerhalb von 24 Stunden. Termin oft schon diese Woche möglich.</p>
+                <a href="/drohnenaufnahmen/#kontakt" class="btn btn-primary">Jetzt Inspektion anfragen</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Beck360 · <a href="/drohnenaufnahmen/">Drohnenaufnahmen</a> · <a href="/">Hauptseite</a> · <a href="/impressum/">Impressum</a></p>
+        </div>
+    </footer>
+
+    <div class="mobile-cta">
+        <a href="/drohnenaufnahmen/#kontakt">Inspektion anfragen</a>
+    </div>
+
+    <script>
+        // Download Form Handler (Lead Magnet)
+        document.getElementById('download-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const form = this;
+            btn.textContent = 'Wird verarbeitet...';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            formData.append('_subject', 'PDF Download: Drohnenaufnahmen PV-Inspektion');
+
+            fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(r => {
+                form.style.display = 'none';
+                document.getElementById('download-success').classList.add('show');
+
+                const link = document.createElement('a');
+                link.href = '/downloads/Beck360_Drohnenaufnahmen_Pv_Inspektion.pdf';
+                link.download = 'Beck360_Drohnenaufnahmen_Pv_Inspektion.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            })
+            .catch(() => {
+                form.style.display = 'none';
+                document.getElementById('download-success').classList.add('show');
+
+                const link = document.createElement('a');
+                link.href = '/downloads/Beck360_Drohnenaufnahmen_Pv_Inspektion.pdf';
+                link.download = 'Beck360_Drohnenaufnahmen_Pv_Inspektion.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        });
+    </script>
+</body>
+</html>

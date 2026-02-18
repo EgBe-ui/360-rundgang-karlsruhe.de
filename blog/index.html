@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <title>Blog | Immobilien-Tipps & Markt-Insights | Beck360 Karlsruhe</title>
+    <meta name="description" content="Aktuelle Blog-Artikel rund um Immobilien, 360-Grad-Rundgänge, Hausverkauf und den Karlsruher Immobilienmarkt. Expertenwissen von Beck360.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://360-rundgang-karlsruhe.de/blog/">
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #0D5D57;
+            --primary-light: #14B8A6;
+            --cta: #0369A1;
+            --cta-hover: #075985;
+            --text: #134E4A;
+            --text-light: #5F7A78;
+            --bg: #ffffff;
+            --bg-soft: #F0FDFA;
+            --border: #D1E4E2;
+            --font-main: 'Inter', -apple-system, sans-serif;
+        }
+        body { font-family: var(--font-main); color: var(--text); line-height: 1.6; background: var(--bg-soft); -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, .article-title { font-family: var(--font-main); font-weight: 600; letter-spacing: -0.02em; }
+        .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; } .stagger-3 { transition-delay: 0.3s; }
+
+        /* Header */
+        .header {
+            background: var(--bg);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .logo span { color: var(--primary); }
+        .back-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-link:hover { color: var(--primary); }
+
+        /* Hero */
+        .blog-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .blog-hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .blog-hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Grid */
+        .blog-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .category-label {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        /* Article Card */
+        .article-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(15, 118, 110, 0.15);
+        }
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.4) 100%);
+        }
+        .card-category {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 1;
+        }
+        .card-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .card-content h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .card-content h3 a:hover {
+            color: var(--primary);
+        }
+        .card-excerpt {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        .read-more {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.2s;
+        }
+        .read-more:hover { gap: 8px; }
+
+        /* Featured Article */
+        .featured-article {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 0;
+        }
+        .featured-article .card-image {
+            height: 100%;
+            min-height: 350px;
+            border-radius: 20px 0 0 20px;
+        }
+        .featured-article .card-content {
+            padding: 48px;
+            justify-content: center;
+        }
+        .featured-article h3 {
+            font-size: 28px;
+        }
+        .featured-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-soft);
+            color: var(--text);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        .cta-section p {
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--cta);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: var(--cta-hover); }
+
+        /* Footer */
+        .footer {
+            background: var(--bg);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer-links a:hover { color: var(--primary); }
+        .copyright {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+            .featured-article .card-image {
+                border-radius: 20px 20px 0 0;
+                min-height: 220px;
+            }
+            .featured-article .card-content {
+                padding: 28px;
+            }
+            .featured-article h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="https://360-rundgang-karlsruhe.de/" class="logo">Beck<span>360</span></a>
+            <a href="https://360-rundgang-karlsruhe.de/" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Zur Startseite
+            </a>
+        </div>
+    </header>
+
+    <section class="blog-hero">
+        <h1>Immobilien-Blog</h1>
+        <p>Expertenwissen, Markt-Insights und praktische Tipps rund um Immobilien, 360-Grad-Rundgänge und den Karlsruher Markt.</p>
+    </section>
+
+    <section class="blog-section">
+        <span class="category-label">Neueste Artikel</span>
+
+        <div class="blog-grid">
+
+            <!-- Featured Article: Homestaging 2026: So steigern Sie Ihren Verkaufspreis um 15% (NEU) -->
+            <article class="article-card featured-article">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80');">
+                    <span class="card-category">Verkaufsstrategie</span>
+                </div>
+                <div class="card-content">
+                    <span class="featured-badge">Neu</span>
+                    <h3><a href="homestaging-verkaufspreis-steigern-karlsruhe.html">Homestaging 2026: So steigern Sie Ihren Verkaufspreis um 15%</a></h3>
+                    <p class="card-excerpt">Homestaging lässt Immobilien schneller & teurer verkaufen. Erfahren Sie, wie Sie mit gezielter Inszenierung in Karlsruhe bis zu 15% mehr erzielen.</p>
+                    <div class="card-meta">
+                        <span>18. Februar 2026 &bull; 10 Min. Lesezeit</span>
+                        <a href="homestaging-verkaufspreis-steigern-karlsruhe.html" class="read-more">Weiterlesen &rarr;</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Featured Article: Wohnungsnot 2026 (NEU) -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80');">
+                    <span class="card-category">Marktanalyse 2026</span>
+                </div>
+                <div class="card-content">                    <h3><a href="wohnungsnot-2026-verkaeufer-vorteil-karlsruhe.html">Wohnungsnot 2026: Warum Verkäufer in Karlsruhe jetzt im Vorteil sind</a></h3>
+                    <p class="card-excerpt">800.000 fehlende Wohnungen in Deutschland, steigende Preise in Karlsruhe: Warum Immobilienverkäufer 2026 die besten Karten haben und wie Sie den Vorteil nutzen.</p>
+                    <div class="card-meta">
+                        <span>17. Februar 2026 • 8 Min. Lesezeit</span>
+                        <a href="wohnungsnot-2026-verkaeufer-vorteil-karlsruhe.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article: EU-Gebäuderichtlinie 2026 (vorher Featured) -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80');">
+                    <span class="card-category">Regulierung & Energie</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="eu-gebaeuderichtlinie-2026-immobilien-expose.html">EU-Gebäuderichtlinie 2026: Warum Ihr Exposé jetzt mehr zeigen muss</a></h3>
+                    <p class="card-excerpt">Ab Mai 2026 gelten neue EU-Vorgaben für Energieeffizienz. So machen Sie Ihr Exposé zukunftssicher.</p>
+                    <div class="card-meta">
+                        <span>17. Februar 2026</span>
+                        <a href="eu-gebaeuderichtlinie-2026-immobilien-expose.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article: KI & VR -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80');">
+                    <span class="card-category">Technologie</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="ki-immobilien-virtuelle-rundgaenge.html">KI trifft Immobilien: Wie virtuelle Rundgänge den Markt revolutionieren</a></h3>
+                    <p class="card-excerpt">Entdecken Sie, wie künstliche Intelligenz und Matterport-Technologie die Immobilienbranche transformieren.</p>
+                    <div class="card-meta">
+                        <span>3. Februar 2026</span>
+                        <a href="ki-immobilien-virtuelle-rundgaenge.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2: Hausverkauf -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80');">
+                    <span class="card-category">Markt 2026</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="hausverkauf-2026-kaeufer-erwartungen.html">Hausverkauf 2026: Was Käufer heute wirklich erwarten</a></h3>
+                    <p class="card-excerpt">Die Erwartungen von Immobilienkäufern haben sich drastisch verändert. Erfahren Sie, was 2026 wirklich zählt.</p>
+                    <div class="card-meta">
+                        <span>3. Februar 2026</span>
+                        <a href="hausverkauf-2026-kaeufer-erwartungen.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3: Maklerkosten -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80');">
+                    <span class="card-category">Finanzen</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="versteckte-maklerkosten-rechnung.html">Versteckte Maklerkosten: Die wahre Rechnung beim Privatverkauf</a></h3>
+                    <p class="card-excerpt">Privatverkauf vs. Makler: Wir rechnen transparent vor, welche versteckten Kosten entstehen.</p>
+                    <div class="card-meta">
+                        <span>3. Februar 2026</span>
+                        <a href="versteckte-maklerkosten-rechnung.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 4: Success Stories -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80');">
+                    <span class="card-category">Erfolgsgeschichten</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="verkauft-in-30-tagen.html">Verkauft in 30 Tagen: 5 Karlsruher Success Stories</a></h3>
+                    <p class="card-excerpt">Echte Erfolgsgeschichten aus Karlsruhe: Wie Immobilienbesitzer mit 360°-Rundgängen in Rekordzeit verkauften.</p>
+                    <div class="card-meta">
+                        <span>3. Februar 2026</span>
+                        <a href="verkauft-in-30-tagen.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 5: Drohnenrecht -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600&q=80');">
+                    <span class="card-category">Recht</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="drohnenaufnahmen-immobilien-recht.html">Drohnenaufnahmen für Immobilien: Was ist 2026 rechtlich erlaubt?</a></h3>
+                    <p class="card-excerpt">EU-Drohnenverordnung, Persönlichkeitsrechte, Genehmigungen: Der komplette Rechts-Guide.</p>
+                    <div class="card-meta">
+                        <span>3. Februar 2026</span>
+                        <a href="drohnenaufnahmen-immobilien-recht.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 6: Besichtigung -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80');">
+                    <span class="card-category">Praxis-Tipps</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="besichtigungstermin-360-rundgang.html">Der perfekte Besichtigungstermin: Warum weniger manchmal mehr ist</a></h3>
+                    <p class="card-excerpt">70% weniger Besichtigungen, 3x qualifiziertere Käufer: Wie 360°-Vorfilterung den Verkauf revolutioniert.</p>
+                    <div class="card-meta">
+                        <span>3. Februar 2026</span>
+                        <a href="besichtigungstermin-360-rundgang.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 7: Marktanalyse -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80');">
+                    <span class="card-category">Marktanalyse</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="immobilienmarkt-karlsruhe-2026.html">Immobilienmarkt Karlsruhe 2026: Trends, Preise, Prognosen</a></h3>
+                    <p class="card-excerpt">Aktuelle Preisentwicklung nach Stadtteilen und Prognosen für den Karlsruher Immobilienmarkt.</p>
+                    <div class="card-meta">
+                        <span>3. Februar 2026</span>
+                        <a href="immobilienmarkt-karlsruhe-2026.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 8: Wohnviertel -->
+            <article class="article-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80');">
+                    <span class="card-category">Karlsruhe</span>
+                </div>
+                <div class="card-content">
+                    <h3><a href="wohnviertel-karlsruhe-familien.html">Die beliebtesten Wohnviertel in Karlsruhe für Familien</a></h3>
+                    <p class="card-excerpt">Durlach, Grötzingen, Rüppurr, Waldstadt oder Hagsfeld? Der ultimative Guide zu den besten Stadtteilen.</p>
+                    <div class="card-meta">
+                        <span>3. Februar 2026</span>
+                        <a href="wohnviertel-karlsruhe-familien.html" class="read-more">Weiterlesen →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Bereit für den nächsten Schritt?</h2>
+        <p>Lassen Sie uns gemeinsam Ihre Immobilie perfekt in Szene setzen – mit einem professionellen 360-Grad-Rundgang.</p>
+        <a href="https://360-rundgang-karlsruhe.de/#kontakt" class="cta-btn">Kostenlose Beratung anfragen</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://360-rundgang-karlsruhe.de/">Startseite</a>
+            <a href="https://360-rundgang-karlsruhe.de/privatverkauf/">Für Privatverkäufer</a>
+            <a href="https://360-rundgang-karlsruhe.de/immobilienmakler/">Für Makler</a>
+            <a href="https://360-rundgang-karlsruhe.de/drohnenaufnahmen/">Drohnenaufnahmen</a>
+            <a href="https://360-rundgang-karlsruhe.de/impressum/">Impressum</a>
+            <a href="https://360-rundgang-karlsruhe.de/datenschutz/">Datenschutz</a>
+        </div>
+        <p class="copyright">© 2026 Beck360 – Eugen Beck. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <!-- Scroll Animation Observer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

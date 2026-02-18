@@ -1,0 +1,10 @@
+# robots.txt for 360-rundgang-karlsruhe.de
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://360-rundgang-karlsruhe.de/sitemap.xml
+
+# Block internal pages from indexing
+Disallow: /danke.html
+Disallow: /tools/

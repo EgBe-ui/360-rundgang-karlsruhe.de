@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <title>Besichtigungstermin: 360-Rundgänge für bessere Käufer</title>
+    <meta name="description" content="360-Grad Rundgänge reduzieren Besichtigungen um 70% und ziehen 3x qualifiziertere Käufer an. Praktische Tipps für perfekte Termine.">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Hausbesichtigung Tipps, Immobilie besichtigen, Besichtigungstermin vorbereiten, Besichtigungstermin Checkliste, virtuelle Besichtigung">
+    <link rel="canonical" href="https://360-rundgang-karlsruhe.de/blog/besichtigungstermin-360-rundgang.html">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Der perfekte Besichtigungstermin: Warum weniger manchmal mehr ist",
+        "author": {"@type": "Person", "name": "Eugen Beck"},
+        "publisher": {"@type": "Organization", "name": "Beck360"},
+        "datePublished": "2026-02-03",
+        "dateModified": "2026-02-03",
+        "keywords": "Hausbesichtigung Tipps, Immobilie besichtigen, Besichtigungstermin vorbereiten, 360-Rundgang Besichtigung, virtuelle Immobilientours"
+    }
+    </script>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #0D5D57;
+            --primary-light: #14B8A6;
+            --cta: #0369A1;
+            --text: #0f172a;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-light: #F0FDFA;
+            --gradient: linear-gradient(135deg, #0F766E 0%, #14B8A6 100%);
+            --font-display: 'Inter', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+        }
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .header {
+            background: var(--bg);
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 20px; font-weight: 800; color: var(--text); text-decoration: none; }
+        .logo span { color: var(--primary); }
+        .back-link { color: var(--text-light); text-decoration: none; font-size: 14px; }
+        .back-link:hover { color: var(--primary); }
+
+        .article-header {
+            background: var(--gradient);
+            background-image:
+                linear-gradient(135deg, #0F766E 0%, #14B8A6 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CpatternPattern id='pattern' x='0' y='0' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0,20 Q10,10 20,20 T40,20' stroke='rgba(255,255,255,0.05)' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23pattern)' width='400' height='400'/%3E%3C/svg%3E");
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .article-header .category {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .article-header h1 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 800;
+            max-width: 700px;
+            margin: 0 auto 16px;
+            line-height: 1.2;
+        }
+        .article-meta { opacity: 0.8; font-size: 14px; }
+        .article-meta span { margin: 0 8px; }
+
+        .article-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 48px 20px;
+            background: white;
+            margin-top: -20px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(15, 118, 110, 0.08);
+        }
+        .article-content h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 40px 0 16px;
+            color: var(--text);
+        }
+        .article-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 32px 0 12px;
+        }
+        .article-content p {
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #334155;
+        }
+        .article-content ul, .article-content ol {
+            margin: 20px 0;
+            padding-left: 24px;
+        }
+        .article-content li {
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            color: #334155;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%);
+            border-left: 4px solid var(--primary);
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 32px 0;
+        }
+        .highlight-box p { margin: 0; font-style: italic; color: var(--primary-dark); }
+        .stat-box {
+            background: var(--gradient);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 32px 0;
+        }
+        .stat-box .number { font-size: 48px; font-weight: 800; }
+        .stat-box .label { opacity: 0.9; }
+
+        .checklist {
+            background: #f8fafc;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 32px 0;
+        }
+        .checklist h3 { margin-top: 0; }
+        .checklist ul { list-style: none; padding-left: 0; }
+        .checklist li {
+            padding: 12px 0 12px 32px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .psychology-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 32px 0;
+        }
+        .psychology-box h3 { margin-top: 0; color: #78350f; }
+        .psychology-box p { color: #78350f; margin: 0; }
+
+        .cta-box {
+            background: var(--gradient);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 48px 0;
+        }
+        .cta-box h3 { font-size: 24px; margin-bottom: 12px; }
+        .cta-box p { opacity: 0.9; margin-bottom: 24px; }
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Article Form Styles */
+        .article-form { text-align: left; margin-top: 20px; }
+        .article-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+        @media (max-width: 500px) { .article-form .form-row { grid-template-columns: 1fr; } }
+        .article-form input, .article-form textarea {
+            width: 100%; padding: 12px 16px; border: 1px solid rgba(15, 118, 110, 0.2); border-radius: 8px;
+            font-size: 15px; font-family: inherit; background: rgba(15, 118, 110, 0.05);
+            color: white; margin-bottom: 12px;
+        }
+        .article-form input::placeholder, .article-form textarea::placeholder { color: rgba(255,255,255,0.7); }
+        .article-form input:focus, .article-form textarea:focus { outline: 2px solid white; background: rgba(255,255,255,0.1); border-color: white; }
+        .article-form .submit-btn {
+            width: 100%; background: white; color: var(--primary); padding: 14px;
+            border: none; border-radius: 10px; font-size: 16px; font-weight: 600;
+            cursor: pointer; transition: transform 0.2s;
+        }
+        .article-form .submit-btn:hover { transform: translateY(-2px); }
+
+        .related { background: var(--bg-light); padding: 48px 20px; }
+        .related h3 { text-align: center; margin-bottom: 32px; font-size: 24px; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+        .related-card { background: white; border-radius: 12px; padding: 24px; text-decoration: none; color: inherit; transition: all 0.2s; }
+        .related-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(15, 118, 110, 0.15); border-top: 3px solid var(--primary-light); }
+        .related-card h4 { font-size: 16px; margin-bottom: 8px; color: var(--primary); }
+        .related-card p { font-size: 14px; color: var(--text-light); }
+
+        footer { background: #0f172a; color: #64748b; text-align: center; padding: 24px; font-size: 13px; }
+        footer a { color: #64748b; text-decoration: none; margin: 0 8px; }
+        footer a:hover { color: white; }
+
+        /* Scroll animation */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">Beck<span>360</span></a>
+            <a href="/blog/" class="back-link">← Alle Artikel</a>
+        </div>
+    </header>
+
+    <div class="article-header">
+        <span class="category">Immobilien-Tipps</span>
+        <h1>Der perfekte Besichtigungstermin: Warum weniger manchmal mehr ist</h1>
+        <div class="article-meta">
+            <span>3. Februar 2026</span>
+            <span>•</span>
+            <span>6 min Lesezeit</span>
+        </div>
+    </div>
+
+    <article class="article-content">
+        <p>Stellen Sie sich vor: Ein Immobilienmakler organisiert an einem Samstag 30 Besichtigungen für ein begehrtes Einfamilienhaus. Die Interessenten drängen sich aneinander, niemand kann die Immobilie in Ruhe erkunden, die Atmosphäre ist chaotisch. Am Ende gibt es keine ernsthaften Angebote – alle waren nur "mal schauen wollen". Klingt unrealistisch? Leider nicht. Das ist die Realität in vielen deutschen Städten mit angespanntem Markt.</p>
+
+        <p>Aber es gibt einen besseren Weg. Mit 360-Grad-Rundgängen als Vorfilter sinkt die Anzahl der Besichtigungen um 70%, während die Qualität der Interessenten um 300% steigt. Das ist nicht nur effizienter, es ist der Schlüssel zu schnelleren, besseren Verkäufen.</p>
+
+        <div class="stat-box scroll-fade">
+            <div class="number">70%</div>
+            <div class="label">weniger Besichtigungen durch virtuelle 360-Rundgänge</div>
+        </div>
+
+        <h2>Das Problem: Zu viele Besichtigungen, zu wenig Qualität</h2>
+
+        <p>Im klassischen Verkaufsprozess passiert oft folgendes: Der Makler organisiert ein Besichtigungswochenende. Alle sind eingeladen, die ganze Stadt kommt vorbei. Der Stress ist enorm – für den Verkäufer, den Makler und selbst für echte Interessenten, die sich nicht konzentrieren können.</p>
+
+        <h3>Die Kosten von zu vielen Besichtigungen:</h3>
+        <ul>
+            <li><strong>Zeitverschwendung:</strong> Der Makler führt unqualifizierte Interessenten herum, obwohl deren Finanzierung nicht geklärt ist oder sie eine ganz andere Immobilie suchen</li>
+            <li><strong>Ineffizienz:</strong> Die besten Gespräche können nicht stattfinden – zu laut, zu chaotisch, zu gehetzt</li>
+            <li><strong>Frustration:</strong> Ernsthafte Käufer werden von Schaulustigen belästigt und genießen die Besichtigung nicht</li>
+            <li><strong>Risiken:</strong> Zu viele fremde Menschen in der Immobilie = höheres Sicherheitsrisiko, mögliche Beschädigungen</li>
+            <li><strong>Keine Differenzierung:</strong> Der Makler weiß nicht, wer wirklich interessiert ist und wer nur neugierig ist</li>
+        </ul>
+
+        <div class="highlight-box scroll-fade">
+            <p>„Zu viele Besichtigungen bedeuten nicht mehr Verkaufschancen – sondern weniger. Weil echte Interessenten in der Masse verloren gehen und der Prozess für alle Beteiligten ineffizient wird."</p>
+        </div>
+
+        <h2>Die Lösung: 360-Grad Rundgänge als intelligenter Vorfilter</h2>
+
+        <p>Hier kommt der Paradigmenwechsel: Statt alle willkommen zu heißen, nutzen zukunftsorientierte Makler virtuelle 360-Grad-Rundgänge als intelligenten Vorfilter. Der Prozess funktioniert so:</p>
+
+        <ol>
+            <li><strong>Phase 1: Digitale Erkundung</strong> – Interessenten können die Immobilie online zu jeder Zeit, von überall aus und so oft wie sie möchten erkunden. Kein Stress, kein Druck, keine Zeitbegrenzung.</li>
+            <li><strong>Phase 2: Digitale Selbstqualifikation</strong> – Wer den virtuellen Rundgang anschaut, sieht genau, ob die Immobilie passt. Schaulüstige stellen schnell fest: „Das ist es nicht für mich." Ernsthafte Interessenten werden immer intensiver.</li>
+            <li><strong>Phase 3: Qualifizierte Besichtigungen</strong> – Nur noch echte Interessenten kommen zur physischen Besichtigung. Der Makler kann auf 4-5 Termine konzentriert arbeiten statt auf 30. Jedes Gespräch zählt.</li>
+        </ol>
+
+        <p>Das Ergebnis? 70% weniger Besichtigungstermine, aber 3x qualifiziertere Interessenten pro Termin. Ein exponentieller Gewinn für alle Beteiligten.</p>
+
+        <div class="stat-box scroll-fade">
+            <div class="number">3x</div>
+            <div class="label">qualifiziertere Käufer durch 360-Grad Vorfilter</div>
+        </div>
+
+        <h2>Psychologie des Kaufens: Warum Emotionen vor Ort unverzichtbar sind</h2>
+
+        <div class="psychology-box scroll-fade">
+            <h3>Das Bauchgefühl entscheidet – nicht der Verstand</h3>
+            <p>Forschungen zeigen: 95% aller Kaufentscheidungen werden unbewusst getroffen. Das „Bauchgefühl" – das emotionale Empfinden beim Eintreten, die Atmosphäre, der Duft, das Licht – entscheidet, ob ein Käufer sich ein Leben in dieser Immobilie vorstellen kann. Das kann kein virtueller Rundgang ersetzen.</p>
+        </div>
+
+        <p>Der 360-Grad-Rundgang ist nicht dazu da, die physische Besichtigung zu ersetzen – er ist dazu da, diese vorzubereiten. Er filtert das Offensichtliche raus und konzentriert die persönliche Besichtigung auf das Wesentliche: das emotionale Erleben.</p>
+
+        <p>Die beste Besichtigung ist daher eine <strong>informierte Besichtigung</strong>: Der Interessent kannte bereits das Layout, studierte die Lage und kann sich jetzt vollständig auf das Gefühl konzentrieren. Das ist der Moment, in dem echte Emotionen entstehen, die zu Kaufentscheidungen führen.</p>
+
+        <h2>Praktische Tipps zur Vorbereitung des perfekten Besichtigungstermins</h2>
+
+        <p>Wenn nur noch echte Interessenten zur Besichtigung kommen, lohnt es sich, extra Zeit in die Vorbereitung zu investieren:</p>
+
+        <h3>Vor der Besichtigung</h3>
+        <ul>
+            <li><strong>Klären Sie die Basics telefonisch:</strong> Finanzierung geklärt? Zeitrahmen für Kauf? Exklusive Fragen? So wissen Sie schon, wer ernsthafte Interessenten sind.</li>
+            <li><strong>Senden Sie den 360-Rundgang rechtzeitig:</strong> Der Interessent sollte ihn vor Ort angeschaut haben, damit seine Fragen gezielt sind.</li>
+            <li><strong>Bestätigen Sie den Termin:</strong> Eine freundliche Erinnerung 24 Stunden vorher erhöht die Anzahl der Erscheinungen und zeigt, dass Sie professionell sind.</li>
+            <li><strong>Bereiten Sie spezifische Infos vor:</strong> Nebenkosten, Grundrisse gedruckt, Informationen zur Gegend, nächste Schulen, Verkehrsanbindung.</li>
+        </ul>
+
+        <h3>Am Tag der Besichtigung</h3>
+        <ul>
+            <li><strong>Schaffen Sie die richtige Atmosphäre:</strong> Ordnung, Sauberkeit, angenehme Beleuchtung, frische Luft, eventuell leichte Hintergrundmusik</li>
+            <li><strong>Erzählen Sie die Geschichte:</strong> Nicht nur die Daten sagen – erzählen Sie, warum Sie dieses Objekt lieben. Was macht diese Immobilie einzigartig?</li>
+            <li><strong>Geben Sie Raum für Gefühle:</strong> Führen Sie nicht zu schnell herum. Lassen Sie den Interessenten den Raum spüren. Stille ist manchmal wichtiger als Reden.</li>
+            <li><strong>Beantworten Sie Fragen gezielt:</strong> Der Interessent hatte Zeit, den 360-Rundgang zu studieren – seine Fragen sind wahrscheinlich spezifisch und relevant. Das ist gut.</li>
+            <li><strong>Notizen machen:</strong> Wie reagiert der Interessent? Was interessiert ihn besonders? Diese Beobachtungen helfen Ihnen später bei Verhandlungen.</li>
+        </ul>
+
+        <h3>Nach der Besichtigung</h3>
+        <ul>
+            <li><strong>Danken Sie persönlich:</strong> Eine persönliche Nachricht am selben Tag zeigt Ihre Wertschätzung und bleibt im Gedächtnis.</li>
+            <li><strong>Bieten Sie zusätzliche Informationen an:</strong> Haben Sie bemerkt, dass den Interessenten die Energieeffizienz wichtig ist? Senden Sie dann die Energieausweise.</li>
+            <li><strong>Halten Sie den Dialog offen:</strong> Geben Sie dem Interessenten Zeit nachzudenken – und machen Sie klar, dass Sie für Fragen verfügbar sind.</li>
+        </ul>
+
+        <div class="checklist scroll-fade">
+            <h3>Checkliste: Der perfekte Besichtigungstermin</h3>
+            <ul>
+                <li>360-Rundgang zur Verfügung stellen (mindestens 48h vor Termin)</li>
+                <li>Finanzierung und Timeline des Interessenten klären</li>
+                <li>Besichtigungstermin 24h vorher bestätigen</li>
+                <li>Immobilie gründlich putzen und lüften</li>
+                <li>Beleuchtung überprüfen und optimieren</li>
+                <li>Gedruckte Unterlagen vorbereiten (Grundrisse, Infos)</li>
+                <li>Parkplatz reservieren (falls relevant)</li>
+                <li>Pünktlich ankommen und Willkommen-Atmosphäre schaffen</li>
+                <li>Raum geben, langsam gehen, zuhören</li>
+                <li>Persönliche Nachricht noch am selben Tag senden</li>
+            </ul>
+        </div>
+
+        <h2>Die Zahlen sprechen für sich: Wie 360-Rundgänge den Verkaufserfolg messbar erhöhen</h2>
+
+        <div class="stat-box scroll-fade">
+            <div class="number">73%</div>
+            <div class="label">der Käufer nutzen virtuelle Rundgänge bei ihrer Entscheidung</div>
+        </div>
+
+        <p>Die Daten sind eindeutig: Immobilien mit 360-Grad-Rundgängen werden schneller verkauft, zu besseren Preisen, und mit weniger Zeit aufwand. Das liegt daran, dass:</p>
+
+        <ul>
+            <li><strong>Vorerkundung ernst gemeint ist:</strong> Nur wer wirklich interessiert ist, schaut sich den Rundgang an.</li>
+            <li><strong>Der Besichtigungstermin fokussierter ist:</strong> Weder Makler noch Käufer verschwenden Zeit mit Ablehnung.</li>
+            <li><strong>Die Emotionalität höher ist:</strong> Der Käufer ist bereits emotional involviert – die persönliche Besichtigung bringt Klarheit, nicht erste Eindrücke.</li>
+            <li><strong>Die Verhandlungsposition besser ist:</strong> Mit qualifizierten Interessenten und schnellerem Verkauf kommt man zu besseren Preisen.</li>
+        </ul>
+
+        <div class="cta-box scroll-fade">
+            <h3>360-Grad Rundgänge für erfolgreiche Besichtigungstermine</h3>
+            <p>Nutzen Sie intelligente Vorfilterung: Beck360 erstellt professionelle Rundgänge, die Ihre Interessenten vorqualifizieren und Ihren Besichtigungsprozess revolutionieren.</p>
+
+            <form class="article-form" action="https://formsubmit.co/rundgang@beck360.de" method="POST">
+                <input type="hidden" name="_subject" value="Blog-Anfrage: Besichtigungstermin">
+                <input type="hidden" name="_source" value="Blog: Besichtigungstermin">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="_next" value="https://360-rundgang-karlsruhe.de/danke.html">
+
+                <div class="form-row">
+                    <input type="text" name="name" required placeholder="Ihr Name *">
+                    <input type="email" name="email" required placeholder="E-Mail *">
+                </div>
+                <input type="tel" name="telefon" placeholder="Telefon (optional)">
+                <textarea name="nachricht" rows="3" placeholder="Ihre Nachricht (optional)"></textarea>
+                <button type="submit" class="submit-btn">Kostenlose Beratung anfragen →</button>
+            </form>
+        </div>
+    </article>
+
+    <section class="related">
+        <h3>Ähnliche Artikel</h3>
+        <div class="related-grid">
+            <a href="/blog/virtuelle-rundgaenge-immobilien-vorteile.html" class="related-card scroll-fade">
+                <h4>Virtuelle Rundgänge: 5 Gründe für den Immobilienverkauf</h4>
+                <p>Wie 360-Grad-Touren die Verkaufschancen messbar erhöhen und Zeit sparen.</p>
+            </a>
+            <a href="/blog/matterport-3d-tours-vorteile.html" class="related-card scroll-fade">
+                <h4>Matterport 3D Touren: Technologie für erfolgreiche Verkäufe</h4>
+                <p>Entdecken Sie die Vorteile professioneller 3D-Vermessung für Immobilien.</p>
+            </a>
+            <a href="/blog/ki-immobilien-virtuelle-rundgaenge.html" class="related-card scroll-fade">
+                <h4>KI trifft Immobilien: Wie virtuelle Rundgänge revolutionieren</h4>
+                <p>Künstliche Intelligenz transformiert den Immobilienmarkt und die Kundensuche.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Beck360 – 360° Rundgänge & Drohnenaufnahmen Karlsruhe</p>
+        <p style="margin-top:8px">
+            <a href="https://360-rundgang-karlsruhe.de">Startseite</a>
+            <a href="/">Für Unternehmen</a>
+            <a href="/blog/">Magazin</a>
+            <a href="https://360-rundgang-karlsruhe.de/impressum">Impressum</a>
+            <a href="https://360-rundgang-karlsruhe.de/datenschutz">Datenschutz</a>
+        </p>
+    </footer>
+
+    <script>
+        // Scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

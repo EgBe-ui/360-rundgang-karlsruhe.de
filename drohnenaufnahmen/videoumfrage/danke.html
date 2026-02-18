@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+    <title>Vielen Dank! | Beck360 Video-Briefing</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #0D5D57;
+            --text: #134E4A;
+            --text-light: #5F7A78;
+            --bg: #ffffff;
+            --bg-soft: #F0FDFA;
+            --accent: #5EEAD4;
+            --font-main: 'Inter', -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text);
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: var(--primary);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .success-card {
+            background: white;
+            border-radius: 16px;
+            padding: 60px 40px;
+            box-shadow: 0 4px 20px rgba(15, 118, 110, 0.08);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .message {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .redirect-notice {
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .redirect-notice span {
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 14px 28px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .back-link:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/drohnenaufnahmen/" class="logo">Beck<span>360</span></a>
+    </header>
+
+    <main>
+        <div class="success-card">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+            </div>
+            <h1>Vielen Dank!</h1>
+            <p class="message">Ihr Video-Briefing wurde erfolgreich übermittelt.<br>Ich melde mich in Kürze bei Ihnen.</p>
+            <p class="redirect-notice">Sie werden in <span id="countdown">5</span> Sekunden weitergeleitet...</p>
+            <a href="https://www.360-rundgang-karlsruhe.de" class="back-link">Zur Hauptseite</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Beck360 · Eugen Beck · <a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></p>
+    </footer>
+
+    <script>
+        let seconds = 5;
+        const countdownEl = document.getElementById('countdown');
+
+        const countdownInterval = setInterval(() => {
+            seconds--;
+            countdownEl.textContent = seconds;
+
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = 'https://www.360-rundgang-karlsruhe.de';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

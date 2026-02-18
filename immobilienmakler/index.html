@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <title>360° Rundgänge für Immobilienmakler | Mehr Objekte</title>
+    <meta name="description" content="360° Rundgänge für Immobilienmakler in Karlsruhe. Gewinnen Sie mehr Objekte, sparen Sie Zeit bei Besichtigungen. Partnerkonditionen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://360-rundgang-karlsruhe.de/immobilienmakler/">
+    <meta property="og:title" content="360° Rundgänge für Immobilienmakler | Beck360">
+    <meta property="og:description" content="Gewinnen Sie mehr Objekte mit modernem Marketing. 360° Rundgänge als Premium-Service für Ihre Verkäufer.">
+    <meta property="og:locale" content="de_DE">
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#0F766E;--primary-dark:#0D5D57;--primary-light:#14B8A6;--cta:#0369A1;--cta-hover:#075985;--text:#134E4A;--text-light:#5F7A78;--bg:#ffffff;--bg-soft:#F0FDFA;--border:#D1E4E2;--font-main:'Inter',system-ui,sans-serif;--shadow-md:0 4px 12px rgba(15,118,110,0.08);--shadow-lg:0 12px 32px rgba(15,118,110,0.12)}
+        body{font-family:var(--font-main);color:var(--text);line-height:1.6;background:var(--bg);-webkit-font-smoothing:antialiased}
+        h1,h2,h3,.section-title{font-family:var(--font-main);font-weight:600;letter-spacing:-0.02em}
+        .fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+        .fade-up.visible{opacity:1;transform:translateY(0)}
+        .stagger-1{transition-delay:0.1s}.stagger-2{transition-delay:0.2s}.stagger-3{transition-delay:0.3s}
+        .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:40px 20px;background:var(--bg-soft);color:var(--text);text-align:center}
+        .hero-badge{display:inline-block;background:rgba(255,255,255,0.15);padding:8px 16px;border-radius:50px;font-size:14px;font-weight:500;margin-bottom:20px;border:1px solid rgba(255,255,255,0.2)}
+        .hero h1{font-size:clamp(28px,6vw,48px);font-weight:700;line-height:1.2;margin-bottom:16px}
+        .hero h1 span{color:var(--primary)}
+        .hero-subtitle{font-size:clamp(16px,4vw,20px);opacity:0.95;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
+        .cta-button{display:inline-block;background:var(--cta);color:white;padding:18px 36px;border-radius:50px;font-size:18px;font-weight:600;text-decoration:none;transition:transform 0.3s,box-shadow 0.3s;box-shadow:var(--shadow-md)}
+        .cta-button:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(0,0,0,0.3)}
+        .hero-trust{margin-top:40px;font-size:14px;opacity:0.9}
+        .hero-trust span{display:inline-flex;align-items:center;margin:0 10px}
+        section{padding:60px 20px}
+        .container{max-width:600px;margin:0 auto}
+        .section-title{font-size:clamp(24px,5vw,36px);font-weight:700;text-align:center;margin-bottom:16px}
+        .section-subtitle{text-align:center;color:var(--text-light);margin-bottom:40px;font-size:16px}
+        .problem{background:var(--bg)}
+        .problem-list{list-style:none}
+        .problem-list li{display:flex;align-items:flex-start;padding:16px 0;border-bottom:1px solid #e5e5e5}
+        .problem-list li:last-child{border-bottom:none}
+        .problem-icon{font-size:24px;margin-right:16px;flex-shrink:0}
+        .problem-text strong{display:block;margin-bottom:4px}
+        .problem-text span{color:var(--text-light);font-size:14px}
+        .solution{background:var(--bg-soft);color:var(--text);text-align:center}
+        .solution .section-title{color:var(--text)}
+        .solution-text{font-size:18px;color:var(--text-light);margin-bottom:30px}
+        .stats{background:var(--primary);color:white;padding:40px 20px}
+        .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;max-width:600px;margin:0 auto}
+        .stat-number{font-size:36px;font-weight:700;color:var(--primary-light)}
+        .stat-label{font-size:12px;opacity:0.8;margin-top:4px}
+        .benefits-grid{display:grid;gap:20px}
+        .benefit-card{background:var(--bg-soft);padding:24px;border-radius:16px;display:flex;align-items:flex-start}
+        .benefit-icon{font-size:32px;margin-right:16px;flex-shrink:0}
+        .benefit-content h3{font-size:18px;font-weight:600;margin-bottom:4px}
+        .benefit-content p{color:var(--text-light);font-size:14px}
+        .usp{background:white}
+        .usp-grid{display:grid;gap:16px}
+        .usp-card{background:var(--bg-soft);padding:20px;border-radius:12px;border-left:4px solid var(--primary)}
+        .usp-card h3{font-size:16px;font-weight:600;margin-bottom:8px;color:var(--primary)}
+        .usp-card p{font-size:14px;color:var(--text-light)}
+        .process{background:var(--bg)}
+        .process-steps{display:flex;flex-direction:column;gap:24px}
+        .process-step{display:flex;align-items:flex-start}
+        .step-number{width:48px;height:48px;background:var(--primary);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;margin-right:16px}
+        .step-content h3{font-size:18px;font-weight:600;margin-bottom:4px}
+        .step-content p{color:var(--text-light);font-size:14px}
+        .step-badge{display:inline-block;background:var(--bg-soft);color:var(--primary);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:500;margin-top:8px}
+        .trust{background:var(--bg-soft)}
+        .trust-items{display:grid;gap:16px}
+        .trust-item{display:flex;align-items:center;background:white;padding:16px 20px;border-radius:12px}
+        .trust-item span{font-size:24px;margin-right:12px}
+        .example-section{text-align:center;background:white}
+        .example-button{display:inline-flex;align-items:center;background:var(--bg-soft);color:var(--text);padding:16px 24px;border-radius:12px;text-decoration:none;font-weight:500;transition:background 0.3s}
+        .example-button:hover{background:var(--border)}
+        .example-button span{margin-right:10px;font-size:20px}
+        .cta-section{background:var(--primary);color:white;text-align:center;padding:60px 20px}
+        .cta-section .section-title{color:white;margin-bottom:12px}
+        .cta-section .section-subtitle{color:rgba(255,255,255,0.8);margin-bottom:30px}
+        .contact-form{background:white;padding:30px 24px;border-radius:20px;max-width:400px;margin:0 auto}
+        .form-title{color:var(--text);font-size:20px;font-weight:600;text-align:center;margin-bottom:20px}
+        .form-group{margin-bottom:16px}
+        .form-group label{display:block;color:var(--text);font-size:14px;font-weight:500;margin-bottom:6px}
+        .form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 16px;border:2px solid #e5e5e5;border-radius:10px;font-size:16px;font-family:inherit;transition:border-color 0.3s;background:white}
+        .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--primary)}
+        .form-group textarea{min-height:100px;resize:vertical}
+        .submit-button{width:100%;background:var(--cta);color:white;padding:16px;border:none;border-radius:10px;font-size:18px;font-weight:600;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s}
+        .submit-button:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(26,54,93,0.4)}
+        .submit-button:focus{outline:2px solid var(--cta);outline-offset:2px}
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:2px solid var(--cta);outline-offset:2px}
+        .form-note{text-align:center;color:var(--text-light);font-size:12px;margin-top:16px}
+        .phone-cta{margin-top:30px;text-align:center}
+        .phone-cta p{color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:8px}
+        .phone-cta a{color:white;font-size:24px;font-weight:600;text-decoration:none}
+        .lp-footer{background:#0f2744;color:rgba(255,255,255,0.6);text-align:center;padding:20px;font-size:12px}
+        .lp-footer a{color:rgba(255,255,255,0.6);text-decoration:none}
+        .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:white;padding:12px 20px;box-shadow:0 -4px 20px rgba(0,0,0,0.1);z-index:100;display:none}
+        .sticky-cta a{display:block;background:var(--cta);color:white;text-align:center;padding:14px;border-radius:10px;font-weight:600;text-decoration:none}
+        @media(max-width:768px){.sticky-cta{display:none}.cta-section{padding-bottom:60px}.stats-grid{grid-template-columns:1fr;gap:16px}}
+
+        /* Accessibility Improvements */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--text);
+            color: white;
+            padding: 8px 16px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+    <main id="main-content">
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">🏢 Für Immobilienmakler in Karlsruhe</div>
+            <h1>Gewinnen Sie mehr Objekte.<br><span>Mit modernem Marketing.</span></h1>
+            <p class="hero-subtitle">360° Rundgänge als Premium-Service für Ihre Verkäufer. Weniger Besichtigungen, mehr qualifizierte Käufer, zufriedenere Eigentümer.</p>
+            <a href="#kontakt" class="cta-button">Kostenlose Beratung sichern …</a>
+            <div class="hero-trust"><span>✓ Partnerkonditionen</span><span>✓ Schnelle Umsetzung</span><span>✓ White-Label möglich</span></div>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <h2 class="section-title">Die Herausforderungen im Makleralltag</h2>
+            <p class="section-subtitle">Kommt Ihnen das bekannt vor?</p>
+            <ul class="problem-list">
+                <li><span class="problem-icon">🏃</span><div class="problem-text"><strong>Zu viele Vor-Ort-Termine</strong><span>Stundenlange Fahrten für Interessenten, die gar nicht ernsthaft kaufen wollen</span></div></li>
+                <li><span class="problem-icon">⚔️</span><div class="problem-text"><strong>Starker Konkurrenzdruck</strong><span>Eigentümer vergleichen Sie mit anderen Maklern – oft entscheidet das Marketing</span></div></li>
+                <li><span class="problem-icon">📱</span><div class="problem-text"><strong>Steigende Erwartungen</strong><span>Verkäufer erwarten heute moderne Vermarktung – nicht nur Fotos im Exposé</span></div></li>
+                <li><span class="problem-icon">⏰</span><div class="problem-text"><strong>Zeitdruck bei Akquise</strong><span>Wenig Zeit für neue Objekte, weil Besichtigungen den Kalender füllen</span></div></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">Ihr Wettbewerbsvorteil: 360° Rundgänge</h2>
+            <p class="solution-text">Bieten Sie Ihren Eigentümern Premium-Service und heben Sie sich von der Konkurrenz ab. Interessenten besichtigen virtuell – nur die Ernsthaften kommen vor Ort.</p>
+            <a href="#kontakt" class="cta-button">Jetzt Partner werden …</a>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item"><div class="stat-number">-70%</div><div class="stat-label">weniger Vor-Ort-<br>Besichtigungen</div></div>
+            <div class="stat-item"><div class="stat-number">+60%</div><div class="stat-label">mehr qualifizierte<br>Anfragen</div></div>
+            <div class="stat-item"><div class="stat-number">3x</div><div class="stat-label">längere Verweildauer<br>im Exposé</div></div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Ihre Vorteile als Makler</h2>
+            <p class="section-subtitle">Warum führende Makler auf 360° Rundgänge setzen</p>
+            <div class="benefits-grid">
+                <div class="benefit-card"><span class="benefit-icon">🏆</span><div class="benefit-content"><h3>Mehr Objekte gewinnen</h3><p>Mit Premium-Marketing überzeugen Sie Eigentümer im Akquisegespräch</p></div></div>
+                <div class="benefit-card"><span class="benefit-icon">⏱️</span><div class="benefit-content"><h3>Zeit für das Wesentliche</h3><p>Weniger Besichtigungstourismus – mehr Zeit für Abschlüsse und Akquise</p></div></div>
+                <div class="benefit-card"><span class="benefit-icon">🎯</span><div class="benefit-content"><h3>Qualifizierte Interessenten</h3><p>Wer nach dem Rundgang noch kommt, ist ernsthaft interessiert</p></div></div>
+                <div class="benefit-card"><span class="benefit-icon">💎</span><div class="benefit-content"><h3>Premium-Positionierung</h3><p>Heben Sie sich von Maklern ab, die nur Standardfotos bieten</p></div></div>
+                <div class="benefit-card"><span class="benefit-icon">😊</span><div class="benefit-content"><h3>Zufriedene Eigentümer</h3><p>Professionelle Vermarktung = gute Bewertungen und Weiterempfehlungen</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="usp">
+        <div class="container">
+            <h2 class="section-title">Speziell für Makler</h2>
+            <p class="section-subtitle">Wir verstehen Ihre Anforderungen</p>
+            <div class="usp-grid">
+                <div class="usp-card"><h3>🤝 Partnerkonditionen</h3><p>Attraktive Preise bei regelmäßiger Zusammenarbeit. Lohnt sich schon ab dem ersten Objekt.</p></div>
+                <div class="usp-card"><h3>⚡ Express-Service</h3><p>Kurzfristiger Termin nötig? Wir sind flexibel und liefern schnell.</p></div>
+                <div class="usp-card"><h3>🏷️ White-Label möglich</h3><p>Der Rundgang kann unter Ihrem Branding erscheinen – ohne Beck360-Logo.</p></div>
+                <div class="usp-card"><h3>📊 Direkte Integration</h3><p>Einbettbar in ImmoScout, ImmoWelt, Ihre Website und alle gängigen Portale.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">So arbeiten wir zusammen</h2>
+            <p class="section-subtitle">Einfach, schnell, unkompliziert</p>
+            <div class="process-steps">
+                <div class="process-step"><div class="step-number">1</div><div class="step-content"><h3>Termin vereinbaren</h3><p>Sie melden das Objekt an – per Anruf, WhatsApp oder E-Mail. Wir finden kurzfristig einen Termin.</p><span class="step-badge">📞 Oft noch am selben Tag</span></div></div>
+                <div class="process-step"><div class="step-number">2</div><div class="step-content"><h3>Aufnahme vor Ort</h3><p>Ich erfasse das Objekt mit der Matterport Pro2 – professionell und diskret. Sie müssen nicht dabei sein.</p><span class="step-badge">⏱️ Ca. 1-3 Stunden je nach Größe</span></div></div>
+                <div class="process-step"><div class="step-number">3</div><div class="step-content"><h3>Fertiger Rundgang</h3><p>Innerhalb von 48-72h erhalten Sie den Link – fertig zur Einbindung in Ihre Exposés und Portale.</p><span class="step-badge">🚀 Inklusive Fotos & Grundriss</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="example-section">
+        <div class="container">
+            <h2 class="section-title">Überzeugen Sie sich selbst</h2>
+            <p class="section-subtitle">So sieht ein professioneller 360° Rundgang aus</p>
+            <a href="https://my.matterport.com/show/?m=JpmsyFFDkW9" target="_blank" class="example-button" aria-label="Beispiel-Rundgang ansehen"><span>🏠</span> Beispiel-Rundgang ansehen</a>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="container">
+            <h2 class="section-title">Warum Makler mit mir arbeiten</h2>
+            <p class="section-subtitle">Ihr verlässlicher Partner in Karlsruhe</p>
+            <div class="trust-items">
+                <div class="trust-item"><span>📍</span><div>Lokal in Karlsruhe & Umgebung – kurze Wege</div></div>
+                <div class="trust-item"><span>🤝</span><div>Persönlicher Ansprechpartner, keine Callcenter</div></div>
+                <div class="trust-item"><span>⚡</span><div>Zuverlässig & pünktlich – auch kurzfristig</div></div>
+                <div class="trust-item"><span>🏆</span><div>Zertifizierter Matterport-Partner</div></div>
+                <div class="trust-item"><span>⭐</span><div>5,0 Sterne auf Google – 100% Zufriedenheit</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="kontakt">
+        <div class="container">
+            <h2 class="section-title">Jetzt Partnerkonditionen sichern</h2>
+            <p class="section-subtitle">Unverbindliches Gespräch – Antwort in 24h</p>
+            <form id="contact-form" class="contact-form">
+                <div class="form-title">Für Immobilienmakler</div>
+                <input type="hidden" name="_subject" value="🏢 Anfrage Immobilienmakler - Landing Page">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                <div class="form-group"><label for="name">Name *</label><input type="text" id="name" name="name" placeholder="Ihr Name" required autocomplete="name"></div>
+                <div class="form-group"><label for="company">Maklerbüro</label><input type="text" id="company" name="company" placeholder="Name Ihres Unternehmens" autocomplete="organization"></div>
+                <div class="form-group"><label for="email">E-Mail *</label><input type="email" id="email" name="email" placeholder="ihre@email.de" required autocomplete="email"></div>
+                <div class="form-group"><label for="phone">Telefon (für Rückruf)</label><input type="tel" id="phone" name="phone" placeholder="+49 123 456789" autocomplete="tel"></div>
+                <div class="form-group"><label for="volume">Geschätztes Volumen</label><select id="volume" name="volume"><option value="">Bitte wählen...</option><option value="1-5">1-5 Objekte pro Monat</option><option value="5-10">5-10 Objekte pro Monat</option><option value="10+">Mehr als 10 Objekte pro Monat</option><option value="test">Erstmal testen</option></select></div>
+                <div class="form-group"><label for="message">Ihre Nachricht</label><textarea id="message" name="message" placeholder="Was möchten Sie wissen? Haben Sie bereits ein konkretes Objekt?"></textarea></div>
+                <button type="submit" class="submit-button">Unverbindlich anfragen …</button>
+                <p class="form-note">✓ Partnerkonditionen ✓ Kostenlose Beratung ✓ Antwort in 24h</p>
+            </form>
+            <div class="phone-cta"><p>Oder rufen Sie direkt an:</p><a href="tel:+491734682501">0173 468 2501</a></div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="lp-footer" role="contentinfo"><p>© 2026 Beck360 · <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a></p></footer>
+    <div class="sticky-cta"><a href="#kontakt">Jetzt Partner werden …</a></div>
+
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Wird gesendet...';
+                submitBtn.disabled = true;
+
+                const formData = new FormData(this);
+
+                fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/danke.html';
+                    } else {
+                        throw new Error('Fehler beim Senden');
+                    }
+                })
+                .catch(error => {
+                    alert('Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+    </script>
+
+    <!-- Scroll Animation Observer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

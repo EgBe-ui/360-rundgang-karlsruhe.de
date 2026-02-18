@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <title>Drohnen-Blog | Tipps & Wissen rund um Drohnenaufnahmen | Beck360</title>
+    <meta name="description" content="Blog über Drohnenaufnahmen: Preise, Genehmigungen, Ablauf und Tipps. Alles was Sie wissen müssen, bevor Sie einen Drohnenpiloten beauftragen.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://360-rundgang-karlsruhe.de/drohnenaufnahmen/blog/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://360-rundgang-karlsruhe.de/drohnenaufnahmen/blog/">
+    <meta property="og:title" content="Drohnen-Blog | Tipps & Wissen | Beck360">
+    <meta property="og:description" content="Blog über Drohnenaufnahmen: Preise, Genehmigungen, Ablauf und Tipps.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #0D5D57;
+            --text: #134E4A;
+            --text-secondary: #5F7A78;
+            --bg: #ffffff;
+            --bg-soft: #F0FDFA;
+            --border: #D1E4E2;
+            --font-main: 'Inter', -apple-system, sans-serif;
+            --shadow-md: 0 4px 12px rgba(15, 118, 110, 0.08);
+            --shadow-lg: 0 12px 32px rgba(15, 118, 110, 0.12);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        h1, h2, h3 { font-weight: 600; line-height: 1.2; }
+        h1 { font-size: clamp(28px, 4vw, 40px); }
+        h2 { font-size: clamp(22px, 3vw, 28px); }
+        p { color: var(--text-secondary); }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .logo span { color: var(--primary); }
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav a {
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .nav a:hover {
+            background: var(--bg-soft);
+            color: var(--primary);
+        }
+        .nav-cta {
+            background: var(--primary) !important;
+            color: white !important;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 60px;
+            background: var(--bg-soft);
+            text-align: center;
+        }
+        .hero h1 { margin-bottom: 16px; }
+        .hero p { font-size: 18px; max-width: 500px; margin: 0 auto; }
+
+        /* Blog Grid */
+        .blog-grid {
+            padding: 60px 0;
+        }
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .post-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .post-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        .post-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+        .post-content {
+            padding: 24px;
+        }
+        .post-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .post-card h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        .post-card p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .read-more {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            .posts-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Footer */
+        footer {
+            padding: 24px 0;
+            background: var(--bg-soft);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        footer p { font-size: 13px; }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="/drohnenaufnahmen/" class="logo">Beck<span>360</span></a>
+            <nav class="nav">
+                <a href="/drohnenaufnahmen/">Übersicht</a>
+                <a href="/drohnenaufnahmen/#leistungen">Leistungen</a>
+                <a href="/drohnenaufnahmen/#preise">Preise</a>
+                <a href="/drohnenaufnahmen/#kontakt" class="nav-cta">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Drohnen-Blog</h1>
+                <p>Tipps, Wissen und Neuigkeiten rund um Drohnenaufnahmen</p>
+            </div>
+        </section>
+
+        <section class="blog-grid">
+            <div class="container">
+                <div class="posts-grid">
+                    <a href="/drohnenaufnahmen/blog/was-kosten-drohnenaufnahmen/" class="post-card">
+                        <div class="post-image">💰</div>
+                        <div class="post-content">
+                            <p class="post-meta">Februar 2026 · 5 Min Lesezeit</p>
+                            <h2>Was kosten Drohnenaufnahmen?</h2>
+                            <p>Preisübersicht für Immobilien, Bau, Events und mehr. Was Sie für Ihr Budget erwarten können.</p>
+                            <span class="read-more">Weiterlesen →</span>
+                        </div>
+                    </a>
+
+                    <a href="/drohnenaufnahmen/blog/drohnenaufnahmen-genehmigung/" class="post-card">
+                        <div class="post-image">📋</div>
+                        <div class="post-content">
+                            <p class="post-meta">Demnächst</p>
+                            <h2>Braucht man eine Genehmigung?</h2>
+                            <p>EU-Drohnenregeln erklärt: Wann brauchen Sie eine Genehmigung und wer kümmert sich darum?</p>
+                            <span class="read-more">Bald verfügbar</span>
+                        </div>
+                    </a>
+
+                    <a href="/drohnenaufnahmen/blog/drohnenflug-ablauf/" class="post-card">
+                        <div class="post-image">🚁</div>
+                        <div class="post-content">
+                            <p class="post-meta">Demnächst</p>
+                            <h2>Wie läuft ein Drohnenflug ab?</h2>
+                            <p>Von der Anfrage bis zur Lieferung: Was passiert bei einem professionellen Drohnenflug?</p>
+                            <span class="read-more">Bald verfügbar</span>
+                        </div>
+                    </a>
+
+                    <a href="/drohnenaufnahmen/blog/drohnenbilder-immobilien-tipps/" class="post-card">
+                        <div class="post-image">🏠</div>
+                        <div class="post-content">
+                            <p class="post-meta">Demnächst</p>
+                            <h2>5 Tipps für bessere Immobilien-Luftbilder</h2>
+                            <p>So holen Sie das Maximum aus Ihren Drohnenaufnahmen für die Immobilienvermarktung.</p>
+                            <span class="read-more">Bald verfügbar</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Beck360 · <a href="/drohnenaufnahmen/">Drohnenaufnahmen</a> · <a href="/">Hauptseite</a> · <a href="/impressum/">Impressum</a></p>
+        </div>
+    </footer>
+</body>
+</html>

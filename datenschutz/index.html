@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <title>Datenschutzerklärung | 360° Rundgang Karlsruhe</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://360-rundgang-karlsruhe.de/datenschutz">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0F766E;
+            --primary-light: #14B8A6;
+            --cta: #0369A1;
+            --text: #134E4A;
+            --text-light: #5F7A78;
+            --bg: #ffffff;
+            --bg-soft: #F0FDFA;
+            --border: #D1E4E2;
+            --font-main: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav.main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 9999;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1024px;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+        }
+
+        .back-link {
+            font-size: 14px;
+            color: var(--cta);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .legal-content {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .legal-content h1 {
+            font-family: var(--font-main);
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 40px;
+            color: var(--text);
+        }
+
+        .legal-content h2 {
+            font-family: var(--font-main);
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin: 48px 0 16px;
+            color: var(--text);
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .legal-content h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .legal-content h3 {
+            font-family: var(--font-main);
+            font-size: 17px;
+            font-weight: 600;
+            margin: 24px 0 8px;
+            color: var(--text);
+        }
+
+        .legal-content p {
+            font-size: 17px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .legal-content ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .legal-content li {
+            font-size: 17px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .legal-content a {
+            color: var(--cta);
+            text-decoration: none;
+        }
+
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-block {
+            background: var(--bg-soft);
+            padding: 24px;
+            border-radius: 16px;
+            margin: 24px 0;
+            border: 1px solid var(--border);
+        }
+
+        .contact-block p {
+            margin-bottom: 8px;
+        }
+
+        .contact-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        footer {
+            background: var(--bg-soft);
+            padding: 20px 24px;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 600px) {
+            .legal-content h1 {
+                font-size: 32px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        /* Accessibility Improvements */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--text);
+            color: white;
+            padding: 8px 16px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--cta);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://beck360.de/wp-content/uploads/2021/09/cropped-Logo_180_40-160x36.png" alt="Beck360 Logo">
+            </a>
+            <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+        </div>
+    </nav>
+
+    <main class="legal-content" id="main-content">
+        <h1>Datenschutzerklärung</h1>
+
+        <h2>1. Datenschutz auf einen Blick</h2>
+
+        <h3>Allgemeine Hinweise</h3>
+        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+
+        <h3>Datenerfassung auf dieser Website</h3>
+        <p><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong></p>
+        <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+
+        <p><strong>Wie erfassen wir Ihre Daten?</strong></p>
+        <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
+
+        <p><strong>Wofür nutzen wir Ihre Daten?</strong></p>
+        <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+
+        <p><strong>Welche Rechte haben Sie bezüglich Ihrer Daten?</strong></p>
+        <p>Sie haben jederzeit das Recht unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen.</p>
+
+        <h2>2. Verantwortliche Stelle</h2>
+
+        <div class="contact-block">
+            <p><strong>Eugen Beck</strong></p>
+            <p>BECK360</p>
+            <p>Eichenweg 1</p>
+            <p>76275 Ettlingen</p>
+            <p>Telefon: <a href="tel:+491734682501">+49 (0) 173 4682501</a></p>
+            <p>E-Mail: <a href="mailto:rundgang@beck360.de">rundgang@beck360.de</a></p>
+        </div>
+
+        <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</p>
+
+        <h2>3. Ihre Rechte</h2>
+
+        <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
+        <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns.</p>
+
+        <h3>Beschwerderecht bei der zuständigen Aufsichtsbehörde</h3>
+        <p>Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde zu, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.</p>
+
+        <h3>Recht auf Datenübertragbarkeit</h3>
+        <p>Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen.</p>
+
+        <h3>Auskunft, Sperrung, Löschung und Berichtigung</h3>
+        <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</p>
+
+        <h2>4. Datenerfassung auf dieser Website</h2>
+
+        <h3>SSL- bzw. TLS-Verschlüsselung</h3>
+        <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+
+        <h3>Server-Log-Dateien</h3>
+        <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
+        <ul>
+            <li>Browsertyp und Browserversion</li>
+            <li>Verwendetes Betriebssystem</li>
+            <li>Referrer URL</li>
+            <li>Hostname des zugreifenden Rechners</li>
+            <li>Uhrzeit der Serveranfrage</li>
+            <li>IP-Adresse</li>
+        </ul>
+        <p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.</p>
+
+        <h3>Kontaktformular</h3>
+        <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        <p>Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können diese Einwilligung jederzeit widerrufen.</p>
+        <p>Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt.</p>
+
+        <h3>FormSubmit</h3>
+        <p>Für unsere Kontaktformulare nutzen wir den Dienst FormSubmit. Wenn Sie ein Kontaktformular absenden, werden Ihre eingegebenen Daten an FormSubmit übermittelt und von dort per E-Mail an uns weitergeleitet. Weitere Informationen finden Sie in der Datenschutzerklärung von FormSubmit: <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener">https://formsubmit.co/privacy.pdf</a></p>
+
+        <h2>5. Externe Dienste und Inhalte</h2>
+
+        <h3>Matterport</h3>
+        <p>Unsere Website nutzt Dienste der Matterport Inc., 352 E. Java Dr. Sunnyvale, CA 94089, USA. Wenn Sie eine unserer mit einem Matterport Space ausgestatteten Seiten besuchen, wird eine Verbindung zu den Servern von Matterport hergestellt. Dabei werden Ihre IP-Adresse, Browserversion und darstellendes Gerät an die Matterport-Server in den USA übermittelt.</p>
+        <p>Weitere Informationen: <a href="https://matterport.com/legal/privacy-policy/" target="_blank" rel="noopener">https://matterport.com/legal/privacy-policy/</a></p>
+
+        <h3>Vimeo</h3>
+        <p>Unsere Website nutzt Plugins des Videoportals Vimeo. Anbieter ist die Vimeo Inc., 555 West 18th Street, New York, New York 10011, USA. Wenn Sie eine unserer mit einem Vimeo-Plugin ausgestatteten Seiten besuchen, wird eine Verbindung zu den Servern von Vimeo hergestellt. Dabei wird dem Vimeo-Server mitgeteilt, welche unserer Seiten Sie besucht haben. Zudem erlangt Vimeo Ihre IP-Adresse.</p>
+        <p>Weitere Informationen: <a href="https://vimeo.com/privacy" target="_blank" rel="noopener">https://vimeo.com/privacy</a></p>
+
+        <h3>Google Web Fonts</h3>
+        <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Web Fonts, die von Google bereitgestellt werden. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Web Fonts in ihren Browsercache, um Texte und Schriftarten korrekt anzuzeigen. Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Google aufnehmen.</p>
+        <p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
+
+        <h2>6. Hosting</h2>
+
+        <h3>Netlify</h3>
+        <p>Diese Website wird bei Netlify, Inc., 2325 3rd Street, Suite 296, San Francisco, California 94107, USA gehostet. Wenn Sie unsere Website besuchen, werden Ihre IP-Adresse und weitere technische Daten an Netlify übermittelt. Dies ist erforderlich, um die Website korrekt auszuliefern.</p>
+        <p>Weitere Informationen: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">https://www.netlify.com/privacy/</a></p>
+
+        <p style="margin-top: 48px; font-size: 14px; color: var(--gray);">Quelle: eRecht24 (angepasst)</p>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p>© 2026 Beck360. Alle Rechte vorbehalten.</p>
+            <nav class="footer-links">
+                <a href="/impressum">Impressum</a>
+                <a href="/datenschutz">Datenschutz</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation with IntersectionObserver
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('h1, h2, h3, .contact-block, .legal-content p').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+    <title>Video-Briefing | Beck360 Drohnenaufnahmen</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #0D5D57;
+            --primary-light: #14B8A6;
+            --accent: #5EEAD4;
+            --text: #134E4A;
+            --text-light: #5F7A78;
+            --bg: #ffffff;
+            --bg-soft: #F0FDFA;
+            --border: #D1E4E2;
+            --error: #DC2626;
+            --font-main: 'Inter', -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text);
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg) 100%);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 24px 60px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            box-shadow: 0 10px 30px rgba(15, 118, 110, 0.3);
+        }
+
+        .hero-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 36px);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: var(--text-light);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(15, 118, 110, 0.08);
+            border: 1px solid var(--border);
+        }
+
+        .form-section {
+            margin-bottom: 36px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .form-section:last-of-type {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-soft);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-group label.main-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .form-group .required {
+            color: var(--error);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="url"],
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-family: var(--font-main);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .form-hint {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        .form-group .hint-above {
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* Checkbox Group */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--bg-soft);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .checkbox-item:hover, .radio-item:hover {
+            background: var(--bg);
+            border-color: var(--primary-light);
+        }
+
+        .checkbox-item input[type="checkbox"],
+        .radio-item input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-item span, .radio-item span {
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        /* Radio Group */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Conditional Field */
+        .conditional-field {
+            display: none;
+            margin-top: 12px;
+            padding-left: 32px;
+        }
+
+        .conditional-field.show {
+            display: block;
+        }
+
+        .conditional-field textarea {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 14px;
+            font-family: var(--font-main);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            color: var(--text);
+            min-height: 70px;
+        }
+
+        .conditional-field textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .conditional-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* File Input */
+        .file-input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 14px;
+            font-family: var(--font-main);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            background: white;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .file-input:hover {
+            border-color: var(--primary-light);
+            background: var(--bg-soft);
+        }
+
+        .file-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .file-hint {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 6px;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 18px 32px;
+            font-size: 17px;
+            font-weight: 600;
+            font-family: var(--font-main);
+            color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 36px;
+            box-shadow: 0 4px 15px rgba(15, 118, 110, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(15, 118, 110, 0.4);
+        }
+
+        .submit-btn:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Privacy Note */
+        .privacy-note {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 16px;
+        }
+
+        .privacy-note a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .success-message h2 {
+            font-size: 28px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .success-message p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .redirect-notice {
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .redirect-notice span {
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 14px 28px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .back-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px 16px 40px;
+            }
+
+            .form-card {
+                padding: 24px 20px;
+            }
+
+            .hero-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .hero-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .checkbox-item, .radio-item {
+                padding: 12px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/drohnenaufnahmen/" class="logo">Beck<span>360</span></a>
+    </header>
+
+    <main class="container">
+        <div class="hero">
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+                </svg>
+            </div>
+            <h1>Video-Briefing</h1>
+            <p>Damit ich Ihr perfektes Drohnenvideo erstellen kann, benötige ich einige Informationen von Ihnen. Bitte nehmen Sie sich 2-3 Minuten Zeit.</p>
+        </div>
+
+        <div class="form-card">
+            <form id="survey-form">
+
+                <!-- Section 1: Kontaktdaten -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">👤</span>
+                        Ihre Kontaktdaten
+                    </h2>
+
+                    <div class="form-group">
+                        <label class="main-label" for="name">Name / Firma <span class="required">*</span></label>
+                        <input type="text" id="name" name="Name / Firma" required placeholder="Max Mustermann / Musterfirma GmbH">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="main-label" for="email">E-Mail <span class="required">*</span></label>
+                        <input type="email" id="email" name="E-Mail" required placeholder="ihre@email.de">
+                    </div>
+                </div>
+
+                <!-- Section 2: Verwendungszweck -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">🎯</span>
+                        Verwendungszweck
+                    </h2>
+
+                    <!-- Frage 1 -->
+                    <div class="form-group">
+                        <label class="main-label">Wofür soll das Video hauptsächlich genutzt werden? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="Verwendungszweck" value="Website" required>
+                                <span>Website</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Verwendungszweck" value="Social Media (Instagram, Facebook, LinkedIn)">
+                                <span>Social Media (Instagram, Facebook, LinkedIn)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Verwendungszweck" value="Kundenpräsentation">
+                                <span>Kundenpräsentation</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Verwendungszweck" value="Recruiting / Mitarbeitergewinnung">
+                                <span>Recruiting / Mitarbeitergewinnung</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Verwendungszweck" value="Sonstiges" id="verwendung-sonstiges">
+                                <span>Sonstiges</span>
+                            </label>
+                        </div>
+                        <div class="conditional-field" id="verwendung-sonstiges-field">
+                            <label class="conditional-label">Wofür genau soll das Video genutzt werden?</label>
+                            <input type="text" name="Verwendungszweck Sonstiges" placeholder="Ihr Verwendungszweck...">
+                        </div>
+                    </div>
+
+                    <!-- Frage 2 -->
+                    <div class="form-group">
+                        <label class="main-label" for="zielgruppe">Wen möchten Sie mit dem Video ansprechen?</label>
+                        <p class="form-hint hint-above">z.B. potenzielle Kunden, Bauherren, neue Mitarbeiter, Follower auf Social Media</p>
+                        <input type="text" id="zielgruppe" name="Zielgruppe" placeholder="Ihre Zielgruppe...">
+                    </div>
+                </div>
+
+                <!-- Section 3: Botschaft & Inhalte -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">💡</span>
+                        Botschaft & Inhalte
+                    </h2>
+
+                    <!-- Frage 3 -->
+                    <div class="form-group">
+                        <label class="main-label">Was soll das Video vor allem vermitteln?</label>
+                        <p class="form-hint hint-above">Mehrfachauswahl möglich</p>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Botschaft[]" value="Professionalität & Qualität">
+                                <span>Professionalität & Qualität</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Botschaft[]" value="Größe / Vielfalt der Projekte">
+                                <span>Größe / Vielfalt der Projekte</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Botschaft[]" value="Teamarbeit & Zuverlässigkeit">
+                                <span>Teamarbeit & Zuverlässigkeit</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Botschaft[]" value="Sicherheit & Kompetenz">
+                                <span>Sicherheit & Kompetenz</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Botschaft[]" value="Sonstiges" id="botschaft-sonstiges">
+                                <span>Sonstiges</span>
+                            </label>
+                        </div>
+                        <div class="conditional-field" id="botschaft-sonstiges-field">
+                            <label class="conditional-label">Was genau möchten Sie vermitteln?</label>
+                            <input type="text" name="Botschaft Sonstiges" placeholder="Ihre Botschaft...">
+                        </div>
+                    </div>
+
+                    <!-- Frage 4 -->
+                    <div class="form-group">
+                        <label class="main-label" for="bereiche">Gibt es bestimmte Bereiche, die explizit gezeigt werden sollen?</label>
+                        <input type="text" id="bereiche" name="Zu zeigende Bereiche" placeholder="z.B. Fassadengerüst, Dacharbeiten, Lager...">
+                    </div>
+
+                    <!-- Frage 5 -->
+                    <div class="form-group">
+                        <label class="main-label">Sollen Mitarbeiter bei der Arbeit zu sehen sein?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="Mitarbeiter zeigen" value="Ja, gerne">
+                                <span>Ja, gerne</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Mitarbeiter zeigen" value="Nein, nur Gerüste/Projekte">
+                                <span>Nein, nur Gerüste/Projekte</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Mitarbeiter zeigen" value="Egal">
+                                <span>Egal / Ihr Vorschlag</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Branding & Design -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">🎨</span>
+                        Branding & Design
+                    </h2>
+
+                    <!-- Frage 6 -->
+                    <div class="form-group">
+                        <label class="main-label">Haben Sie ein Logo in hoher Auflösung (PNG oder Vektordatei)?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="Logo vorhanden" value="Ja, schicke ich separat per E-Mail">
+                                <span>Ja, schicke ich separat per E-Mail</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Logo vorhanden" value="Nein">
+                                <span>Nein</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Frage 7 -->
+                    <div class="form-group">
+                        <label class="main-label" for="farben">Firmenfarben, die eingebaut werden sollen?</label>
+                        <p class="form-hint hint-above">z.B. Blau/Gelb, Rot/Weiß, oder "wie im Logo"</p>
+                        <input type="text" id="farben" name="Firmenfarben" placeholder="Ihre Firmenfarben...">
+                    </div>
+
+                    <!-- Frage 8 -->
+                    <div class="form-group">
+                        <label class="main-label">Welche Kontaktinfos sollen im Video eingeblendet werden?</label>
+                        <p class="form-hint hint-above">Mehrfachauswahl möglich</p>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Kontaktinfo[]" value="Telefonnummer">
+                                <span>Telefonnummer</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Kontaktinfo[]" value="Website">
+                                <span>Website</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Kontaktinfo[]" value="E-Mail">
+                                <span>E-Mail-Adresse</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Kontaktinfo[]" value="Keine">
+                                <span>Keine Kontaktdaten einblenden</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Stil & Format -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">🎬</span>
+                        Stil & Format
+                    </h2>
+
+                    <!-- Frage 9 -->
+                    <div class="form-group">
+                        <label class="main-label">Welcher Stil passt am besten zu Ihnen?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="Videostil" value="Dynamisch & modern (schnelle Schnitte, kraftvolle Musik)">
+                                <span>Dynamisch & modern (schnelle Schnitte, kraftvolle Musik)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Videostil" value="Solide & seriös (ruhiger, professioneller Look)">
+                                <span>Solide & seriös (ruhiger, professioneller Look)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Videostil" value="Kein besonderer Wunsch – Ihr Vorschlag">
+                                <span>Kein besonderer Wunsch – Ihr Vorschlag</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Frage 10: Musik-Präferenz -->
+                    <div class="form-group">
+                        <label class="main-label">Welche Musik-Richtung bevorzugen Sie?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="Musik-Präferenz" value="Kraftvoll & energetisch (Rock, Drums)">
+                                <span>Kraftvoll & energetisch (Rock, Drums)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Musik-Präferenz" value="Modern & elektronisch (Synthwave, EDM)">
+                                <span>Modern & elektronisch (Synthwave, EDM)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Musik-Präferenz" value="Ruhig & elegant (Piano, Orchestral)">
+                                <span>Ruhig & elegant (Piano, Orchestral)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Musik-Präferenz" value="Kein besonderer Wunsch – Ihr Vorschlag">
+                                <span>Kein besonderer Wunsch – Ihr Vorschlag</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Frage 11: Anzahl Videos -->
+                    <div class="form-group">
+                        <label class="main-label">Wie viele Videos sollen aus dem Material entstehen?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="Anzahl Videos" value="1 Video lang (ca. 2-3 Min)">
+                                <span>1 Video lang (ca. 2-3 Min)</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Anzahl Videos" value="2 Videos kurz (30-60 Sek)">
+                                <span>2 Videos kurz (30-60 Sek)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Frage 10 -->
+                    <div class="form-group">
+                        <label class="main-label" for="beispiele">Gibt es Beispielvideos, die Ihnen gefallen?</label>
+                        <p class="form-hint hint-above">Link oder kurze Beschreibung – muss kein Gerüstbau-Video sein</p>
+                        <textarea id="beispiele" name="Beispielvideos" placeholder="z.B. YouTube-Link oder Beschreibung des Stils..."></textarea>
+                    </div>
+
+                    <!-- Frage 11 -->
+                    <div class="form-group">
+                        <label class="main-label">Gewünschtes Videoformat?</label>
+                        <p class="form-hint hint-above">Mehrfachauswahl möglich</p>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Videoformat[]" value="Querformat (16:9) – Website, YouTube">
+                                <span>Querformat (16:9) – für Website, YouTube</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Videoformat[]" value="Hochformat (9:16) – Instagram Stories, TikTok">
+                                <span>Hochformat (9:16) – für Instagram Stories, TikTok</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="Videoformat[]" value="Quadratisch (1:1) – Instagram Feed">
+                                <span>Quadratisch (1:1) – für Instagram Feed</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Extras -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">✨</span>
+                        Extras & Sonstiges
+                    </h2>
+
+                    <!-- Frage 12 -->
+                    <div class="form-group">
+                        <label class="main-label">Soll ein KI-Voiceover mit Untertiteln eingefügt werden?</label>
+                        <div class="radio-group">
+                            <label class="radio-item">
+                                <input type="radio" name="Voiceover" value="Ja" id="voiceover-ja">
+                                <span>Ja</span>
+                            </label>
+                            <label class="radio-item">
+                                <input type="radio" name="Voiceover" value="Nein" id="voiceover-nein">
+                                <span>Nein</span>
+                            </label>
+                        </div>
+                        <div class="conditional-field" id="voiceover-details">
+                            <label class="conditional-label">Was soll der Voiceover-Text vermitteln? (Stichwörter)</label>
+                            <textarea name="Voiceover Inhalt" placeholder="z.B. Firmengeschichte, Qualität, Sicherheit, Teamgeist..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Frage 13 -->
+                    <div class="form-group">
+                        <label class="main-label" for="sonstiges">Gibt es Sonstiges, das Ihnen wichtig ist?</label>
+                        <p class="form-hint hint-above">Alles, was ich noch berücksichtigen soll</p>
+                        <textarea id="sonstiges" name="Sonstiges" placeholder="Weitere Wünsche, Anmerkungen, Deadlines..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Briefing absenden</button>
+
+                <p class="privacy-note">
+                    Ihre Daten werden vertraulich behandelt und nur für die Videoproduktion verwendet.
+                </p>
+            </form>
+
+            <div class="success-message" id="success-message">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                </div>
+                <h2>Vielen Dank!</h2>
+                <p>Ihr Video-Briefing wurde erfolgreich übermittelt.<br>Ich melde mich in Kürze bei Ihnen.</p>
+                <p class="redirect-notice">Sie werden in <span id="countdown">5</span> Sekunden weitergeleitet...</p>
+                <a href="https://www.360-rundgang-karlsruhe.de" class="back-link">Zur Hauptseite</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Beck360 · Eugen Beck · <a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></p>
+    </footer>
+
+    <script>
+        // Conditional field for Verwendungszweck Sonstiges
+        const verwendungSonstiges = document.getElementById('verwendung-sonstiges');
+        const verwendungSonstigesField = document.getElementById('verwendung-sonstiges-field');
+        const verwendungRadios = document.querySelectorAll('input[name="Verwendungszweck"]');
+
+        verwendungRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (verwendungSonstiges.checked) {
+                    verwendungSonstigesField.classList.add('show');
+                } else {
+                    verwendungSonstigesField.classList.remove('show');
+                }
+            });
+        });
+
+        // Conditional field for Botschaft Sonstiges
+        const botschaftSonstiges = document.getElementById('botschaft-sonstiges');
+        const botschaftSonstigesField = document.getElementById('botschaft-sonstiges-field');
+
+        botschaftSonstiges.addEventListener('change', function() {
+            if (this.checked) {
+                botschaftSonstigesField.classList.add('show');
+            } else {
+                botschaftSonstigesField.classList.remove('show');
+            }
+        });
+
+        // Conditional field for Voiceover
+        const voiceoverJa = document.getElementById('voiceover-ja');
+        const voiceoverNein = document.getElementById('voiceover-nein');
+        const voiceoverDetails = document.getElementById('voiceover-details');
+
+        voiceoverJa.addEventListener('change', function() {
+            if (this.checked) {
+                voiceoverDetails.classList.add('show');
+            }
+        });
+
+        voiceoverNein.addEventListener('change', function() {
+            if (this.checked) {
+                voiceoverDetails.classList.remove('show');
+            }
+        });
+
+        // Form submission with AJAX
+        document.getElementById('survey-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn = this.querySelector('button');
+            const form = this;
+            btn.textContent = 'Wird gesendet...';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            formData.append('_subject', 'Video-Briefing: Neue Kundenanfrage');
+
+            fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                showSuccessAndRedirect(form);
+            })
+            .catch(error => {
+                showSuccessAndRedirect(form);
+            });
+        });
+
+        function showSuccessAndRedirect(form) {
+            form.style.display = 'none';
+            document.getElementById('success-message').classList.add('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Countdown und automatische Weiterleitung
+            let seconds = 5;
+            const countdownEl = document.getElementById('countdown');
+
+            const countdownInterval = setInterval(() => {
+                seconds--;
+                countdownEl.textContent = seconds;
+
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'https://www.360-rundgang-karlsruhe.de';
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

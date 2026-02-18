@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-448821963"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-448821963');
+    </script>
+    <!-- Event snippet for Lead-Formular senden conversion page -->
+    <script>
+        gtag('event', 'conversion', {'send_to': 'AW-448821963/51h7CNOhtPEbEMv1gdYB'});
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <title>Vielen Dank! | 360° Rundgang Karlsruhe</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #1d1d1f;
+            --gray-dark: #424245;
+            --gray: #86868b;
+            --gray-light: #f5f5f7;
+            --white: #ffffff;
+            --blue: #0071e3;
+            --green: #34c759;
+            --font-display: 'Clash Display', system-ui, sans-serif;
+            --font-body: 'General Sans', system-ui, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--black);
+            line-height: 1.5;
+            background: var(--gray-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .thank-you-container {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 60px 48px;
+            max-width: 560px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            position: relative;
+            z-index: 2;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(52, 199, 89, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            font-size: 40px;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: var(--black);
+        }
+
+        .subtitle {
+            font-size: 19px;
+            color: var(--gray-dark);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .info-box {
+            background: var(--gray-light);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .info-box h3 {
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--gray-dark);
+            padding: 8px 0;
+        }
+
+        .info-item-icon {
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .btn:hover {
+            background: #0077ed;
+        }
+
+        .logo {
+            margin-top: 40px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #1d1d1f;
+            opacity: 0.6;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        /* Accessibility Improvements */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--black);
+            color: white;
+            padding: 8px 16px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .thank-you-container {
+                padding: 40px 24px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+    <main id="main-content">
+    <div class="thank-you-container">
+        <div class="success-icon">✓</div>
+        <h1>Vielen Dank für Ihre Anfrage!</h1>
+        <p class="subtitle">Ihre Nachricht ist bei mir eingegangen. Ich melde mich innerhalb von 24 Stunden bei Ihnen.</p>
+
+        <div class="info-box">
+            <h3>Was passiert als Nächstes?</h3>
+            <div class="info-item">
+                <span class="info-item-icon">📧</span>
+                <span>Sie erhalten eine Bestätigung per E-Mail</span>
+            </div>
+            <div class="info-item">
+                <span class="info-item-icon">📞</span>
+                <span>Ich kontaktiere Sie für ein unverbindliches Gespräch</span>
+            </div>
+            <div class="info-item">
+                <span class="info-item-icon">📋</span>
+                <span>Sie erhalten ein individuelles Angebot</span>
+            </div>
+        </div>
+
+        <a href="/" class="btn">Zurück zur Startseite</a>
+    </div>
+
+    </main>
+
+    <footer role="contentinfo">
+        <a href="/" class="logo">Beck<span>360</span></a>
+    </footer>
+
+    <script>
+        // Scroll animation with IntersectionObserver
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('h1, h2, h3, .info-box, .btn').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

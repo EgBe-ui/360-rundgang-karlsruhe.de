@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-448821963"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-448821963');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <title>Haus privat verkaufen in Karlsruhe | Professionell ohne Makler</title>
+    <meta name="description" content="Verkaufen Sie Ihre Immobilie in Karlsruhe professionell mit einem 360° Rundgang, Profi-Fotos und Grundriss. Mehr Anfragen, besserer Preis – ohne Maklergebühren.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://360-rundgang-karlsruhe.de/privatverkauf/">
+    <meta property="og:title" content="Immobilie privat verkaufen | 360° Rundgang &amp; Profi-Fotos">
+    <meta property="og:description" content="Verkaufen Sie Ihre Immobilie ohne Makler – mit professionellem 360° Rundgang, Profi-Fotos und Grundriss. Sparen Sie Tausende Euro.">
+    <meta property="og:locale" content="de_DE">
+    <!-- Inter Font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #0D5D57;
+            --primary-light: #14B8A6;
+            --cta: #0369A1;
+            --cta-hover: #075985;
+            --text: #134E4A;
+            --text-light: #5F7A78;
+            --bg: #ffffff;
+            --bg-soft: #F0FDFA;
+            --border: #D1E4E2;
+            --font-main: 'Inter', -apple-system, sans-serif;
+            --shadow-md: 0 4px 12px rgba(15, 118, 110, 0.08);
+            --shadow-lg: 0 12px 32px rgba(15, 118, 110, 0.12);
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Scroll Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* Display Typography */
+        h1, h2, h3, .hero-headline {
+            font-family: var(--font-main);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* Hero Section - Warm & Inviting */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 20px;
+            background: var(--bg-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(13, 148, 136, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            color: var(--text);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15, 118, 110, 0.1);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .hero-feature svg {
+            width: 20px;
+            height: 20px;
+            color: var(--primary-light);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        }
+
+        .hero-card-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .hero-card-title {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .hero-card-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .hero-card-price span {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .hero-card-bonus {
+            display: inline-block;
+            background: var(--gradient-warm);
+            color: #92400e;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .hero-card-list {
+            list-style: none;
+        }
+
+        .hero-card-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 15px;
+        }
+
+        .hero-card-item:last-child {
+            border-bottom: none;
+        }
+
+        .hero-card-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .hero-card-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Savings Banner */
+        .savings-banner {
+            background: var(--bg-soft);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .savings-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .savings-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .savings-comparison {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .savings-item {
+            text-align: center;
+        }
+
+        .savings-label {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .savings-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .savings-value.old {
+            color: #ef4444;
+            text-decoration: line-through;
+        }
+
+        .savings-value.new {
+            color: var(--primary-light);
+        }
+
+        .savings-arrow {
+            font-size: 28px;
+            color: var(--text-light);
+        }
+
+        .savings-result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        /* Interactive Calculator */
+        .calculator-section {
+            background: linear-gradient(135deg, #0F766E 0%, #0D5D57 100%);
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .calculator-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 32px;
+            color: white;
+        }
+
+        .calculator-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .calculator-title {
+            font-size: clamp(28px, 5vw, 36px);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .calculator-subtitle {
+            font-size: 17px;
+            opacity: 0.9;
+        }
+
+        .calculator-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 600px) {
+            .calculator-card { padding: 28px 20px; }
+        }
+
+        .calculator-input-group {
+            margin-bottom: 32px;
+        }
+
+        .calculator-input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .calculator-input-wrapper {
+            position: relative;
+        }
+
+        #propertySlider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, var(--primary) 0%, var(--primary) 50%, #e2e8f0 50%, #e2e8f0 100%);
+            outline: none;
+            -webkit-appearance: none;
+            margin-bottom: 16px;
+        }
+
+        #propertySlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+            transition: transform 0.2s;
+        }
+
+        #propertySlider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        #propertySlider::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+        }
+
+        .calculator-value-display {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-top: 8px;
+        }
+
+        .value-input {
+            border: none;
+            background: transparent;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            width: 180px;
+            text-align: right;
+            font-family: inherit;
+        }
+
+        .value-input:focus {
+            outline: none;
+        }
+
+        .calculator-range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .calculator-results {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .result-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .result-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .result-icon {
+            font-size: 24px;
+        }
+
+        .result-info {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-label {
+            font-size: 15px;
+            color: var(--text-light);
+        }
+
+        .result-value {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .result-row.makler .result-value {
+            color: #ef4444;
+            text-decoration: line-through;
+        }
+
+        .result-row.beck360 .result-value {
+            color: var(--primary);
+        }
+
+        .savings-highlight {
+            background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .savings-amount {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .savings-prefix {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .savings-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .savings-note {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .calculator-cta {
+            display: block;
+            width: 100%;
+            background: var(--cta);
+            color: white;
+            text-align: center;
+            padding: 18px 32px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-cta:hover {
+            background: var(--cta-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(3, 105, 161, 0.3);
+        }
+
+        /* Lead Magnet Box */
+        .leadmagnet-box {
+            background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%);
+            border: 2px solid var(--primary-light);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .leadmagnet-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .leadmagnet-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .leadmagnet-text {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .leadmagnet-form {
+            width: 100%;
+        }
+
+        .leadmagnet-input-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 500px) {
+            .leadmagnet-input-row {
+                flex-direction: column;
+            }
+        }
+
+        .leadmagnet-input-row input[type="email"] {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .leadmagnet-input-row input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .leadmagnet-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .leadmagnet-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .leadmagnet-privacy {
+            font-size: 12px;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Lead Magnet Success State */
+        .leadmagnet-success {
+            background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .success-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .success-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 118, 110, 0.3);
+        }
+
+        .success-note {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 16px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 17px;
+            margin-bottom: 40px;
+        }
+
+        /* Problems Section */
+        .problems {
+            background: var(--bg);
+        }
+
+        .problem-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: #fef2f2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--danger);
+            flex-shrink: 0;
+        }
+
+        .problem-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .problem-content h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .problem-content p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .solution .section-badge {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .solution .section-title {
+            color: white;
+        }
+
+        .solution-text {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 550px;
+            margin: 0 auto 32px;
+        }
+
+        .solution-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .solution-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: var(--bg-soft);
+        }
+
+        /* Package Section */
+        .package {
+            background: white;
+        }
+
+        .package-box {
+            background: var(--bg-soft);
+            border: 2px solid var(--border);
+            border-radius: 24px;
+            padding: 40px 32px;
+        }
+
+        .package-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .package-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .package-subtitle {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .package-list {
+            list-style: none;
+        }
+
+        .package-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .package-item:last-child {
+            border-bottom: none;
+        }
+
+        .package-item-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .package-item-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .package-item-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .package-item-content p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .package-bonus {
+            background: rgba(20, 184, 166, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .package-bonus-icon {
+            font-size: 32px;
+        }
+
+        .package-bonus-text {
+            font-size: 15px;
+            color: var(--primary);
+        }
+
+        .package-bonus-text strong {
+            display: block;
+            font-size: 17px;
+            margin-bottom: 2px;
+        }
+
+        .package-cta {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .package-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .package-cta a:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: var(--bg-soft);
+        }
+
+        .benefits-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 28px;
+            border-radius: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .benefit-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-light);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .benefit-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .benefit-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .benefit-content p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Process Section */
+        .process {
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            gap: 24px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .step-badge {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* Example Section */
+        .example {
+            background: var(--bg);
+            text-align: center;
+        }
+
+        .example-embed {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin-bottom: 24px;
+        }
+
+        .example-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .example-hint {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Feature Table */
+        .feature-table {
+            margin-top: 48px;
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-table-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 48px 1fr 1.5fr;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bg-soft);
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .feature-row:hover {
+            background: #CCFBF1;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .feature-name {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .feature-benefit {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .feature-row {
+                grid-template-columns: 40px 1fr;
+                gap: 12px;
+            }
+            .feature-benefit {
+                grid-column: 2;
+                margin-top: -8px;
+            }
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-card {
+            background: var(--bg-soft);
+            border-radius: 24px;
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .about-photo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .about-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .about-title {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            color: var(--text-light);
+            font-size: 16px;
+            line-height: 1.8;
+            font-style: italic;
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .about-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .about-feature svg {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+        }
+
+        /* Trust Section */
+        .trust {
+            background: var(--bg-soft);
+        }
+
+        .google-rating {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .google-rating-stars {
+            font-size: 36px;
+            color: #fbbc05;
+            letter-spacing: 4px;
+        }
+
+        .google-rating-text {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 8px 0 4px;
+        }
+
+        .google-rating-source {
+            font-size: 15px;
+            color: var(--text-light);
+        }
+
+        .trust-items {
+            display: grid;
+            gap: 12px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+        }
+
+        .trust-item-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .trust-item-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            padding: 80px 20px;
+        }
+
+        .cta-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-section .section-title {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .cta-section .section-subtitle {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 36px 28px;
+            border-radius: 24px;
+        }
+
+        .form-title {
+            color: var(--text);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .form-subtitle {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-note {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 13px;
+            margin-top: 16px;
+        }
+
+        .form-note svg {
+            width: 14px;
+            height: 14px;
+            vertical-align: middle;
+            margin-right: 4px;
+            color: var(--primary);
+        }
+
+        .phone-cta {
+            margin-top: 32px;
+        }
+
+        .phone-cta p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .phone-cta a {
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .whatsapp-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 16px;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-cta:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .lp-footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 13px;
+        }
+
+        .lp-footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: none;
+        }
+
+        .sticky-cta a {
+            display: block;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            z-index: 99;
+            text-decoration: none;
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-features {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Hide floating elements on mobile for cleaner UX */
+            .sticky-cta {
+                display: none;
+            }
+
+            .whatsapp-float {
+                display: none;
+            }
+
+            .cta-section {
+                padding-bottom: 40px;
+            }
+
+            .savings-comparison {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .savings-arrow {
+                transform: rotate(90deg);
+            }
+
+            .example-embed {
+                height: 350px;
+            }
+        }
+
+        /* Accessibility Improvements */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--text);
+            color: white;
+            padding: 8px 16px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Zum Inhalt springen</a>
+    <!-- Hero Section -->
+    <main id="main-content">
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+                    Frühjahrsaktion – Drohnenfotos gratis!
+                </div>
+                <h1>Verkaufen Sie Ihr Haus<br><span>wie ein Profi.</span></h1>
+                <p class="hero-subtitle">Mit einem 360° Rundgang erreichen Sie mehr ernsthafte Käufer, sparen sich endlose Besichtigungen und erzielen einen besseren Preis. Ohne Maklergebühren.</p>
+
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Ohne Maklergebühren
+                    </div>
+                    <div class="hero-feature">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Lokal aus Karlsruhe
+                    </div>
+                    <div class="hero-feature">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Fertig in 48-72h
+                    </div>
+                </div>
+
+                <a href="#kontakt" class="hero-cta">
+                    Kostenlos beraten lassen
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-title">Komplett-Paket ab</div>
+                        <div class="hero-card-price">449€ <span>zzgl. MwSt.</span></div>
+                        <div class="hero-card-bonus">+ Drohnenfotos gratis bis 30.04.</div>
+                    </div>
+                    <ul class="hero-card-list">
+                        <li class="hero-card-item">
+                            <div class="hero-card-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            </div>
+                            <strong>360° Rundgang</strong> – begehbar mit Dollhouse-3D-Ansicht
+                        </li>
+                        <li class="hero-card-item">
+                            <div class="hero-card-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                            <strong>20+ HDR-Fotos</strong> – professionell bearbeitet
+                        </li>
+                        <li class="hero-card-item">
+                            <div class="hero-card-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                            </div>
+                            <strong>2D-Grundriss</strong> – mit m²-Angaben pro Raum
+                        </li>
+                        <li class="hero-card-item">
+                            <div class="hero-card-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                            </div>
+                            <strong>Drohnenfotos</strong> – gratis bis 30.04.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Savings Calculator -->
+    <section class="calculator-section" id="rechner">
+        <div class="calculator-container">
+            <div class="calculator-header">
+                <span class="calculator-badge">💰 Kostenloser Rechner</span>
+                <h2 class="calculator-title">Wie viel sparen Sie ohne Makler?</h2>
+                <p class="calculator-subtitle">Geben Sie Ihren geschätzten Verkaufspreis ein</p>
+            </div>
+
+            <div class="calculator-card">
+                <div class="calculator-input-group">
+                    <label for="propertyValue">Verkaufspreis Ihrer Immobilie</label>
+                    <div class="calculator-input-wrapper">
+                        <input type="range" id="propertySlider" min="100000" max="2000000" step="10000" value="400000">
+                        <div class="calculator-value-display">
+                            <input type="text" id="propertyValue" value="400.000" class="value-input"> €
+                        </div>
+                    </div>
+                    <div class="calculator-range-labels">
+                        <span>100.000 €</span>
+                        <span>2.000.000 €</span>
+                    </div>
+                </div>
+
+                <div class="calculator-results">
+                    <div class="result-row makler">
+                        <div class="result-icon">❌</div>
+                        <div class="result-info">
+                            <span class="result-label">Mit Makler (3,57%)</span>
+                            <span class="result-value" id="maklerCost">14.280 €</span>
+                        </div>
+                    </div>
+
+                    <div class="result-row beck360">
+                        <div class="result-icon">✅</div>
+                        <div class="result-info">
+                            <span class="result-label">Mit Beck360 <span style="font-size:12px;opacity:0.7">(zzgl. MwSt.)</span></span>
+                            <span class="result-value" id="beck360Cost">449 €</span>
+                        </div>
+                    </div>
+
+                    <div class="beck360-includes" style="background:#f8fafc;padding:16px;border-radius:12px;margin-top:16px;font-size:13px;color:#64748b;">
+                        <strong style="color:#0F766E;">Inklusive:</strong> 360° Rundgang mit Dollhouse-Ansicht · 20+ HDR-Fotos · Grundriss mit m²-Angaben · Drohnenfotos (Aktion)
+                    </div>
+
+                    <div class="savings-highlight">
+                        <div class="savings-amount">
+                            <span class="savings-prefix">Sie sparen</span>
+                            <span class="savings-number" id="savingsAmount">13.831 €</span>
+                        </div>
+                        <div class="savings-note">Das ist Ihr Geld. Nicht das vom Makler.</div>
+                    </div>
+                </div>
+
+                <!-- Lead Magnet Section -->
+                <div class="leadmagnet-box" id="leadmagnetBox">
+                    <div class="leadmagnet-icon">📋</div>
+                    <h4 class="leadmagnet-title">Gratis: Verkaufs-Checkliste (PDF)</h4>
+                    <p class="leadmagnet-text">Ihr persönliches Ergebnis + unsere 9-seitige Checkliste mit allem, was Sie für den Verkauf brauchen.</p>
+
+                    <form class="leadmagnet-form" id="leadmagnetForm" action="https://formsubmit.co/rundgang@beck360.de" method="POST">
+                        <input type="hidden" name="_subject" value="Lead Magnet: Verkaufs-Checkliste">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="immobilienwert" id="hiddenPropertyValue" value="400.000 €">
+                        <input type="hidden" name="ersparnis" id="hiddenSavings" value="13.831 €">
+                        <input type="hidden" name="_next" value="https://360-rundgang-karlsruhe.de/privatverkauf/#download-success">
+
+                        <div class="leadmagnet-input-row">
+                            <input type="email" name="email" id="leadmagnetEmail" placeholder="Ihre E-Mail-Adresse" required>
+                            <button type="submit" class="leadmagnet-btn">
+                                <span class="btn-text">Checkliste herunterladen</span>
+                                <span class="btn-icon">→</span>
+                            </button>
+                        </div>
+                        <p class="leadmagnet-privacy">Kein Spam. Sie können sich jederzeit abmelden.</p>
+                    </form>
+                </div>
+
+                <!-- Success State (hidden by default) -->
+                <div class="leadmagnet-success" id="leadmagnetSuccess" style="display:none;">
+                    <div class="success-icon">✅</div>
+                    <h4 class="success-title">Ihre Checkliste ist bereit!</h4>
+                    <a href="/downloads/verkaufs-checkliste.pdf" download class="download-btn" id="downloadBtn">
+                        📥 Jetzt herunterladen (PDF)
+                    </a>
+                    <p class="success-note">Die Checkliste wurde auch an Ihre E-Mail gesendet.</p>
+                    <a href="#kontakt" class="calculator-cta" style="margin-top:16px;">
+                        Kostenlose Beratung anfragen →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <div class="container">
+            <div class="section-badge fade-up">Kennen Sie das?</div>
+            <h2 class="section-title fade-up stagger-1">Ohne professionelle Präsentation verlieren Sie bares Geld</h2>
+            <p class="section-subtitle fade-up stagger-2">Die meisten Privatverkäufer machen diese 3 teuren Fehler</p>
+
+            <div class="problem-list fade-up stagger-3">
+                <div class="problem-item">
+                    <div class="problem-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                    </div>
+                    <div class="problem-content">
+                        <h3>Ihr Inserat geht unter</h3>
+                        <p>Käufer sehen täglich 50+ Angebote. Bei Handyfotos scrollen sie in 2 Sekunden weiter.</p>
+                    </div>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="problem-content">
+                        <h3>Jedes Wochenende Besichtigungen</h3>
+                        <p>10 Termine, 8 Neugierige, 2 echte Interessenten. Ihre Freizeit? Weg.</p>
+                    </div>
+                </div>
+                <div class="problem-item">
+                    <div class="problem-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="problem-content">
+                        <h3>Käufer drücken den Preis</h3>
+                        <p>"Das sieht ja nicht so toll aus..." – und schon sind 10.000€ vom Tisch.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <div class="section-badge fade-up">Die Lösung</div>
+            <h2 class="section-title fade-up stagger-1">Ihr Inserat – auf Makler-Niveau</h2>
+            <p class="solution-text fade-up stagger-2">Mit einem 360° Rundgang besichtigen Interessenten Ihr Haus online. Wer sich dann meldet, hat echtes Kaufinteresse. Der Rest spart sich den Anruf.</p>
+            <a href="#kontakt" class="solution-cta">
+                Jetzt Angebot anfordern
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Package Section -->
+    <section class="package">
+        <div class="container">
+            <div class="section-badge fade-up">Alles inklusive</div>
+            <h2 class="section-title fade-up stagger-1">Ihr Verkaufs-Paket</h2>
+            <p class="section-subtitle fade-up stagger-2">Ein Termin – fertig für ImmoScout24, Immowelt & Co.</p>
+
+            <div class="package-box fade-up stagger-3">
+                <ul class="package-list">
+                    <li class="package-item">
+                        <div class="package-item-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        </div>
+                        <div class="package-item-content">
+                            <h4>360° Rundgang</h4>
+                            <p>Virtuell begehbar – Interessenten erleben jeden Raum wie vor Ort</p>
+                        </div>
+                    </li>
+                    <li class="package-item">
+                        <div class="package-item-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div class="package-item-content">
+                            <h4>Professionelle HDR-Fotos</h4>
+                            <p>20-30 hochwertige Bilder für Ihr Inserat – perfekt ausgeleuchtet</p>
+                        </div>
+                    </li>
+                    <li class="package-item">
+                        <div class="package-item-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                        </div>
+                        <div class="package-item-content">
+                            <h4>Maßstabsgetreuer Grundriss</h4>
+                            <p>Professioneller 2D-Grundriss mit allen Maßen – automatisch erstellt</p>
+                        </div>
+                    </li>
+                    <li class="package-item">
+                        <div class="package-item-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+                        </div>
+                        <div class="package-item-content">
+                            <h4>Direkt einsatzbereit</h4>
+                            <p>Alle Dateien zum Download – fertig für jedes Immobilienportal</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="package-bonus">
+                    <div class="package-bonus-icon">🎁</div>
+                    <div class="package-bonus-text">
+                        <strong>Gratis bis 30.04.: Drohnenfotos</strong>
+                        Luftaufnahmen von Haus und Grundstück – normalerweise 149€ extra
+                    </div>
+                </div>
+
+                <div class="package-cta">
+                    <a href="#kontakt">
+                        Unverbindlich anfragen
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-badge fade-up">Ihre Vorteile</div>
+            <h2 class="section-title fade-up stagger-1">Das Ergebnis: Mehr Käufer, weniger Stress</h2>
+            <p class="section-subtitle fade-up stagger-2">Unsere Kunden verkaufen im Schnitt 3 Wochen schneller</p>
+
+            <div class="benefits-grid fade-up stagger-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>60% mehr Anfragen</h3>
+                        <p>Inserate mit 360° Rundgang werden auf ImmoScout24 deutlich häufiger angeklickt</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Keine Zeitverschwender mehr</h3>
+                        <p>Wer sich nach dem virtuellen Rundgang meldet, kennt Ihr Haus bereits – und will es</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>7 von 10 Besichtigungen gespart</h3>
+                        <p>Die meisten Interessenten schauen online – nur die besten kommen vorbei</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Professioneller Eindruck</h3>
+                        <p>Ihr Inserat wirkt hochwertig – Käufer verhandeln weniger aggressiv</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Section -->
+    <section class="example">
+        <div class="container">
+            <div class="section-badge">Live-Beispiel</div>
+            <h2 class="section-title">So sieht ein 360° Rundgang aus</h2>
+            <p class="section-subtitle">Klicken und ziehen Sie, um sich umzuschauen</p>
+
+            <div class="example-embed">
+                <iframe src="https://my.matterport.com/show/?m=JpmsyFFDkW9&play=1" allowfullscreen title="360° Rundgang Beispiel – interaktive Darstellung einer Immobilie"></iframe>
+            </div>
+            <p class="example-hint">Tipp: Nutzen Sie die Navigationspunkte am Boden, um durch die Räume zu gehen</p>
+
+            <!-- Feature Table -->
+            <div class="feature-table">
+                <h3 class="feature-table-title">Was Käufer mit dem Rundgang machen können</h3>
+                <div class="feature-list">
+                    <div class="feature-row">
+                        <div class="feature-icon">🚶</div>
+                        <div class="feature-name">Interaktiv begehbar</div>
+                        <div class="feature-benefit">Käufer "laufen" durch jeden Raum</div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="feature-icon">🏠</div>
+                        <div class="feature-name">Dollhouse-Ansicht</div>
+                        <div class="feature-benefit">3D-Modell von oben – zeigt den Schnitt</div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="feature-icon">📏</div>
+                        <div class="feature-name">Messungen im Rundgang</div>
+                        <div class="feature-benefit">Käufer können selbst nachmessen</div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="feature-icon">📱</div>
+                        <div class="feature-name">Funktioniert überall</div>
+                        <div class="feature-benefit">Handy, Tablet, PC – kein Download</div>
+                    </div>
+                    <div class="feature-row">
+                        <div class="feature-icon">🏡</div>
+                        <div class="feature-name">ImmoScout-ready</div>
+                        <div class="feature-benefit">Direkt einbettbar ins Inserat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-badge">So einfach geht's</div>
+            <h2 class="section-title">In 3 Schritten zum Profi-Inserat</h2>
+            <p class="section-subtitle">Wir kümmern uns um alles – Sie lehnen sich zurück</p>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Kostenlose Beratung</h3>
+                        <p>Wir besprechen Ihre Immobilie und erstellen ein unverbindliches Angebot</p>
+                        <span class="step-badge">Antwort in 24h</span>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Aufnahme vor Ort</h3>
+                        <p>In 1-3 Stunden erfassen wir alles – Sie müssen nichts vorbereiten</p>
+                        <span class="step-badge">Termin nach Wunsch</span>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Fertige Unterlagen</h3>
+                        <p>Innerhalb von 48-72h erhalten Sie alles – fertig für Ihr Inserat</p>
+                        <span class="step-badge">Zum Download bereit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-card">
+                <div class="about-photo">
+                    <img src="../images/eugen-beck-portrait.jpg" alt="Eugen Beck, Matterport Partner und Drohnenpilot aus Karlsruhe" width="120" height="120" loading="lazy" onerror="this.src='https://via.placeholder.com/120x120?text=EB'">
+                </div>
+                <div class="about-info">
+                    <h3>Eugen Beck</h3>
+                    <div class="about-title">Ihr Ansprechpartner aus Karlsruhe</div>
+                </div>
+                <p class="about-text">"Ich weiß, wie stressig ein Hausverkauf sein kann. Deshalb mache ich es Ihnen so einfach wie möglich – mit einem Rundum-Service, bei dem Sie sich um nichts kümmern müssen."</p>
+                <div class="about-features">
+                    <span class="about-feature">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Matterport Partner
+                    </span>
+                    <span class="about-feature">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        A2 Drohnenpilot
+                    </span>
+                    <span class="about-feature">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Lokal vor Ort
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <div class="container">
+            <div class="google-rating">
+                <div class="google-rating-stars">★★★★★</div>
+                <div class="google-rating-text">5,0 von 5 Sternen</div>
+                <div class="google-rating-source">Basierend auf Google-Bewertungen</div>
+            </div>
+
+            <div class="trust-items">
+                <div class="trust-item">
+                    <div class="trust-item-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <span>Sichere Zahlung nach Fertigstellung</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <span>Lokal aus Ettlingen bei Karlsruhe</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-item-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <span>Schnelle Lieferung in 48-72 Stunden</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="kontakt">
+        <div class="cta-container">
+            <h2 class="section-title">Jetzt Ihr Haus professionell präsentieren</h2>
+            <p class="section-subtitle">Kostenlose Beratung – Antwort innerhalb von 24 Stunden</p>
+
+            <form class="contact-form" action="https://formsubmit.co/rundgang@beck360.de" method="POST">
+                <input type="hidden" name="_subject" value="Privatverkauf Anfrage">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://360-rundgang-karlsruhe.de/danke.html">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="form-title">Kostenlos anfragen</div>
+                <div class="form-subtitle">Wir melden uns innerhalb von 24 Stunden bei Ihnen</div>
+
+                <div class="form-group">
+                    <label for="name">Ihr Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Max Mustermann" autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" name="email" required placeholder="max@beispiel.de" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon (optional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="0173 1234567" autocomplete="tel">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Erzählen Sie uns von Ihrer Immobilie</label>
+                    <textarea id="message" name="message" placeholder="z.B. Einfamilienhaus in Karlsruhe, ca. 150m², Verkauf geplant im Frühjahr..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Anfrage absenden</button>
+
+                <p class="form-note">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    Ihre Daten sind bei uns sicher und werden nicht weitergegeben
+                </p>
+            </form>
+
+            <div class="phone-cta">
+                <p>Oder rufen Sie direkt an:</p>
+                <a href="tel:+491734682501">0173 468 2501</a>
+                <a href="https://wa.me/491734682501?text=Hallo,%20ich%20interessiere%20mich%20für%20einen%20360°%20Rundgang%20für%20meinen%20Hausverkauf." class="whatsapp-cta">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Per WhatsApp schreiben
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    </main>
+
+    <footer class="lp-footer" role="contentinfo">
+        <p>© 2026 Beck360 · <a href="../impressum/">Impressum</a> · <a href="../datenschutz/">Datenschutz</a></p>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/491734682501?text=Hallo,%20ich%20interessiere%20mich%20für%20einen%20360°%20Rundgang%20für%20meinen%20Hausverkauf." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Kontakt per WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" role="img"><title>WhatsApp kontaktieren</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta">
+        <a href="#kontakt">Jetzt kostenlos anfragen</a>
+    </div>
+
+    <!-- Scroll Animation Observer & Calculator -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+            // Savings Calculator
+            const slider = document.getElementById('propertySlider');
+            const valueInput = document.getElementById('propertyValue');
+            const maklerCost = document.getElementById('maklerCost');
+            const beck360Cost = document.getElementById('beck360Cost');
+            const savingsAmount = document.getElementById('savingsAmount');
+
+            const MAKLER_RATE = 0.0357; // 3.57% Käuferprovision
+            const BECK360_PRICE = 449;
+
+            function formatNumber(num) {
+                return new Intl.NumberFormat('de-DE').format(Math.round(num));
+            }
+
+            function parseGermanNumber(str) {
+                return parseInt(str.replace(/\./g, '').replace(/,/g, '')) || 0;
+            }
+
+            function updateCalculation(value) {
+                const makler = value * MAKLER_RATE;
+                const savings = makler - BECK360_PRICE;
+
+                maklerCost.textContent = formatNumber(makler) + ' €';
+                beck360Cost.textContent = formatNumber(BECK360_PRICE) + ' €';
+                savingsAmount.textContent = formatNumber(savings) + ' €';
+
+                // Update slider gradient
+                const percent = ((value - 100000) / (2000000 - 100000)) * 100;
+                slider.style.background = `linear-gradient(to right, #0F766E 0%, #0F766E ${percent}%, #e2e8f0 ${percent}%, #e2e8f0 100%)`;
+            }
+
+            slider.addEventListener('input', (e) => {
+                const value = parseInt(e.target.value);
+                valueInput.value = formatNumber(value);
+                updateCalculation(value);
+            });
+
+            valueInput.addEventListener('input', (e) => {
+                let value = parseGermanNumber(e.target.value);
+                if (value < 100000) value = 100000;
+                if (value > 2000000) value = 2000000;
+                slider.value = value;
+                updateCalculation(value);
+            });
+
+            valueInput.addEventListener('blur', (e) => {
+                let value = parseGermanNumber(e.target.value);
+                if (value < 100000) value = 100000;
+                if (value > 2000000) value = 2000000;
+                e.target.value = formatNumber(value);
+            });
+
+            // Initial calculation
+            updateCalculation(400000);
+
+            // Lead Magnet Form Handling
+            const leadmagnetForm = document.getElementById('leadmagnetForm');
+            const leadmagnetBox = document.getElementById('leadmagnetBox');
+            const leadmagnetSuccess = document.getElementById('leadmagnetSuccess');
+            const hiddenPropertyValue = document.getElementById('hiddenPropertyValue');
+            const hiddenSavings = document.getElementById('hiddenSavings');
+
+            // Update hidden fields when calculator changes
+            function updateHiddenFields() {
+                if (hiddenPropertyValue && hiddenSavings) {
+                    hiddenPropertyValue.value = valueInput.value + ' €';
+                    hiddenSavings.value = savingsAmount.textContent;
+                }
+            }
+
+            slider.addEventListener('input', updateHiddenFields);
+            valueInput.addEventListener('input', updateHiddenFields);
+
+            // Check if returning from successful submission
+            if (window.location.hash === '#download-success') {
+                leadmagnetBox.style.display = 'none';
+                leadmagnetSuccess.style.display = 'block';
+                // Clean up URL
+                history.replaceState(null, '', window.location.pathname + '#rechner');
+            }
+
+            // Handle form submission via AJAX
+            if (leadmagnetForm) {
+                leadmagnetForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(leadmagnetForm);
+                    const submitBtn = leadmagnetForm.querySelector('.leadmagnet-btn');
+                    const originalText = submitBtn.innerHTML;
+
+                    // Update hidden fields before submit
+                    updateHiddenFields();
+
+                    // Show loading state
+                    submitBtn.innerHTML = '<span class="btn-text">Wird gesendet...</span>';
+                    submitBtn.disabled = true;
+
+                    // Send via AJAX to FormSubmit
+                    fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Show success state
+                        leadmagnetBox.style.display = 'none';
+                        leadmagnetSuccess.style.display = 'block';
+
+                        // Auto-start download
+                        const downloadBtn = document.getElementById('downloadBtn');
+                        if (downloadBtn) {
+                            setTimeout(() => {
+                                downloadBtn.click();
+                            }, 500);
+                        }
+                    })
+                    .catch(error => {
+                        // Even on error, show success (email might still have been sent)
+                        leadmagnetBox.style.display = 'none';
+                        leadmagnetSuccess.style.display = 'block';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
