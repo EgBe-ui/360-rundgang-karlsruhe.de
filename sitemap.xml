@@ -121,4 +121,12 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+
+    <!-- Blog Artikel: immobilienfotografie-fehler-verkauf-2026 -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/immobilienfotografie-fehler-verkauf-2026.html</loc>
+        <lastmod>2026-02-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>
