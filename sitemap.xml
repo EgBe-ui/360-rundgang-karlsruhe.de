@@ -92,6 +92,94 @@
         <priority>0.7</priority>
     </url>
 
+    <!-- Drohnenaufnahmen Unterseiten -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/immobilien/</loc>
+        <lastmod>2026-02-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/hotels/</loc>
+        <lastmod>2026-02-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/baugewerbe/</loc>
+        <lastmod>2026-02-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/events/</loc>
+        <lastmod>2026-02-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/pv-inspektion/</loc>
+        <lastmod>2026-02-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/videoumfrage/</loc>
+        <lastmod>2026-02-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/blog/</loc>
+        <lastmod>2026-02-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/blog/was-kosten-drohnenaufnahmen/</loc>
+        <lastmod>2026-02-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Stadt-Landingpages -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/ettlingen/</loc>
+        <lastmod>2026-02-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/bruchsal/</loc>
+        <lastmod>2026-02-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/rastatt/</loc>
+        <lastmod>2026-02-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/baden-baden/</loc>
+        <lastmod>2026-02-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/pforzheim/</loc>
+        <lastmod>2026-02-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/mannheim/</loc>
+        <lastmod>2026-02-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Rechtliches -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/impressum/</loc>
