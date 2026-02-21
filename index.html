@@ -22,6 +22,7 @@
     <link rel="preconnect" href="https://i.vimeocdn.com">
     <link rel="preconnect" href="https://f.vimeocdn.com">
     <link rel="dns-prefetch" href="https://player.vimeo.com">
+    <link rel="preconnect" href="https://my.matterport.com">
 
     <!-- SEO Meta Tags -->
     <title>Beck360 | 360° Rundgänge & Drohnenfotografie</title>
@@ -76,6 +77,13 @@
         },
         "areaServed": ["Karlsruhe", "Ettlingen", "Bruchsal", "Durlach", "Baden-Baden", "Rastatt", "Pforzheim", "Bretten", "Stutensee"],
         "priceRange": "€€",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "bestRating": "5",
+            "ratingCount": "50",
+            "reviewCount": "50"
+        },
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -2727,6 +2735,16 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Region & Service Links */
+        .region-links{background:var(--bg-soft, #F0FDFA);padding:60px 0;text-align:center}
+        .region-links h2{font-size:28px;font-weight:700;margin-bottom:8px;color:var(--text, #134E4A)}
+        .region-links p{color:var(--text-light, #5F7A78);margin-bottom:32px;font-size:16px}
+        .link-group{margin-bottom:24px}
+        .link-group h3{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text-light, #5F7A78);margin-bottom:12px}
+        .link-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+        .link-pill{display:inline-block;background:white;color:var(--primary, #0F766E);padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:500;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.1);transition:transform 0.2s}
+        .link-pill:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.15)}
     </style>
 </head>
 <body>
@@ -3642,6 +3660,34 @@
 
             <div class="blog-preview-cta">
                 <a href="blog/" class="btn-secondary">Alle Artikel ansehen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Region & Service Links -->
+    <section class="region-links">
+        <div class="container">
+            <h2>Verfügbar in Ihrer Region</h2>
+            <p>360° Rundgänge und Drohnenaufnahmen in Karlsruhe und Umgebung</p>
+            <div class="link-group">
+                <h3>Städte</h3>
+                <div class="link-pills">
+                    <a href="/ettlingen/" class="link-pill">Ettlingen</a>
+                    <a href="/bruchsal/" class="link-pill">Bruchsal</a>
+                    <a href="/rastatt/" class="link-pill">Rastatt</a>
+                    <a href="/baden-baden/" class="link-pill">Baden-Baden</a>
+                    <a href="/pforzheim/" class="link-pill">Pforzheim</a>
+                    <a href="/mannheim/" class="link-pill">Mannheim</a>
+                </div>
+            </div>
+            <div class="link-group">
+                <h3>Services</h3>
+                <div class="link-pills">
+                    <a href="/privatverkauf/" class="link-pill">Privatverkauf</a>
+                    <a href="/immobilienmakler/" class="link-pill">Für Makler</a>
+                    <a href="/drohnenaufnahmen/" class="link-pill">Drohnenaufnahmen</a>
+                    <a href="/pv-inspektion/" class="link-pill">PV-Inspektion</a>
+                </div>
             </div>
         </div>
     </section>
