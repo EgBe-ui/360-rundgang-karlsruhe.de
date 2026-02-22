@@ -18,6 +18,9 @@ import { CampaignDetail } from './views/CampaignDetail.jsx';
 import { InvoiceList } from './views/InvoiceList.jsx';
 import { InvoiceForm } from './views/InvoiceForm.jsx';
 import { InvoiceDetail } from './views/InvoiceDetail.jsx';
+import { ExpenseList } from './views/ExpenseList.jsx';
+import { ExpenseForm } from './views/ExpenseForm.jsx';
+import { RevenueReports } from './views/RevenueReports.jsx';
 
 export function App() {
   const { user, loading } = useAuth();
@@ -49,6 +52,9 @@ export function App() {
         <InvoiceList path="/crm/invoices" />
         <InvoiceForm path="/crm/invoices/new" />
         <InvoiceDetail path="/crm/invoices/:id" />
+        <ExpenseList path="/crm/expenses" />
+        <ExpenseForm path="/crm/expenses/new" />
+        <RevenueReports path="/crm/reports" />
         <CampaignList path="/crm/campaigns" />
         <CampaignForm path="/crm/campaigns/new" />
         <CampaignDetail path="/crm/campaigns/:id" />

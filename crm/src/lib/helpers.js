@@ -198,6 +198,33 @@ export const EMAIL_TEMPLATES = [
   },
 ];
 
+export const EXPENSE_CATEGORIES = {
+  'office': 'Buero & Ausstattung',
+  'software': 'Software & Lizenzen',
+  'marketing': 'Marketing & Werbung',
+  'travel': 'Reise & Fahrtkosten',
+  'equipment': 'Geraete & Technik',
+  'insurance': 'Versicherungen',
+  'telecom': 'Telefon & Internet',
+  'professional': 'Beratung & Dienstleistung',
+  'vehicle': 'Fahrzeug',
+  'training': 'Weiterbildung',
+  'other': 'Sonstiges',
+};
+
+export const PAYMENT_METHODS = {
+  'bank_transfer': 'Ueberweisung',
+  'cash': 'Bar',
+  'credit_card': 'Kreditkarte',
+  'paypal': 'PayPal',
+  'direct_debit': 'Lastschrift',
+};
+
+export const MONTHS = [
+  'Januar', 'Februar', 'Maerz', 'April', 'Mai', 'Juni',
+  'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember',
+];
+
 export const INDUSTRIES = [
   'Hotel / Pension',
   'Gastronomie',

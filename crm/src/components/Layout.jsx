@@ -18,6 +18,8 @@ export function Layout({ children }) {
     { path: '/crm/contacts', label: 'Kontakte', icon: '👥' },
     { path: '/crm/companies', label: 'Firmen', icon: '🏢' },
     { path: '/crm/invoices', label: 'Rechnungen', icon: '📄' },
+    { path: '/crm/expenses', label: 'Ausgaben', icon: '💸' },
+    { path: '/crm/reports', label: 'Berichte', icon: '📈' },
     { path: '/crm/campaigns', label: 'Kampagnen', icon: '📧' },
     { path: '/crm/settings', label: 'Einstellungen', icon: '⚙️' },
   ];

@@ -25,14 +25,6 @@
     Cache-Control = "no-cache, no-store, must-revalidate"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# CORS for API endpoints
-[[headers]]
-  for = "/api/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "https://360-rundgang-karlsruhe.de"
-    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type, Authorization"
-
 # Brevo webhook — open CORS (Brevo sends from varying origins)
 [[headers]]
   for = "/api/campaign-webhook"

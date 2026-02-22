@@ -83,6 +83,12 @@ export default async (request) => {
       is_duplicate: false,
     };
 
+    if (!supabase) {
+      // Supabase not configured — just forward email
+      await forwardToFormSubmit(rawData);
+      return new Response(JSON.stringify({ success: true }), { status: 200, headers });
+    }
+
     if (!OWNER_ID) {
       // No owner configured yet — just archive and forward email
       await supabase.from('form_submissions').insert(formSubmission);
