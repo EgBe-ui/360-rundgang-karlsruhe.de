@@ -1,2 +1,13 @@
 # Local Netlify folder
 .netlify
+
+# CRM build (dev only)
+crm/dist/
+
+# Dependencies
+crm/node_modules/
+
+# Environment
+crm/.env
+crm/.env.local
+supabase-keys.txt

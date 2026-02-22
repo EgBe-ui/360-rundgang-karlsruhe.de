@@ -8,3 +8,5 @@ Sitemap: https://360-rundgang-karlsruhe.de/sitemap.xml
 # Block internal pages from indexing
 Disallow: /danke.html
 Disallow: /tools/
+Disallow: /crm/
+Disallow: /api/

@@ -3734,11 +3734,12 @@
                 <div class="contact-form">
                     <h4>Unverbindliche Anfrage</h4>
                     <p>Erzählen Sie mir von Ihrem Projekt – Antwort innerhalb von 24 Stunden garantiert.</p>
-                    <form id="contact-form" aria-label="Kontaktformular" action="https://formsubmit.co/ajax/rundgang@beck360.de" method="POST">
+                    <form id="contact-form" aria-label="Kontaktformular" action="https://360-rundgang-karlsruhe.de/api/form-submit" method="POST">
                         <input type="hidden" name="_subject" value="Neue Anfrage von 360-rundgang-karlsruhe.de">
                         <input type="hidden" name="_captcha" value="true">
                         <!-- Honeypot Spam Protection -->
                         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="_referer" id="form-referer">
                         <input type="hidden" name="_timestamp" id="form-timestamp">
 
                         <div class="form-error" id="form-error"></div>
@@ -3937,6 +3938,8 @@
                 // Loading state
                 submitBtn.innerHTML = '<span class="spinner"></span> Wird gesendet...';
                 submitBtn.disabled = true;
+
+                document.getElementById('form-referer').value = window.location.href;
 
                 try {
                     const response = await fetch(form.action, {

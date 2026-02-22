@@ -427,6 +427,7 @@
                 <input type="hidden" name="_subject" value="Anfrage Bruchsal - 360 Rundgang">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="_referer" id="form-referer">
                 <div class="form-group"><label for="name">Name *</label><input type="text" id="name" name="name" placeholder="Ihr Name" required autocomplete="name"></div>
                 <div class="form-group"><label for="email">E-Mail *</label><input type="email" id="email" name="email" placeholder="ihre@email.de" required autocomplete="email"></div>
                 <div class="form-group"><label for="phone">Telefon</label><input type="tel" id="phone" name="phone" placeholder="+49 123 456789" autocomplete="tel"></div>
@@ -452,7 +453,8 @@
             e.preventDefault();
             const b=this.querySelector('button[type="submit"]'),t=b.textContent;
             b.textContent='Wird gesendet...';b.disabled=true;
-            fetch('https://formsubmit.co/ajax/rundgang@beck360.de',{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}})
+            document.getElementById('form-referer').value = window.location.href;
+            fetch('https://360-rundgang-karlsruhe.de/api/form-submit',{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}})
             .then(r=>{if(r.ok){window.location.href='/danke.html'}else{throw new Error('Fehler')}})
             .catch(()=>{alert('Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.');b.textContent=t;b.disabled=false});
         })}

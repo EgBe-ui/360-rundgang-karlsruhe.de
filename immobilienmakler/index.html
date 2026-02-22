@@ -244,6 +244,7 @@
                 <input type="hidden" name="_subject" value="🏢 Anfrage Immobilienmakler - Landing Page">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="_referer" id="form-referer">
                 <div class="form-group"><label for="name">Name *</label><input type="text" id="name" name="name" placeholder="Ihr Name" required autocomplete="name"></div>
                 <div class="form-group"><label for="company">Maklerbüro</label><input type="text" id="company" name="company" placeholder="Name Ihres Unternehmens" autocomplete="organization"></div>
                 <div class="form-group"><label for="email">E-Mail *</label><input type="email" id="email" name="email" placeholder="ihre@email.de" required autocomplete="email"></div>
@@ -275,7 +276,8 @@
 
                 const formData = new FormData(this);
 
-                fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+                document.getElementById('form-referer').value = window.location.href;
+                fetch('https://360-rundgang-karlsruhe.de/api/form-submit', {
                     method: 'POST',
                     body: formData,
                     headers: {

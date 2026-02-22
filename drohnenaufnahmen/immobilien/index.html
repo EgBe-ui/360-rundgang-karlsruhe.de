@@ -724,6 +724,7 @@
                 </div>
                 <div class="lead-magnet-form" id="download-form-container">
                     <form id="download-form">
+                        <input type="hidden" name="_referer" id="form-referer">
                         <h3>PDF herunterladen</h3>
                         <div class="form-group">
                             <label for="dl-name">Name / Firma</label>
@@ -814,7 +815,8 @@
             const formData = new FormData(this);
             formData.append('_subject', 'PDF Download: Drohnenaufnahmen Immobilien');
 
-            fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+            document.getElementById('form-referer').value = window.location.href;
+            fetch('https://360-rundgang-karlsruhe.de/api/form-submit', {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }

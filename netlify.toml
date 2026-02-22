@@ -1,0 +1,34 @@
+[build]
+  command = "echo 'CRM pre-built'"
+  publish = "."
+  functions = "netlify/functions"
+
+# CRM SPA — all /crm/* routes serve the SPA index
+[[redirects]]
+  from = "/crm/*"
+  to = "/crm/index.html"
+  status = 200
+
+# API routing
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Security headers for CRM
+[[headers]]
+  for = "/crm/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# CORS for API endpoints
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "https://360-rundgang-karlsruhe.de"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"

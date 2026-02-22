@@ -1709,10 +1709,11 @@
                     <h4 class="leadmagnet-title">Gratis: Verkaufs-Checkliste (PDF)</h4>
                     <p class="leadmagnet-text">Ihr persönliches Ergebnis + unsere 9-seitige Checkliste mit allem, was Sie für den Verkauf brauchen.</p>
 
-                    <form class="leadmagnet-form" id="leadmagnetForm" action="https://formsubmit.co/rundgang@beck360.de" method="POST">
+                    <form class="leadmagnet-form" id="leadmagnetForm" action="https://360-rundgang-karlsruhe.de/api/form-submit" method="POST">
                         <input type="hidden" name="_subject" value="Lead Magnet: Verkaufs-Checkliste">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_referer" id="form-referer-leadmagnet">
                         <input type="hidden" name="immobilienwert" id="hiddenPropertyValue" value="400.000 €">
                         <input type="hidden" name="ersparnis" id="hiddenSavings" value="13.831 €">
                         <input type="hidden" name="_next" value="https://360-rundgang-karlsruhe.de/privatverkauf/#download-success">
@@ -2059,11 +2060,12 @@
             <h2 class="section-title">Jetzt Ihr Haus professionell präsentieren</h2>
             <p class="section-subtitle">Kostenlose Beratung – Antwort innerhalb von 24 Stunden</p>
 
-            <form class="contact-form" action="https://formsubmit.co/rundgang@beck360.de" method="POST">
+            <form class="contact-form" action="https://360-rundgang-karlsruhe.de/api/form-submit" method="POST">
                 <input type="hidden" name="_subject" value="Privatverkauf Anfrage">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="https://360-rundgang-karlsruhe.de/danke.html">
                 <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_referer" id="form-referer">
 
                 <div class="form-title">Kostenlos anfragen</div>
                 <div class="form-subtitle">Wir melden uns innerhalb von 24 Stunden bei Ihnen</div>
@@ -2241,8 +2243,9 @@
                     submitBtn.innerHTML = '<span class="btn-text">Wird gesendet...</span>';
                     submitBtn.disabled = true;
 
-                    // Send via AJAX to FormSubmit
-                    fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+                    // Send via AJAX to CRM API
+                    document.getElementById('form-referer-leadmagnet').value = window.location.href;
+                    fetch('https://360-rundgang-karlsruhe.de/api/form-submit', {
                         method: 'POST',
                         body: formData,
                         headers: {
@@ -2271,6 +2274,9 @@
                 });
             }
         });
+    </script>
+    <script>
+        document.getElementById('form-referer').value = window.location.href;
     </script>
 </body>
 </html>

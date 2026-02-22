@@ -485,11 +485,12 @@
             <h3>Finden Sie Ihre perfekte Familienwohnung in Karlsruhe</h3>
             <p>Wir helfen Ihnen mit virtuellen Rundgängen und professioneller Makler-Beratung, die richtige Immobilie im richtigen Stadtteil zu finden.</p>
 
-            <form class="article-form" action="https://formsubmit.co/rundgang@beck360.de" method="POST">
+            <form class="article-form" action="https://360-rundgang-karlsruhe.de/api/form-submit" method="POST">
                 <input type="hidden" name="_subject" value="Blog-Anfrage: Wohnviertel Karlsruhe">
                 <input type="hidden" name="_source" value="Blog: Wohnviertel für Familien">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="_referer" id="form-referer">
                 <input type="hidden" name="_next" value="https://360-rundgang-karlsruhe.de/danke.html">
 
                 <div class="form-row">
@@ -533,5 +534,8 @@
     </footer>
 
     <script>document.addEventListener('DOMContentLoaded', () => { const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }); document.querySelectorAll('.fade-up').forEach(el => observer.observe(el)); });</script>
+    <script>
+        document.getElementById('form-referer').value = window.location.href;
+    </script>
 </body>
 </html>

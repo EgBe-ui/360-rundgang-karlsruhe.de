@@ -494,6 +494,7 @@
 
         <div class="form-card">
             <form id="survey-form">
+                <input type="hidden" name="_referer" id="form-referer">
 
                 <!-- Section 1: Kontaktdaten -->
                 <div class="form-section">
@@ -886,7 +887,8 @@
             const formData = new FormData(this);
             formData.append('_subject', 'Video-Briefing: Neue Kundenanfrage');
 
-            fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+            document.getElementById('form-referer').value = window.location.href;
+            fetch('https://360-rundgang-karlsruhe.de/api/form-submit', {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }

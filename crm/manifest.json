@@ -1,0 +1,15 @@
+{
+  "name": "Beck360 CRM",
+  "short_name": "Beck360",
+  "start_url": "/crm/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1a5c6b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

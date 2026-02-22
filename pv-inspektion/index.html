@@ -619,6 +619,7 @@
                     <input type="hidden" name="_subject" value="☀️ Anfrage PV-Inspektion - Landing Page">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                    <input type="hidden" name="_referer" id="form-referer">
                     <div class="form-group">
                         <label for="name">Name *</label>
                         <input type="text" id="name" name="name" placeholder="Ihr Name" required>
@@ -692,7 +693,8 @@
 
                 const formData = new FormData(this);
 
-                fetch('https://formsubmit.co/ajax/rundgang@beck360.de', {
+                document.getElementById('form-referer').value = window.location.href;
+                fetch('https://360-rundgang-karlsruhe.de/api/form-submit', {
                     method: 'POST',
                     body: formData,
                     headers: { 'Accept': 'application/json' }
