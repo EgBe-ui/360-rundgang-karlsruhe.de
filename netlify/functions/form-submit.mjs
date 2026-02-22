@@ -85,15 +85,15 @@ export default async (request) => {
 
     if (!supabase) {
       // Supabase not configured — just forward email
-      await forwardToFormSubmit(rawData);
-      return new Response(JSON.stringify({ success: true }), { status: 200, headers });
+      const fsResult = await forwardToFormSubmit(rawData);
+      return new Response(JSON.stringify({ success: true, formsubmit: fsResult }), { status: 200, headers });
     }
 
     if (!OWNER_ID) {
       // No owner configured yet — just archive and forward email
       await supabase.from('form_submissions').insert(formSubmission);
-      await forwardToFormSubmit(rawData);
-      return new Response(JSON.stringify({ success: true }), { status: 200, headers });
+      const fsResult = await forwardToFormSubmit(rawData);
+      return new Response(JSON.stringify({ success: true, formsubmit: fsResult }), { status: 200, headers });
     }
 
     // Check for existing contact by email
@@ -198,9 +198,9 @@ export default async (request) => {
     await supabase.from('form_submissions').insert(formSubmission);
 
     // Forward to FormSubmit.co (keep email notification working)
-    await forwardToFormSubmit(rawData);
+    const fsResult = await forwardToFormSubmit(rawData);
 
-    return new Response(JSON.stringify({ success: true }), { status: 200, headers });
+    return new Response(JSON.stringify({ success: true, formsubmit: fsResult }), { status: 200, headers });
   } catch (err) {
     console.error('form-submit error:', err);
 
@@ -215,28 +215,22 @@ export default async (request) => {
 };
 
 async function forwardToFormSubmit(data) {
-  try {
-    const payload = {};
-    for (const [key, value] of Object.entries(data)) {
-      if (!key.startsWith('_') || key === '_subject') {
-        payload[key] = value;
-      }
+  const payload = {};
+  for (const [key, value] of Object.entries(data)) {
+    if (!key.startsWith('_') || key === '_subject') {
+      payload[key] = value;
     }
-    const res = await fetch(FORMSUBMIT_URL, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Referer': 'https://360-rundgang-karlsruhe.de/',
-        'Origin': 'https://360-rundgang-karlsruhe.de',
-      },
-    });
-    const result = await res.json().catch(() => ({}));
-    if (result.success === 'false') {
-      console.error('FormSubmit rejected:', result.message);
-    }
-  } catch (err) {
-    console.error('FormSubmit forward error:', err);
   }
+  const res = await fetch(FORMSUBMIT_URL, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Referer': 'https://360-rundgang-karlsruhe.de/',
+      'Origin': 'https://360-rundgang-karlsruhe.de',
+    },
+  });
+  const result = await res.json().catch(() => ({ raw: await res.text().catch(() => 'no body') }));
+  return result;
 }
