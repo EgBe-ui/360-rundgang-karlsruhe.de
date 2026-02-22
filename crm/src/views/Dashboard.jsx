@@ -1,4 +1,5 @@
 import { useDashboard } from '../hooks/useDashboard.js';
+import { useInvoiceDashboard } from '../hooks/useInvoices.js';
 import { useTasks } from '../hooks/useActivities.js';
 import { KPICard } from '../components/KPICard.jsx';
 import { ActivityItem } from '../components/ActivityItem.jsx';
@@ -8,6 +9,7 @@ import { route } from 'preact-router';
 
 export function Dashboard() {
   const { stats, recentActivities, loading } = useDashboard();
+  const { stats: invoiceStats } = useInvoiceDashboard();
   const { tasks, complete } = useTasks();
 
   if (loading) {
@@ -39,6 +41,12 @@ export function Dashboard() {
           <KPICard label="Neue Leads (Monat)" value={stats.newLeadsThisMonth} color="var(--info)" />
           <KPICard label="Pipeline-Wert" value={formatCurrency(stats.pipelineValue)} color="var(--primary-light)" />
           <KPICard label="Conversion-Rate" value={`${stats.conversionRate}%`} color="var(--success)" />
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 1.5rem">
+          <KPICard label="Offene Rechnungen" value={invoiceStats.openCount} color="var(--warning)" />
+          <KPICard label="Offener Betrag" value={formatCurrency(invoiceStats.openAmount)} color="var(--error)" />
+          <KPICard label="Umsatz (Monat)" value={formatCurrency(invoiceStats.monthRevenue)} color="var(--success)" />
         </div>
 
         <div class="grid-2" style="margin-bottom: 1.5rem">

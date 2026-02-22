@@ -6,6 +6,8 @@ import { useActivities } from '../hooks/useActivities.js';
 import { ActivityItem } from '../components/ActivityItem.jsx';
 import { StageBadge } from '../components/StageBadge.jsx';
 import { useToast } from '../components/Toast.jsx';
+import { useInvoices } from '../hooks/useInvoices.js';
+import { INVOICE_TYPES, INVOICE_STATUS } from '../lib/invoiceHelpers.js';
 import { INDUSTRIES, formatDate, formatCurrency } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
@@ -13,6 +15,7 @@ export function CompanyDetail({ id }) {
   const { company, loading, update } = useCompany(id);
   const { contacts } = useContacts();
   const { deals } = useDeals({ companyId: id });
+  const { invoices: companyInvoices } = useInvoices({ companyId: id });
   const { activities } = useActivities({ companyId: id });
   const toast = useToast();
 
@@ -182,6 +185,32 @@ export function CompanyDetail({ id }) {
                           <td>{d.title}</td>
                           <td><StageBadge stage={d.stage} /></td>
                           <td>{d.value ? formatCurrency(d.value) : '–'}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+            <div class="card">
+              <div class="card-header"><span class="card-title">Rechnungen / Angebote ({companyInvoices.length})</span></div>
+              {companyInvoices.length === 0 ? (
+                <div style="color:var(--text-dim);font-size:0.85rem">Keine Rechnungen</div>
+              ) : (
+                <div class="table-wrapper">
+                  <table>
+                    <thead><tr><th>Nummer</th><th>Typ</th><th>Status</th><th style="text-align:right">Betrag</th></tr></thead>
+                    <tbody>
+                      {companyInvoices.map(inv => (
+                        <tr key={inv.id} class="clickable-row" onClick={() => route(`/crm/invoices/${inv.id}`)}>
+                          <td style="font-weight:600">{inv.invoice_number}</td>
+                          <td>{INVOICE_TYPES[inv.type]?.label}</td>
+                          <td>
+                            <span class="stage-badge" style={`color:${INVOICE_STATUS[inv.status]?.color};background:${INVOICE_STATUS[inv.status]?.color}20`}>
+                              {INVOICE_STATUS[inv.status]?.label}
+                            </span>
+                          </td>
+                          <td style="text-align:right">{formatCurrency(inv.total_amount)}</td>
                         </tr>
                       ))}
                     </tbody>

@@ -5,12 +5,15 @@ import { ActivityItem } from '../components/ActivityItem.jsx';
 import { StageBadge } from '../components/StageBadge.jsx';
 import { Modal } from '../components/Modal.jsx';
 import { useToast } from '../components/Toast.jsx';
+import { useInvoices } from '../hooks/useInvoices.js';
+import { INVOICE_TYPES, INVOICE_STATUS } from '../lib/invoiceHelpers.js';
 import { formatDate, formatCurrency, STAGES, SERVICE_TYPES, ACTIVITY_TYPES } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
 export function DealDetail({ id }) {
   const { deal, loading, update, changeStage } = useDeal(id);
   const { activities, refetch: refetchActivities } = useActivities({ dealId: id });
+  const { invoices: dealInvoices } = useInvoices({ dealId: id });
   const toast = useToast();
 
   const [editing, setEditing] = useState(false);
@@ -100,8 +103,12 @@ export function DealDetail({ id }) {
           <h1 class="page-title">{deal.title}</h1>
           <StageBadge stage={deal.stage} />
         </div>
-        <div style="display:flex;gap:0.5rem">
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
           <button class="btn btn-secondary btn-sm" onClick={() => setShowActivity(true)}>+ Aktivitaet</button>
+          <button class="btn btn-secondary btn-sm" onClick={() => route(`/crm/invoices/new?type=quote&deal_id=${id}`)}>+ Angebot</button>
+          {deal.stage === 'won' && (
+            <button class="btn btn-primary btn-sm" onClick={() => route(`/crm/invoices/new?type=invoice&deal_id=${id}`)}>+ Rechnung</button>
+          )}
           {!editing && <button class="btn btn-secondary btn-sm" onClick={startEdit}>Bearbeiten</button>}
         </div>
       </div>
@@ -207,6 +214,31 @@ export function DealDetail({ id }) {
                 ))}
               </div>
             </div>
+
+            {dealInvoices.length > 0 && (
+              <div class="card">
+                <div class="card-header"><span class="card-title">Rechnungen / Angebote ({dealInvoices.length})</span></div>
+                <div class="table-wrapper">
+                  <table>
+                    <thead><tr><th>Nummer</th><th>Typ</th><th>Status</th><th style="text-align:right">Betrag</th></tr></thead>
+                    <tbody>
+                      {dealInvoices.map(inv => (
+                        <tr key={inv.id} class="clickable-row" onClick={() => route(`/crm/invoices/${inv.id}`)}>
+                          <td style="font-weight:600">{inv.invoice_number}</td>
+                          <td>{INVOICE_TYPES[inv.type]?.label}</td>
+                          <td>
+                            <span class="stage-badge" style={`color:${INVOICE_STATUS[inv.status]?.color};background:${INVOICE_STATUS[inv.status]?.color}20`}>
+                              {INVOICE_STATUS[inv.status]?.label}
+                            </span>
+                          </td>
+                          <td style="text-align:right">{formatCurrency(inv.total_amount)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
 
             <div class="card">
               <div class="card-header"><span class="card-title">Aktivitaeten</span></div>

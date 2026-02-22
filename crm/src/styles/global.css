@@ -644,6 +644,28 @@ tr:hover td { background: var(--bg-hover); }
   margin-bottom: 1rem;
 }
 
+/* Line Items Table */
+.line-items-table td { padding: 0.5rem 0.5rem; vertical-align: top; }
+.line-items-table th { padding: 0.5rem 0.5rem; }
+.line-items-table input { margin-bottom: 0; }
+
+/* Invoice Totals */
+.invoice-totals {
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
+.invoice-totals-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
 /* Mobile */
 .mobile-toggle {
   display: none;

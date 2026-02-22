@@ -12,6 +12,12 @@ import { CompanyDetail } from './views/CompanyDetail.jsx';
 import { DealDetail } from './views/DealDetail.jsx';
 import { DealForm } from './views/DealForm.jsx';
 import { Settings } from './views/Settings.jsx';
+import { CampaignList } from './views/CampaignList.jsx';
+import { CampaignForm } from './views/CampaignForm.jsx';
+import { CampaignDetail } from './views/CampaignDetail.jsx';
+import { InvoiceList } from './views/InvoiceList.jsx';
+import { InvoiceForm } from './views/InvoiceForm.jsx';
+import { InvoiceDetail } from './views/InvoiceDetail.jsx';
 
 export function App() {
   const { user, loading } = useAuth();
@@ -40,6 +46,12 @@ export function App() {
         <CompanyDetail path="/crm/companies/:id" />
         <DealForm path="/crm/deals/new" />
         <DealDetail path="/crm/deals/:id" />
+        <InvoiceList path="/crm/invoices" />
+        <InvoiceForm path="/crm/invoices/new" />
+        <InvoiceDetail path="/crm/invoices/:id" />
+        <CampaignList path="/crm/campaigns" />
+        <CampaignForm path="/crm/campaigns/new" />
+        <CampaignDetail path="/crm/campaigns/:id" />
         <Settings path="/crm/settings" />
         <Dashboard default />
       </Router>
