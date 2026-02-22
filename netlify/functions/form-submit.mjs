@@ -1,3 +1,5 @@
+const BUILD_VERSION = 'v7-debug';
+
 import { supabase } from './lib/supabase.mjs';
 import { normalizeFormData, detectSource, detectSourcePage } from './lib/normalize.mjs';
 import { checkSpam } from './lib/spam-check.mjs';
@@ -61,7 +63,7 @@ export default async (request) => {
     const spam = checkSpam(rawData);
     if (spam.isSpam) {
       // Silently accept to not tip off spammers
-      return new Response(JSON.stringify({ success: true }), { status: 200, headers });
+      return new Response(JSON.stringify({ success: true, v: BUILD_VERSION }), { status: 200, headers });
     }
 
     // Normalize
