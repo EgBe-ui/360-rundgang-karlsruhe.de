@@ -216,21 +216,26 @@ export default async (request) => {
 
 async function forwardToFormSubmit(data) {
   try {
-    const formData = new FormData();
+    const payload = {};
     for (const [key, value] of Object.entries(data)) {
       if (!key.startsWith('_') || key === '_subject') {
-        formData.append(key, value);
+        payload[key] = value;
       }
     }
-    await fetch(FORMSUBMIT_URL, {
+    const res = await fetch(FORMSUBMIT_URL, {
       method: 'POST',
-      body: formData,
+      body: JSON.stringify(payload),
       headers: {
+        'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Referer': 'https://360-rundgang-karlsruhe.de/',
         'Origin': 'https://360-rundgang-karlsruhe.de',
       },
     });
+    const result = await res.json().catch(() => ({}));
+    if (result.success === 'false') {
+      console.error('FormSubmit rejected:', result.message);
+    }
   } catch (err) {
     console.error('FormSubmit forward error:', err);
   }
