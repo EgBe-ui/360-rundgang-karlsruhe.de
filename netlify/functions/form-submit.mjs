@@ -225,7 +225,11 @@ async function forwardToFormSubmit(data) {
     await fetch(FORMSUBMIT_URL, {
       method: 'POST',
       body: formData,
-      headers: { 'Accept': 'application/json' },
+      headers: {
+        'Accept': 'application/json',
+        'Referer': 'https://360-rundgang-karlsruhe.de/',
+        'Origin': 'https://360-rundgang-karlsruhe.de',
+      },
     });
   } catch (err) {
     console.error('FormSubmit forward error:', err);
