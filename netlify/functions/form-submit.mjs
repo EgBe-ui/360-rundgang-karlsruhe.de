@@ -205,12 +205,22 @@ export default async (request) => {
     console.error('form-submit error:', err);
 
     // Still try to forward email even if CRM insert failed
+    let fsResult = null;
     try {
-      const rawData = await request.clone().formData().then(fd => Object.fromEntries(fd.entries())).catch(() => null);
-      if (rawData) await forwardToFormSubmit(rawData);
+      // Re-parse the request body (try JSON first, then FormData)
+      let rawData = null;
+      try {
+        rawData = await request.clone().json();
+      } catch {
+        try {
+          const fd = await request.clone().formData();
+          rawData = Object.fromEntries(fd.entries());
+        } catch { /* give up */ }
+      }
+      if (rawData) fsResult = await forwardToFormSubmit(rawData);
     } catch { /* ignore */ }
 
-    return new Response(JSON.stringify({ success: true }), { status: 200, headers });
+    return new Response(JSON.stringify({ success: true, error: err.message, formsubmit: fsResult }), { status: 200, headers });
   }
 };
 
