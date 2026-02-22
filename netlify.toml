@@ -1,5 +1,5 @@
 [build]
-  command = "cd crm && npm ci && npm run build && cp dist/index.html . && rm -rf assets && cp -r dist/assets ."
+  command = "echo 'CRM pre-built'"
   publish = "."
   functions = "netlify/functions"
 
