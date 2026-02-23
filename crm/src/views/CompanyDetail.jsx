@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import { useCompany } from '../hooks/useCompanies.js';
-import { useContacts } from '../hooks/useContacts.js';
+import { useContacts, createContact } from '../hooks/useContacts.js';
 import { useDeals } from '../hooks/useDeals.js';
 import { useActivities } from '../hooks/useActivities.js';
 import { ActivityItem } from '../components/ActivityItem.jsx';
@@ -8,12 +8,12 @@ import { StageBadge } from '../components/StageBadge.jsx';
 import { useToast } from '../components/Toast.jsx';
 import { useInvoices } from '../hooks/useInvoices.js';
 import { INVOICE_TYPES, INVOICE_STATUS } from '../lib/invoiceHelpers.js';
-import { INDUSTRIES, formatDate, formatCurrency } from '../lib/helpers.js';
+import { INDUSTRIES, SOURCES, formatDate, formatCurrency } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
 export function CompanyDetail({ id }) {
   const { company, loading, update } = useCompany(id);
-  const { contacts } = useContacts();
+  const { contacts, refetch: refetchContacts } = useContacts();
   const { deals } = useDeals({ companyId: id });
   const { invoices: companyInvoices } = useInvoices({ companyId: id });
   const { activities } = useActivities({ companyId: id });
@@ -21,6 +21,8 @@ export function CompanyDetail({ id }) {
 
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState({});
+  const [showAddContact, setShowAddContact] = useState(false);
+  const [contactForm, setContactForm] = useState({ first_name: '', last_name: '', email: '', phone: '', source: 'manual' });
 
   const companyContacts = contacts.filter(c => c.company_id === id);
 
@@ -52,6 +54,26 @@ export function CompanyDetail({ id }) {
       notes: company.notes || '',
     });
     setEditing(true);
+  }
+
+  async function handleAddContact(e) {
+    e.preventDefault();
+    const { error } = await createContact({
+      first_name: contactForm.first_name || null,
+      last_name: contactForm.last_name || null,
+      email: contactForm.email || null,
+      phone: contactForm.phone || null,
+      source: contactForm.source || 'manual',
+      company_id: id,
+    });
+    if (error) {
+      toast.error('Fehler beim Erstellen');
+    } else {
+      toast.success('Kontakt erstellt');
+      setShowAddContact(false);
+      setContactForm({ first_name: '', last_name: '', email: '', phone: '', source: 'manual' });
+      refetchContacts();
+    }
   }
 
   async function saveEdit() {
@@ -150,10 +172,41 @@ export function CompanyDetail({ id }) {
             </div>
 
             <div class="card">
-              <div class="card-header"><span class="card-title">Kontakte ({companyContacts.length})</span></div>
-              {companyContacts.length === 0 ? (
+              <div class="card-header">
+                <span class="card-title">Kontakte ({companyContacts.length})</span>
+                {!showAddContact && (
+                  <button class="btn btn-secondary btn-sm" onClick={() => setShowAddContact(true)}>+ Kontakt</button>
+                )}
+              </div>
+              {showAddContact && (
+                <form onSubmit={handleAddContact} style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)">
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label>Vorname</label>
+                      <input value={contactForm.first_name} onInput={e => setContactForm({...contactForm, first_name: e.target.value})} />
+                    </div>
+                    <div class="form-group">
+                      <label>Nachname</label>
+                      <input value={contactForm.last_name} onInput={e => setContactForm({...contactForm, last_name: e.target.value})} />
+                    </div>
+                    <div class="form-group">
+                      <label>E-Mail</label>
+                      <input type="email" value={contactForm.email} onInput={e => setContactForm({...contactForm, email: e.target.value})} />
+                    </div>
+                    <div class="form-group">
+                      <label>Telefon</label>
+                      <input value={contactForm.phone} onInput={e => setContactForm({...contactForm, phone: e.target.value})} />
+                    </div>
+                  </div>
+                  <div class="form-actions" style="margin-top:0.5rem;border-top:none;padding-top:0">
+                    <button type="button" class="btn btn-secondary btn-sm" onClick={() => setShowAddContact(false)}>Abbrechen</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Erstellen</button>
+                  </div>
+                </form>
+              )}
+              {companyContacts.length === 0 && !showAddContact ? (
                 <div style="color:var(--text-dim);font-size:0.85rem">Keine Kontakte</div>
-              ) : (
+              ) : companyContacts.length > 0 && (
                 <div class="table-wrapper">
                   <table>
                     <thead><tr><th>Name</th><th>E-Mail</th><th>Position</th></tr></thead>

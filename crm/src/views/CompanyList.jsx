@@ -6,6 +6,7 @@ import { INDUSTRIES, formatDate } from '../lib/helpers.js';
 import { Modal } from '../components/Modal.jsx';
 import { createCompany } from '../hooks/useCompanies.js';
 import { useToast } from '../components/Toast.jsx';
+import { supabase } from '../lib/supabase.js';
 import { route } from 'preact-router';
 
 const INDUSTRY_FILTERS = INDUSTRIES.map(i => ({ value: i, label: i }));
@@ -16,7 +17,47 @@ export function CompanyList() {
   const { companies, loading, refetch } = useCompanies({ search, industry });
   const [showNew, setShowNew] = useState(false);
   const [newForm, setNewForm] = useState({ name: '', industry: '', city: '', website: '' });
+  const [selected, setSelected] = useState(new Set());
+  const [deleting, setDeleting] = useState(false);
   const toast = useToast();
+
+  const toggleSelect = (id, e) => {
+    e.stopPropagation();
+    setSelected(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
+  const toggleAll = () => {
+    if (selected.size === companies.length) {
+      setSelected(new Set());
+    } else {
+      setSelected(new Set(companies.map(c => c.id)));
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    if (selected.size === 0) return;
+    const count = selected.size;
+    if (!confirm(`${count} Firma(en) wirklich loeschen?`)) return;
+    setDeleting(true);
+    const ids = [...selected];
+    const now = new Date().toISOString();
+    const { error } = await supabase
+      .from('companies')
+      .update({ deleted_at: now })
+      .in('id', ids);
+    if (error) {
+      toast.error('Fehler beim Loeschen');
+    } else {
+      toast.success(`${count} Firma(en) geloescht`);
+      setSelected(new Set());
+      refetch();
+    }
+    setDeleting(false);
+  };
 
   async function handleCreate(e) {
     e.preventDefault();
@@ -40,9 +81,16 @@ export function CompanyList() {
     <>
       <div class="page-header">
         <h1 class="page-title">Firmen</h1>
-        <button class="btn btn-primary btn-sm" onClick={() => setShowNew(true)}>
-          + Neue Firma
-        </button>
+        <div style="display:flex;gap:0.5rem">
+          {selected.size > 0 && (
+            <button class="btn btn-danger btn-sm" onClick={handleBulkDelete} disabled={deleting}>
+              {deleting ? 'Loesche...' : `${selected.size} loeschen`}
+            </button>
+          )}
+          <button class="btn btn-primary btn-sm" onClick={() => setShowNew(true)}>
+            + Neue Firma
+          </button>
+        </div>
       </div>
 
       <div class="page-body">
@@ -66,6 +114,14 @@ export function CompanyList() {
               <table>
                 <thead>
                   <tr>
+                    <th style="width:40px">
+                      <input
+                        type="checkbox"
+                        checked={selected.size === companies.length && companies.length > 0}
+                        onChange={toggleAll}
+                        style="width:16px;height:16px;cursor:pointer"
+                      />
+                    </th>
                     <th>Name</th>
                     <th>Branche</th>
                     <th>Stadt</th>
@@ -76,6 +132,14 @@ export function CompanyList() {
                 <tbody>
                   {companies.map(c => (
                     <tr key={c.id} class="clickable-row" onClick={() => route(`/crm/companies/${c.id}`)}>
+                      <td data-label="" onClick={e => e.stopPropagation()} style="width:40px">
+                        <input
+                          type="checkbox"
+                          checked={selected.has(c.id)}
+                          onChange={e => toggleSelect(c.id, e)}
+                          style="width:16px;height:16px;cursor:pointer"
+                        />
+                      </td>
                       <td data-label="Name" style="font-weight:500">{c.name}</td>
                       <td data-label="Branche">{c.industry || '–'}</td>
                       <td data-label="Stadt">{c.city || '–'}</td>
