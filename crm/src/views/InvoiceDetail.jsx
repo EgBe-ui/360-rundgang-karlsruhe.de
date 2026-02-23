@@ -6,7 +6,7 @@ import { useToast } from '../components/Toast.jsx';
 import { route } from 'preact-router';
 
 export function InvoiceDetail({ id }) {
-  const { invoice, items, loading, update, refetch } = useInvoice(id);
+  const { invoice, items, loading, fetchError, update, refetch } = useInvoice(id);
   const { settings } = useBusinessSettings();
   const toast = useToast();
 
@@ -31,8 +31,13 @@ export function InvoiceDetail({ id }) {
         <div class="page-body">
           <div class="empty-state">
             <div class="empty-state-text">Dokument nicht gefunden</div>
-            <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim)">
+            <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim);word-break:break-all">
               Debug: id="{id}" | URL: {typeof window !== 'undefined' ? window.location.pathname + window.location.search : ''}
+              {fetchError && (
+                <div style="margin-top:0.5rem;color:var(--danger)">
+                  DB-Fehler: {fetchError.message || fetchError.code || JSON.stringify(fetchError)}
+                </div>
+              )}
             </div>
           </div>
         </div>

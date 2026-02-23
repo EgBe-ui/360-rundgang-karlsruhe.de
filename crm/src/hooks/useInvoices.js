@@ -37,12 +37,14 @@ export function useInvoice(id) {
   const [invoice, setInvoice] = useState(null);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState(null);
 
   const fetch = useCallback(async () => {
     if (!id) return;
     setLoading(true);
+    setFetchError(null);
 
-    const [{ data: inv }, { data: lineItems }] = await Promise.all([
+    const [invResult, itemsResult] = await Promise.all([
       supabase
         .from('invoices')
         .select(`
@@ -60,8 +62,16 @@ export function useInvoice(id) {
         .order('position', { ascending: true }),
     ]);
 
-    setInvoice(inv);
-    setItems(lineItems || []);
+    if (invResult.error) {
+      console.error('useInvoice fetch error:', invResult.error);
+      setFetchError(invResult.error);
+    }
+    if (itemsResult.error) {
+      console.error('useInvoice items error:', itemsResult.error);
+    }
+
+    setInvoice(invResult.data);
+    setItems(itemsResult.data || []);
     setLoading(false);
   }, [id]);
 
@@ -76,7 +86,7 @@ export function useInvoice(id) {
     return { error };
   }, [id, fetch]);
 
-  return { invoice, items, loading, refetch: fetch, update };
+  return { invoice, items, loading, fetchError, refetch: fetch, update };
 }
 
 export async function createInvoice(invoiceData, lineItems) {
