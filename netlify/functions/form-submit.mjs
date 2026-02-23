@@ -79,15 +79,18 @@ export default async (request) => {
   }
 
   // CRM operations (best-effort — don't block response if these fail)
+  let crmOk = !supabase ? 'no_supabase' : null;
   try {
     if (supabase) {
       await processCRM(rawData, ipHash);
+      crmOk = true;
     }
   } catch (err) {
     console.error('CRM error:', err);
+    crmOk = err.message;
   }
 
-  return new Response(JSON.stringify({ success: true }), { status: 200, headers });
+  return new Response(JSON.stringify({ success: true, crm: crmOk }), { status: 200, headers });
 };
 
 /**
