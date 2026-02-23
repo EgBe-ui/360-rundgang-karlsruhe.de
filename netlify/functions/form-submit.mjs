@@ -243,6 +243,12 @@ async function forwardToFormSubmit(data) {
       'Origin': 'https://360-rundgang-karlsruhe.de',
     },
   });
-  const result = await res.json().catch(() => ({ raw: await res.text().catch(() => 'no body') }));
+  let result;
+  try {
+    result = await res.json();
+  } catch {
+    const raw = await res.text().catch(() => 'no body');
+    result = { raw };
+  }
   return result;
 }

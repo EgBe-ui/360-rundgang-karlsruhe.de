@@ -5,6 +5,7 @@
 crm/dist/
 
 # Dependencies
+node_modules/
 crm/node_modules/
 
 # Environment
