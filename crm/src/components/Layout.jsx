@@ -1,15 +1,24 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import { useAuth } from '../lib/auth.jsx';
 import { route } from 'preact-router';
 
 export function Layout({ children }) {
   const { signOut } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/crm/';
+  const [currentPath, setCurrentPath] = useState(
+    typeof window !== 'undefined' ? window.location.pathname : '/crm/'
+  );
+
+  useEffect(() => {
+    const onPopState = () => setCurrentPath(window.location.pathname);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   function navigate(path) {
     setSidebarOpen(false);
     route(path);
+    setCurrentPath(path);
   }
 
   const navItems = [
@@ -42,7 +51,7 @@ export function Layout({ children }) {
           {navItems.map(item => (
             <a
               key={item.path}
-              class={`nav-item ${currentPath === item.path ? 'active' : ''}`}
+              class={`nav-item ${(item.path === '/crm/' ? currentPath === '/crm/' : currentPath.startsWith(item.path)) ? 'active' : ''}`}
               href={item.path}
               onClick={(e) => { e.preventDefault(); navigate(item.path); }}
             >
