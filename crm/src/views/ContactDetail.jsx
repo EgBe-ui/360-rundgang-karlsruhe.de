@@ -50,6 +50,9 @@ export function ContactDetail({ id }) {
       phone: contact.phone || '',
       position: contact.position || '',
       company_id: contact.company_id || '',
+      source: contact.source || 'manual',
+      source_detail: contact.source_detail || '',
+      gdpr_consent: !!contact.gdpr_consent,
     });
     setCompanyMode('keep');
     setNewCompanyName('');
@@ -59,6 +62,13 @@ export function ContactDetail({ id }) {
   async function saveEdit() {
     try {
       const updates = { ...form };
+
+      // Set GDPR consent timestamp when toggling on
+      if (updates.gdpr_consent && !contact.gdpr_consent) {
+        updates.gdpr_consent_at = new Date().toISOString();
+      } else if (!updates.gdpr_consent) {
+        updates.gdpr_consent_at = null;
+      }
 
       if (companyMode === 'new' && newCompanyName.trim()) {
         const { data: company, error: companyError } = await createCompany({ name: newCompanyName.trim() });
@@ -182,6 +192,29 @@ export function ContactDetail({ id }) {
                       {companyMode === 'remove' && (
                         <div style="font-size:0.85rem;color:var(--text-dim)">Firma-Verknuepfung wird entfernt</div>
                       )}
+                    </div>
+                    <div class="form-group">
+                      <label>Quelle</label>
+                      <select value={form.source} onChange={e => setForm({...form, source: e.target.value})}>
+                        {Object.entries(SOURCES).map(([k, v]) => (
+                          <option key={k} value={k}>{v}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Quelle Detail</label>
+                      <input value={form.source_detail} onInput={e => setForm({...form, source_detail: e.target.value})} placeholder="z.B. Blog: Hotels" />
+                    </div>
+                    <div class="form-group form-group-full">
+                      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;text-transform:none;letter-spacing:normal;font-size:0.875rem;">
+                        <input
+                          type="checkbox"
+                          checked={form.gdpr_consent}
+                          onChange={e => setForm({...form, gdpr_consent: e.target.checked})}
+                          style="width:16px;height:16px;cursor:pointer;"
+                        />
+                        DSGVO-Einwilligung erteilt
+                      </label>
                     </div>
                   </div>
                   <div class="form-actions">
