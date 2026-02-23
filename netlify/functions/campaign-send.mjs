@@ -43,13 +43,23 @@ export default async (request) => {
   }
 
   if (!supabase) {
-    return new Response(JSON.stringify({ error: 'Server misconfigured: Supabase not available. Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY env vars.' }), { status: 500 });
+    const hasUrl = !!process.env.SUPABASE_URL;
+    const hasKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+    return new Response(JSON.stringify({ error: `Server misconfigured: SUPABASE_URL=${hasUrl}, SUPABASE_SERVICE_ROLE_KEY=${hasKey}` }), { status: 500 });
   }
+
+  // Debug: log which URL and key prefix the function uses
+  const debugUrl = process.env.SUPABASE_URL || 'NOT SET';
+  const debugKeyPrefix = (process.env.SUPABASE_SERVICE_ROLE_KEY || '').substring(0, 20) + '...';
 
   const { data: { user }, error: authError } = await supabase.auth.getUser(token);
   if (authError || !user) {
     console.error('Auth validation failed:', authError?.message || 'No user returned');
-    return new Response(JSON.stringify({ error: `Auth failed: ${authError?.message || 'Invalid token'}` }), { status: 401 });
+    return new Response(JSON.stringify({
+      error: `Auth failed: ${authError?.message || 'Invalid token'}`,
+      debug_url: debugUrl,
+      debug_key_prefix: debugKeyPrefix,
+    }), { status: 401 });
   }
 
   try {
