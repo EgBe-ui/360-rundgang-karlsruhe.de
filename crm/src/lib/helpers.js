@@ -82,31 +82,6 @@ export const ACTIVITY_TYPES = {
   invoice_sent: { label: 'Rechnung versendet', icon: '📨' },
   quote_created: { label: 'Angebot', icon: '📋' },
   quote_converted: { label: 'Angebot umgewandelt', icon: '🔄' },
-  edited: { label: 'Bearbeitet', icon: '✏️' },
-};
-
-// Field labels for change tracking (German)
-export const FIELD_LABELS = {
-  first_name: 'Vorname',
-  last_name: 'Nachname',
-  email: 'E-Mail',
-  phone: 'Telefon',
-  position: 'Position',
-  company_id: 'Firma',
-  source: 'Quelle',
-  source_detail: 'Quelle Detail',
-  gdpr_consent: 'DSGVO-Einwilligung',
-  title: 'Titel',
-  value: 'Wert',
-  service_type: 'Service-Typ',
-  expected_close: 'Erwarteter Abschluss',
-  lost_reason: 'Verlustgrund',
-  stage: 'Stage',
-  name: 'Name',
-  industry: 'Branche',
-  website: 'Website',
-  address: 'Adresse',
-  city: 'Stadt',
 };
 
 export const CAMPAIGN_STATUS = {

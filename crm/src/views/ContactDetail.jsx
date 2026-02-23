@@ -7,7 +7,7 @@ import { ActivityItem } from '../components/ActivityItem.jsx';
 import { StageBadge } from '../components/StageBadge.jsx';
 import { Modal } from '../components/Modal.jsx';
 import { useToast } from '../components/Toast.jsx';
-import { formatDate, formatCurrency, SOURCES, ACTIVITY_TYPES, FIELD_LABELS } from '../lib/helpers.js';
+import { formatDate, formatCurrency, SOURCES, ACTIVITY_TYPES } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
 export function ContactDetail({ id }) {
@@ -23,7 +23,6 @@ export function ContactDetail({ id }) {
   const [newCompanyName, setNewCompanyName] = useState('');
   const [showActivity, setShowActivity] = useState(false);
   const [activityForm, setActivityForm] = useState({ type: 'note', description: '', due_date: '' });
-  const [activitiesOpen, setActivitiesOpen] = useState(true);
 
   if (loading) {
     return (
@@ -60,17 +59,6 @@ export function ContactDetail({ id }) {
     setEditing(true);
   }
 
-  function resolveDisplayValue(field, val) {
-    if (field === 'gdpr_consent') return val ? 'Ja' : 'Nein';
-    if (field === 'source') return SOURCES[val] || val || '';
-    if (field === 'company_id') {
-      if (!val) return '';
-      const c = companies.find(co => co.id === val);
-      return c ? c.name : val;
-    }
-    return val || '';
-  }
-
   async function saveEdit() {
     try {
       const updates = { ...form };
@@ -90,37 +78,8 @@ export function ContactDetail({ id }) {
         updates.company_id = null;
       }
 
-      // Detect changes for activity log
-      const trackFields = ['first_name', 'last_name', 'email', 'phone', 'position', 'company_id', 'source', 'source_detail', 'gdpr_consent'];
-      const changes = [];
-      for (const field of trackFields) {
-        const oldVal = contact[field] ?? '';
-        const newVal = updates[field] ?? '';
-        // Compare as strings for consistent comparison
-        if (String(oldVal) !== String(newVal)) {
-          changes.push({
-            field: FIELD_LABELS[field] || field,
-            from: resolveDisplayValue(field, oldVal),
-            to: resolveDisplayValue(field, newVal),
-          });
-        }
-      }
-
       const { error } = await update(updates);
       if (error) throw error;
-
-      // Log edit activity with specific changes
-      if (changes.length > 0) {
-        const summary = changes.map(c => c.field).join(', ');
-        await createActivity({
-          contact_id: id,
-          type: 'edited',
-          description: `${summary} geaendert`,
-          metadata: { changes },
-        });
-        refetchActivities();
-      }
-
       toast.success('Kontakt aktualisiert');
       setEditing(false);
     } catch (err) {
@@ -328,18 +287,13 @@ export function ContactDetail({ id }) {
             </div>
 
             <div class="card">
-              <div class="card-header" style="cursor:pointer;user-select:none" onClick={() => setActivitiesOpen(!activitiesOpen)}>
-                <span class="card-title">Aktivitaeten ({activities.length})</span>
-                <span style="font-size:0.75rem;color:var(--text-dim)">{activitiesOpen ? '▲ Einklappen' : '▼ Ausklappen'}</span>
-              </div>
-              {activitiesOpen && (
-                activities.length === 0 ? (
-                  <div style="color:var(--text-dim);font-size:0.85rem">Keine Aktivitaeten</div>
-                ) : (
-                  <div class="timeline">
-                    {activities.map(a => <ActivityItem key={a.id} activity={a} />)}
-                  </div>
-                )
+              <div class="card-header"><span class="card-title">Aktivitaeten ({activities.length})</span></div>
+              {activities.length === 0 ? (
+                <div style="color:var(--text-dim);font-size:0.85rem">Keine Aktivitaeten</div>
+              ) : (
+                <div class="timeline">
+                  {activities.map(a => <ActivityItem key={a.id} activity={a} />)}
+                </div>
               )}
             </div>
           </div>
