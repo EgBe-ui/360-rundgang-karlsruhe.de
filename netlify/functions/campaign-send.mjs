@@ -78,7 +78,12 @@ export default async (request) => {
       .single();
 
     if (campError || !campaign) {
-      return new Response(JSON.stringify({ error: 'Campaign not found' }), { status: 404 });
+      return new Response(JSON.stringify({
+        error: 'Campaign not found',
+        detail: campError?.message || 'No campaign returned',
+        campaign_id,
+        user_id: user.id,
+      }), { status: 404 });
     }
 
     // Test mode: send single email to test_email
