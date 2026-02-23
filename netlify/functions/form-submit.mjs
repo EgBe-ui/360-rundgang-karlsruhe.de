@@ -225,16 +225,18 @@ async function forwardToFormSubmit(data) {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'User-Agent': 'Mozilla/5.0 (compatible; Beck360/1.0)',
       'Referer': 'https://360-rundgang-karlsruhe.de/',
       'Origin': 'https://360-rundgang-karlsruhe.de',
     },
   });
+  // Read body as text first (res.json() consumes body, making res.text() fail if JSON parse fails)
+  const bodyText = await res.text().catch(() => '');
   let result;
   try {
-    result = await res.json();
+    result = JSON.parse(bodyText);
   } catch {
-    const raw = await res.text().catch(() => 'no body');
-    result = { raw };
+    result = { raw: bodyText || 'empty', status: res.status };
   }
   return result;
 }
