@@ -33,6 +33,17 @@ export function Pipeline() {
     }
   }, [deals, refetch, toast]);
 
+  const handleStageChange = useCallback(async (deal, targetStage) => {
+    if (deal.stage === targetStage) return;
+    const { error } = await updateDealStage(deal.id, targetStage, deal.stage, deal.contact_id);
+    if (error) {
+      toast.error('Fehler beim Aendern der Stage');
+    } else {
+      toast.success(`Deal nach "${STAGES[targetStage].label}" verschoben`);
+      refetch();
+    }
+  }, [refetch, toast]);
+
   if (loading) {
     return (
       <>
@@ -75,6 +86,7 @@ export function Pipeline() {
                       key={deal.id}
                       deal={deal}
                       onClick={() => route(`/crm/deals/${deal.id}`)}
+                      onStageChange={handleStageChange}
                     />
                   ))
                 )}

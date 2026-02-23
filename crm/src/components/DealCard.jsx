@@ -1,6 +1,8 @@
-import { formatCurrency } from '../lib/helpers.js';
+import { formatCurrency, STAGES } from '../lib/helpers.js';
 
-export function DealCard({ deal, onDragStart, onClick }) {
+const PIPELINE_STAGES = ['new', 'contacted', 'qualified', 'proposal', 'won', 'lost'];
+
+export function DealCard({ deal, onDragStart, onClick, onStageChange }) {
   return (
     <div
       class="deal-card"
@@ -18,6 +20,21 @@ export function DealCard({ deal, onDragStart, onClick }) {
         <span>{deal.contact_name || '–'}</span>
         <span>{deal.value ? formatCurrency(deal.value) : ''}</span>
       </div>
+      {onStageChange && (
+        <select
+          class="deal-card-stage-select"
+          value={deal.stage}
+          onClick={(e) => e.stopPropagation()}
+          onChange={(e) => {
+            e.stopPropagation();
+            onStageChange(deal, e.target.value);
+          }}
+        >
+          {PIPELINE_STAGES.map(s => (
+            <option key={s} value={s}>{STAGES[s].label}</option>
+          ))}
+        </select>
+      )}
     </div>
   );
 }

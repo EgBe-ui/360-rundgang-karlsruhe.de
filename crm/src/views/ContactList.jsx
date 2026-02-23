@@ -53,19 +53,19 @@ export function ContactList() {
                 <tbody>
                   {contacts.map(c => (
                     <tr key={c.id} class="clickable-row" onClick={() => route(`/crm/contacts/${c.id}`)}>
-                      <td style="font-weight:500">
+                      <td data-label="Name" style="font-weight:500">
                         {c.first_name || c.last_name
                           ? `${c.first_name || ''} ${c.last_name || ''}`.trim()
                           : '–'}
                       </td>
-                      <td>{c.email}</td>
-                      <td>{c.company?.name || '–'}</td>
-                      <td>
+                      <td data-label="E-Mail">{c.email}</td>
+                      <td data-label="Firma">{c.company?.name || '–'}</td>
+                      <td data-label="Quelle">
                         <span class="filter-pill" style="cursor:default;font-size:0.7rem;padding:0.15rem 0.5rem">
                           {SOURCES[c.source] || c.source}
                         </span>
                       </td>
-                      <td style="color:var(--text-dim)">{formatDate(c.created_at)}</td>
+                      <td data-label="Erstellt" style="color:var(--text-dim)">{formatDate(c.created_at)}</td>
                     </tr>
                   ))}
                 </tbody>

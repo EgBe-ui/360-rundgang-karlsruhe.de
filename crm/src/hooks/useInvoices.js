@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'preact/hooks';
 import { supabase } from '../lib/supabase.js';
+import { generateInvoiceNumber } from '../lib/invoiceHelpers.js';
 
 export function useInvoices({ type = null, status = null, companyId = null, dealId = null } = {}) {
   const [invoices, setInvoices] = useState([]);
@@ -166,11 +167,7 @@ export async function convertQuoteToInvoice(quoteId) {
 
   // Generate new invoice number
   const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  const namePart = (quote.customer_name || '').split(' ').pop() || 'Kunde';
-  const invoiceNumber = `R${y}${m}${d}-${namePart}`;
+  const invoiceNumber = generateInvoiceNumber('invoice', quote.customer_company, quote.customer_name);
 
   const { id: _id, created_at: _ca, updated_at: _ua, ...quoteData } = quote;
 

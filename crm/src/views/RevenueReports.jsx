@@ -136,7 +136,7 @@ export function RevenueReports() {
             {/* Monthly Overview */}
             <div class="card" style="margin-bottom:1.5rem">
               <div class="card-header"><span class="card-title">Monatsuebersicht {year}</span></div>
-              <div class="table-wrapper">
+              <div class="table-wrapper table-scroll">
                 <table>
                   <thead>
                     <tr>
@@ -182,7 +182,7 @@ export function RevenueReports() {
             {/* Quarterly Overview */}
             <div class="card" style="margin-bottom:1.5rem">
               <div class="card-header"><span class="card-title">Quartalsuebersicht {year}</span></div>
-              <div class="table-wrapper">
+              <div class="table-wrapper table-scroll">
                 <table>
                   <thead>
                     <tr>
@@ -229,7 +229,7 @@ export function RevenueReports() {
             {Object.keys(expensesByCategory).length > 0 && (
               <div class="card" style="margin-bottom:1.5rem">
                 <div class="card-header"><span class="card-title">Ausgaben nach Kategorie</span></div>
-                <div class="table-wrapper">
+                <div class="table-wrapper table-scroll">
                   <table>
                     <thead>
                       <tr>

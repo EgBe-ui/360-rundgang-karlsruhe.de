@@ -16,7 +16,7 @@ function fmtDate(dateStr) {
   return d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
-export function generateInvoicePdf(invoice, items, settings) {
+export function generateInvoicePdf(invoice, items, settings, options) {
   const doc = new jsPDF('p', 'mm', 'a4');
   const pw = 210; // page width
   const ml = 25;  // margin left
@@ -274,7 +274,14 @@ export function generateInvoicePdf(invoice, items, settings) {
   doc.text(`BIC: ${bankBic}`, fCol3, footerY + 7);
   doc.text(bankName, fCol3, footerY + 10.5);
 
-  // ===== SAVE =====
+  // ===== OUTPUT =====
+  if (options?.preview) {
+    const blob = doc.output('blob');
+    const url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+    return;
+  }
+
   const filename = `${invoice.invoice_number}.pdf`;
   doc.save(filename);
 }

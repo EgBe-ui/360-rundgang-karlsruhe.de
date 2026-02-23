@@ -71,6 +71,10 @@ export function InvoiceDetail({ id }) {
     generateInvoicePdf(invoice, items, settings);
   }
 
+  function handlePreviewPdf() {
+    generateInvoicePdf(invoice, items, settings, { preview: true });
+  }
+
   function handleEdit() {
     route(`/crm/invoices/new?edit=${id}`);
   }
@@ -89,6 +93,9 @@ export function InvoiceDetail({ id }) {
           </span>
         </div>
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+          <button class="btn btn-secondary btn-sm" onClick={handlePreviewPdf}>
+            Vorschau
+          </button>
           <button class="btn btn-primary btn-sm" onClick={handleDownloadPdf}>
             PDF herunterladen
           </button>

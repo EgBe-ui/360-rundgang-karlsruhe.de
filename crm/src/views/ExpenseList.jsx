@@ -110,15 +110,15 @@ export function ExpenseList() {
                       class="clickable-row"
                       onClick={() => route(`/crm/expenses/new?edit=${exp.id}`)}
                     >
-                      <td>{formatDate(exp.date)}</td>
-                      <td>
+                      <td data-label="Datum">{formatDate(exp.date)}</td>
+                      <td data-label="Kategorie">
                         <span style="font-size:0.75rem;padding:0.15rem 0.5rem;border-radius:999px;background:rgba(239,68,68,0.12);color:#ef4444">
                           {EXPENSE_CATEGORIES[exp.category] || exp.category}
                         </span>
                       </td>
-                      <td>{exp.description}</td>
-                      <td>{exp.vendor || '–'}</td>
-                      <td style="text-align:right;font-weight:600">{formatCurrency(exp.amount)}</td>
+                      <td data-label="Beschreibung">{exp.description}</td>
+                      <td data-label="Lieferant">{exp.vendor || '–'}</td>
+                      <td data-label="Betrag" style="text-align:right;font-weight:600">{formatCurrency(exp.amount)}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -89,7 +89,7 @@ export function InvoiceForm() {
           customer_name: contactName,
           customer_street: deal.company?.address || '',
           customer_city: deal.company?.city || '',
-          invoice_number: generateInvoiceNumber(urlType, contactName || deal.company?.name),
+          invoice_number: generateInvoiceNumber(urlType, deal.company?.name, contactName),
         }));
       });
   }, [dealId, urlType, editId]);
@@ -105,7 +105,7 @@ export function InvoiceForm() {
       setForm(f => ({
         ...f,
         type: 'invoice',
-        invoice_number: generateInvoiceNumber('invoice', q.customer_name || q.customer_company),
+        invoice_number: generateInvoiceNumber('invoice', q.customer_company, q.customer_name),
         company_id: q.company_id || '',
         contact_id: q.contact_id || '',
         deal_id: q.deal_id || '',
@@ -169,8 +169,7 @@ export function InvoiceForm() {
   useEffect(() => {
     if (editId || quoteId) return;
     if (!form.customer_name && !form.customer_company) return;
-    const name = form.customer_name || form.customer_company;
-    setForm(f => ({ ...f, invoice_number: generateInvoiceNumber(f.type, name) }));
+    setForm(f => ({ ...f, invoice_number: generateInvoiceNumber(f.type, f.customer_company, f.customer_name) }));
   }, [form.type, form.customer_name, form.customer_company, editId, quoteId]);
 
   // Company select handler

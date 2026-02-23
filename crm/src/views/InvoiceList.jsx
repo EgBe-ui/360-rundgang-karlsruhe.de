@@ -83,15 +83,15 @@ export function InvoiceList() {
                       class="clickable-row"
                       onClick={() => route(`/crm/invoices/${inv.id}`)}
                     >
-                      <td style="font-weight:600">{inv.invoice_number}</td>
-                      <td>
+                      <td data-label="Nummer" style="font-weight:600">{inv.invoice_number}</td>
+                      <td data-label="Typ">
                         <span style={`font-size:0.75rem;padding:0.15rem 0.5rem;border-radius:999px;background:${inv.type === 'quote' ? 'rgba(139,92,246,0.15);color:#a78bfa' : 'rgba(59,130,246,0.15);color:#60a5fa'}`}>
                           {INVOICE_TYPES[inv.type]?.label}
                         </span>
                       </td>
-                      <td>{inv.customer_company || inv.customer_name || '–'}</td>
-                      <td>{formatDate(inv.invoice_date)}</td>
-                      <td>
+                      <td data-label="Kunde">{inv.customer_company || inv.customer_name || '–'}</td>
+                      <td data-label="Datum">{formatDate(inv.invoice_date)}</td>
+                      <td data-label="Status">
                         <span
                           class="stage-badge"
                           style={`color:${INVOICE_STATUS[inv.status]?.color};background:${INVOICE_STATUS[inv.status]?.color}20`}
@@ -99,7 +99,7 @@ export function InvoiceList() {
                           {INVOICE_STATUS[inv.status]?.label}
                         </span>
                       </td>
-                      <td style="text-align:right;font-weight:600">{formatCurrency(inv.total_amount)}</td>
+                      <td data-label="Betrag" style="text-align:right;font-weight:600">{formatCurrency(inv.total_amount)}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -76,11 +76,11 @@ export function CompanyList() {
                 <tbody>
                   {companies.map(c => (
                     <tr key={c.id} class="clickable-row" onClick={() => route(`/crm/companies/${c.id}`)}>
-                      <td style="font-weight:500">{c.name}</td>
-                      <td>{c.industry || '–'}</td>
-                      <td>{c.city || '–'}</td>
-                      <td>{c.website ? <a href={c.website} target="_blank" rel="noopener" onClick={e => e.stopPropagation()}>{c.website}</a> : '–'}</td>
-                      <td style="color:var(--text-dim)">{formatDate(c.created_at)}</td>
+                      <td data-label="Name" style="font-weight:500">{c.name}</td>
+                      <td data-label="Branche">{c.industry || '–'}</td>
+                      <td data-label="Stadt">{c.city || '–'}</td>
+                      <td data-label="Website">{c.website ? <a href={c.website} target="_blank" rel="noopener" onClick={e => e.stopPropagation()}>{c.website}</a> : '–'}</td>
+                      <td data-label="Erstellt" style="color:var(--text-dim)">{formatDate(c.created_at)}</td>
                     </tr>
                   ))}
                 </tbody>
