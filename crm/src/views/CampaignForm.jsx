@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from 'preact/hooks';
+import { useState, useMemo, useRef } from 'preact/hooks';
 import DOMPurify from 'dompurify';
 import { createCampaign, saveCampaignRecipients, sendCampaign } from '../hooks/useCampaigns.js';
 import { useContacts } from '../hooks/useContacts.js';
@@ -23,7 +23,7 @@ const PLACEHOLDERS = [
 
 export function CampaignForm() {
   const toast = useToast();
-  const { contacts: allContacts } = useContacts();
+  const { contacts: allContacts, loading: loadingContacts } = useContacts();
   const { companies } = useCompanies();
   const editorRef = useRef(null);
 
@@ -33,7 +33,8 @@ export function CampaignForm() {
     subject: '',
     body_html: '',
   });
-  const [selectedIds, setSelectedIds] = useState(new Set());
+  // Use plain object for reliable Preact reactivity (Set can cause issues)
+  const [selected, setSelected] = useState({});
   const [search, setSearch] = useState('');
   const [companyFilter, setCompanyFilter] = useState('');
   const [saving, setSaving] = useState(false);
@@ -73,15 +74,15 @@ export function CampaignForm() {
     });
   }
 
-  // Only contacts with email and GDPR consent
-  const eligibleContacts = useMemo(() =>
-    allContacts.filter(c => c.email && c.gdpr_consent),
+  // All contacts with email address (no GDPR filter — all contacts selectable)
+  const contactsWithEmail = useMemo(() =>
+    allContacts.filter(c => c.email),
     [allContacts]
   );
 
   // Filtered view for display
   const filteredContacts = useMemo(() => {
-    let list = eligibleContacts;
+    let list = contactsWithEmail;
     if (companyFilter) {
       list = list.filter(c => c.company_id === companyFilter);
     }
@@ -95,47 +96,50 @@ export function CampaignForm() {
       );
     }
     return list;
-  }, [eligibleContacts, search, companyFilter]);
+  }, [contactsWithEmail, search, companyFilter]);
+
+  const selectedCount = Object.keys(selected).length;
 
   function toggleContact(id) {
-    setSelectedIds(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+    setSelected(prev => {
+      const next = { ...prev };
+      if (next[id]) {
+        delete next[id];
+      } else {
+        next[id] = true;
+      }
       return next;
     });
   }
 
   function selectAll() {
-    setSelectedIds(new Set(eligibleContacts.map(c => c.id)));
+    const next = {};
+    contactsWithEmail.forEach(c => { next[c.id] = true; });
+    setSelected(next);
   }
 
   function deselectAll() {
-    setSelectedIds(new Set());
+    setSelected({});
   }
 
-  const allVisibleSelected = filteredContacts.length > 0 && filteredContacts.every(c => selectedIds.has(c.id));
+  const allVisibleSelected = filteredContacts.length > 0 && filteredContacts.every(c => selected[c.id]);
 
   function toggleAllVisible() {
-    if (allVisibleSelected) {
-      setSelectedIds(prev => {
-        const next = new Set(prev);
-        filteredContacts.forEach(c => next.delete(c.id));
-        return next;
-      });
-    } else {
-      setSelectedIds(prev => {
-        const next = new Set(prev);
-        filteredContacts.forEach(c => next.add(c.id));
-        return next;
-      });
-    }
+    setSelected(prev => {
+      const next = { ...prev };
+      if (allVisibleSelected) {
+        filteredContacts.forEach(c => { delete next[c.id]; });
+      } else {
+        filteredContacts.forEach(c => { next[c.id] = true; });
+      }
+      return next;
+    });
   }
 
   // Build recipients array from selected IDs
   const recipients = useMemo(() =>
-    eligibleContacts.filter(c => selectedIds.has(c.id)),
-    [eligibleContacts, selectedIds]
+    contactsWithEmail.filter(c => selected[c.id]),
+    [contactsWithEmail, selected]
   );
 
   // Preview with first recipient's data or defaults
@@ -233,7 +237,7 @@ export function CampaignForm() {
   }
 
   function canProceedToStep2() {
-    return selectedIds.size > 0;
+    return selectedCount > 0;
   }
 
   function canProceedToStep3() {
@@ -289,7 +293,7 @@ export function CampaignForm() {
             <div class="card-header">
               <span class="card-title">Empfaenger waehlen</span>
               <span style="font-size:0.85rem;color:var(--text-muted)">
-                {eligibleContacts.length} Kontakte mit DSGVO-Einwilligung
+                {contactsWithEmail.length} Kontakte verfuegbar
               </span>
             </div>
 
@@ -322,67 +326,63 @@ export function CampaignForm() {
               </div>
             </div>
 
-            {/* Contacts table */}
-            {filteredContacts.length === 0 ? (
+            {/* Contacts list */}
+            {loadingContacts ? (
+              <div class="loading-center"><div class="spinner" /></div>
+            ) : filteredContacts.length === 0 ? (
               <div class="empty-state">
                 <div class="empty-state-text">
-                  {eligibleContacts.length === 0 ? 'Keine Kontakte mit DSGVO-Einwilligung und E-Mail' : 'Keine Treffer fuer diese Suche'}
+                  {contactsWithEmail.length === 0 ? 'Keine Kontakte mit E-Mail-Adresse vorhanden' : 'Keine Treffer fuer diese Suche'}
                 </div>
               </div>
             ) : (
-              <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;">
-                <table style="margin:0;">
-                  <thead>
-                    <tr>
-                      <th style="width:40px;padding:0.5rem 0.75rem;">
-                        <input
-                          type="checkbox"
-                          checked={allVisibleSelected}
-                          onChange={toggleAllVisible}
-                          style="width:auto;"
-                        />
-                      </th>
-                      <th>Name</th>
-                      <th>E-Mail</th>
-                      <th class="hide-mobile-sm">Firma</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredContacts.map(c => (
-                      <tr
-                        key={c.id}
-                        onClick={() => toggleContact(c.id)}
-                        style={`cursor:pointer;${selectedIds.has(c.id) ? 'background:rgba(26,92,107,0.06);' : ''}`}
-                      >
-                        <td style="width:40px;padding:0.5rem 0.75rem;" data-label="">
-                          <input
-                            type="checkbox"
-                            checked={selectedIds.has(c.id)}
-                            onChange={() => toggleContact(c.id)}
-                            onClick={e => e.stopPropagation()}
-                            style="width:auto;"
-                          />
-                        </td>
-                        <td data-label="Name">
-                          <span style="font-weight:500;">
-                            {`${c.first_name || ''} ${c.last_name || ''}`.trim() || '–'}
-                          </span>
-                        </td>
-                        <td data-label="E-Mail" style="color:var(--text-muted);">{c.email}</td>
-                        <td data-label="Firma" class="hide-mobile-sm" style="color:var(--text-muted);">
-                          {c.company?.name || '–'}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div style="border:1px solid var(--border);border-radius:var(--radius);max-height:500px;overflow-y:auto;">
+                {/* Header */}
+                <div style="display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);background:var(--bg-hover);font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;position:sticky;top:0;z-index:1;">
+                  <input
+                    type="checkbox"
+                    checked={allVisibleSelected}
+                    onChange={toggleAllVisible}
+                    style="width:16px;height:16px;flex-shrink:0;cursor:pointer;"
+                  />
+                  <span style="flex:1;">Name</span>
+                  <span style="flex:1;" class="hide-mobile-sm">E-Mail</span>
+                  <span style="width:140px;" class="hide-mobile-sm">Firma</span>
+                </div>
+                {/* Rows */}
+                {filteredContacts.map(c => {
+                  const isSelected = !!selected[c.id];
+                  const name = `${c.first_name || ''} ${c.last_name || ''}`.trim() || c.email;
+                  return (
+                    <label
+                      key={c.id}
+                      style={`display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);cursor:pointer;font-size:0.875rem;transition:background 0.1s;${isSelected ? 'background:rgba(26,92,107,0.06);' : ''}`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isSelected}
+                        onChange={() => toggleContact(c.id)}
+                        style="width:16px;height:16px;flex-shrink:0;cursor:pointer;"
+                      />
+                      <span style="flex:1;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                        {name}
+                      </span>
+                      <span style="flex:1;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" class="hide-mobile-sm">
+                        {c.email}
+                      </span>
+                      <span style="width:140px;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" class="hide-mobile-sm">
+                        {c.company?.name || '–'}
+                      </span>
+                    </label>
+                  );
+                })}
               </div>
             )}
 
             {/* Count + Next */}
             <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem;flex-wrap:wrap;gap:0.75rem;">
               <div style="padding:0.5rem 1rem;background:var(--bg-hover);border-radius:var(--radius);font-size:0.875rem;">
-                <strong>{selectedIds.size}</strong> von {eligibleContacts.length} Empfaenger ausgewaehlt
+                <strong>{selectedCount}</strong> von {contactsWithEmail.length} Empfaenger ausgewaehlt
               </div>
               <button
                 class="btn btn-primary"
@@ -513,7 +513,7 @@ export function CampaignForm() {
               <div class="card-header"><span class="card-title">Zusammenfassung</span></div>
               <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
                 <div style="padding:1rem;background:var(--bg-hover);border-radius:var(--radius);text-align:center;">
-                  <div style="font-size:1.75rem;font-weight:700;">{selectedIds.size}</div>
+                  <div style="font-size:1.75rem;font-weight:700;">{selectedCount}</div>
                   <div style="font-size:0.8rem;color:var(--text-muted);">Empfaenger</div>
                 </div>
                 <div style="padding:1rem;background:var(--bg-hover);border-radius:var(--radius);">
@@ -583,7 +583,7 @@ export function CampaignForm() {
                 <button
                   class="btn btn-primary"
                   onClick={() => setShowSendConfirm(true)}
-                  disabled={saving || selectedIds.size === 0}
+                  disabled={saving || selectedCount === 0}
                 >
                   Jetzt senden
                 </button>
@@ -597,7 +597,7 @@ export function CampaignForm() {
       {showSendConfirm && (
         <Modal title="Kampagne senden?" onClose={() => setShowSendConfirm(false)}>
           <p style="margin-bottom:1rem;">
-            Die Kampagne "<strong>{form.name}</strong>" wird an <strong>{selectedIds.size} Empfaenger</strong> gesendet. Dieser Vorgang kann nicht rueckgaengig gemacht werden.
+            Die Kampagne "<strong>{form.name}</strong>" wird an <strong>{selectedCount} Empfaenger</strong> gesendet. Dieser Vorgang kann nicht rueckgaengig gemacht werden.
           </p>
           <div class="form-actions">
             <button class="btn btn-secondary" onClick={() => setShowSendConfirm(false)}>Abbrechen</button>
