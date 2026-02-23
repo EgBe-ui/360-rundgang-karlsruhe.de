@@ -37,7 +37,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-02-19</lastmod>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -240,6 +240,14 @@
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/grundriss-visualisierung-3d-plaene-exposes-2026.html</loc>
         <lastmod>2026-02-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Artikel: sanierungspflicht-2026-haus-verkaufen-karlsruhe -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/sanierungspflicht-2026-haus-verkaufen-karlsruhe.html</loc>
+        <lastmod>2026-02-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
