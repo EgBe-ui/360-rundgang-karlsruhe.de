@@ -1,9 +1,9 @@
 import { useState } from 'preact/hooks';
 import DOMPurify from 'dompurify';
-import { useCampaign, useCampaignRecipients, sendCampaign, saveCampaignRecipients, fetchFilteredRecipients } from '../hooks/useCampaigns.js';
+import { useCampaign, useCampaignRecipients, sendCampaign } from '../hooks/useCampaigns.js';
 import { Modal } from '../components/Modal.jsx';
 import { useToast } from '../components/Toast.jsx';
-import { CAMPAIGN_STATUS, SOURCES, STAGES, INDUSTRIES, formatDate, formatDateTime } from '../lib/helpers.js';
+import { CAMPAIGN_STATUS, formatDate, formatDateTime } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
 const RECIPIENT_STATUS = {
@@ -66,13 +66,6 @@ export function CampaignDetail({ id }) {
   async function handleSend() {
     setSending(true);
     try {
-      // Refresh recipients from filters before sending
-      if (campaign.status === 'draft' && campaign.filters) {
-        const { data: freshContacts } = await fetchFilteredRecipients(campaign.filters);
-        await saveCampaignRecipients(campaign.id, freshContacts);
-        await refetchRecipients();
-      }
-
       const result = await sendCampaign(campaign.id);
       toast.success(`Kampagne gesendet an ${result.total_sent} Empfaenger`);
       refetch();
@@ -190,17 +183,6 @@ export function CampaignDetail({ id }) {
                       <span class="detail-value">{formatDateTime(campaign.sent_at)}</span>
                     </div>
                   )}
-                  {campaign.filters && (
-                    <div class="detail-field form-group-full">
-                      <span class="detail-label">Filter</span>
-                      <span class="detail-value" style="font-size:0.85rem">
-                        {campaign.filters.source && <span class="filter-pill" style="cursor:default;font-size:0.7rem;padding:0.15rem 0.5rem;margin-right:0.25rem">{SOURCES[campaign.filters.source] || campaign.filters.source}</span>}
-                        {campaign.filters.stage && <span class="filter-pill" style="cursor:default;font-size:0.7rem;padding:0.15rem 0.5rem;margin-right:0.25rem">{STAGES[campaign.filters.stage]?.label || campaign.filters.stage}</span>}
-                        {campaign.filters.industry && <span class="filter-pill" style="cursor:default;font-size:0.7rem;padding:0.15rem 0.5rem">{campaign.filters.industry}</span>}
-                        {!campaign.filters.source && !campaign.filters.stage && !campaign.filters.industry && 'Alle Kontakte'}
-                      </span>
-                    </div>
-                  )}
                 </div>
               )}
             </div>
@@ -279,6 +261,10 @@ export function CampaignDetail({ id }) {
                   <span class="detail-value">{formatDate(campaign.sent_at)}</span>
                 </div>
               )}
+              <div class="detail-field">
+                <span class="detail-label">Empfaenger</span>
+                <span class="detail-value">{recipients.length}</span>
+              </div>
             </div>
           </div>
         </div>

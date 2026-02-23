@@ -94,6 +94,8 @@ export const EMAIL_TEMPLATES = [
   {
     id: 'follow-up',
     name: 'Angebot nachfassen',
+    icon: '📩',
+    preview: 'Offenes Angebot freundlich nachfassen',
     subject: 'Ihr 360°-Rundgang – Noch Fragen offen?',
     body: `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
@@ -119,7 +121,9 @@ export const EMAIL_TEMPLATES = [
   },
   {
     id: 'new-service',
-    name: 'Neue Dienstleistung vorstellen',
+    name: 'Neue Dienstleistung',
+    icon: '🚀',
+    preview: 'Neues Angebot oder Service vorstellen',
     subject: 'Neu bei Beck360: Erweiterte 360\u00b0-Loesungen',
     body: `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
@@ -151,6 +155,8 @@ export const EMAIL_TEMPLATES = [
   {
     id: 'review',
     name: 'Um Bewertung bitten',
+    icon: '⭐',
+    preview: 'Kunden um Google-Bewertung bitten',
     subject: 'Wie war Ihre Erfahrung mit Beck360?',
     body: `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
@@ -164,7 +170,7 @@ export const EMAIL_TEMPLATES = [
     <p>vielen Dank, dass Sie sich fuer Beck360 entschieden haben! Wir hoffen, Sie sind mit dem Ergebnis zufrieden.</p>
     <p>Wuerden Sie uns mit einer kurzen Google-Bewertung unterstuetzen? Das dauert nur 1 Minute und hilft uns enorm.</p>
     <p style="margin-top:24px;">
-      <a href="https://g.page/r/CQyourGoogleReviewLink/review" style="background:#1a5c6b;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block;">Jetzt bewerten</a>
+      <a href="https://www.google.com/maps/place/Beck360/@48.9408,8.4072,17z/?entry=ttu&action=write-review" style="background:#1a5c6b;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block;">Jetzt bewerten</a>
     </p>
     <p style="margin-top:24px;">Herzlichen Dank!<br><strong>Eugen Beck</strong><br>Beck360<br>+49 173 468 2501</p>
   </div>
@@ -175,8 +181,42 @@ export const EMAIL_TEMPLATES = [
 </body></html>`,
   },
   {
+    id: 'seasonal',
+    name: 'Saisonales Angebot',
+    icon: '🎁',
+    preview: 'Zeitlich begrenztes Angebot bewerben',
+    subject: 'Exklusives Angebot fuer {{firma}} – Nur fuer kurze Zeit',
+    body: `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:#f8fafc;">
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+  <div style="background:#1a5c6b;padding:24px;border-radius:12px 12px 0 0;text-align:center;">
+    <h1 style="color:#fff;margin:0;font-size:20px;">Beck360</h1>
+  </div>
+  <div style="background:#fff;padding:32px 24px;border-radius:0 0 12px 12px;line-height:1.6;color:#334155;">
+    <p>Hallo {{vorname}},</p>
+    <p>wir haben ein exklusives Angebot fuer Sie:</p>
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:16px 0;text-align:center;">
+      <p style="font-size:18px;font-weight:700;color:#166534;margin:0 0 8px 0;">Fruehlings-Aktion 2026</p>
+      <p style="font-size:14px;color:#15803d;margin:0;">360\u00b0-Rundgang zum Sonderpreis – nur bis Ende des Monats!</p>
+    </div>
+    <p>Ob fuer Ihre Geschaeftsraeume, Ihr Hotel oder Ihre Immobilie – ein professioneller 360\u00b0-Rundgang bringt Ihre Raeumlichkeiten online zum Leben.</p>
+    <p style="margin-top:24px;">
+      <a href="https://360-rundgang-karlsruhe.de" style="background:#1a5c6b;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block;">Jetzt Angebot sichern</a>
+    </p>
+    <p style="margin-top:24px;">Beste Gruesse<br><strong>Eugen Beck</strong><br>Beck360 – 360\u00b0 Rundgaenge & Drohnenaufnahmen<br>+49 173 468 2501</p>
+  </div>
+  <div style="text-align:center;padding:16px;font-size:11px;color:#94a3b8;">
+    Beck360 | Eichenweg 1, 76275 Ettlingen | <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#94a3b8;">Impressum</a>
+  </div>
+</div>
+</body></html>`,
+  },
+  {
     id: 'blank',
     name: 'Leere Vorlage',
+    icon: '📝',
+    preview: 'Leeres Template mit Beck360-Layout',
     subject: '',
     body: `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"></head>
