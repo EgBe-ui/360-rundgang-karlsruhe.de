@@ -200,15 +200,15 @@ export function InvoiceDetail({ id }) {
                   <tbody>
                     {items.map(item => (
                       <tr key={item.id}>
-                        <td>
+                        <td data-label="Bezeichnung">
                           <div>{item.description}</div>
                           {item.sub_description && (
                             <div style="font-size:0.8rem;color:var(--text-muted)">{item.sub_description}</div>
                           )}
                         </td>
-                        <td style="text-align:right">{item.quantity}</td>
-                        <td style="text-align:right">{formatCurrency(item.unit_price)}</td>
-                        <td style="text-align:right;font-weight:500">{formatCurrency(item.total)}</td>
+                        <td data-label="Menge">{item.quantity}</td>
+                        <td data-label="Einzelpreis">{formatCurrency(item.unit_price)}</td>
+                        <td data-label="Gesamt" style="font-weight:500">{formatCurrency(item.total)}</td>
                       </tr>
                     ))}
                   </tbody>

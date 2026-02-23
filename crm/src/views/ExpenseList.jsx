@@ -33,14 +33,14 @@ export function ExpenseList() {
           <select
             value={year}
             onChange={e => setYear(parseInt(e.target.value))}
-            style="min-width:100px"
+            style="width:auto"
           >
             {years.map(y => <option key={y} value={y}>{y}</option>)}
           </select>
           <select
             value={month || ''}
             onChange={e => setMonth(e.target.value ? parseInt(e.target.value) : null)}
-            style="min-width:130px"
+            style="width:auto"
           >
             <option value="">Alle Monate</option>
             {MONTHS.map((m, i) => <option key={i} value={i + 1}>{m}</option>)}

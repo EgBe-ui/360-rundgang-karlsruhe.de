@@ -86,11 +86,11 @@ export function RevenueReports() {
     <>
       <div class="page-header">
         <h1 class="page-title">Berichte</h1>
-        <div style="display:flex;gap:0.5rem;align-items:center">
+        <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap">
           <select
             value={year}
             onChange={e => setYear(parseInt(e.target.value))}
-            style="min-width:100px"
+            style="width:auto"
           >
             {years.map(y => <option key={y} value={y}>{y}</option>)}
           </select>
@@ -136,7 +136,7 @@ export function RevenueReports() {
             {/* Monthly Overview */}
             <div class="card" style="margin-bottom:1.5rem">
               <div class="card-header"><span class="card-title">Monatsuebersicht {year}</span></div>
-              <div class="table-wrapper table-scroll">
+              <div class="table-wrapper">
                 <table>
                   <thead>
                     <tr>
@@ -152,25 +152,25 @@ export function RevenueReports() {
                   <tbody>
                     {monthlyData.map(m => (
                       <tr key={m.month}>
-                        <td>{MONTHS[m.month - 1]}</td>
-                        <td style="text-align:right">{formatCurrency(m.incomeBrutto)}</td>
-                        <td style="text-align:right">{formatCurrency(m.incomeNetto)}</td>
-                        <td style="text-align:right">{formatCurrency(m.expensesBrutto)}</td>
-                        <td style="text-align:right">{formatCurrency(m.vatCollected)}</td>
-                        <td style="text-align:right">{formatCurrency(m.vatPaid)}</td>
-                        <td style={`text-align:right;font-weight:600;color:${m.profit >= 0 ? '#10b981' : '#ef4444'}`}>
+                        <td data-label="Monat" style="font-weight:600">{MONTHS[m.month - 1]}</td>
+                        <td data-label="Einnahmen brutto">{formatCurrency(m.incomeBrutto)}</td>
+                        <td data-label="Einnahmen netto">{formatCurrency(m.incomeNetto)}</td>
+                        <td data-label="Ausgaben brutto">{formatCurrency(m.expensesBrutto)}</td>
+                        <td data-label="MwSt erh.">{formatCurrency(m.vatCollected)}</td>
+                        <td data-label="MwSt gez.">{formatCurrency(m.vatPaid)}</td>
+                        <td data-label="Gewinn" style={`font-weight:600;color:${m.profit >= 0 ? '#10b981' : '#ef4444'}`}>
                           {formatCurrency(m.profit)}
                         </td>
                       </tr>
                     ))}
                     <tr style="font-weight:700;border-top:2px solid var(--border)">
-                      <td>Summe</td>
-                      <td style="text-align:right">{formatCurrency(monthlyData.reduce((s, m) => s + m.incomeBrutto, 0))}</td>
-                      <td style="text-align:right">{formatCurrency(monthlyData.reduce((s, m) => s + m.incomeNetto, 0))}</td>
-                      <td style="text-align:right">{formatCurrency(monthlyData.reduce((s, m) => s + m.expensesBrutto, 0))}</td>
-                      <td style="text-align:right">{formatCurrency(monthlyData.reduce((s, m) => s + m.vatCollected, 0))}</td>
-                      <td style="text-align:right">{formatCurrency(monthlyData.reduce((s, m) => s + m.vatPaid, 0))}</td>
-                      <td style={`text-align:right;color:${stats.yearProfit >= 0 ? '#10b981' : '#ef4444'}`}>
+                      <td data-label="Monat">Summe</td>
+                      <td data-label="Einnahmen brutto">{formatCurrency(monthlyData.reduce((s, m) => s + m.incomeBrutto, 0))}</td>
+                      <td data-label="Einnahmen netto">{formatCurrency(monthlyData.reduce((s, m) => s + m.incomeNetto, 0))}</td>
+                      <td data-label="Ausgaben brutto">{formatCurrency(monthlyData.reduce((s, m) => s + m.expensesBrutto, 0))}</td>
+                      <td data-label="MwSt erh.">{formatCurrency(monthlyData.reduce((s, m) => s + m.vatCollected, 0))}</td>
+                      <td data-label="MwSt gez.">{formatCurrency(monthlyData.reduce((s, m) => s + m.vatPaid, 0))}</td>
+                      <td data-label="Gewinn" style={`color:${stats.yearProfit >= 0 ? '#10b981' : '#ef4444'}`}>
                         {formatCurrency(stats.yearProfit)}
                       </td>
                     </tr>
@@ -182,7 +182,7 @@ export function RevenueReports() {
             {/* Quarterly Overview */}
             <div class="card" style="margin-bottom:1.5rem">
               <div class="card-header"><span class="card-title">Quartalsuebersicht {year}</span></div>
-              <div class="table-wrapper table-scroll">
+              <div class="table-wrapper">
                 <table>
                   <thead>
                     <tr>
@@ -198,25 +198,25 @@ export function RevenueReports() {
                   <tbody>
                     {quarterlyData.map(q => (
                       <tr key={q.quarter}>
-                        <td>Q{q.quarter}</td>
-                        <td style="text-align:right">{formatCurrency(q.incomeBrutto)}</td>
-                        <td style="text-align:right">{formatCurrency(q.incomeNetto)}</td>
-                        <td style="text-align:right">{formatCurrency(q.expensesBrutto)}</td>
-                        <td style="text-align:right">{formatCurrency(q.vatCollected)}</td>
-                        <td style="text-align:right">{formatCurrency(q.vatPaid)}</td>
-                        <td style={`text-align:right;font-weight:600;color:${q.profit >= 0 ? '#10b981' : '#ef4444'}`}>
+                        <td data-label="Quartal" style="font-weight:600">Q{q.quarter}</td>
+                        <td data-label="Einnahmen brutto">{formatCurrency(q.incomeBrutto)}</td>
+                        <td data-label="Einnahmen netto">{formatCurrency(q.incomeNetto)}</td>
+                        <td data-label="Ausgaben brutto">{formatCurrency(q.expensesBrutto)}</td>
+                        <td data-label="MwSt erh.">{formatCurrency(q.vatCollected)}</td>
+                        <td data-label="MwSt gez.">{formatCurrency(q.vatPaid)}</td>
+                        <td data-label="Gewinn" style={`font-weight:600;color:${q.profit >= 0 ? '#10b981' : '#ef4444'}`}>
                           {formatCurrency(q.profit)}
                         </td>
                       </tr>
                     ))}
                     <tr style="font-weight:700;border-top:2px solid var(--border)">
-                      <td>Summe</td>
-                      <td style="text-align:right">{formatCurrency(stats.yearRevenue)}</td>
-                      <td style="text-align:right">{formatCurrency(stats.yearRevenueNetto)}</td>
-                      <td style="text-align:right">{formatCurrency(stats.yearExpenses)}</td>
-                      <td style="text-align:right">{formatCurrency(stats.vatCollected)}</td>
-                      <td style="text-align:right">{formatCurrency(stats.vatPaid)}</td>
-                      <td style={`text-align:right;color:${stats.yearProfit >= 0 ? '#10b981' : '#ef4444'}`}>
+                      <td data-label="Quartal">Summe</td>
+                      <td data-label="Einnahmen brutto">{formatCurrency(stats.yearRevenue)}</td>
+                      <td data-label="Einnahmen netto">{formatCurrency(stats.yearRevenueNetto)}</td>
+                      <td data-label="Ausgaben brutto">{formatCurrency(stats.yearExpenses)}</td>
+                      <td data-label="MwSt erh.">{formatCurrency(stats.vatCollected)}</td>
+                      <td data-label="MwSt gez.">{formatCurrency(stats.vatPaid)}</td>
+                      <td data-label="Gewinn" style={`color:${stats.yearProfit >= 0 ? '#10b981' : '#ef4444'}`}>
                         {formatCurrency(stats.yearProfit)}
                       </td>
                     </tr>
@@ -229,7 +229,7 @@ export function RevenueReports() {
             {Object.keys(expensesByCategory).length > 0 && (
               <div class="card" style="margin-bottom:1.5rem">
                 <div class="card-header"><span class="card-title">Ausgaben nach Kategorie</span></div>
-                <div class="table-wrapper table-scroll">
+                <div class="table-wrapper">
                   <table>
                     <thead>
                       <tr>
@@ -243,17 +243,17 @@ export function RevenueReports() {
                         .sort(([, a], [, b]) => b - a)
                         .map(([cat, amount]) => (
                           <tr key={cat}>
-                            <td>{EXPENSE_CATEGORIES[cat] || cat}</td>
-                            <td style="text-align:right">{formatCurrency(amount)}</td>
-                            <td style="text-align:right">
+                            <td data-label="Kategorie" style="font-weight:500">{EXPENSE_CATEGORIES[cat] || cat}</td>
+                            <td data-label="Betrag">{formatCurrency(amount)}</td>
+                            <td data-label="Anteil">
                               {totalExpenses > 0 ? ((amount / totalExpenses) * 100).toFixed(1) : 0} %
                             </td>
                           </tr>
                         ))}
                       <tr style="font-weight:700;border-top:2px solid var(--border)">
-                        <td>Gesamt</td>
-                        <td style="text-align:right">{formatCurrency(totalExpenses)}</td>
-                        <td style="text-align:right">100 %</td>
+                        <td data-label="Kategorie">Gesamt</td>
+                        <td data-label="Betrag">{formatCurrency(totalExpenses)}</td>
+                        <td data-label="Anteil">100 %</td>
                       </tr>
                     </tbody>
                   </table>
