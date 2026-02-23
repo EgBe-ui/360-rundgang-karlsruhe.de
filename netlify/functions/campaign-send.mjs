@@ -42,9 +42,14 @@ export default async (request) => {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
   }
 
+  if (!supabase) {
+    return new Response(JSON.stringify({ error: 'Server misconfigured: Supabase not available. Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY env vars.' }), { status: 500 });
+  }
+
   const { data: { user }, error: authError } = await supabase.auth.getUser(token);
   if (authError || !user) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
+    console.error('Auth validation failed:', authError?.message || 'No user returned');
+    return new Response(JSON.stringify({ error: `Auth failed: ${authError?.message || 'Invalid token'}` }), { status: 401 });
   }
 
   try {
