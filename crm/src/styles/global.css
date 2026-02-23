@@ -693,7 +693,7 @@ tr:hover td { background: #f8fafc; }
   .mobile-toggle { display: block; }
   .main-content { margin-left: 0; }
   .page-header { padding-left: 3.5rem; flex-wrap: wrap; gap: 0.75rem; }
-  .page-header > div { width: 100%; }
+  .page-header > div { width: 100%; display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .page-title { font-size: 1.1rem; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .detail-grid { grid-template-columns: 1fr; }
@@ -762,6 +762,8 @@ tr:hover td { background: #f8fafc; }
   .grid-2 { grid-template-columns: 1fr; }
   .page-body, .card { padding: 1rem; }
   .kpi-value { font-size: 1.25rem; }
+  .page-header > div { flex-direction: column; }
+  .search-bar select { min-width: 0 !important; width: 100%; }
 }
 
 /* Deal card stage dropdown — hidden on desktop */

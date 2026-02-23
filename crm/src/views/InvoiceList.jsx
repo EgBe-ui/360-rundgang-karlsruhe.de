@@ -42,7 +42,7 @@ export function InvoiceList() {
               </button>
             ))}
           </div>
-          <div class="filter-pills" style="margin-left:1rem">
+          <div class="filter-pills">
             {Object.entries(INVOICE_STATUS).map(([key, info]) => (
               <button
                 key={key}
