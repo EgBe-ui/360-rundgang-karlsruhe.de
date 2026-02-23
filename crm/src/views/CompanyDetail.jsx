@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import { useCompany } from '../hooks/useCompanies.js';
 import { useContacts, createContact } from '../hooks/useContacts.js';
+import { supabase } from '../lib/supabase.js';
 import { useDeals } from '../hooks/useDeals.js';
 import { useActivities } from '../hooks/useActivities.js';
 import { ActivityItem } from '../components/ActivityItem.jsx';
@@ -22,6 +23,8 @@ export function CompanyDetail({ id }) {
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState({});
   const [showAddContact, setShowAddContact] = useState(false);
+  const [showLinkContact, setShowLinkContact] = useState(false);
+  const [linkContactId, setLinkContactId] = useState('');
   const [contactForm, setContactForm] = useState({ first_name: '', last_name: '', email: '', phone: '', source: 'manual' });
 
   const companyContacts = contacts.filter(c => c.company_id === id);
@@ -72,6 +75,22 @@ export function CompanyDetail({ id }) {
       toast.success('Kontakt erstellt');
       setShowAddContact(false);
       setContactForm({ first_name: '', last_name: '', email: '', phone: '', source: 'manual' });
+      refetchContacts();
+    }
+  }
+
+  async function handleLinkContact() {
+    if (!linkContactId) return;
+    const { error } = await supabase
+      .from('contacts')
+      .update({ company_id: id })
+      .eq('id', linkContactId);
+    if (error) {
+      toast.error('Fehler beim Verknuepfen');
+    } else {
+      toast.success('Kontakt verknuepft');
+      setShowLinkContact(false);
+      setLinkContactId('');
       refetchContacts();
     }
   }
@@ -192,10 +211,38 @@ export function CompanyDetail({ id }) {
             <div class="card">
               <div class="card-header">
                 <span class="card-title">Kontakte ({companyContacts.length})</span>
-                {!showAddContact && (
-                  <button class="btn btn-secondary btn-sm" onClick={() => setShowAddContact(true)}>+ Kontakt</button>
+                {!showAddContact && !showLinkContact && (
+                  <div style="display:flex;gap:0.25rem">
+                    <button class="btn btn-secondary btn-sm" onClick={() => setShowLinkContact(true)}>Verknuepfen</button>
+                    <button class="btn btn-secondary btn-sm" onClick={() => setShowAddContact(true)}>+ Neu</button>
+                  </div>
                 )}
               </div>
+              {showLinkContact && (
+                <div style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)">
+                  <div class="form-grid">
+                    <div class="form-group form-group-full">
+                      <label>Bestehenden Kontakt waehlen</label>
+                      <select value={linkContactId} onChange={e => setLinkContactId(e.target.value)}>
+                        <option value="">– Kontakt waehlen –</option>
+                        {contacts
+                          .filter(c => c.company_id !== id)
+                          .map(c => (
+                            <option key={c.id} value={c.id}>
+                              {`${c.first_name || ''} ${c.last_name || ''}`.trim() || c.email}
+                              {c.company ? ` (${c.company.name})` : ''}
+                            </option>
+                          ))
+                        }
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-actions" style="margin-top:0.5rem;border-top:none;padding-top:0">
+                    <button type="button" class="btn btn-secondary btn-sm" onClick={() => { setShowLinkContact(false); setLinkContactId(''); }}>Abbrechen</button>
+                    <button type="button" class="btn btn-primary btn-sm" onClick={handleLinkContact} disabled={!linkContactId}>Verknuepfen</button>
+                  </div>
+                </div>
+              )}
               {showAddContact && (
                 <form onSubmit={handleAddContact} style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)">
                   <div class="form-grid">

@@ -1,13 +1,15 @@
 import { useState } from 'preact/hooks';
 import { createContact } from '../hooks/useContacts.js';
+import { useCompanies, createCompany } from '../hooks/useCompanies.js';
 import { useToast } from '../components/Toast.jsx';
-import { SOURCES, INDUSTRIES } from '../lib/helpers.js';
-import { createCompany } from '../hooks/useCompanies.js';
+import { SOURCES } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
 export function ContactForm() {
   const toast = useToast();
+  const { companies } = useCompanies();
   const [loading, setLoading] = useState(false);
+  const [companyMode, setCompanyMode] = useState('none'); // none | existing | new
   const [form, setForm] = useState({
     first_name: '',
     last_name: '',
@@ -16,7 +18,8 @@ export function ContactForm() {
     position: '',
     source: 'manual',
     source_detail: '',
-    company_name: '',
+    company_id: '',
+    new_company_name: '',
     gdpr_consent: false,
   });
 
@@ -30,9 +33,12 @@ export function ContactForm() {
 
     try {
       let company_id = null;
-      if (form.company_name.trim()) {
+
+      if (companyMode === 'existing' && form.company_id) {
+        company_id = form.company_id;
+      } else if (companyMode === 'new' && form.new_company_name.trim()) {
         const { data: company, error: companyError } = await createCompany({
-          name: form.company_name.trim(),
+          name: form.new_company_name.trim(),
         });
         if (companyError) throw companyError;
         company_id = company.id;
@@ -96,7 +102,20 @@ export function ContactForm() {
               </div>
               <div class="form-group">
                 <label>Firma</label>
-                <input value={form.company_name} onInput={e => setField('company_name', e.target.value)} placeholder="Firmenname" />
+                <div style="display:flex;gap:0.25rem;margin-bottom:0.5rem">
+                  <button type="button" class={`filter-pill ${companyMode === 'none' ? 'active' : ''}`} onClick={() => setCompanyMode('none')}>Keine</button>
+                  <button type="button" class={`filter-pill ${companyMode === 'existing' ? 'active' : ''}`} onClick={() => setCompanyMode('existing')}>Bestehende</button>
+                  <button type="button" class={`filter-pill ${companyMode === 'new' ? 'active' : ''}`} onClick={() => setCompanyMode('new')}>Neue</button>
+                </div>
+                {companyMode === 'existing' && (
+                  <select value={form.company_id} onChange={e => setField('company_id', e.target.value)}>
+                    <option value="">– Firma waehlen –</option>
+                    {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                  </select>
+                )}
+                {companyMode === 'new' && (
+                  <input value={form.new_company_name} onInput={e => setField('new_company_name', e.target.value)} placeholder="Neuer Firmenname" />
+                )}
               </div>
               <div class="form-group">
                 <label>Quelle</label>

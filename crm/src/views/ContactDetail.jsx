@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import { useContact } from '../hooks/useContacts.js';
+import { useCompanies, createCompany } from '../hooks/useCompanies.js';
 import { useDeals } from '../hooks/useDeals.js';
 import { useActivities, createActivity } from '../hooks/useActivities.js';
 import { ActivityItem } from '../components/ActivityItem.jsx';
@@ -11,12 +12,15 @@ import { route } from 'preact-router';
 
 export function ContactDetail({ id }) {
   const { contact, loading, update, softDelete } = useContact(id);
+  const { companies } = useCompanies();
   const { deals } = useDeals({ contactId: id });
   const { activities, refetch: refetchActivities } = useActivities({ contactId: id });
   const toast = useToast();
 
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState({});
+  const [companyMode, setCompanyMode] = useState('keep');
+  const [newCompanyName, setNewCompanyName] = useState('');
   const [showActivity, setShowActivity] = useState(false);
   const [activityForm, setActivityForm] = useState({ type: 'note', description: '', due_date: '' });
 
@@ -45,17 +49,31 @@ export function ContactDetail({ id }) {
       email: contact.email || '',
       phone: contact.phone || '',
       position: contact.position || '',
+      company_id: contact.company_id || '',
     });
+    setCompanyMode('keep');
+    setNewCompanyName('');
     setEditing(true);
   }
 
   async function saveEdit() {
-    const { error } = await update(form);
-    if (error) {
-      toast.error('Fehler beim Speichern');
-    } else {
+    try {
+      const updates = { ...form };
+
+      if (companyMode === 'new' && newCompanyName.trim()) {
+        const { data: company, error: companyError } = await createCompany({ name: newCompanyName.trim() });
+        if (companyError) throw companyError;
+        updates.company_id = company.id;
+      } else if (companyMode === 'remove') {
+        updates.company_id = null;
+      }
+
+      const { error } = await update(updates);
+      if (error) throw error;
       toast.success('Kontakt aktualisiert');
       setEditing(false);
+    } catch (err) {
+      toast.error(err.message || 'Fehler beim Speichern');
     }
   }
 
@@ -136,6 +154,34 @@ export function ContactDetail({ id }) {
                     <div class="form-group">
                       <label>Position</label>
                       <input value={form.position} onInput={e => setForm({...form, position: e.target.value})} />
+                    </div>
+                    <div class="form-group form-group-full">
+                      <label>Firma</label>
+                      <div style="display:flex;gap:0.25rem;margin-bottom:0.5rem">
+                        <button type="button" class={`filter-pill ${companyMode === 'keep' ? 'active' : ''}`} onClick={() => setCompanyMode('keep')}>
+                          {contact.company ? 'Beibehalten' : 'Keine'}
+                        </button>
+                        <button type="button" class={`filter-pill ${companyMode === 'change' ? 'active' : ''}`} onClick={() => setCompanyMode('change')}>Andere waehlen</button>
+                        <button type="button" class={`filter-pill ${companyMode === 'new' ? 'active' : ''}`} onClick={() => setCompanyMode('new')}>Neue</button>
+                        {contact.company && (
+                          <button type="button" class={`filter-pill ${companyMode === 'remove' ? 'active' : ''}`} onClick={() => setCompanyMode('remove')}>Entfernen</button>
+                        )}
+                      </div>
+                      {companyMode === 'keep' && contact.company && (
+                        <div style="font-size:0.85rem;color:var(--text-dim)">{contact.company.name}</div>
+                      )}
+                      {companyMode === 'change' && (
+                        <select value={form.company_id} onChange={e => setForm({...form, company_id: e.target.value})}>
+                          <option value="">– Firma waehlen –</option>
+                          {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                        </select>
+                      )}
+                      {companyMode === 'new' && (
+                        <input value={newCompanyName} onInput={e => setNewCompanyName(e.target.value)} placeholder="Neuer Firmenname" />
+                      )}
+                      {companyMode === 'remove' && (
+                        <div style="font-size:0.85rem;color:var(--text-dim)">Firma-Verknuepfung wird entfernt</div>
+                      )}
                     </div>
                   </div>
                   <div class="form-actions">
