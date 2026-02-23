@@ -7,7 +7,7 @@ import { Modal } from '../components/Modal.jsx';
 import { useToast } from '../components/Toast.jsx';
 import { useInvoices } from '../hooks/useInvoices.js';
 import { INVOICE_TYPES, INVOICE_STATUS } from '../lib/invoiceHelpers.js';
-import { formatDate, formatCurrency, STAGES, SERVICE_TYPES, ACTIVITY_TYPES } from '../lib/helpers.js';
+import { formatDate, formatCurrency, STAGES, SERVICE_TYPES, ACTIVITY_TYPES, FIELD_LABELS } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
 export function DealDetail({ id }) {
@@ -20,6 +20,7 @@ export function DealDetail({ id }) {
   const [form, setForm] = useState({});
   const [showActivity, setShowActivity] = useState(false);
   const [activityForm, setActivityForm] = useState({ type: 'note', description: '', due_date: '' });
+  const [activitiesOpen, setActivitiesOpen] = useState(true);
 
   if (loading) {
     return (
@@ -50,17 +51,53 @@ export function DealDetail({ id }) {
     setEditing(true);
   }
 
+  function resolveDisplayValue(field, val) {
+    if (field === 'service_type') return SERVICE_TYPES[val] || val || '';
+    if (field === 'value') return val ? formatCurrency(parseFloat(val)) : '';
+    if (field === 'expected_close') return val ? formatDate(val) : '';
+    return val || '';
+  }
+
   async function saveEdit() {
-    const { error } = await update({
+    const updates = {
       ...form,
       value: form.value ? parseFloat(form.value) : null,
       service_type: form.service_type || null,
       expected_close: form.expected_close || null,
       lost_reason: form.lost_reason || null,
-    });
+    };
+
+    // Detect changes for activity log
+    const trackFields = ['title', 'value', 'service_type', 'expected_close', 'lost_reason'];
+    const changes = [];
+    for (const field of trackFields) {
+      const oldVal = deal[field] ?? '';
+      const newVal = updates[field] ?? '';
+      if (String(oldVal) !== String(newVal)) {
+        changes.push({
+          field: FIELD_LABELS[field] || field,
+          from: resolveDisplayValue(field, oldVal),
+          to: resolveDisplayValue(field, newVal),
+        });
+      }
+    }
+
+    const { error } = await update(updates);
     if (error) {
       toast.error('Fehler beim Speichern');
     } else {
+      // Log edit activity with specific changes
+      if (changes.length > 0) {
+        const summary = changes.map(c => c.field).join(', ');
+        await createActivity({
+          deal_id: id,
+          contact_id: deal.contact_id || null,
+          type: 'edited',
+          description: `${summary} geaendert`,
+          metadata: { changes },
+        });
+        refetchActivities();
+      }
       toast.success('Deal aktualisiert');
       setEditing(false);
     }
@@ -241,13 +278,18 @@ export function DealDetail({ id }) {
             )}
 
             <div class="card">
-              <div class="card-header"><span class="card-title">Aktivitaeten</span></div>
-              {activities.length === 0 ? (
-                <div style="color:var(--text-dim);font-size:0.85rem">Keine Aktivitaeten</div>
-              ) : (
-                <div class="timeline">
-                  {activities.map(a => <ActivityItem key={a.id} activity={a} />)}
-                </div>
+              <div class="card-header" style="cursor:pointer;user-select:none" onClick={() => setActivitiesOpen(!activitiesOpen)}>
+                <span class="card-title">Aktivitaeten ({activities.length})</span>
+                <span style="font-size:0.75rem;color:var(--text-dim)">{activitiesOpen ? '▲ Einklappen' : '▼ Ausklappen'}</span>
+              </div>
+              {activitiesOpen && (
+                activities.length === 0 ? (
+                  <div style="color:var(--text-dim);font-size:0.85rem">Keine Aktivitaeten</div>
+                ) : (
+                  <div class="timeline">
+                    {activities.map(a => <ActivityItem key={a.id} activity={a} />)}
+                  </div>
+                )
               )}
             </div>
           </div>
@@ -274,7 +316,7 @@ export function DealDetail({ id }) {
               <label>Typ</label>
               <select value={activityForm.type} onChange={e => setActivityForm({...activityForm, type: e.target.value})}>
                 {Object.entries(ACTIVITY_TYPES)
-                  .filter(([k]) => !['form_submission', 'stage_change', 'created'].includes(k))
+                  .filter(([k]) => !['form_submission', 'stage_change', 'created', 'edited'].includes(k))
                   .map(([k, v]) => <option key={k} value={k}>{v.icon} {v.label}</option>)}
               </select>
             </div>

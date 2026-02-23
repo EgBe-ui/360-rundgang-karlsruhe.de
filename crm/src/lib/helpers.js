@@ -82,6 +82,31 @@ export const ACTIVITY_TYPES = {
   invoice_sent: { label: 'Rechnung versendet', icon: '📨' },
   quote_created: { label: 'Angebot', icon: '📋' },
   quote_converted: { label: 'Angebot umgewandelt', icon: '🔄' },
+  edited: { label: 'Bearbeitet', icon: '✏️' },
+};
+
+// Field labels for change tracking (German)
+export const FIELD_LABELS = {
+  first_name: 'Vorname',
+  last_name: 'Nachname',
+  email: 'E-Mail',
+  phone: 'Telefon',
+  position: 'Position',
+  company_id: 'Firma',
+  source: 'Quelle',
+  source_detail: 'Quelle Detail',
+  gdpr_consent: 'DSGVO-Einwilligung',
+  title: 'Titel',
+  value: 'Wert',
+  service_type: 'Service-Typ',
+  expected_close: 'Erwarteter Abschluss',
+  lost_reason: 'Verlustgrund',
+  stage: 'Stage',
+  name: 'Name',
+  industry: 'Branche',
+  website: 'Website',
+  address: 'Adresse',
+  city: 'Stadt',
 };
 
 export const CAMPAIGN_STATUS = {
@@ -94,27 +119,36 @@ export const EMAIL_TEMPLATES = [
   {
     id: 'follow-up',
     name: 'Angebot nachfassen',
-    icon: '📩',
+    icon: '\u{1F4E9}',
     preview: 'Offenes Angebot freundlich nachfassen',
-    subject: 'Ihr 360°-Rundgang – Noch Fragen offen?',
+    subject: 'Ihr 360\u00b0-Rundgang \u2013 Noch Fragen offen?',
     body: `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"></head>
-<body style="margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:#f8fafc;">
-<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-  <div style="background:#1a5c6b;padding:24px;border-radius:12px 12px 0 0;text-align:center;">
-    <h1 style="color:#fff;margin:0;font-size:20px;">Beck360</h1>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f0f4f8;">
+<div style="max-width:600px;margin:0 auto;padding:24px 16px;">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#1a5c6b 0%,#237a8c 100%);padding:32px 24px;border-radius:16px 16px 0 0;text-align:center;">
+    <h1 style="color:#ffffff;margin:0 0 4px 0;font-size:24px;font-weight:700;letter-spacing:0.5px;">Beck360</h1>
+    <p style="color:rgba(255,255,255,0.7);margin:0;font-size:13px;">360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen</p>
   </div>
-  <div style="background:#fff;padding:32px 24px;border-radius:0 0 12px 12px;line-height:1.6;color:#334155;">
-    <p>Hallo {{vorname}},</p>
-    <p>vor Kurzem haben wir ueber einen 360\u00b0-Rundgang fuer {{firma}} gesprochen. Haben Sie noch Fragen zu unserem Angebot?</p>
-    <p>Ich stehe Ihnen gerne fuer ein kurzes Gespraech zur Verfuegung.</p>
-    <p style="margin-top:24px;">
-      <a href="https://360-rundgang-karlsruhe.de" style="background:#1a5c6b;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block;">Termin vereinbaren</a>
-    </p>
-    <p style="margin-top:24px;">Beste Gruesse<br><strong>Eugen Beck</strong><br>Beck360 – 360\u00b0 Rundgaenge & Drohnenaufnahmen<br>+49 173 468 2501</p>
+  <!-- Body -->
+  <div style="background:#ffffff;padding:36px 32px;line-height:1.7;color:#334155;font-size:15px;">
+    <p style="margin:0 0 16px 0;">Hallo {{vorname}},</p>
+    <p style="margin:0 0 16px 0;">vor Kurzem haben wir \u00fcber einen <strong>360\u00b0-Rundgang</strong> f\u00fcr {{firma}} gesprochen. Haben Sie noch Fragen zu unserem Angebot?</p>
+    <p style="margin:0 0 24px 0;">Gerne stehe ich Ihnen f\u00fcr ein kurzes Gespr\u00e4ch zur Verf\u00fcgung \u2013 unverbindlich und unkompliziert.</p>
+    <!-- CTA -->
+    <div style="text-align:center;margin:32px 0;">
+      <a href="https://360-rundgang-karlsruhe.de" style="background:linear-gradient(135deg,#1a5c6b,#237a8c);color:#ffffff;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:600;font-size:15px;box-shadow:0 2px 8px rgba(26,92,107,0.3);">Termin vereinbaren</a>
+    </div>
+    <!-- Signature -->
+    <div style="border-top:1px solid #e2e8f0;padding-top:20px;margin-top:28px;">
+      <p style="margin:0;font-size:14px;color:#475569;">Beste Gr\u00fc\u00dfe<br><strong style="color:#1a5c6b;">Eugen Beck</strong></p>
+      <p style="margin:4px 0 0 0;font-size:12px;color:#94a3b8;">Beck360 \u2013 360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen<br>\u260e +49 173 468 2501 &nbsp;\u00b7&nbsp; \u2709 rundgang@beck360.de</p>
+    </div>
   </div>
-  <div style="text-align:center;padding:16px;font-size:11px;color:#94a3b8;">
-    Beck360 | Eichenweg 1, 76275 Ettlingen | <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#94a3b8;">Impressum</a>
+  <!-- Footer -->
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 16px 16px;text-align:center;padding:16px 24px;">
+    <p style="margin:0;font-size:11px;color:#94a3b8;">Beck360 &nbsp;\u00b7&nbsp; Eichenweg 1, 76275 Ettlingen &nbsp;\u00b7&nbsp; <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#64748b;">Impressum</a></p>
   </div>
 </div>
 </body></html>`,
@@ -122,32 +156,62 @@ export const EMAIL_TEMPLATES = [
   {
     id: 'new-service',
     name: 'Neue Dienstleistung',
-    icon: '🚀',
+    icon: '\u{1F680}',
     preview: 'Neues Angebot oder Service vorstellen',
-    subject: 'Neu bei Beck360: Erweiterte 360\u00b0-Loesungen',
+    subject: 'Neu bei Beck360: Erweiterte 360\u00b0-L\u00f6sungen f\u00fcr {{firma}}',
     body: `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"></head>
-<body style="margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:#f8fafc;">
-<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-  <div style="background:#1a5c6b;padding:24px;border-radius:12px 12px 0 0;text-align:center;">
-    <h1 style="color:#fff;margin:0;font-size:20px;">Beck360</h1>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f0f4f8;">
+<div style="max-width:600px;margin:0 auto;padding:24px 16px;">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#1a5c6b 0%,#237a8c 100%);padding:32px 24px;border-radius:16px 16px 0 0;text-align:center;">
+    <h1 style="color:#ffffff;margin:0 0 4px 0;font-size:24px;font-weight:700;letter-spacing:0.5px;">Beck360</h1>
+    <p style="color:rgba(255,255,255,0.7);margin:0;font-size:13px;">360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen</p>
   </div>
-  <div style="background:#fff;padding:32px 24px;border-radius:0 0 12px 12px;line-height:1.6;color:#334155;">
-    <p>Hallo {{vorname}},</p>
-    <p>wir haben unser Angebot erweitert! Neben professionellen 360\u00b0-Rundgaengen bieten wir jetzt auch Drohnenaufnahmen und virtuelle Touren an.</p>
-    <p><strong>Ihre Vorteile:</strong></p>
-    <ul>
-      <li>Interaktive 360\u00b0-Rundgaenge fuer Ihre Raeumlichkeiten</li>
-      <li>Professionelle Drohnenfotos und -videos</li>
-      <li>Google Street View Integration</li>
-    </ul>
-    <p style="margin-top:24px;">
-      <a href="https://360-rundgang-karlsruhe.de" style="background:#1a5c6b;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block;">Mehr erfahren</a>
-    </p>
-    <p style="margin-top:24px;">Beste Gruesse<br><strong>Eugen Beck</strong><br>Beck360<br>+49 173 468 2501</p>
+  <!-- Body -->
+  <div style="background:#ffffff;padding:36px 32px;line-height:1.7;color:#334155;font-size:15px;">
+    <p style="margin:0 0 16px 0;">Hallo {{vorname}},</p>
+    <p style="margin:0 0 24px 0;">wir haben unser Angebot f\u00fcr Sie erweitert! Entdecken Sie unsere neuen M\u00f6glichkeiten:</p>
+    <!-- Feature Cards -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px 0;">
+      <tr>
+        <td style="padding:8px 8px 8px 0;width:33%;vertical-align:top;">
+          <div style="background:#f0f9ff;border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">\u{1F3E0}</div>
+            <p style="margin:0;font-size:13px;font-weight:600;color:#1a5c6b;">360\u00b0 Rundg\u00e4nge</p>
+            <p style="margin:4px 0 0 0;font-size:11px;color:#64748b;">Interaktive Touren f\u00fcr Ihre R\u00e4ume</p>
+          </div>
+        </td>
+        <td style="padding:8px;width:33%;vertical-align:top;">
+          <div style="background:#f0f9ff;border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">\u{1F681}</div>
+            <p style="margin:0;font-size:13px;font-weight:600;color:#1a5c6b;">Drohnenaufnahmen</p>
+            <p style="margin:4px 0 0 0;font-size:11px;color:#64748b;">Luftbilder & Videos</p>
+          </div>
+        </td>
+        <td style="padding:8px 0 8px 8px;width:33%;vertical-align:top;">
+          <div style="background:#f0f9ff;border-radius:10px;padding:16px;text-align:center;">
+            <div style="font-size:28px;margin-bottom:8px;">\u{1F4CD}</div>
+            <p style="margin:0;font-size:13px;font-weight:600;color:#1a5c6b;">Google Street View</p>
+            <p style="margin:4px 0 0 0;font-size:11px;color:#64748b;">Direkt auf Google Maps</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <p style="margin:0 0 24px 0;">Alle Leistungen aus einer Hand \u2013 professionell, schnell und zu fairen Preisen.</p>
+    <!-- CTA -->
+    <div style="text-align:center;margin:32px 0;">
+      <a href="https://360-rundgang-karlsruhe.de" style="background:linear-gradient(135deg,#1a5c6b,#237a8c);color:#ffffff;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:600;font-size:15px;box-shadow:0 2px 8px rgba(26,92,107,0.3);">Mehr erfahren</a>
+    </div>
+    <!-- Signature -->
+    <div style="border-top:1px solid #e2e8f0;padding-top:20px;margin-top:28px;">
+      <p style="margin:0;font-size:14px;color:#475569;">Beste Gr\u00fc\u00dfe<br><strong style="color:#1a5c6b;">Eugen Beck</strong></p>
+      <p style="margin:4px 0 0 0;font-size:12px;color:#94a3b8;">Beck360 \u2013 360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen<br>\u260e +49 173 468 2501 &nbsp;\u00b7&nbsp; \u2709 rundgang@beck360.de</p>
+    </div>
   </div>
-  <div style="text-align:center;padding:16px;font-size:11px;color:#94a3b8;">
-    Beck360 | Eichenweg 1, 76275 Ettlingen | <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#94a3b8;">Impressum</a>
+  <!-- Footer -->
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 16px 16px;text-align:center;padding:16px 24px;">
+    <p style="margin:0;font-size:11px;color:#94a3b8;">Beck360 &nbsp;\u00b7&nbsp; Eichenweg 1, 76275 Ettlingen &nbsp;\u00b7&nbsp; <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#64748b;">Impressum</a></p>
   </div>
 </div>
 </body></html>`,
@@ -155,27 +219,44 @@ export const EMAIL_TEMPLATES = [
   {
     id: 'review',
     name: 'Um Bewertung bitten',
-    icon: '⭐',
+    icon: '\u2B50',
     preview: 'Kunden um Google-Bewertung bitten',
-    subject: 'Wie war Ihre Erfahrung mit Beck360?',
+    subject: 'Wie war Ihre Erfahrung mit Beck360, {{vorname}}?',
     body: `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"></head>
-<body style="margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:#f8fafc;">
-<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-  <div style="background:#1a5c6b;padding:24px;border-radius:12px 12px 0 0;text-align:center;">
-    <h1 style="color:#fff;margin:0;font-size:20px;">Beck360</h1>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f0f4f8;">
+<div style="max-width:600px;margin:0 auto;padding:24px 16px;">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#1a5c6b 0%,#237a8c 100%);padding:32px 24px;border-radius:16px 16px 0 0;text-align:center;">
+    <h1 style="color:#ffffff;margin:0 0 4px 0;font-size:24px;font-weight:700;letter-spacing:0.5px;">Beck360</h1>
+    <p style="color:rgba(255,255,255,0.7);margin:0;font-size:13px;">360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen</p>
   </div>
-  <div style="background:#fff;padding:32px 24px;border-radius:0 0 12px 12px;line-height:1.6;color:#334155;">
-    <p>Hallo {{vorname}},</p>
-    <p>vielen Dank, dass Sie sich fuer Beck360 entschieden haben! Wir hoffen, Sie sind mit dem Ergebnis zufrieden.</p>
-    <p>Wuerden Sie uns mit einer kurzen Google-Bewertung unterstuetzen? Das dauert nur 1 Minute und hilft uns enorm.</p>
-    <p style="margin-top:24px;">
-      <a href="https://www.google.com/maps/place/Beck360/@48.9408,8.4072,17z/?entry=ttu&action=write-review" style="background:#1a5c6b;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block;">Jetzt bewerten</a>
-    </p>
-    <p style="margin-top:24px;">Herzlichen Dank!<br><strong>Eugen Beck</strong><br>Beck360<br>+49 173 468 2501</p>
+  <!-- Body -->
+  <div style="background:#ffffff;padding:36px 32px;line-height:1.7;color:#334155;font-size:15px;">
+    <p style="margin:0 0 16px 0;">Hallo {{vorname}},</p>
+    <p style="margin:0 0 16px 0;">vielen Dank, dass Sie sich f\u00fcr Beck360 entschieden haben! Wir hoffen, Sie sind mit dem Ergebnis begeistert.</p>
+    <!-- Stars -->
+    <div style="text-align:center;margin:28px 0;">
+      <div style="background:linear-gradient(135deg,#fefce8,#fef9c3);border:1px solid #fde68a;border-radius:12px;padding:24px;display:inline-block;">
+        <p style="font-size:36px;margin:0 0 8px 0;letter-spacing:4px;">\u2B50\u2B50\u2B50\u2B50\u2B50</p>
+        <p style="font-size:15px;font-weight:600;color:#92400e;margin:0 0 4px 0;">Ihre Meinung z\u00e4hlt!</p>
+        <p style="font-size:13px;color:#a16207;margin:0;">Eine Bewertung dauert nur 1 Minute</p>
+      </div>
+    </div>
+    <p style="margin:0 0 24px 0;text-align:center;">W\u00fcrden Sie uns mit einer kurzen Google-Bewertung unterst\u00fctzen? Das hilft anderen Kunden bei ihrer Entscheidung.</p>
+    <!-- CTA -->
+    <div style="text-align:center;margin:32px 0;">
+      <a href="https://www.google.com/maps/place/Beck360/@48.9408,8.4072,17z/?entry=ttu&action=write-review" style="background:linear-gradient(135deg,#1a5c6b,#237a8c);color:#ffffff;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:600;font-size:15px;box-shadow:0 2px 8px rgba(26,92,107,0.3);">Jetzt bewerten</a>
+    </div>
+    <!-- Signature -->
+    <div style="border-top:1px solid #e2e8f0;padding-top:20px;margin-top:28px;">
+      <p style="margin:0;font-size:14px;color:#475569;">Herzlichen Dank!<br><strong style="color:#1a5c6b;">Eugen Beck</strong></p>
+      <p style="margin:4px 0 0 0;font-size:12px;color:#94a3b8;">Beck360 \u2013 360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen<br>\u260e +49 173 468 2501 &nbsp;\u00b7&nbsp; \u2709 rundgang@beck360.de</p>
+    </div>
   </div>
-  <div style="text-align:center;padding:16px;font-size:11px;color:#94a3b8;">
-    Beck360 | Eichenweg 1, 76275 Ettlingen | <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#94a3b8;">Impressum</a>
+  <!-- Footer -->
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 16px 16px;text-align:center;padding:16px 24px;">
+    <p style="margin:0;font-size:11px;color:#94a3b8;">Beck360 &nbsp;\u00b7&nbsp; Eichenweg 1, 76275 Ettlingen &nbsp;\u00b7&nbsp; <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#64748b;">Impressum</a></p>
   </div>
 </div>
 </body></html>`,
@@ -183,31 +264,48 @@ export const EMAIL_TEMPLATES = [
   {
     id: 'seasonal',
     name: 'Saisonales Angebot',
-    icon: '🎁',
+    icon: '\u{1F381}',
     preview: 'Zeitlich begrenztes Angebot bewerben',
-    subject: 'Exklusives Angebot fuer {{firma}} – Nur fuer kurze Zeit',
+    subject: 'Exklusiv f\u00fcr {{firma}}: 360\u00b0-Rundgang zum Sonderpreis',
     body: `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"></head>
-<body style="margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:#f8fafc;">
-<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-  <div style="background:#1a5c6b;padding:24px;border-radius:12px 12px 0 0;text-align:center;">
-    <h1 style="color:#fff;margin:0;font-size:20px;">Beck360</h1>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f0f4f8;">
+<div style="max-width:600px;margin:0 auto;padding:24px 16px;">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#1a5c6b 0%,#237a8c 100%);padding:32px 24px;border-radius:16px 16px 0 0;text-align:center;">
+    <h1 style="color:#ffffff;margin:0 0 4px 0;font-size:24px;font-weight:700;letter-spacing:0.5px;">Beck360</h1>
+    <p style="color:rgba(255,255,255,0.7);margin:0;font-size:13px;">360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen</p>
   </div>
-  <div style="background:#fff;padding:32px 24px;border-radius:0 0 12px 12px;line-height:1.6;color:#334155;">
-    <p>Hallo {{vorname}},</p>
-    <p>wir haben ein exklusives Angebot fuer Sie:</p>
-    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:16px 0;text-align:center;">
-      <p style="font-size:18px;font-weight:700;color:#166534;margin:0 0 8px 0;">Fruehlings-Aktion 2026</p>
-      <p style="font-size:14px;color:#15803d;margin:0;">360\u00b0-Rundgang zum Sonderpreis – nur bis Ende des Monats!</p>
+  <!-- Body -->
+  <div style="background:#ffffff;padding:36px 32px;line-height:1.7;color:#334155;font-size:15px;">
+    <p style="margin:0 0 16px 0;">Hallo {{vorname}},</p>
+    <p style="margin:0 0 20px 0;">wir haben ein exklusives Angebot f\u00fcr {{firma}}:</p>
+    <!-- Offer Box -->
+    <div style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:2px solid #6ee7b7;border-radius:12px;padding:28px;margin:20px 0;text-align:center;">
+      <p style="font-size:12px;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:2px;margin:0 0 8px 0;">Limitiertes Angebot</p>
+      <p style="font-size:22px;font-weight:700;color:#065f46;margin:0 0 8px 0;">Fr\u00fchlings-Aktion 2026</p>
+      <p style="font-size:14px;color:#047857;margin:0;">360\u00b0-Rundgang zum Sonderpreis \u2013 nur bis Ende des Monats!</p>
     </div>
-    <p>Ob fuer Ihre Geschaeftsraeume, Ihr Hotel oder Ihre Immobilie – ein professioneller 360\u00b0-Rundgang bringt Ihre Raeumlichkeiten online zum Leben.</p>
-    <p style="margin-top:24px;">
-      <a href="https://360-rundgang-karlsruhe.de" style="background:#1a5c6b;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;display:inline-block;">Jetzt Angebot sichern</a>
-    </p>
-    <p style="margin-top:24px;">Beste Gruesse<br><strong>Eugen Beck</strong><br>Beck360 – 360\u00b0 Rundgaenge & Drohnenaufnahmen<br>+49 173 468 2501</p>
+    <p style="margin:20px 0 8px 0;font-weight:600;color:#1e293b;">Das ist enthalten:</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr><td style="padding:6px 0;font-size:14px;color:#475569;">\u2705 Professioneller 360\u00b0-Rundgang</td></tr>
+      <tr><td style="padding:6px 0;font-size:14px;color:#475569;">\u2705 Hosting auf Matterport f\u00fcr 12 Monate</td></tr>
+      <tr><td style="padding:6px 0;font-size:14px;color:#475569;">\u2705 Einbettung auf Ihrer Website</td></tr>
+      <tr><td style="padding:6px 0;font-size:14px;color:#475569;">\u2705 Google Street View Integration</td></tr>
+    </table>
+    <!-- CTA -->
+    <div style="text-align:center;margin:32px 0;">
+      <a href="https://360-rundgang-karlsruhe.de" style="background:linear-gradient(135deg,#059669,#047857);color:#ffffff;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:600;font-size:15px;box-shadow:0 2px 8px rgba(5,150,105,0.3);">Jetzt Angebot sichern</a>
+    </div>
+    <!-- Signature -->
+    <div style="border-top:1px solid #e2e8f0;padding-top:20px;margin-top:28px;">
+      <p style="margin:0;font-size:14px;color:#475569;">Beste Gr\u00fc\u00dfe<br><strong style="color:#1a5c6b;">Eugen Beck</strong></p>
+      <p style="margin:4px 0 0 0;font-size:12px;color:#94a3b8;">Beck360 \u2013 360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen<br>\u260e +49 173 468 2501 &nbsp;\u00b7&nbsp; \u2709 rundgang@beck360.de</p>
+    </div>
   </div>
-  <div style="text-align:center;padding:16px;font-size:11px;color:#94a3b8;">
-    Beck360 | Eichenweg 1, 76275 Ettlingen | <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#94a3b8;">Impressum</a>
+  <!-- Footer -->
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 16px 16px;text-align:center;padding:16px 24px;">
+    <p style="margin:0;font-size:11px;color:#94a3b8;">Beck360 &nbsp;\u00b7&nbsp; Eichenweg 1, 76275 Ettlingen &nbsp;\u00b7&nbsp; <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#64748b;">Impressum</a></p>
   </div>
 </div>
 </body></html>`,
@@ -215,23 +313,35 @@ export const EMAIL_TEMPLATES = [
   {
     id: 'blank',
     name: 'Leere Vorlage',
-    icon: '📝',
+    icon: '\u{1F4DD}',
     preview: 'Leeres Template mit Beck360-Layout',
     subject: '',
     body: `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"></head>
-<body style="margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:#f8fafc;">
-<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-  <div style="background:#1a5c6b;padding:24px;border-radius:12px 12px 0 0;text-align:center;">
-    <h1 style="color:#fff;margin:0;font-size:20px;">Beck360</h1>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f0f4f8;">
+<div style="max-width:600px;margin:0 auto;padding:24px 16px;">
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#1a5c6b 0%,#237a8c 100%);padding:32px 24px;border-radius:16px 16px 0 0;text-align:center;">
+    <h1 style="color:#ffffff;margin:0 0 4px 0;font-size:24px;font-weight:700;letter-spacing:0.5px;">Beck360</h1>
+    <p style="color:rgba(255,255,255,0.7);margin:0;font-size:13px;">360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen</p>
   </div>
-  <div style="background:#fff;padding:32px 24px;border-radius:0 0 12px 12px;line-height:1.6;color:#334155;">
-    <p>Hallo {{vorname}},</p>
-    <p><!-- Ihr Inhalt hier --></p>
-    <p style="margin-top:24px;">Beste Gruesse<br><strong>Eugen Beck</strong><br>Beck360 – 360\u00b0 Rundgaenge & Drohnenaufnahmen<br>+49 173 468 2501</p>
+  <!-- Body -->
+  <div style="background:#ffffff;padding:36px 32px;line-height:1.7;color:#334155;font-size:15px;">
+    <p style="margin:0 0 16px 0;">Hallo {{vorname}},</p>
+    <p style="margin:0 0 16px 0;"><!-- Ihr Inhalt hier --></p>
+    <!-- CTA -->
+    <div style="text-align:center;margin:32px 0;">
+      <a href="https://360-rundgang-karlsruhe.de" style="background:linear-gradient(135deg,#1a5c6b,#237a8c);color:#ffffff;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;font-weight:600;font-size:15px;box-shadow:0 2px 8px rgba(26,92,107,0.3);">Mehr erfahren</a>
+    </div>
+    <!-- Signature -->
+    <div style="border-top:1px solid #e2e8f0;padding-top:20px;margin-top:28px;">
+      <p style="margin:0;font-size:14px;color:#475569;">Beste Gr\u00fc\u00dfe<br><strong style="color:#1a5c6b;">Eugen Beck</strong></p>
+      <p style="margin:4px 0 0 0;font-size:12px;color:#94a3b8;">Beck360 \u2013 360\u00b0 Rundg\u00e4nge & Drohnenaufnahmen<br>\u260e +49 173 468 2501 &nbsp;\u00b7&nbsp; \u2709 rundgang@beck360.de</p>
+    </div>
   </div>
-  <div style="text-align:center;padding:16px;font-size:11px;color:#94a3b8;">
-    Beck360 | Eichenweg 1, 76275 Ettlingen | <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#94a3b8;">Impressum</a>
+  <!-- Footer -->
+  <div style="background:#f8fafc;border-top:1px solid #e2e8f0;border-radius:0 0 16px 16px;text-align:center;padding:16px 24px;">
+    <p style="margin:0;font-size:11px;color:#94a3b8;">Beck360 &nbsp;\u00b7&nbsp; Eichenweg 1, 76275 Ettlingen &nbsp;\u00b7&nbsp; <a href="https://360-rundgang-karlsruhe.de/impressum/" style="color:#64748b;">Impressum</a></p>
   </div>
 </div>
 </body></html>`,
