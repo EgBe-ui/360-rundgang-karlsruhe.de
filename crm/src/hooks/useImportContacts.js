@@ -46,6 +46,7 @@ function mapRow(headers, values) {
     companyName: row['Firma'] || '',
     firstName: row['Ansprechpartner Vorname'] || '',
     lastName: row['Ansprechpartner Nachname'] || '',
+    email: row['E-Mail'] || row['Email'] || '',
     street: row['Strasse'] || '',
     zip: row['PLZ'] || '',
     city: row['Stadt'] || '',
@@ -149,9 +150,12 @@ export function useImportContacts() {
         setProgress({ current: step, total });
         continue;
       }
+      const email = row.email
+        || `${(row.firstName || 'kontakt').toLowerCase()}.${(row.lastName || '').toLowerCase()}@platzhalter.de`.replace(/\s+/g, '');
       const { error } = await createContact({
         first_name: row.firstName || null,
         last_name: row.lastName || null,
+        email,
         company_id: companyId,
         source: 'manual',
       });
