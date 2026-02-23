@@ -763,12 +763,16 @@ tr:hover td { background: #f8fafc; }
     min-width: 80px;
   }
   .table-wrapper td:empty { display: none; }
+  .table-wrapper td[data-label=""] { justify-content: flex-start; padding: 0.15rem 0; }
+  .table-wrapper td[data-label=""]::before { display: none; }
 
   /* Stage dropdown on mobile deal cards */
   .deal-card-stage-select { display: block; }
 }
 
+.hide-mobile-sm { }
 @media (max-width: 480px) {
+  .hide-mobile-sm { display: none !important; }
   .grid-3, .grid-2, .grid-4 { grid-template-columns: 1fr; }
   .page-body, .card { padding: 1rem; }
   .kpi-value { font-size: 1.25rem; }

@@ -91,7 +91,7 @@ export function CompanyList() {
     <>
       <div class="page-header">
         <h1 class="page-title">Firmen</h1>
-        <div style="display:flex;gap:0.5rem">
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:flex-end">
           {selected.size > 0 && (
             <button class="btn btn-danger btn-sm" onClick={handleBulkDelete} disabled={deleting}>
               {deleting ? 'Loesche...' : `${selected.size} loeschen`}

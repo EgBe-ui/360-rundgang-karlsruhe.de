@@ -87,20 +87,20 @@ export function ContactList() {
     <>
       <div class="page-header">
         <h1 class="page-title">Kontakte</h1>
-        <div style="display:flex;gap:0.5rem">
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:flex-end">
           {selected.size > 0 && (
             <button class="btn btn-danger btn-sm" onClick={handleBulkDelete} disabled={deleting}>
               {deleting ? 'Loesche...' : `${selected.size} loeschen`}
             </button>
           )}
-          <button class="btn btn-secondary btn-sm" onClick={exportCSV} disabled={contacts.length === 0}>
+          <button class="btn btn-secondary btn-sm hide-mobile-sm" onClick={exportCSV} disabled={contacts.length === 0}>
             CSV Export
           </button>
           <button class="btn btn-secondary btn-sm" onClick={() => setShowImport(true)}>
-            CSV Import
+            Import
           </button>
           <button class="btn btn-primary btn-sm" onClick={() => route('/crm/contacts/new')}>
-            + Neuer Kontakt
+            + Neu
           </button>
         </div>
       </div>
