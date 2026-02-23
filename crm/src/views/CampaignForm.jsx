@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'preact/hooks';
+import DOMPurify from 'dompurify';
 import { createCampaign, fetchFilteredRecipients, saveCampaignRecipients, sendCampaign } from '../hooks/useCampaigns.js';
 import { Modal } from '../components/Modal.jsx';
 import { useToast } from '../components/Toast.jsx';
@@ -217,7 +218,7 @@ export function CampaignForm() {
               {showPreview ? (
                 <div
                   style="border:1px solid var(--border);border-radius:8px;padding:1rem;background:#fff;min-height:300px;"
-                  dangerouslySetInnerHTML={{ __html: previewHtml }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(previewHtml) }}
                 />
               ) : (
                 <textarea

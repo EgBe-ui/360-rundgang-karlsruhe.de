@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import DOMPurify from 'dompurify';
 import { useCampaign, useCampaignRecipients, sendCampaign, saveCampaignRecipients, fetchFilteredRecipients } from '../hooks/useCampaigns.js';
 import { Modal } from '../components/Modal.jsx';
 import { useToast } from '../components/Toast.jsx';
@@ -209,7 +210,7 @@ export function CampaignDetail({ id }) {
               <div class="card-header"><span class="card-title">E-Mail-Vorschau</span></div>
               <div
                 style="border:1px solid var(--border);border-radius:8px;padding:1rem;background:#fff;max-height:400px;overflow:auto;"
-                dangerouslySetInnerHTML={{ __html: campaign.body_html }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(campaign.body_html) }}
               />
             </div>
 

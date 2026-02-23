@@ -12,7 +12,7 @@ import { INDUSTRIES, SOURCES, formatDate, formatCurrency } from '../lib/helpers.
 import { route } from 'preact-router';
 
 export function CompanyDetail({ id }) {
-  const { company, loading, update } = useCompany(id);
+  const { company, loading, update, softDelete } = useCompany(id);
   const { contacts, refetch: refetchContacts } = useContacts();
   const { deals } = useDeals({ companyId: id });
   const { invoices: companyInvoices } = useInvoices({ companyId: id });
@@ -86,6 +86,21 @@ export function CompanyDetail({ id }) {
     }
   }
 
+  async function handleDelete() {
+    const linkedCount = companyContacts.length;
+    const msg = linkedCount > 0
+      ? `Firma "${company.name}" hat ${linkedCount} verknuepfte(n) Kontakt(e). Wirklich loeschen?`
+      : `Firma "${company.name}" wirklich loeschen?`;
+    if (!confirm(msg)) return;
+    const { error } = await softDelete();
+    if (error) {
+      toast.error('Fehler beim Loeschen');
+    } else {
+      toast.success('Firma geloescht');
+      route('/crm/companies');
+    }
+  }
+
   return (
     <>
       <div class="page-header">
@@ -93,7 +108,10 @@ export function CompanyDetail({ id }) {
           <button class="btn btn-secondary btn-sm" onClick={() => route('/crm/companies')}>←</button>
           <h1 class="page-title">{company.name}</h1>
         </div>
-        {!editing && <button class="btn btn-secondary btn-sm" onClick={startEdit}>Bearbeiten</button>}
+        <div style="display:flex;gap:0.5rem">
+          {!editing && <button class="btn btn-secondary btn-sm" onClick={startEdit}>Bearbeiten</button>}
+          <button class="btn btn-danger btn-sm" onClick={handleDelete}>Loeschen</button>
+        </div>
       </div>
 
       <div class="page-body">

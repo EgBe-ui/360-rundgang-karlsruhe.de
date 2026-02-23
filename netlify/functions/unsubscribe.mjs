@@ -1,7 +1,10 @@
 import { supabase } from './lib/supabase.mjs';
 import crypto from 'node:crypto';
 
-const JWT_SECRET = process.env.UNSUBSCRIBE_SECRET || 'beck360-unsub-default';
+const JWT_SECRET = process.env.UNSUBSCRIBE_SECRET;
+if (!JWT_SECRET) {
+  console.error('UNSUBSCRIBE_SECRET env var is not set — unsubscribe verification will fail');
+}
 
 function verifyToken(token) {
   if (!token || !token.includes('.')) return null;

@@ -15,6 +15,7 @@ export function useInvoices({ type = null, status = null, companyId = null, deal
         company:companies(id, name),
         contact:contacts(id, first_name, last_name)
       `)
+      .is('deleted_at', null)
       .order('created_at', { ascending: false });
 
     if (type) query = query.eq('type', type);
@@ -50,6 +51,7 @@ export function useInvoice(id) {
           contact:contacts(id, first_name, last_name, email, phone)
         `)
         .eq('id', id)
+        .is('deleted_at', null)
         .single(),
       supabase
         .from('invoice_items')
@@ -273,11 +275,13 @@ export function useInvoiceDashboard() {
         .from('invoices')
         .select('total_amount')
         .eq('type', 'invoice')
+        .is('deleted_at', null)
         .in('status', ['sent', 'overdue']),
       supabase
         .from('invoices')
         .select('total_amount')
         .eq('type', 'invoice')
+        .is('deleted_at', null)
         .eq('status', 'paid')
         .gte('paid_date', monthStart),
     ]);
@@ -298,7 +302,7 @@ export function useInvoiceDashboard() {
 export async function deleteInvoice(id) {
   const { error } = await supabase
     .from('invoices')
-    .delete()
+    .update({ deleted_at: new Date().toISOString() })
     .eq('id', id);
   return { error };
 }

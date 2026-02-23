@@ -10,6 +10,7 @@ export function useCampaigns({ status = null } = {}) {
     let query = supabase
       .from('campaigns')
       .select('*')
+      .is('deleted_at', null)
       .order('created_at', { ascending: false });
 
     if (status) query = query.eq('status', status);
@@ -52,7 +53,7 @@ export function useCampaign(id) {
   }, [id, fetch]);
 
   const remove = useCallback(async () => {
-    return supabase.from('campaigns').delete().eq('id', id);
+    return supabase.from('campaigns').update({ deleted_at: new Date().toISOString() }).eq('id', id);
   }, [id]);
 
   return { campaign, loading, refetch: fetch, update, remove };

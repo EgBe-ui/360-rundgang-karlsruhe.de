@@ -2,16 +2,21 @@ import { supabase } from './lib/supabase.mjs';
 import { sendTransactionalEmail, personalize } from './lib/brevo.mjs';
 import crypto from 'node:crypto';
 
-const JWT_SECRET = process.env.UNSUBSCRIBE_SECRET || 'beck360-unsub-default';
+const JWT_SECRET = process.env.UNSUBSCRIBE_SECRET;
+if (!JWT_SECRET) {
+  console.error('UNSUBSCRIBE_SECRET env var is not set — unsubscribe tokens will not work');
+}
 const SITE_URL = 'https://360-rundgang-karlsruhe.de';
 
 function makeUnsubscribeToken(contactId) {
+  if (!JWT_SECRET) return null;
   const payload = Buffer.from(JSON.stringify({ sub: contactId, iat: Date.now() })).toString('base64url');
   const sig = crypto.createHmac('sha256', JWT_SECRET).update(payload).digest('base64url');
   return `${payload}.${sig}`;
 }
 
 function appendUnsubscribeLink(html, token) {
+  if (!token) return html;
   const url = `${SITE_URL}/api/unsubscribe?token=${token}`;
   const link = `<p style="text-align:center;font-size:12px;color:#888;margin-top:32px;"><a href="${url}" style="color:#888;">Abmelden</a></p>`;
 

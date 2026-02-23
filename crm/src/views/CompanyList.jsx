@@ -41,9 +41,19 @@ export function CompanyList() {
   const handleBulkDelete = async () => {
     if (selected.size === 0) return;
     const count = selected.size;
-    if (!confirm(`${count} Firma(en) wirklich loeschen?`)) return;
-    setDeleting(true);
+    // Check for linked contacts
     const ids = [...selected];
+    const { data: linkedContacts } = await supabase
+      .from('contacts')
+      .select('id')
+      .in('company_id', ids)
+      .is('deleted_at', null);
+    const linkedCount = (linkedContacts || []).length;
+    const msg = linkedCount > 0
+      ? `${count} Firma(en) loeschen? ${linkedCount} verknuepfte(r) Kontakt(e) verlieren die Firmenzuordnung.`
+      : `${count} Firma(en) wirklich loeschen?`;
+    if (!confirm(msg)) return;
+    setDeleting(true);
     const now = new Date().toISOString();
     const { error } = await supabase
       .from('companies')

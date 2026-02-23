@@ -60,7 +60,11 @@ export function ContactDetail({ id }) {
   }
 
   async function handleDelete() {
-    if (!confirm('Kontakt wirklich loeschen?')) return;
+    const linkedDeals = deals.length;
+    const msg = linkedDeals > 0
+      ? `Dieser Kontakt hat ${linkedDeals} verknuepfte(n) Deal(s). Kontakt wirklich loeschen?`
+      : 'Kontakt wirklich loeschen?';
+    if (!confirm(msg)) return;
     const { error } = await softDelete();
     if (error) {
       toast.error('Fehler beim Loeschen');
@@ -151,7 +155,11 @@ export function ContactDetail({ id }) {
                   </div>
                   <div class="detail-field">
                     <span class="detail-label">E-Mail</span>
-                    <span class="detail-value"><a href={`mailto:${contact.email}`}>{contact.email}</a></span>
+                    <span class="detail-value">
+                      {contact.email?.endsWith('@platzhalter.de')
+                        ? <span style="color:var(--text-dim);font-style:italic" title="Platzhalter – bitte echte E-Mail eintragen">{contact.email}</span>
+                        : <a href={`mailto:${contact.email}`}>{contact.email}</a>}
+                    </span>
                   </div>
                   <div class="detail-field">
                     <span class="detail-label">Telefon</span>

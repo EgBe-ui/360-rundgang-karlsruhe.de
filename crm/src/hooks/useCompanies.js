@@ -39,6 +39,7 @@ export function useCompany(id) {
       .from('companies')
       .select('*')
       .eq('id', id)
+      .is('deleted_at', null)
       .single();
     setCompany(data);
     setLoading(false);
@@ -55,7 +56,15 @@ export function useCompany(id) {
     return { error };
   }, [id, fetch]);
 
-  return { company, loading, refetch: fetch, update };
+  const softDelete = useCallback(async () => {
+    const { error } = await supabase
+      .from('companies')
+      .update({ deleted_at: new Date().toISOString() })
+      .eq('id', id);
+    return { error };
+  }, [id]);
+
+  return { company, loading, refetch: fetch, update, softDelete };
 }
 
 export async function createCompany(data) {

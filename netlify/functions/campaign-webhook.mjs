@@ -1,5 +1,9 @@
 import { supabase } from './lib/supabase.mjs';
 
+// TODO: Add Brevo webhook signature verification when Brevo provides a signing secret.
+// Currently no signature check — relies on obscure endpoint URL for security.
+// See: https://developers.brevo.com/docs/how-to-use-webhooks
+
 // Brevo webhook events → recipient status mapping
 const EVENT_MAP = {
   delivered: 'sent',
