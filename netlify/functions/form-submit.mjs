@@ -66,34 +66,34 @@ export default async (request) => {
     return new Response(JSON.stringify({ success: true }), { status: 200, headers });
   }
 
+  // IP hash for audit
+  const clientIP = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
+    || request.headers.get('x-real-ip');
+  const ipHash = hashIP(clientIP);
+
   // Forward email FIRST (most important — must not be blocked by Supabase errors)
-  let fsResult = null;
   try {
-    fsResult = await forwardToFormSubmit(rawData);
+    await forwardToFormSubmit(rawData);
   } catch (fsErr) {
     console.error('FormSubmit forward error:', fsErr);
   }
 
   // CRM operations (best-effort — don't block response if these fail)
-  let crmError = null;
   try {
     if (supabase) {
-      await processCRM(rawData);
+      await processCRM(rawData, ipHash);
     }
   } catch (err) {
     console.error('CRM error:', err);
-    crmError = err.message;
   }
 
-  const response = { success: true, formsubmit: fsResult };
-  if (crmError) response.crm_error = crmError;
-  return new Response(JSON.stringify(response), { status: 200, headers });
+  return new Response(JSON.stringify({ success: true }), { status: 200, headers });
 };
 
 /**
  * Process CRM operations: normalize, create contact/deal, log activities.
  */
-async function processCRM(rawData) {
+async function processCRM(rawData, ipHash) {
   const normalized = normalizeFormData(rawData);
   const sourceSite = detectSource(rawData);
   const sourcePage = detectSourcePage(rawData);
@@ -102,6 +102,7 @@ async function processCRM(rawData) {
     source_site: sourceSite,
     source_page: sourcePage,
     form_data: rawData,
+    ip_hash: ipHash,
     is_duplicate: false,
   };
 
