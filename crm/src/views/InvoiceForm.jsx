@@ -226,36 +226,43 @@ export function InvoiceForm() {
     }
 
     setSaving(true);
-    const invoiceData = {
-      ...form,
-      company_id: form.company_id || null,
-      contact_id: form.contact_id || null,
-      deal_id: form.deal_id || null,
-      subtotal: totals.subtotal,
-      net_amount: totals.net_amount,
-      vat_amount: totals.vat_amount,
-      total_amount: totals.total_amount,
-      due_date: form.due_date || null,
-    };
+    try {
+      const invoiceData = {
+        ...form,
+        company_id: form.company_id || null,
+        contact_id: form.contact_id || null,
+        deal_id: form.deal_id || null,
+        subtotal: totals.subtotal,
+        net_amount: totals.net_amount,
+        vat_amount: totals.vat_amount,
+        total_amount: totals.total_amount,
+        due_date: form.due_date || null,
+      };
 
-    let result;
-    if (editId) {
-      result = await updateInvoiceWithItems(editId, invoiceData, items);
-      if (!result.error) {
-        toast.success('Gespeichert');
-        route(`/crm/invoices/${editId}`);
+      let result;
+      if (editId) {
+        result = await updateInvoiceWithItems(editId, invoiceData, items);
+        if (!result.error) {
+          toast.success('Gespeichert');
+          route(`/crm/invoices/${editId}`);
+        }
+      } else {
+        if (quoteId) invoiceData.converted_from_quote_id = quoteId;
+        result = await createInvoice(invoiceData, items);
+        if (!result.error && result.data?.id) {
+          toast.success(`${isQuote ? 'Angebot' : 'Rechnung'} erstellt`);
+          route(`/crm/invoices/${result.data.id}`);
+        } else if (!result.error) {
+          toast.error('Rechnung konnte nicht erstellt werden');
+        }
       }
-    } else {
-      if (quoteId) invoiceData.converted_from_quote_id = quoteId;
-      result = await createInvoice(invoiceData, items);
-      if (!result.error) {
-        toast.success(`${isQuote ? 'Angebot' : 'Rechnung'} erstellt`);
-        route(`/crm/invoices/${result.data.id}`);
-      }
-    }
 
-    if (result.error) {
-      toast.error('Fehler: ' + result.error.message);
+      if (result.error) {
+        toast.error('Fehler: ' + (result.error.message || JSON.stringify(result.error)));
+      }
+    } catch (err) {
+      console.error('Invoice submit error:', err);
+      toast.error('Unerwarteter Fehler: ' + err.message);
     }
     setSaving(false);
   }

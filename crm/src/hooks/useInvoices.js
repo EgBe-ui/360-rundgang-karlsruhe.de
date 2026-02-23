@@ -80,8 +80,11 @@ export function useInvoice(id) {
 }
 
 export async function createInvoice(invoiceData, lineItems) {
-  const { data: user } = await supabase.auth.getUser();
-  const ownerId = user.user.id;
+  const { data: userData, error: authError } = await supabase.auth.getUser();
+  if (authError || !userData?.user?.id) {
+    return { error: { message: 'Nicht authentifiziert. Bitte erneut einloggen.' } };
+  }
+  const ownerId = userData.user.id;
 
   const { data: invoice, error } = await supabase
     .from('invoices')
@@ -90,6 +93,7 @@ export async function createInvoice(invoiceData, lineItems) {
     .single();
 
   if (error) return { error };
+  if (!invoice) return { error: { message: 'Rechnung wurde nicht gespeichert.' } };
 
   if (lineItems && lineItems.length > 0) {
     const rows = lineItems.map((item, i) => ({
