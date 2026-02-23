@@ -3,6 +3,8 @@ import { useContacts } from '../hooks/useContacts.js';
 import { SearchBar } from '../components/SearchBar.jsx';
 import { FilterBar } from '../components/FilterBar.jsx';
 import { StageBadge } from '../components/StageBadge.jsx';
+import { ImportModal } from '../components/ImportModal.jsx';
+import { useToast } from '../components/Toast.jsx';
 import { SOURCES, formatDate } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
@@ -11,15 +13,22 @@ const SOURCE_FILTERS = Object.entries(SOURCES).map(([value, label]) => ({ value,
 export function ContactList() {
   const [search, setSearch] = useState('');
   const [source, setSource] = useState(null);
-  const { contacts, loading } = useContacts({ search, source });
+  const [showImport, setShowImport] = useState(false);
+  const { contacts, loading, refetch } = useContacts({ search, source });
+  const toast = useToast();
 
   return (
     <>
       <div class="page-header">
         <h1 class="page-title">Kontakte</h1>
-        <button class="btn btn-primary btn-sm" onClick={() => route('/crm/contacts/new')}>
-          + Neuer Kontakt
-        </button>
+        <div style="display:flex;gap:0.5rem">
+          <button class="btn btn-secondary btn-sm" onClick={() => setShowImport(true)}>
+            CSV Import
+          </button>
+          <button class="btn btn-primary btn-sm" onClick={() => route('/crm/contacts/new')}>
+            + Neuer Kontakt
+          </button>
+        </div>
       </div>
 
       <div class="page-body">
@@ -74,6 +83,16 @@ export function ContactList() {
           </div>
         )}
       </div>
+
+      {showImport && (
+        <ImportModal
+          onClose={() => setShowImport(false)}
+          onSuccess={() => {
+            toast.success('Import abgeschlossen');
+            refetch();
+          }}
+        />
+      )}
     </>
   );
 }
