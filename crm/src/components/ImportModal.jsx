@@ -125,9 +125,12 @@ export function ImportModal({ onClose, onSuccess }) {
               <div style="font-size:0.75rem;color:var(--text-muted)">Kontakte erstellt</div>
             </div>
           </div>
-          {results.skipped.companies > 0 && (
+          {(results.skipped.companies > 0 || results.skipped.contacts > 0) && (
             <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem">
-              {results.skipped.companies} Firma(en) bereits vorhanden (uebersprungen)
+              {[
+                results.skipped.companies > 0 && `${results.skipped.companies} Firma(en)`,
+                results.skipped.contacts > 0 && `${results.skipped.contacts} Kontakt(e)`,
+              ].filter(Boolean).join(' und ')} bereits vorhanden (uebersprungen)
             </p>
           )}
           {results.errors.length > 0 && (

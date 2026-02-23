@@ -127,10 +127,28 @@ export function useImportContacts() {
       setProgress({ current: step, total });
     }
 
+    // Load existing contacts for duplicate check
+    const { data: existingContacts } = await supabase
+      .from('contacts')
+      .select('id, first_name, last_name, company_id')
+      .is('deleted_at', null);
+    const contactKey = (fn, ln, cid) =>
+      `${(fn || '').toLowerCase()}|${(ln || '').toLowerCase()}|${cid || ''}`;
+    const existingContactSet = new Set(
+      (existingContacts || []).map(c => contactKey(c.first_name, c.last_name, c.company_id))
+    );
+
     // Create contacts
     for (const row of rows) {
       if (!row.firstName && !row.lastName) continue;
       const companyId = companyIdMap.get(row.companyName) || null;
+      const key = contactKey(row.firstName, row.lastName, companyId);
+      if (existingContactSet.has(key)) {
+        skipped.contacts++;
+        step++;
+        setProgress({ current: step, total });
+        continue;
+      }
       const { error } = await createContact({
         first_name: row.firstName || null,
         last_name: row.lastName || null,
@@ -141,6 +159,7 @@ export function useImportContacts() {
         errors.push(`Kontakt "${row.firstName} ${row.lastName}": ${error.message}`);
       } else {
         created.contacts++;
+        existingContactSet.add(key);
       }
       step++;
       setProgress({ current: step, total });
