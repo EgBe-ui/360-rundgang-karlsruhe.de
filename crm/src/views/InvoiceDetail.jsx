@@ -22,8 +22,20 @@ export function InvoiceDetail({ id }) {
   if (!invoice) {
     return (
       <>
-        <div class="page-header"><h1 class="page-title">Nicht gefunden</h1></div>
-        <div class="page-body"><div class="empty-state"><div class="empty-state-text">Dokument nicht gefunden</div></div></div>
+        <div class="page-header">
+          <div style="display:flex;align-items:center;gap:0.75rem">
+            <button class="btn btn-secondary btn-sm" onClick={() => route('/crm/invoices')}>←</button>
+            <h1 class="page-title">Nicht gefunden</h1>
+          </div>
+        </div>
+        <div class="page-body">
+          <div class="empty-state">
+            <div class="empty-state-text">Dokument nicht gefunden</div>
+            <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim)">
+              Debug: id="{id}" | URL: {typeof window !== 'undefined' ? window.location.pathname + window.location.search : ''}
+            </div>
+          </div>
+        </div>
       </>
     );
   }
