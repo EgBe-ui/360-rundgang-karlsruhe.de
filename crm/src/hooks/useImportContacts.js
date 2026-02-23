@@ -136,7 +136,6 @@ export function useImportContacts() {
         last_name: row.lastName || null,
         company_id: companyId,
         source: 'manual',
-        notes: row.notes || null,
       });
       if (error) {
         errors.push(`Kontakt "${row.firstName} ${row.lastName}": ${error.message}`);
