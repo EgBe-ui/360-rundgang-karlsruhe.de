@@ -15,6 +15,13 @@ export function Settings() {
   const [bizForm, setBizForm] = useState({});
   const [bizEditing, setBizEditing] = useState(false);
   const [bizSaving, setBizSaving] = useState(false);
+  const [tplEditing, setTplEditing] = useState(false);
+  const [tplSaving, setTplSaving] = useState(false);
+  const [tplForm, setTplForm] = useState({
+    default_invoice_intro: '',
+    default_quote_intro: '',
+    payment_reference_note: '',
+  });
 
   useEffect(() => {
     if (bizSettings) {
@@ -36,6 +43,11 @@ export function Settings() {
         vat_rate: bizSettings.vat_rate || 19,
         default_closing_text: bizSettings.default_closing_text || '',
       });
+      setTplForm({
+        default_invoice_intro: bizSettings.default_invoice_intro || 'Vielen Dank fuer Ihren Auftrag. Ich berechne Ihnen fuer folgende Leistungen:',
+        default_quote_intro: bizSettings.default_quote_intro || 'Vielen Dank fuer Ihr Interesse. Gerne unterbreite ich Ihnen folgendes Angebot:',
+        payment_reference_note: bizSettings.payment_reference_note || 'Bitte verwenden Sie die Rechnungsnummer als Verwendungszweck.',
+      });
     }
   }, [bizSettings]);
 
@@ -53,6 +65,18 @@ export function Settings() {
       setBizEditing(false);
     }
     setBizSaving(false);
+  }
+
+  async function saveTplForm(e) {
+    e.preventDefault();
+    setTplSaving(true);
+    const { error } = await saveBizSettings(tplForm);
+    if (error) toast.error('Fehler: ' + error.message);
+    else {
+      toast.success('Rechnungsvorlage gespeichert');
+      setTplEditing(false);
+    }
+    setTplSaving(false);
   }
 
   async function changePassword(e) {
@@ -248,6 +272,61 @@ export function Settings() {
                 <div class="detail-field">
                   <span class="detail-label">MwSt.</span>
                   <span class="detail-value">{bizSettings?.vat_rate || 19}%</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Rechnungsvorlage</span>
+              {!tplEditing && <button class="btn btn-secondary btn-sm" onClick={() => setTplEditing(true)}>Bearbeiten</button>}
+            </div>
+            {bizLoading ? (
+              <div class="loading-center"><div class="spinner" /></div>
+            ) : tplEditing ? (
+              <form onSubmit={saveTplForm}>
+                <div class="form-group">
+                  <label>Standard-Einleitung Rechnung</label>
+                  <textarea
+                    value={tplForm.default_invoice_intro}
+                    onInput={e => setTplForm({...tplForm, default_invoice_intro: e.target.value})}
+                    rows={2}
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Standard-Einleitung Angebot</label>
+                  <textarea
+                    value={tplForm.default_quote_intro}
+                    onInput={e => setTplForm({...tplForm, default_quote_intro: e.target.value})}
+                    rows={2}
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Verwendungszweck-Hinweis</label>
+                  <input
+                    value={tplForm.payment_reference_note}
+                    onInput={e => setTplForm({...tplForm, payment_reference_note: e.target.value})}
+                  />
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="btn btn-secondary btn-sm" onClick={() => setTplEditing(false)}>Abbrechen</button>
+                  <button type="submit" class="btn btn-primary btn-sm" disabled={tplSaving}>{tplSaving ? 'Speichern...' : 'Speichern'}</button>
+                </div>
+              </form>
+            ) : (
+              <div style="display:flex;flex-direction:column;gap:0.75rem">
+                <div class="detail-field">
+                  <span class="detail-label">Einleitung Rechnung</span>
+                  <span class="detail-value" style="white-space:pre-wrap">{tplForm.default_invoice_intro}</span>
+                </div>
+                <div class="detail-field">
+                  <span class="detail-label">Einleitung Angebot</span>
+                  <span class="detail-value" style="white-space:pre-wrap">{tplForm.default_quote_intro}</span>
+                </div>
+                <div class="detail-field">
+                  <span class="detail-label">Verwendungszweck</span>
+                  <span class="detail-value">{tplForm.payment_reference_note}</span>
                 </div>
               </div>
             )}

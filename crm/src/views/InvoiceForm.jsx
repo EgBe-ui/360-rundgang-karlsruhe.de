@@ -41,6 +41,7 @@ export function InvoiceForm() {
     vat_rate: 19,
     payment_terms: 'Diese Rechnung ist zahlbar innerhalb von 14 Tagen ohne Abzug auf das unten angegebene Bankkonto.',
     closing_message: '',
+    intro_text: '',
     notes: '',
   });
   const [items, setItems] = useState([
@@ -58,12 +59,19 @@ export function InvoiceForm() {
     if (settings && !editId && !quoteId) {
       const dueDate = new Date();
       dueDate.setDate(dueDate.getDate() + (settings.default_payment_days || 14));
-      setForm(f => ({
-        ...f,
-        vat_rate: parseFloat(settings.vat_rate) || 19,
-        due_date: f.due_date || dueDate.toISOString().slice(0, 10),
-        closing_message: f.closing_message || settings.default_closing_text || '',
-      }));
+      setForm(f => {
+        const isQ = f.type === 'quote';
+        const defaultIntro = isQ
+          ? (settings.default_quote_intro || 'Vielen Dank fuer Ihr Interesse. Gerne unterbreite ich Ihnen folgendes Angebot:')
+          : (settings.default_invoice_intro || 'Vielen Dank fuer Ihren Auftrag. Ich berechne Ihnen fuer folgende Leistungen:');
+        return {
+          ...f,
+          vat_rate: parseFloat(settings.vat_rate) || 19,
+          due_date: f.due_date || dueDate.toISOString().slice(0, 10),
+          closing_message: f.closing_message || settings.default_closing_text || '',
+          intro_text: f.intro_text || defaultIntro,
+        };
+      });
     }
   }, [settings, editId, quoteId]);
 
@@ -119,6 +127,7 @@ export function InvoiceForm() {
         vat_rate: q.vat_rate || 19,
         payment_terms: q.payment_terms || f.payment_terms,
         closing_message: q.closing_message || f.closing_message,
+        intro_text: q.intro_text || '',
         notes: q.notes || '',
       }));
       if (qItems && qItems.length > 0) {
@@ -153,6 +162,7 @@ export function InvoiceForm() {
       vat_rate: editInvoice.vat_rate || 19,
       payment_terms: editInvoice.payment_terms || '',
       closing_message: editInvoice.closing_message || '',
+      intro_text: editInvoice.intro_text || '',
       notes: editInvoice.notes || '',
     });
     if (editItems.length > 0) {
@@ -453,6 +463,15 @@ export function InvoiceForm() {
           {/* Texte */}
           <div class="card" style="margin-bottom:1.5rem">
             <div class="card-header"><span class="card-title">Texte</span></div>
+            <div class="form-group">
+              <label>Einleitungstext</label>
+              <textarea
+                value={form.intro_text}
+                onInput={e => setForm({ ...form, intro_text: e.target.value })}
+                rows={2}
+                placeholder={isQuote ? 'Angebots-Einleitung...' : 'Rechnungs-Einleitung...'}
+              />
+            </div>
             <div class="form-group">
               <label>Zahlungsbedingungen</label>
               <textarea
