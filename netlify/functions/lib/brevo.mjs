@@ -23,8 +23,8 @@ export async function sendTransactionalEmail({ to, subject, htmlContent, params 
       to: [{ email: to.email, name: to.name || to.email }],
       subject,
       htmlContent,
-      params,
-      tags,
+      ...(params && Object.keys(params).length > 0 ? { params } : {}),
+      ...(tags.length > 0 ? { tags } : {}),
     }),
   });
 
