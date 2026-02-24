@@ -10,3 +10,9 @@ Disallow: /danke.html
 Disallow: /tools/
 Disallow: /crm/
 Disallow: /api/
+
+# Block spam/garbage query parameters (wastes crawl budget)
+Disallow: /*?nocache=
+Disallow: /*&nocache=
+Disallow: /*jet_blog_ajax*
+Disallow: /*?nocache*
