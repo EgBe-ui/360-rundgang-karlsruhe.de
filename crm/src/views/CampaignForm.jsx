@@ -267,17 +267,17 @@ export function CampaignForm() {
               style={`
                 flex:1;padding:0.875rem 1rem;border:none;cursor:pointer;
                 font-size:0.875rem;font-weight:${step === s.num ? '600' : '500'};
-                background:${step === s.num ? 'var(--primary)' : step > s.num ? 'rgba(26,92,107,0.08)' : 'transparent'};
-                color:${step === s.num ? '#fff' : step > s.num ? 'var(--primary)' : 'var(--text-muted)'};
+                background:${step === s.num ? '#6358DE' : step > s.num ? 'rgba(99,88,222,0.08)' : 'transparent'};
+                color:${step === s.num ? '#fff' : step > s.num ? '#6358DE' : 'var(--text-muted)'};
                 border-right:${i < STEPS.length - 1 ? '1px solid var(--border)' : 'none'};
                 transition:all 0.15s;
                 display:flex;align-items:center;justify-content:center;gap:0.5rem;
               `}
             >
               <span style={`
-                width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+                width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
                 font-size:0.75rem;font-weight:700;
-                background:${step === s.num ? 'rgba(255,255,255,0.2)' : step > s.num ? 'var(--primary)' : 'var(--border)'};
+                background:${step === s.num ? 'rgba(255,255,255,0.25)' : step > s.num ? '#6358DE' : 'var(--border)'};
                 color:${step === s.num ? '#fff' : step > s.num ? '#fff' : 'var(--text-muted)'};
               `}>
                 {step > s.num ? '✓' : s.num}

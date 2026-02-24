@@ -85,9 +85,9 @@ export const ACTIVITY_TYPES = {
 };
 
 export const CAMPAIGN_STATUS = {
-  draft: { label: 'Entwurf', color: '#6366f1' },
+  draft: { label: 'Entwurf', color: '#6358DE' },
   sending: { label: 'Wird gesendet', color: '#f59e0b' },
-  sent: { label: 'Versendet', color: '#10b981' },
+  sent: { label: 'Versendet', color: '#0B996F' },
 };
 
 export const EMAIL_TEMPLATES = [

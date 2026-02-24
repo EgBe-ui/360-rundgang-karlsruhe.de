@@ -7,9 +7,9 @@ import { CAMPAIGN_STATUS, formatDate, formatDateTime } from '../lib/helpers.js';
 import { route } from 'preact-router';
 
 const RECIPIENT_STATUS = {
-  pending: { label: 'Ausstehend', color: '#6366f1' },
+  pending: { label: 'Ausstehend', color: '#6358DE' },
   sent: { label: 'Gesendet', color: '#3b82f6' },
-  opened: { label: 'Geoeffnet', color: '#10b981' },
+  opened: { label: 'Geoeffnet', color: '#0B996F' },
   clicked: { label: 'Geklickt', color: '#059669' },
   bounced: { label: 'Bounce', color: '#ef4444' },
   unsubscribed: { label: 'Abgemeldet', color: '#94a3b8' },
@@ -25,6 +25,8 @@ export function CampaignDetail({ id }) {
   const [showSendConfirm, setShowSendConfirm] = useState(false);
   const [sending, setSending] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [testEmail, setTestEmail] = useState('');
+  const [sendingTest, setSendingTest] = useState(false);
 
   if (loading) {
     return (
@@ -77,6 +79,21 @@ export function CampaignDetail({ id }) {
     setShowSendConfirm(false);
   }
 
+  async function handleTestSend() {
+    if (!testEmail) {
+      toast.error('Bitte E-Mail-Adresse eingeben');
+      return;
+    }
+    setSendingTest(true);
+    try {
+      await sendCampaign(campaign.id, { testEmail });
+      toast.success(`Test-Mail an ${testEmail} gesendet`);
+    } catch (err) {
+      toast.error(err.message || 'Test-Mail fehlgeschlagen');
+    }
+    setSendingTest(false);
+  }
+
   async function handleDelete() {
     const { error } = await remove();
     if (error) {
@@ -87,12 +104,11 @@ export function CampaignDetail({ id }) {
     }
   }
 
-  const openRate = campaign.total_sent > 0
-    ? Math.round((campaign.total_opened / campaign.total_sent) * 100)
-    : 0;
-  const clickRate = campaign.total_sent > 0
-    ? Math.round((campaign.total_clicked / campaign.total_sent) * 100)
-    : 0;
+  const openRate = campaign.total_sent > 0 ? Math.round((campaign.total_opened / campaign.total_sent) * 100) : 0;
+  const clickRate = campaign.total_sent > 0 ? Math.round((campaign.total_clicked / campaign.total_sent) * 100) : 0;
+
+  const sentRecipients = recipients.filter(r => r.status === 'sent' || r.status === 'opened' || r.status === 'clicked').length;
+  const bouncedRecipients = recipients.filter(r => r.status === 'bounced').length;
 
   return (
     <>
@@ -119,26 +135,32 @@ export function CampaignDetail({ id }) {
       </div>
 
       <div class="page-body">
-        <div class="detail-grid">
-          <div class="detail-main">
-            {/* Stats (only for sent campaigns) */}
-            {campaign.status === 'sent' && (
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem;">
-                <div class="card" style="text-align:center;padding:1.25rem;">
-                  <div class="kpi-value">{campaign.total_sent}</div>
-                  <div class="kpi-label">Gesendet</div>
-                </div>
-                <div class="card" style="text-align:center;padding:1.25rem;">
-                  <div class="kpi-value">{campaign.total_opened} <span style="font-size:0.85rem;color:var(--text-dim)">({openRate}%)</span></div>
-                  <div class="kpi-label">Geoeffnet</div>
-                </div>
-                <div class="card" style="text-align:center;padding:1.25rem;">
-                  <div class="kpi-value">{campaign.total_clicked} <span style="font-size:0.85rem;color:var(--text-dim)">({clickRate}%)</span></div>
-                  <div class="kpi-label">Geklickt</div>
-                </div>
+        {/* Stats Cards */}
+        {campaign.status === 'sent' && (
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:1.5rem;">
+            <div style="background:linear-gradient(135deg,#6358DE 0%,#7c6ff7 100%);border-radius:var(--radius-lg);padding:1.25rem;color:#fff;text-align:center;">
+              <div style="font-size:2rem;font-weight:700;line-height:1">{campaign.total_sent}</div>
+              <div style="font-size:0.8rem;opacity:0.85;margin-top:0.35rem">Gesendet</div>
+            </div>
+            <div style="background:linear-gradient(135deg,#0B996F 0%,#10b981 100%);border-radius:var(--radius-lg);padding:1.25rem;color:#fff;text-align:center;">
+              <div style="font-size:2rem;font-weight:700;line-height:1">{campaign.total_opened}</div>
+              <div style="font-size:0.8rem;opacity:0.85;margin-top:0.35rem">Geoeffnet ({openRate}%)</div>
+            </div>
+            <div style="background:linear-gradient(135deg,#3b82f6 0%,#60a5fa 100%);border-radius:var(--radius-lg);padding:1.25rem;color:#fff;text-align:center;">
+              <div style="font-size:2rem;font-weight:700;line-height:1">{campaign.total_clicked}</div>
+              <div style="font-size:0.8rem;opacity:0.85;margin-top:0.35rem">Geklickt ({clickRate}%)</div>
+            </div>
+            {bouncedRecipients > 0 && (
+              <div style="background:linear-gradient(135deg,#ef4444 0%,#f87171 100%);border-radius:var(--radius-lg);padding:1.25rem;color:#fff;text-align:center;">
+                <div style="font-size:2rem;font-weight:700;line-height:1">{bouncedRecipients}</div>
+                <div style="font-size:0.8rem;opacity:0.85;margin-top:0.35rem">Bounce</div>
               </div>
             )}
+          </div>
+        )}
 
+        <div class="detail-grid">
+          <div class="detail-main">
             {/* Campaign details */}
             <div class="card">
               <div class="card-header"><span class="card-title">Kampagnen-Details</span></div>
@@ -187,59 +209,82 @@ export function CampaignDetail({ id }) {
               )}
             </div>
 
+            {/* Test send (for draft campaigns) */}
+            {campaign.status === 'draft' && (
+              <div class="card">
+                <div class="card-header"><span class="card-title">Test-Mail senden</span></div>
+                <div style="display:flex;gap:0.75rem;align-items:end;flex-wrap:wrap;">
+                  <div style="flex:1;min-width:200px;">
+                    <label>E-Mail-Adresse</label>
+                    <input
+                      type="email"
+                      value={testEmail}
+                      onInput={e => setTestEmail(e.target.value)}
+                      placeholder="rundgang@beck360.de"
+                    />
+                  </div>
+                  <button
+                    class="btn btn-secondary"
+                    onClick={handleTestSend}
+                    disabled={sendingTest}
+                    style="white-space:nowrap;"
+                  >
+                    {sendingTest ? 'Sende...' : 'Test senden'}
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Email preview */}
             <div class="card">
               <div class="card-header"><span class="card-title">E-Mail-Vorschau</span></div>
               <div
-                style="border:1px solid var(--border);border-radius:8px;padding:1rem;background:#fff;max-height:400px;overflow:auto;"
+                style="border:1px solid var(--border);border-radius:var(--radius);padding:1rem;background:#fff;max-height:400px;overflow:auto;"
                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(campaign.body_html) }}
               />
             </div>
 
             {/* Recipients table */}
             <div class="card">
-              <div class="card-header"><span class="card-title">Empfaenger ({recipients.length})</span></div>
+              <div class="card-header">
+                <span class="card-title">Empfaenger ({recipients.length})</span>
+              </div>
               {loadingRecipients ? (
                 <div class="loading-center"><div class="spinner" /></div>
               ) : recipients.length === 0 ? (
                 <div style="color:var(--text-dim);font-size:0.85rem">Keine Empfaenger</div>
               ) : (
-                <div class="table-wrapper">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>E-Mail</th>
-                        <th>Status</th>
-                        <th>Geoeffnet</th>
-                        <th>Geklickt</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {recipients.map(r => (
-                        <tr key={r.id}>
-                          <td>
-                            {r.contact
-                              ? <a href="#" onClick={e => { e.preventDefault(); route(`/crm/contacts/${r.contact_id}`); }}>
-                                  {`${r.contact.first_name || ''} ${r.contact.last_name || ''}`.trim() || r.email}
-                                </a>
-                              : r.email}
-                          </td>
-                          <td>{r.email}</td>
-                          <td>
-                            <span
-                              class="stage-badge"
-                              style={`background:${RECIPIENT_STATUS[r.status]?.color || '#6366f1'}15;color:${RECIPIENT_STATUS[r.status]?.color || '#6366f1'};`}
-                            >
-                              {RECIPIENT_STATUS[r.status]?.label || r.status}
-                            </span>
-                          </td>
-                          <td style="color:var(--text-dim)">{r.opened_at ? formatDateTime(r.opened_at) : '–'}</td>
-                          <td style="color:var(--text-dim)">{r.clicked_at ? formatDateTime(r.clicked_at) : '–'}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                  {recipients.map(r => {
+                    const st = RECIPIENT_STATUS[r.status] || {};
+                    const name = r.contact
+                      ? `${r.contact.first_name || ''} ${r.contact.last_name || ''}`.trim() || r.email
+                      : r.email;
+                    return (
+                      <div
+                        key={r.id}
+                        style="display:flex;align-items:center;gap:0.75rem;padding:0.6rem 0.75rem;border:1px solid var(--border);border-radius:var(--radius);font-size:0.85rem;"
+                      >
+                        <div style={`width:8px;height:8px;border-radius:50%;background:${st.color || '#6366f1'};flex-shrink:0;`} />
+                        <div style="flex:1;min-width:0;">
+                          {r.contact ? (
+                            <a href="#" onClick={e => { e.preventDefault(); e.stopPropagation(); route(`/crm/contacts/${r.contact_id}`); }} style="font-weight:500;">
+                              {name}
+                            </a>
+                          ) : (
+                            <span style="font-weight:500;">{name}</span>
+                          )}
+                          <div style="font-size:0.75rem;color:var(--text-dim);">{r.email}</div>
+                        </div>
+                        <span
+                          class="stage-badge"
+                          style={`background:${st.color || '#6366f1'}15;color:${st.color || '#6366f1'};`}
+                        >
+                          {st.label || r.status}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -249,7 +294,14 @@ export function CampaignDetail({ id }) {
             <div class="card">
               <div class="detail-field">
                 <span class="detail-label">Status</span>
-                <span class="detail-value">{CAMPAIGN_STATUS[campaign.status]?.label}</span>
+                <span class="detail-value">
+                  <span
+                    class="stage-badge"
+                    style={`background:${CAMPAIGN_STATUS[campaign.status]?.color || '#6366f1'}15;color:${CAMPAIGN_STATUS[campaign.status]?.color || '#6366f1'};`}
+                  >
+                    {CAMPAIGN_STATUS[campaign.status]?.label}
+                  </span>
+                </span>
               </div>
               <div class="detail-field">
                 <span class="detail-label">Erstellt</span>
@@ -263,18 +315,17 @@ export function CampaignDetail({ id }) {
               )}
               <div class="detail-field">
                 <span class="detail-label">Empfaenger</span>
-                <span class="detail-value">{recipients.length}</span>
+                <span class="detail-value" style="font-weight:600;font-size:1.1rem;">{recipients.length}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Send confirmation */}
       {showSendConfirm && (
         <Modal title="Kampagne senden?" onClose={() => setShowSendConfirm(false)}>
           <p style="margin-bottom:1rem;">
-            Die Kampagne "<strong>{campaign.name}</strong>" wird jetzt versendet. Nur Kontakte mit DSGVO-Einwilligung erhalten die E-Mail.
+            Die Kampagne "<strong>{campaign.name}</strong>" wird an <strong>{recipients.length} Empfaenger</strong> gesendet. Nur Kontakte mit DSGVO-Einwilligung erhalten die E-Mail.
           </p>
           <div class="form-actions">
             <button class="btn btn-secondary" onClick={() => setShowSendConfirm(false)}>Abbrechen</button>
@@ -285,7 +336,6 @@ export function CampaignDetail({ id }) {
         </Modal>
       )}
 
-      {/* Delete confirmation */}
       {showDelete && (
         <Modal title="Kampagne loeschen?" onClose={() => setShowDelete(false)}>
           <p style="margin-bottom:1rem;">

@@ -142,6 +142,16 @@ export async function saveCampaignRecipients(campaignId, contacts) {
   return supabase.from('campaign_recipients').insert(rows);
 }
 
+export async function deleteAllCampaigns() {
+  const { data: user } = await supabase.auth.getUser();
+  const now = new Date().toISOString();
+  return supabase
+    .from('campaigns')
+    .update({ deleted_at: now })
+    .eq('owner_id', user.user.id)
+    .is('deleted_at', null);
+}
+
 export async function sendCampaign(campaignId, { testEmail } = {}) {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) throw new Error('Not authenticated');
