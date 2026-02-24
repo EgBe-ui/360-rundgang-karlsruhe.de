@@ -428,20 +428,29 @@
             display: flex;
             align-items: center;
             padding: 120px 0 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, #0A4A45 100%);
+            background: var(--primary-dark);
             border-bottom: 1px solid var(--border);
             position: relative;
             overflow: hidden;
         }
-        .hero::before {
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero::after {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 60%;
-            height: 200%;
-            background: radial-gradient(ellipse, rgba(20, 184, 166, 0.15) 0%, transparent 70%);
-            pointer-events: none;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 74, 69, 0.82) 0%, rgba(26, 92, 107, 0.75) 50%, rgba(10, 74, 69, 0.85) 100%);
+            z-index: 1;
         }
         .hero .container {
             position: relative;
@@ -642,9 +651,10 @@
         .tech-preview .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 40px 60px;
             align-items: center;
         }
+        .tech-specs { grid-column: 1 / -1; }
         .tech-content h2 { margin-bottom: 20px; }
         .tech-content p { font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
         .tech-link {
@@ -659,40 +669,37 @@
         }
         .tech-link:hover { color: var(--primary-dark); }
         .tech-visual {
-            background: white;
-            border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 32px;
+            overflow: hidden;
             box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
         }
-        .tech-scanner {
-            display: flex;
-            gap: 24px;
-            margin-bottom: 24px;
+        .tech-visual video {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
         }
-        .scanner-item {
-            flex: 1;
-            text-align: center;
-            padding: 20px 16px;
-            background: var(--bg-soft);
-            border-radius: 8px;
-        }
-        .scanner-icon { font-size: 40px; margin-bottom: 8px; }
-        .scanner-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
-        .scanner-use { font-size: 12px; color: var(--text-secondary); }
         .tech-specs {
             list-style: none;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-top: 24px;
         }
-        .tech-specs li {
-            padding: 10px 0;
-            font-size: 14px;
-            color: var(--text);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
+        .tech-spec-item {
+            text-align: center;
+            padding: 16px 8px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
         }
-        .tech-specs li:last-child { border-bottom: none; }
-        .tech-specs li span { color: var(--text-secondary); }
+        .tech-spec-item .spec-value { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .tech-spec-item .spec-label { font-size: 12px; color: var(--text-secondary); }
+
+        @media (max-width: 600px) {
+            .tech-specs { grid-template-columns: repeat(3, 1fr); }
+        }
 
         @media (max-width: 900px) {
             .tech-preview .container { grid-template-columns: 1fr; gap: 40px; }
@@ -1192,6 +1199,9 @@
 
     <!-- Hero -->
     <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src="https://videos.ctfassets.net/icnj41gkyohw/4P5ouI9J4KmfRZLa9yuJyI/8dec1a354863e9418df7e1c7172806eb/Human_Scale_BIM_Animation_1152x648.mp4" type="video/mp4">
+        </video>
         <div class="container">
             <div class="hero-content">
                 <p class="section-label">3D-Gebäudescan Karlsruhe & Region</p>
@@ -1322,25 +1332,31 @@
                 <a href="/3d-scan/technik/" class="tech-link">Mehr über unsere Technik erfahren &#8594;</a>
             </div>
             <div class="tech-visual fade-in">
-                <div class="tech-scanner">
-                    <div class="scanner-item">
-                        <div class="scanner-icon">&#128247;</div>
-                        <div class="scanner-name">Matterport Pro2</div>
-                        <div class="scanner-use">Innenräume</div>
-                    </div>
-                    <div class="scanner-item">
-                        <div class="scanner-icon">&#128225;</div>
-                        <div class="scanner-name">Matterport Pro3</div>
-                        <div class="scanner-use">Fassaden & Aussen</div>
-                    </div>
+                <video autoplay muted loop playsinline preload="metadata" aria-label="CAD-Workflow Animation: Vom 3D-Scan zum fertigen CAD-Grundriss">
+                    <source src="https://videos.ctfassets.net/icnj41gkyohw/1lDY8HTcBuJvAu8GF9eiLb/54cf3086f596ce3667c1bb3022aa46c9/Matterport_simplifies_your_CAD_workflow.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="tech-specs fade-in">
+                <div class="tech-spec-item">
+                    <div class="spec-value">+/-20mm</div>
+                    <div class="spec-label">Genauigkeit</div>
                 </div>
-                <ul class="tech-specs">
-                    <li>Genauigkeit <span>+/-20mm</span></li>
-                    <li>Reichweite <span>bis 100m</span></li>
-                    <li>Export-Formate <span>E57, OBJ, FBX, IFC</span></li>
-                    <li>Georeferenzierung <span>Inklusive</span></li>
-                    <li>HDR-Fotografie <span>134 Megapixel</span></li>
-                </ul>
+                <div class="tech-spec-item">
+                    <div class="spec-value">100m</div>
+                    <div class="spec-label">Reichweite</div>
+                </div>
+                <div class="tech-spec-item">
+                    <div class="spec-value">E57 / DWG</div>
+                    <div class="spec-label">Export</div>
+                </div>
+                <div class="tech-spec-item">
+                    <div class="spec-value">134 MP</div>
+                    <div class="spec-label">HDR-Foto</div>
+                </div>
+                <div class="tech-spec-item">
+                    <div class="spec-value">BIM</div>
+                    <div class="spec-label">LOD 200</div>
+                </div>
             </div>
         </div>
     </section>
