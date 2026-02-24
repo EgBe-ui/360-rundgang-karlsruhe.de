@@ -44,7 +44,7 @@
     <meta property="og:title" content="3D-Scan Preise | 4 Pakete ab 490&euro; netto | Beck360 Karlsruhe">
     <meta property="og:description" content="Transparente 3D-Scan Preise nach Fl&auml;che und Leistung: BASIC ab 490&euro;, PROFESSIONAL ab 890&euro;, CAD ab 1.490&euro;, BIM ab 2.490&euro;. Festpreise inkl. Anfahrt.">
     <meta property="og:locale" content="de_DE">
-    <meta property="og:image" content="https://360-rundgang-karlsruhe.de/og-image.jpg">
+    <meta property="og:image" content="https://360-rundgang-karlsruhe.de/images/3d-scan/Architecture_MEP_Interior_Furniture.webp">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -297,6 +297,30 @@
         @media(max-width:1024px){.pricing-grid{grid-template-columns:repeat(2,1fr);gap:20px}.pricing-card.featured{transform:none}.pricing-card.featured:hover{transform:translateY(-4px)}}
         @media(max-width:600px){.pricing-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}}
 
+        /* Paketinhalte Visual Grid */
+        .paketinhalte{background:white}
+        .paketinhalte-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+        .paketinhalte-card{background:var(--bg-soft);border-radius:12px;border:2px solid var(--border);overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column}
+        .paketinhalte-card:hover{border-color:var(--primary-light);box-shadow:var(--shadow-lg)}
+        .paketinhalte-card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px 8px 0 0;display:block}
+        .paketinhalte-card-body{padding:20px 16px;flex:1;display:flex;flex-direction:column}
+        .paketinhalte-badge{display:inline-block;background:var(--primary);color:white;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;align-self:flex-start}
+        .paketinhalte-badge--featured{background:var(--cta)}
+        .paketinhalte-badge--bim{background:var(--primary-dark)}
+        .paketinhalte-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}
+        .paketinhalte-desc{font-size:13px;color:var(--text-light);line-height:1.5}
+        .paketinhalte-enterprise{margin-top:24px;background:linear-gradient(135deg,var(--bg-soft) 0%,rgba(15,118,110,0.08) 100%);border-radius:16px;border:2px solid var(--border);overflow:hidden;display:flex;align-items:center;gap:32px;transition:all 0.3s}
+        .paketinhalte-enterprise:hover{border-color:var(--primary-light);box-shadow:var(--shadow-lg)}
+        .paketinhalte-enterprise img{width:340px;height:220px;object-fit:cover;border-radius:8px;flex-shrink:0;margin:16px}
+        .paketinhalte-enterprise-body{padding:24px 24px 24px 0;flex:1}
+        .paketinhalte-enterprise .paketinhalte-badge{background:#7C3AED}
+        .paketinhalte-enterprise .paketinhalte-title{font-size:18px;margin-bottom:8px}
+        .paketinhalte-enterprise .paketinhalte-desc{font-size:14px}
+        .paketinhalte-enterprise-cta{display:inline-flex;align-items:center;gap:6px;margin-top:16px;color:var(--primary);font-weight:700;font-size:14px;text-decoration:none;transition:color 0.3s}
+        .paketinhalte-enterprise-cta:hover{color:var(--primary-dark);text-decoration:underline}
+        @media(max-width:1024px){.paketinhalte-grid{grid-template-columns:repeat(2,1fr)}.paketinhalte-enterprise img{width:260px;height:180px}}
+        @media(max-width:600px){.paketinhalte-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}.paketinhalte-enterprise{flex-direction:column}.paketinhalte-enterprise img{width:100%;height:200px;margin:0;border-radius:8px 8px 0 0}.paketinhalte-enterprise-body{padding:20px}}
+
         /* Price Matrix Table */
         .matrix-section{background:white}
         .matrix-wrapper{overflow-x:auto;margin-top:40px;border-radius:16px;border:2px solid var(--border)}
@@ -510,6 +534,71 @@
                     <a href="#kontakt" class="pricing-cta pricing-cta-outline">Projekt besprechen</a>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Paketinhalte Visual Grid -->
+    <section class="paketinhalte" id="paketinhalte">
+        <div class="container">
+            <div class="text-center">
+                <span class="section-label">Paketinhalte</span>
+                <h2 class="section-title">Was steckt in jedem Paket?</h2>
+                <p class="section-subtitle mx-auto">Jedes Paket erfasst unterschiedliche Geb&auml;udeschichten &ndash; von der Geb&auml;udeh&uuml;lle bis zum vollst&auml;ndigen BIM-Modell.</p>
+            </div>
+            <div class="paketinhalte-grid">
+
+                <!-- BASIC -->
+                <div class="paketinhalte-card fade-up stagger-1">
+                    <img src="/images/3d-scan/Architecture.webp" alt="BIM Explosionsansicht: Grundlegende Architektur mit Geb&auml;udeh&uuml;lle, W&auml;nden, Fenstern und T&uuml;ren" loading="lazy" width="400" height="300">
+                    <div class="paketinhalte-card-body">
+                        <span class="paketinhalte-badge">BASIC</span>
+                        <div class="paketinhalte-title">Grundlegende Architektur</div>
+                        <p class="paketinhalte-desc">Geb&auml;udeh&uuml;lle, W&auml;nde, Fenster, T&uuml;ren &ndash; als digitaler Zwilling erfasst und dokumentiert.</p>
+                    </div>
+                </div>
+
+                <!-- PROFESSIONAL -->
+                <div class="paketinhalte-card fade-up stagger-2">
+                    <img src="/images/3d-scan/Architecture_and_Interior_Furniture.webp" alt="BIM Explosionsansicht: Architektur mit Inneneinrichtung, M&ouml;bel und Ausstattung" loading="lazy" width="400" height="300">
+                    <div class="paketinhalte-card-body">
+                        <span class="paketinhalte-badge paketinhalte-badge--featured">PROFESSIONAL</span>
+                        <div class="paketinhalte-title">Architektur + Inneneinrichtung</div>
+                        <p class="paketinhalte-desc">M&ouml;bel und Ausstattung als Punktwolke erfasst &ndash; ideal f&uuml;r Planer und Bestandsdokumentation.</p>
+                    </div>
+                </div>
+
+                <!-- CAD -->
+                <div class="paketinhalte-card fade-up stagger-3">
+                    <img src="/images/3d-scan/Architecture_MEP.webp" alt="BIM Explosionsansicht: Architektur mit Haustechnik (MEP) &ndash; Leitungen, Rohre, Kan&auml;le" loading="lazy" width="400" height="300">
+                    <div class="paketinhalte-card-body">
+                        <span class="paketinhalte-badge">CAD</span>
+                        <div class="paketinhalte-title">Architektur + Haustechnik (MEP)</div>
+                        <p class="paketinhalte-desc">Leitungen, Rohre, Kan&auml;le &ndash; als pr&auml;ziser 2D-CAD-Grundriss im DWG-Format.</p>
+                    </div>
+                </div>
+
+                <!-- BIM -->
+                <div class="paketinhalte-card fade-up stagger-4">
+                    <img src="/images/3d-scan/Architecture_MEP_Interior_Furniture.webp" alt="BIM Explosionsansicht: Vollst&auml;ndiges BIM-Modell mit Architektur, MEP und Inneneinrichtung" loading="lazy" width="400" height="300">
+                    <div class="paketinhalte-card-body">
+                        <span class="paketinhalte-badge paketinhalte-badge--bim">BIM</span>
+                        <div class="paketinhalte-title">Vollst&auml;ndiges BIM-Modell</div>
+                        <p class="paketinhalte-desc">Architektur + MEP + Inneneinrichtung &ndash; als intelligentes 3D-Modell LOD 200 (RVT/IFC/DWG/RCS).</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Enterprise Teaser -->
+            <div class="paketinhalte-enterprise fade-up">
+                <img src="/images/3d-scan/Complex_MEP.webp" alt="Komplexe MEP-Systeme einer Industrieanlage als BIM-Explosionsansicht" loading="lazy" width="340" height="220">
+                <div class="paketinhalte-enterprise-body">
+                    <span class="paketinhalte-badge">Enterprise</span>
+                    <div class="paketinhalte-title">Komplexe Industrieanlagen</div>
+                    <p class="paketinhalte-desc">F&uuml;r besonders anspruchsvolle Projekte mit komplexer Haustechnik, Produktionsanlagen oder gro&szlig;fl&auml;chigen Geb&auml;udekomplexen erstellen wir ein individuelles Angebot.</p>
+                    <a href="#kontakt" class="paketinhalte-enterprise-cta">Projekt besprechen &#8594;</a>
+                </div>
             </div>
         </div>
     </section>
