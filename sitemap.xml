@@ -3,7 +3,7 @@
     <!-- Hauptseite -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -11,25 +11,25 @@
     <!-- Landing Pages -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/privatverkauf/</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/immobilienmakler/</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/pv-inspektion/</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -37,7 +37,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-02-23</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -45,49 +45,79 @@
     <!-- Blog Artikel -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/ki-immobilien-virtuelle-rundgaenge.html</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/hausverkauf-2026-kaeufer-erwartungen.html</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/versteckte-maklerkosten-rechnung.html</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/verkauft-in-30-tagen.html</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/drohnenaufnahmen-immobilien-recht.html</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/besichtigungstermin-360-rundgang.html</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/immobilienmarkt-karlsruhe-2026.html</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/wohnviertel-karlsruhe-familien.html</loc>
-        <lastmod>2026-02-03</lastmod>
+        <lastmod>2026-02-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/homestaging-verkaufspreis-steigern-karlsruhe.html</loc>
+        <lastmod>2026-02-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/360-grad-rundgang-erstellen-kosten-anbieter-vergleich.html</loc>
+        <lastmod>2026-02-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/immobilienfotografie-fehler-verkauf-2026.html</loc>
+        <lastmod>2026-02-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/grundriss-visualisierung-3d-plaene-exposes-2026.html</loc>
+        <lastmod>2026-02-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/sanierungspflicht-2026-haus-verkaufen-karlsruhe.html</loc>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -95,49 +125,43 @@
     <!-- Drohnenaufnahmen Unterseiten -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/immobilien/</loc>
-        <lastmod>2026-02-20</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/hotels/</loc>
-        <lastmod>2026-02-20</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/baugewerbe/</loc>
-        <lastmod>2026-02-20</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/events/</loc>
-        <lastmod>2026-02-20</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/pv-inspektion/</loc>
-        <lastmod>2026-02-20</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/videoumfrage/</loc>
-        <lastmod>2026-02-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
         <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/blog/</loc>
-        <lastmod>2026-02-20</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/drohnenaufnahmen/blog/was-kosten-drohnenaufnahmen/</loc>
-        <lastmod>2026-02-20</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -145,55 +169,55 @@
     <!-- Stadt-Landingpages -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/ettlingen/</loc>
-        <lastmod>2026-02-21</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/bruchsal/</loc>
-        <lastmod>2026-02-21</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/rastatt/</loc>
-        <lastmod>2026-02-21</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/baden-baden/</loc>
-        <lastmod>2026-02-21</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/pforzheim/</loc>
-        <lastmod>2026-02-21</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/mannheim/</loc>
-        <lastmod>2026-02-21</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/durlach/</loc>
-        <lastmod>2026-02-23</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/rheinstetten/</loc>
-        <lastmod>2026-02-23</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://360-rundgang-karlsruhe.de/stutensee/</loc>
-        <lastmod>2026-02-23</lastmod>
+        <lastmod>2026-02-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -210,45 +234,5 @@
         <lastmod>2026-02-03</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
-    </url>
-
-    <!-- Blog Artikel: homestaging-verkaufspreis-steigern-karlsruhe -->
-    <url>
-        <loc>https://360-rundgang-karlsruhe.de/blog/homestaging-verkaufspreis-steigern-karlsruhe.html</loc>
-        <lastmod>2026-02-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Blog Artikel: 360-grad-rundgang-erstellen-kosten-anbieter-vergleich -->
-    <url>
-        <loc>https://360-rundgang-karlsruhe.de/blog/360-grad-rundgang-erstellen-kosten-anbieter-vergleich.html</loc>
-        <lastmod>2026-02-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Blog Artikel: immobilienfotografie-fehler-verkauf-2026 -->
-    <url>
-        <loc>https://360-rundgang-karlsruhe.de/blog/immobilienfotografie-fehler-verkauf-2026.html</loc>
-        <lastmod>2026-02-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Blog Artikel: grundriss-visualisierung-3d-plaene-exposes-2026 -->
-    <url>
-        <loc>https://360-rundgang-karlsruhe.de/blog/grundriss-visualisierung-3d-plaene-exposes-2026.html</loc>
-        <lastmod>2026-02-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Blog Artikel: sanierungspflicht-2026-haus-verkaufen-karlsruhe -->
-    <url>
-        <loc>https://360-rundgang-karlsruhe.de/blog/sanierungspflicht-2026-haus-verkaufen-karlsruhe.html</loc>
-        <lastmod>2026-02-23</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
 </urlset>
