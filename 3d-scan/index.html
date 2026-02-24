@@ -25,7 +25,7 @@
     </script>
 
     <title>3D-Gebäudescan Karlsruhe | Punktwolken & Digitale Zwillinge | Beck360</title>
-    <meta name="description" content="3D-Gebäudescan in Karlsruhe & Region. Matterport LiDAR-Scans für Architekten, Gerüstbauer, Industrie und Behörden. E57-Punktwolken, BIM-Daten, Digitale Zwillinge. Ab 799€/Tag.">
+    <meta name="description" content="3D-Gebäudescan in Karlsruhe & Region. Matterport LiDAR-Scans für Architekten, Gerüstbauer, Industrie und Behörden. E57-Punktwolken, BIM-Daten, Digitale Zwillinge. Ab 490€ netto. 12 Monate Hosting inklusive.">
     <meta name="keywords" content="3D-Gebäudescan Karlsruhe, Punktwolke erstellen, Digitaler Zwilling Gebäude, Matterport LiDAR, BIM-Daten, E57 Punktwolke, Bestandsaufnahme 3D, Fassadenaufmaß, 3D-Scan Architektur">
     <meta name="author" content="Eugen Beck - Beck360">
     <meta name="robots" content="index, follow">
@@ -37,7 +37,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://360-rundgang-karlsruhe.de/3d-scan/">
     <meta property="og:title" content="3D-Gebäudescan Karlsruhe | Punktwolken & Digitale Zwillinge | Beck360">
-    <meta property="og:description" content="3D-Gebäudescan für Architekten, Gerüstbauer, Industrie und Behörden. Matterport LiDAR, E57-Punktwolken, BIM-Daten. Ab 799€/Tag.">
+    <meta property="og:description" content="3D-Gebäudescan für Architekten, Gerüstbauer, Industrie und Behörden. Matterport LiDAR, E57-Punktwolken, BIM-Daten. Ab 490€ netto. 12 Monate Hosting inklusive.">
     <meta property="og:locale" content="de_DE">
 
     <link rel="preconnect" href="https://my.matterport.com">
@@ -84,30 +84,40 @@
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": "3D-Scan Basis",
-                        "description": "Georeferenzierte Punktwolke, E57-Export, 3D-Modell"
+                        "name": "3D-Scan BASIC",
+                        "description": "Digitaler Zwilling, nur Innenräume, inkl. Grundriss + 12 Mon. Hosting"
                     },
-                    "price": "799",
+                    "price": "490",
                     "priceCurrency": "EUR"
                 },
                 {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": "3D-Scan Professional",
-                        "description": "Punktwolke + BIM-Daten + Digitaler Zwilling"
+                        "name": "3D-Scan PROFESSIONAL",
+                        "description": "Digitaler Zwilling + E57 Punktwolke + MatterPak"
                     },
-                    "price": "1499",
+                    "price": "890",
                     "priceCurrency": "EUR"
                 },
                 {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": "3D-Scan Enterprise",
-                        "description": "Komplettpaket für Großprojekte mit Pro2 + Pro3 LiDAR"
+                        "name": "3D-Scan CAD",
+                        "description": "Digitaler Zwilling + E57 Punktwolke + MatterPak + 2D-CAD DWG"
                     },
-                    "price": "2499",
+                    "price": "1490",
+                    "priceCurrency": "EUR"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "3D-Scan BIM",
+                        "description": "Digitaler Zwilling + E57 Punktwolke + MatterPak + 2D-CAD DWG + BIM LOD 200"
+                    },
+                    "price": "2490",
                     "priceCurrency": "EUR"
                 }
             ]
@@ -157,7 +167,7 @@
                 "name": "Was kostet ein 3D-Gebäudescan?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Das Basis-Paket mit Punktwolke und 3D-Modell startet ab 799€/Tag. Das Professional-Paket mit BIM-Daten ab 1.499€, das Enterprise-Paket für Großprojekte ab 2.499€. Alle Preise zzgl. MwSt. Anfahrt bis 10km inklusive."
+                    "text": "Das BASIC-Paket (Digitaler Zwilling, nur Innenräume, inkl. Grundriss) startet ab 490€ netto. PROFESSIONAL mit E57 Punktwolke + MatterPak ab 890€, CAD mit 2D-CAD DWG ab 1.490€, BIM mit LOD 200 ab 2.490€. Alle Pakete inkl. 12 Monate Matterport-Hosting. Verlängerung 20€/Monat. Alle Preise zzgl. MwSt."
                 }
             },
             {
@@ -723,9 +733,9 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 1000px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -851,7 +861,10 @@
             color: var(--text);
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
             .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
         }
 
@@ -1255,28 +1268,28 @@
                     <div class="branchen-card-icon">&#128208;</div>
                     <h3>Architekten & Planer</h3>
                     <p>Bestandsdaten, Punktwolken & BIM für Sanierung und Umbau</p>
-                    <span class="branchen-card-price">ab 799&#8364;/Tag</span>
+                    <span class="branchen-card-price">ab 490&#8364;</span>
                     <span class="branchen-card-arrow">Mehr erfahren &#8594;</span>
                 </a>
                 <a href="/3d-scan/geruestbau/" class="branchen-card fade-in">
                     <div class="branchen-card-icon">&#127959;</div>
                     <h3>Gerüstbauunternehmen</h3>
                     <p>3D-Fassadenaufmass für schnellere, präzisere Angebote</p>
-                    <span class="branchen-card-price">ab 799&#8364;/Tag</span>
+                    <span class="branchen-card-price">ab 490&#8364;</span>
                     <span class="branchen-card-arrow">Mehr erfahren &#8594;</span>
                 </a>
                 <a href="/3d-scan/industrie/" class="branchen-card fade-in">
                     <div class="branchen-card-icon">&#9881;</div>
                     <h3>Industrieanlagen</h3>
                     <p>Digitale Zwillinge für Remote-Begehung und Umbauplanung</p>
-                    <span class="branchen-card-price">ab 799&#8364;/Tag</span>
+                    <span class="branchen-card-price">ab 490&#8364;</span>
                     <span class="branchen-card-arrow">Mehr erfahren &#8594;</span>
                 </a>
                 <a href="/3d-scan/behoerden/" class="branchen-card fade-in">
                     <div class="branchen-card-icon">&#127963;</div>
                     <h3>Behörden & Denkmalschutz</h3>
                     <p>Dokumentation für Facility Management und Denkmalschutz</p>
-                    <span class="branchen-card-price">ab 799&#8364;/Tag</span>
+                    <span class="branchen-card-price">ab 490&#8364;</span>
                     <span class="branchen-card-arrow">Mehr erfahren &#8594;</span>
                 </a>
             </div>
@@ -1366,54 +1379,64 @@
             <div class="pricing-header">
                 <p class="section-label">Preise</p>
                 <h2>Transparente Festpreise</h2>
-                <p>Drei Pakete für unterschiedliche Anforderungen. Alle Preise zzgl. MwSt.</p>
+                <p>Vier Pakete für unterschiedliche Anforderungen. Alle Preise zzgl. MwSt.</p>
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card fade-in">
-                    <h3>Basis</h3>
-                    <p>Punktwolke & 3D-Modell für einfache Projekte.</p>
-                    <div class="price">799&#8364;<span> /Tag</span></div>
-                    <p class="price-note">zzgl. MwSt.</p>
+                    <h3>BASIC</h3>
+                    <p>Digitaler Zwilling, nur Innenräume.</p>
+                    <div class="price">490&#8364;<span> netto</span></div>
+                    <p class="price-note">zzgl. MwSt. · ab-Preis</p>
                     <ul class="features-list">
-                        <li>Georeferenzierte Punktwolke</li>
-                        <li>E57-Export</li>
-                        <li>3D-Modell (OBJ)</li>
-                        <li>Interaktiver Digitaler Zwilling</li>
-                        <li>Lieferung in 24h</li>
+                        <li>Digitaler Zwilling</li>
+                        <li>Nur Innenräume</li>
+                        <li>Inkl. Grundriss</li>
+                        <li>12 Monate Hosting inkl.</li>
                     </ul>
                     <a href="#kontakt" class="btn pricing-cta">Angebot anfordern</a>
                 </div>
                 <div class="pricing-card featured fade-in">
-                    <h3>Professional</h3>
-                    <p>Punktwolke + BIM-Daten für Planer.</p>
-                    <div class="price">1.499&#8364;<span> /Projekt</span></div>
+                    <h3>PROFESSIONAL</h3>
+                    <p>+ E57 Punktwolke + MatterPak.</p>
+                    <div class="price">890&#8364;<span> netto</span></div>
                     <p class="price-note">zzgl. MwSt. · ab-Preis</p>
                     <ul class="features-list">
-                        <li>Alles aus Basis</li>
-                        <li>BIM-Daten (IFC)</li>
-                        <li>Grundrisse (PDF/DWG)</li>
-                        <li>Flächenberechnung</li>
-                        <li>Innen + Aussen</li>
+                        <li>Alles aus BASIC</li>
+                        <li>E57 Punktwolke</li>
+                        <li>MatterPak</li>
+                        <li>12 Monate Hosting inkl.</li>
                     </ul>
                     <a href="#kontakt" class="btn pricing-cta">Angebot anfordern</a>
                 </div>
                 <div class="pricing-card fade-in">
-                    <h3>Enterprise</h3>
-                    <p>Grossprojekte mit Pro2 + Pro3 LiDAR.</p>
-                    <div class="price">2.499&#8364;<span> /Projekt</span></div>
+                    <h3>CAD</h3>
+                    <p>+ 2D-CAD DWG für Planer.</p>
+                    <div class="price">1.490&#8364;<span> netto</span></div>
                     <p class="price-note">zzgl. MwSt. · ab-Preis</p>
                     <ul class="features-list">
-                        <li>Alles aus Professional</li>
-                        <li>Pro2 + Pro3 Kombiscan</li>
-                        <li>Kombination Innen + Aussen + Dach</li>
-                        <li>Erweiterter Digitaler Zwilling</li>
-                        <li>Projektbegleitung</li>
+                        <li>Alles aus PROFESSIONAL</li>
+                        <li>2D-CAD DWG</li>
+                        <li>12 Monate Hosting inkl.</li>
+                    </ul>
+                    <a href="#kontakt" class="btn pricing-cta">Angebot anfordern</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <h3>BIM</h3>
+                    <p>+ BIM LOD 200 für Architekten.</p>
+                    <div class="price">2.490&#8364;<span> netto</span></div>
+                    <p class="price-note">zzgl. MwSt. · ab-Preis</p>
+                    <ul class="features-list">
+                        <li>Alles aus CAD</li>
+                        <li>BIM LOD 200</li>
+                        <li>12 Monate Hosting inkl.</li>
                     </ul>
                     <a href="#kontakt" class="btn pricing-cta">Angebot anfordern</a>
                 </div>
             </div>
             <div class="pricing-footer">
                 <div class="pricing-info">
+                    <span class="pricing-info-item"><strong>12 Monate Hosting</strong> inklusive</span>
+                    <span class="pricing-info-item"><strong>Verlängerung</strong> 20&#8364;/Monat</span>
                     <span class="pricing-info-item"><strong>Anfahrt bis 10 km</strong> inklusive</span>
                     <span class="pricing-info-item"><strong>Darüber hinaus</strong> +0,50&#8364;/km</span>
                 </div>
@@ -1484,7 +1507,7 @@
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">Was kostet ein 3D-Gebäudescan?</button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Das Basis-Paket mit Punktwolke und 3D-Modell startet ab 799&#8364;/Tag. Das Professional-Paket mit BIM-Daten ab 1.499&#8364;, das Enterprise-Paket für Grossprojekte ab 2.499&#8364;. Alle Preise zzgl. MwSt. Anfahrt bis 10km inklusive.</div>
+                        <div class="faq-answer-inner">Das BASIC-Paket (Digitaler Zwilling, nur Innenräume, inkl. Grundriss) startet ab 490&#8364; netto. PROFESSIONAL mit E57 Punktwolke + MatterPak ab 890&#8364;, CAD mit 2D-CAD DWG ab 1.490&#8364;, BIM mit LOD 200 ab 2.490&#8364;. Alle Pakete inkl. 12 Monate Matterport-Hosting. Verlängerung 20&#8364;/Monat. Alle Preise zzgl. MwSt.</div>
                     </div>
                 </div>
                 <div class="faq-item">
