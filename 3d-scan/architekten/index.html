@@ -293,7 +293,7 @@
         .solution-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
         .solution-card p{color:rgba(255,255,255,0.8);font-size:14px}
         .solution-image{margin-top:48px}
-        .solution-image img{width:100%;max-width:800px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.10);display:block;margin:0 auto}
+        .solution-image img{width:100%;height:auto;max-width:800px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.10);display:block;margin:0 auto}
         .solution-image-caption{text-align:center;color:rgba(255,255,255,0.7);font-size:13px;margin-top:12px;font-style:italic}
         @media(max-width:700px){.solution-grid{grid-template-columns:1fr}}
 
@@ -306,7 +306,7 @@
         .use-case-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
         .use-case-card p{color:var(--text-light);font-size:14px;line-height:1.7}
         .use-cases-image{margin-bottom:48px;margin-top:32px}
-        .use-cases-image img{width:100%;max-width:800px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.10);display:block;margin:0 auto}
+        .use-cases-image img{width:100%;height:auto;max-width:800px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.10);display:block;margin:0 auto}
         .use-cases-image-caption{text-align:center;color:var(--text-light);font-size:13px;margin-top:12px;font-style:italic}
         @media(max-width:600px){.use-cases-grid{grid-template-columns:1fr}}
 
@@ -333,8 +333,9 @@
         .step-desc{font-size:13px;color:var(--text-light)}
         .step-time{display:inline-block;background:var(--bg-soft);color:var(--primary);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-top:8px}
         @media(max-width:600px){
-            .process-timeline{flex-direction:column;gap:32px}
+            .process-timeline{flex-direction:column;gap:32px;align-items:center}
             .process-timeline::before{display:none}
+            .process-step{width:100%}
         }
 
         /* Price Teaser */
