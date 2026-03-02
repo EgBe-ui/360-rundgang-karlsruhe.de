@@ -87,7 +87,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-02-24</lastmod>
+        <lastmod>2026-03-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -284,5 +284,13 @@
         <lastmod>2026-02-03</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
+    </url>
+
+    <!-- Blog Artikel: virtuelle-besichtigung-vs-vor-ort-termin-2026 -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/virtuelle-besichtigung-vs-vor-ort-termin-2026.html</loc>
+        <lastmod>2026-03-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 </urlset>
