@@ -310,10 +310,26 @@
             left: 0;
             right: 0;
             height: 64px;
-            background: var(--bg);
+            background: transparent;
             z-index: 9999;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
+        nav.main-nav.scrolled {
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        }
+        nav.main-nav .logo { color: rgba(255,255,255,0.92); }
+        nav.main-nav.scrolled .logo { color: var(--text); }
+        nav.main-nav .nav-links a,
+        nav.main-nav .nav-dropdown-btn { color: rgba(255,255,255,0.75); }
+        nav.main-nav.scrolled .nav-links a,
+        nav.main-nav.scrolled .nav-dropdown-btn { color: var(--text-light); }
+        nav.main-nav .nav-links a:hover,
+        nav.main-nav .nav-dropdown-btn:hover { color: rgba(255,255,255,1); }
+        nav.main-nav.scrolled .nav-links a:hover,
+        nav.main-nav.scrolled .nav-dropdown-btn:hover { color: var(--primary); }
 
         .nav-container {
             max-width: 1200px;
@@ -466,6 +482,43 @@
         }
 
         /* Nav CTA Button */
+
+        /* Site Switcher */
+        .site-switcher {
+            display: flex;
+            gap: 2px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 3px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: background 0.3s ease, border-color 0.3s ease;
+            margin-right: 8px;
+        }
+        nav.main-nav.scrolled .site-switcher {
+            background: rgba(0,0,0,0.05);
+            border-color: rgba(0,0,0,0.1);
+        }
+        .site-switcher-btn {
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+            color: rgba(255,255,255,0.55);
+            transition: all 0.2s;
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+        .site-switcher-btn.active {
+            background: rgba(255,255,255,0.18);
+            color: white;
+        }
+        nav.main-nav.scrolled .site-switcher-btn { color: rgba(0,0,0,0.45); }
+        nav.main-nav.scrolled .site-switcher-btn.active {
+            background: rgba(0,0,0,0.08);
+            color: var(--text);
+        }
+        @media (max-width: 640px) { .site-switcher { display: none; } }
         .nav-cta {
             display: flex;
             align-items: center;
@@ -513,6 +566,7 @@
             justify-content: center;
             overflow: hidden;
             background: #030d14;
+            padding-top: 64px;
         }
         .hero-bg-gradient {
             position: absolute;
@@ -2641,6 +2695,10 @@
                 <li><a href="blog/">Blog</a></li>
             </ul>
             <a href="#contact" class="nav-cta" aria-label="Kontakt aufnehmen">Anfragen</a>
+            <div class="site-switcher" aria-label="Website wechseln">
+                <span class="site-switcher-btn active" aria-current="page">Immobilien</span>
+                <a href="https://firmenrundgang-karlsruhe.de" class="site-switcher-btn">Unternehmen</a>
+            </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
                 <span></span>
                 <span></span>
@@ -3737,18 +3795,13 @@
         // Für lokale Tests kannst du diese Funktion wieder aktivieren
 
         // Nav scroll effect
-        let lastScroll = 0;
+        const mainNav = document.querySelector('nav.main-nav');
         window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            const currentScroll = window.pageYOffset;
-
-            if (currentScroll > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            if (window.pageYOffset > 80) {
+                mainNav.classList.add('scrolled');
             } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.8)';
+                mainNav.classList.remove('scrolled');
             }
-
-            lastScroll = currentScroll;
         });
 
         // Lightbox functionality
