@@ -503,291 +503,96 @@
             }
         }
 
-        /* Hero Section - Clean & Bright */
+        /* ── Dark Geometric Hero ──────────────────────────────────── */
         .hero {
-            background: var(--bg-soft);
-            color: var(--text);
-            padding: 140px 20px 100px;
             position: relative;
-            border-bottom: 1px solid var(--border);
-        }
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        @media (max-width: 900px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-content { order: 1; }
-            .hero-demo { order: 2; }
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 24px;
-        }
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .hero h1 {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            color: var(--text);
-        }
-        .hero h1 .highlight {
-            color: var(--primary);
-        }
-        .hero-subtitle {
-            font-size: 18px;
-            color: var(--text-light);
-            margin-bottom: 32px;
-            line-height: 1.7;
-            max-width: 500px;
-        }
-        @media (max-width: 900px) {
-            .hero-subtitle { max-width: none; }
-        }
-        .hero-ctas {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        @media (max-width: 900px) {
-            .hero-ctas { justify-content: center; }
-        }
-        .hero-cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--cta);
-            color: white;
-            padding: 16px 28px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: var(--shadow-md);
-        }
-        .hero-cta-btn:hover {
-            background: var(--cta-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-        .hero-cta-secondary {
-            background: white;
-            color: var(--text);
-            border: 1px solid var(--border);
-            box-shadow: none;
-        }
-        .hero-cta-secondary:hover {
-            background: var(--bg-soft);
-            border-color: var(--primary);
-            box-shadow: none;
-        }
-        .hero-trust {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
-        }
-        @media (max-width: 900px) {
-            .hero-trust { justify-content: center; flex-wrap: wrap; }
-        }
-        .hero-trust-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: var(--text-light);
-        }
-        .hero-trust-item svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--primary);
-        }
-        .hero-demo {
-            position: relative;
-        }
-        .hero-demo-wrapper {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .hero-demo iframe, .hero-visual iframe {
+            min-height: 100vh;
             width: 100%;
-            aspect-ratio: 4/3;
-            border: none;
-            display: block;
-        }
-        .hero-price {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 18px;
-            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
-            z-index: 10;
-            animation: float 3s ease-in-out infinite;
-        }
-        .hero-price span {
-            display: block;
-            font-size: 11px;
-            font-weight: 600;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        /* Legacy hero elements - hidden or adapted */
-        .hero-eyebrow { display: none; }
-        .hero-image-container { display: none; }
-        .hero-quicklinks { display: none; }
-
-        .btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 24px;
-            font-size: 17px;
-            font-weight: 400;
-            border-radius: 980px;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--blue);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--blue-hover);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--blue);
-            border: 2px solid var(--blue);
-        }
-
-        .btn-secondary:hover {
-            background: var(--blue);
-            color: var(--white);
-        }
-
-        .hero-image-container {
-            max-width: 900px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .hero-visual {
-            width: 100%;
-            height: 400px;
-            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
-            position: relative;
+            background: #030d14;
         }
-
-        .hero-visual iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-overlay {
+        .hero-bg-gradient {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,113,227,0.85) 0%, rgba(88,86,214,0.85) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: opacity 0.5s ease;
-            z-index: 10;
-        }
-
-        .video-overlay.hidden {
-            opacity: 0;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 40%, rgba(26,92,107,0.12), transparent),
+                radial-gradient(ellipse 60% 50% at 80% 70%, rgba(6,182,212,0.06), transparent);
             pointer-events: none;
         }
-
-        .video-overlay-text {
-            color: white;
-            font-size: clamp(24px, 5vw, 36px);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 8px;
+        .hero::before, .hero::after {
+            content: ''; position: absolute; left: 0; right: 0; height: 30%; z-index: 2; pointer-events: none;
         }
-
-        .video-overlay-subtext {
-            color: rgba(255,255,255,0.9);
-            font-size: clamp(14px, 3vw, 18px);
-            margin-bottom: 20px;
+        .hero::before { top: 0; background: linear-gradient(to bottom, #030d14, transparent); }
+        .hero::after  { bottom: 0; background: linear-gradient(to top, #030d14, transparent); }
+        .hero-shapes { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+        .hero-shape {
+            position: absolute;
+            border-radius: 9999px;
+            border: 2px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 8px 32px 0 rgba(255,255,255,0.06);
         }
-
-        .video-overlay-btn {
-            background: white;
-            color: #0071e3;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+        .hero-shape::after {
+            content: ''; position: absolute; inset: 0; border-radius: 9999px;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15), transparent 70%);
         }
-
-        .video-overlay-btn:hover {
-            transform: scale(1.05);
+        @keyframes hSE1 { from { opacity:0; transform:translateY(-150px) rotate(-3deg); } to { opacity:1; transform:translateY(0) rotate(12deg); } }
+        @keyframes hSE2 { from { opacity:0; transform:translateY(-150px) rotate(0deg);  } to { opacity:1; transform:translateY(0) rotate(-15deg); } }
+        @keyframes hSE3 { from { opacity:0; transform:translateY(-150px) rotate(7deg);  } to { opacity:1; transform:translateY(0) rotate(-8deg); } }
+        @keyframes hSE4 { from { opacity:0; transform:translateY(-150px) rotate(5deg);  } to { opacity:1; transform:translateY(0) rotate(20deg); } }
+        @keyframes hSE5 { from { opacity:0; transform:translateY(-150px) rotate(-10deg); } to { opacity:1; transform:translateY(0) rotate(-25deg); } }
+        @keyframes hSF  { 0%,100% { translate:0 0; } 50% { translate:0 15px; } }
+        .hero-shape-1 { width:600px; height:140px; left:-10%; top:18%; background:linear-gradient(to right,rgba(26,92,107,0.18),transparent); animation:hSE1 2.4s cubic-bezier(.23,.86,.39,.96) .3s both,hSF 12s ease-in-out 2.7s infinite; }
+        .hero-shape-2 { width:500px; height:120px; right:-5%; top:72%; background:linear-gradient(to right,rgba(6,182,212,0.15),transparent); animation:hSE2 2.4s cubic-bezier(.23,.86,.39,.96) .5s both,hSF 12s ease-in-out 2.9s infinite; }
+        .hero-shape-3 { width:300px; height:80px; left:8%; bottom:8%; background:linear-gradient(to right,rgba(99,102,241,0.15),transparent); animation:hSE3 2.4s cubic-bezier(.23,.86,.39,.96) .4s both,hSF 12s ease-in-out 2.8s infinite; }
+        .hero-shape-4 { width:200px; height:55px; right:18%; top:13%; background:linear-gradient(to right,rgba(245,158,11,0.15),transparent); animation:hSE4 2.4s cubic-bezier(.23,.86,.39,.96) .6s both,hSF 12s ease-in-out 3.0s infinite; }
+        .hero-shape-5 { width:150px; height:40px; left:24%; top:8%; background:linear-gradient(to right,rgba(34,211,238,0.15),transparent); animation:hSE5 2.4s cubic-bezier(.23,.86,.39,.96) .7s both,hSF 12s ease-in-out 3.1s infinite; }
+        .hero-content { position:relative; z-index:3; max-width:760px; margin:0 auto; padding:0 24px; text-align:center; }
+        @keyframes hFU { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        .hero-badge {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:8px 18px; border-radius:50px;
+            background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+            margin-bottom:36px; opacity:0;
+            animation:hFU 1s cubic-bezier(.25,.4,.25,1) .5s forwards;
         }
-
-        .hero-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .hero-badge .dot { width:8px; height:8px; border-radius:50%; background:#f43f5e; flex-shrink:0; }
+        .hero-badge-text { font-size:13px; color:rgba(255,255,255,0.55); font-weight:500; letter-spacing:0.04em; }
+        .hero h1 {
+            font-size:clamp(42px,7vw,88px); font-weight:800; line-height:1.0;
+            letter-spacing:-0.03em; margin-bottom:28px; opacity:0;
+            animation:hFU 1s cubic-bezier(.25,.4,.25,1) .7s forwards;
+        }
+        .hero-line1 { display:block; background:linear-gradient(to bottom,#ffffff,rgba(255,255,255,0.8)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:4px; }
+        .hero-line2 { display:block; background:linear-gradient(to right,#67e8f9,rgba(255,255,255,0.9),#1a5c6b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .hero-subtitle { font-size:clamp(16px,2vw,20px); color:rgba(255,255,255,0.38); line-height:1.7; font-weight:300; letter-spacing:0.01em; max-width:540px; margin:0 auto 40px; opacity:0; animation:hFU 1s cubic-bezier(.25,.4,.25,1) .9s forwards; }
+        .hero-ctas { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; opacity:0; animation:hFU 1s cubic-bezier(.25,.4,.25,1) 1.1s forwards; }
+        .hero-cta-btn { display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:50px; font-size:15px; font-weight:600; text-decoration:none; cursor:pointer; transition:all 0.25s ease; letter-spacing:0.01em; background:linear-gradient(135deg,#1a5c6b 0%,#0e8a9e 100%); color:#fff; box-shadow:0 4px 24px rgba(26,92,107,0.4); border:none; font-family:inherit; }
+        .hero-cta-btn:hover { background:linear-gradient(135deg,#0e4f5c 0%,#0a7a8c 100%); box-shadow:0 6px 32px rgba(26,92,107,0.55); transform:translateY(-1px); }
+        .hero-cta-secondary { background:rgba(255,255,255,0.06)!important; border:1px solid rgba(255,255,255,0.12)!important; color:rgba(255,255,255,0.75)!important; box-shadow:none!important; }
+        .hero-cta-secondary:hover { background:rgba(255,255,255,0.1)!important; color:#fff!important; transform:translateY(-1px); }
+        .hero-trust { margin-top:56px; display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; opacity:0; animation:hFU 1s cubic-bezier(.25,.4,.25,1) 1.3s forwards; }
+        .hero-trust-item { display:flex; align-items:center; gap:6px; font-size:13px; color:rgba(255,255,255,0.35); font-weight:500; }
+        .hero-trust-item svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; }
+        .hero-trust-item .star { color:#f59e0b; font-style:normal; }
+        .hero-trust-divider { width:1px; height:16px; background:rgba(255,255,255,0.1); }
+        .hero-scroll { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); z-index:3; display:flex; flex-direction:column; align-items:center; gap:6px; opacity:0; animation:hFU 1s cubic-bezier(.25,.4,.25,1) 1.5s forwards; }
+        .hero-scroll span { font-size:11px; color:rgba(255,255,255,0.2); letter-spacing:0.1em; text-transform:uppercase; }
+        @keyframes hSB { 0%,100% { transform:translateY(0); opacity:.5; } 50% { transform:translateY(6px); opacity:1; } }
+        .hero-scroll-arrow { animation:hSB 2s ease-in-out infinite; color:rgba(255,255,255,0.25); font-size:18px; display:block; }
+        @media (max-width:640px) {
+            .hero-shape-1 { width:300px; height:80px; left:-15%; top:15%; }
+            .hero-shape-2 { width:250px; height:70px; right:-10%; top:68%; }
+            .hero-shape-3 { width:180px; height:55px; left:5%; bottom:12%; }
+            .hero-shape-4 { width:140px; height:42px; right:10%; top:10%; }
+            .hero-shape-5 { width:100px; height:32px; left:18%; top:6%; }
+            .hero-ctas { flex-direction:column; align-items:center; }
+            .hero-cta-btn { width:100%; max-width:300px; justify-content:center; }
+            .hero-trust { gap:12px; }
+            .hero-trust-divider { display:none; }
         }
 
         /* Section Styles */
@@ -2862,42 +2667,48 @@
 
     <!-- Hero Section -->
     <header class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="dot"></span>
-                    360° Rundgänge & Drohnenfotografie
+        <div class="hero-bg-gradient"></div>
+        <div class="hero-shapes">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+            <div class="hero-shape hero-shape-4"></div>
+            <div class="hero-shape hero-shape-5"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                <span class="hero-badge-text">Matterport Zertifizierter Partner · Karlsruhe</span>
+            </div>
+            <h1>
+                <span class="hero-line1">Mehr Anfragen.</span>
+                <span class="hero-line2">Schneller verkauft.</span>
+            </h1>
+            <p class="hero-subtitle">360° Rundgänge, die Käufer begeistern. Drohnenaufnahmen, die beeindrucken. Für Makler, Privatverkäufer und Unternehmen in Karlsruhe – fertig in 48 Stunden.</p>
+            <div class="hero-ctas">
+                <a href="#contact" class="hero-cta-btn">Jetzt Angebot erhalten →</a>
+                <a href="#leistungen" class="hero-cta-btn hero-cta-secondary">Leistungen ansehen</a>
+            </div>
+            <div class="hero-trust">
+                <div class="hero-trust-item">
+                    <i class="star">★★★★★</i>
+                    <span>5,0 Google Bewertung</span>
                 </div>
-                <h1>Mehr Anfragen.<br><span class="highlight">Schneller verkauft.</span></h1>
-                <p class="hero-subtitle">360° Rundgänge, die Käufer begeistern. Drohnenaufnahmen, die beeindrucken. Für Makler, Privatverkäufer und Unternehmen in Karlsruhe – fertig in 48 Stunden.</p>
-                <div class="hero-ctas">
-                    <a href="#contact" class="hero-cta-btn">Jetzt Angebot erhalten →</a>
-                    <a href="#leistungen" class="hero-cta-btn hero-cta-secondary">Leistungen ansehen</a>
+                <div class="hero-trust-divider"></div>
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    <span>Matterport Partner</span>
                 </div>
-                <div class="hero-trust">
-                    <div class="hero-trust-item">
-                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <span>5.0 Google Bewertung</span>
-                    </div>
-                    <div class="hero-trust-item">
-                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                        <span>Matterport Partner</span>
-                    </div>
-                    <div class="hero-trust-item">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        <span>EU-Drohnenlizenz A2</span>
-                    </div>
+                <div class="hero-trust-divider"></div>
+                <div class="hero-trust-item">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Lieferung in 48 Std.</span>
                 </div>
             </div>
-            <div class="hero-demo">
-                <div class="hero-price">
-                    <span>Ab</span>
-                    349€
-                </div>
-                <div class="hero-demo-wrapper">
-                    <iframe src="https://my.matterport.com/show/?m=JpmsyFFDkW9&play=1&qs=1" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"></iframe>
-                </div>
-            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Mehr entdecken</span>
+            <span class="hero-scroll-arrow">↓</span>
         </div>
     </header>
 

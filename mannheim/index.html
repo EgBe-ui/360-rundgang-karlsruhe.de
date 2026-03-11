@@ -46,8 +46,8 @@
         a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
 
         /* Hero with Background Image */
-        .hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;padding:60px 20px;text-align:center;color:white;position:relative;background:url('/images/luftbild-07.jpg') center/cover no-repeat}
-        .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,93,87,0.82) 0%,rgba(15,118,110,0.75) 50%,rgba(19,78,74,0.88) 100%)}
+        .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:60px 20px;text-align:center;color:white;position:relative;background:url('/images/luftbild-07.jpg') center/cover no-repeat}
+        .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,13,20,0.72) 0%,rgba(3,13,20,0.55) 50%,rgba(3,13,20,0.85) 100%)}
         .hero>*{position:relative;z-index:1}
         .hero-badge{display:inline-block;background:rgba(255,255,255,0.15);padding:8px 18px;border-radius:50px;font-size:14px;font-weight:500;margin-bottom:20px;border:1px solid rgba(255,255,255,0.25);backdrop-filter:blur(4px)}
         .hero h1{font-size:clamp(28px,6vw,48px);font-weight:800;line-height:1.15;margin-bottom:16px;max-width:640px;margin-left:auto;margin-right:auto}
@@ -181,6 +181,21 @@
         @media(max-width:400px){
             .stats-grid{grid-template-columns:1fr;gap:12px}
         }
+
+        /* ── Dark Hero Shapes ─────────────────────────────────────────────── */
+        .hero-shapes{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none}
+        .hero-shape{position:absolute;border-radius:9999px;border:2px solid rgba(255,255,255,0.1);backdrop-filter:blur(2px);box-shadow:0 8px 32px rgba(255,255,255,0.06)}
+        .hero-shape::after{content:'';position:absolute;inset:0;border-radius:9999px;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.15),transparent 70%)}
+        @keyframes hSE1{from{opacity:0;transform:translateY(-120px) rotate(-3deg)}to{opacity:1;transform:translateY(0) rotate(12deg)}}
+        @keyframes hSE2{from{opacity:0;transform:translateY(-120px) rotate(0deg)}to{opacity:1;transform:translateY(0) rotate(-15deg)}}
+        @keyframes hSE3{from{opacity:0;transform:translateY(-120px) rotate(7deg)}to{opacity:1;transform:translateY(0) rotate(-8deg)}}
+        @keyframes hSE4{from{opacity:0;transform:translateY(-120px) rotate(5deg)}to{opacity:1;transform:translateY(0) rotate(20deg)}}
+        @keyframes hSF{0%,100%{translate:0 0}50%{translate:0 12px}}
+        .hero-shape-1{width:500px;height:120px;left:-8%;top:20%;background:linear-gradient(to right,rgba(26,92,107,0.18),transparent);animation:hSE1 2.4s cubic-bezier(.23,.86,.39,.96) .3s both,hSF 12s ease-in-out 2.7s infinite}
+        .hero-shape-2{width:400px;height:100px;right:-5%;top:68%;background:linear-gradient(to right,rgba(6,182,212,0.15),transparent);animation:hSE2 2.4s cubic-bezier(.23,.86,.39,.96) .5s both,hSF 12s ease-in-out 2.9s infinite}
+        .hero-shape-3{width:250px;height:65px;left:6%;bottom:10%;background:linear-gradient(to right,rgba(99,102,241,0.15),transparent);animation:hSE3 2.4s cubic-bezier(.23,.86,.39,.96) .4s both,hSF 12s ease-in-out 2.8s infinite}
+        .hero-shape-4{width:160px;height:45px;right:20%;top:12%;background:linear-gradient(to right,rgba(245,158,11,0.15),transparent);animation:hSE4 2.4s cubic-bezier(.23,.86,.39,.96) .6s both,hSF 12s ease-in-out 3.0s infinite}
+        @media(max-width:640px){.hero-shape-1{width:260px;height:70px}.hero-shape-2{width:200px;height:60px}.hero-shape-3{width:140px;height:45px;display:none}.hero-shape-4{width:100px;height:34px}}
     </style>
 </head>
 <body>
@@ -189,6 +204,12 @@
 
     <!-- 1. HERO -->
     <section class="hero">
+        <div class="hero-shapes" aria-hidden="true">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+            <div class="hero-shape hero-shape-4"></div>
+        </div>
         <div class="container">
             <div class="hero-badge">Immobilien-Rundgänge in Mannheim</div>
             <h1>Immobilien in <span>Mannheim</span> schneller verkaufen</h1>
