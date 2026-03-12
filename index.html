@@ -310,9 +310,11 @@
             left: 0;
             right: 0;
             height: 64px;
-            background: transparent;
+            background: rgba(3,13,20,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 9999;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
             transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
         nav.main-nav.scrolled {
@@ -580,7 +582,7 @@
             content: ''; position: absolute; left: 0; right: 0; height: 30%; z-index: 2; pointer-events: none;
         }
         .hero::before { top: 0; background: linear-gradient(to bottom, #030d14, transparent); }
-        .hero::after  { bottom: 0; height: 140px; background: linear-gradient(to bottom, transparent, #ffffff); z-index: 4; }
+        .hero::after  { bottom: 0; height: 120px; background: linear-gradient(to bottom, transparent, #ffffff); z-index: 1; }
         .hero-shapes { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
         .hero-shape {
             position: absolute;
@@ -614,7 +616,7 @@
         .hero-badge .dot { width:8px; height:8px; border-radius:50%; background:#f43f5e; flex-shrink:0; }
         .hero-badge-text { font-size:13px; color:rgba(255,255,255,0.55); font-weight:500; letter-spacing:0.04em; }
         .hero h1 {
-            font-size:clamp(42px,7vw,88px); font-weight:800; line-height:1.0;
+            font-size:clamp(38px,6.2vw,80px); font-weight:800; line-height:1.05;
             letter-spacing:-0.03em; margin-bottom:28px; opacity:0;
             animation:hFU 1s cubic-bezier(.25,.4,.25,1) .7s forwards;
         }
