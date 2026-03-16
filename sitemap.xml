@@ -87,7 +87,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-03-09</lastmod>
+        <lastmod>2026-03-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -298,6 +298,14 @@
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-erben-karlsruhe-verkaufen-oder-vermieten.html</loc>
         <lastmod>2026-03-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Artikel: immobilie-ohne-besichtigung-verkaufen-2026 -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-ohne-besichtigung-verkaufen-2026.html</loc>
+        <lastmod>2026-03-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
