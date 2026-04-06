@@ -87,7 +87,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-03-30</lastmod>
+        <lastmod>2026-04-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -306,6 +306,14 @@
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-verkaufen-ohne-energieausweis-2026.html</loc>
         <lastmod>2026-03-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Artikel: immobilie-verkaufen-mit-mietern-rechte-pflichten-strategien -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-verkaufen-mit-mietern-rechte-pflichten-strategien.html</loc>
+        <lastmod>2026-04-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
