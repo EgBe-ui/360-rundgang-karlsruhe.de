@@ -87,7 +87,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-04-20</lastmod>
+        <lastmod>2026-04-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -322,6 +322,14 @@
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/immobilienverkauf-im-winter-dezember-februar-karlsruhe.html</loc>
         <lastmod>2026-04-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Artikel: immobilie-verkaufen-trotz-baumaengeln-karlsruhe -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-verkaufen-trotz-baumaengeln-karlsruhe.html</loc>
+        <lastmod>2026-04-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
