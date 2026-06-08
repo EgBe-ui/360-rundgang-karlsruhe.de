@@ -87,7 +87,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-06-01</lastmod>
+        <lastmod>2026-06-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -346,6 +346,14 @@
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-verkaufen-karlsruhe-beste-jahreszeit.html</loc>
         <lastmod>2026-06-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Artikel: immobilie-verkaufen-mit-mietern-rechte-pflichten-2026 -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-verkaufen-mit-mietern-rechte-pflichten-2026.html</loc>
+        <lastmod>2026-06-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
