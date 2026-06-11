@@ -21,6 +21,12 @@
     <script>
         gtag('event', 'conversion', {'send_to': 'AW-448821963/51h7CNOhtPEbEMv1gdYB'});
     </script>
+    <!-- GA4 Lead-Event: in GA4 als Schlüsselereignis markieren -->
+    <script>
+        gtag('event', 'generate_lead', {
+            lead_source: document.referrer || '(direkt)'
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

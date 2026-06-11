@@ -401,6 +401,9 @@
             .then(r => {
                 form.style.display = 'none';
                 document.getElementById('download-success').classList.add('show');
+                if (typeof gtag === 'function') {
+                    gtag('event', 'generate_lead', { lead_source: 'leadmagnet-drohne-hotels' });
+                }
 
                 const link = document.createElement('a');
                 link.href = '/downloads/Beck360_Drohnenaufnahmen_Hotels.pdf';

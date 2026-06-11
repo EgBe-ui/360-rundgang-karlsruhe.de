@@ -906,6 +906,10 @@
             document.getElementById('success-message').classList.add('show');
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
+            if (typeof gtag === 'function') {
+                gtag('event', 'video_briefing_complete');
+            }
+
             // Countdown und automatische Weiterleitung
             let seconds = 5;
             const countdownEl = document.getElementById('countdown');
@@ -916,7 +920,7 @@
 
                 if (seconds <= 0) {
                     clearInterval(countdownInterval);
-                    window.location.href = 'https://www.360-rundgang-karlsruhe.de';
+                    window.location.href = 'https://360-rundgang-karlsruhe.de/';
                 }
             }, 1000);
         }

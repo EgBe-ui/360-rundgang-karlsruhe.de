@@ -401,6 +401,9 @@
             .then(r => {
                 form.style.display = 'none';
                 document.getElementById('download-success').classList.add('show');
+                if (typeof gtag === 'function') {
+                    gtag('event', 'generate_lead', { lead_source: 'leadmagnet-drohne-events' });
+                }
 
                 const link = document.createElement('a');
                 link.href = '/downloads/Beck360_Drohnenaufnahmen_Events.pdf';

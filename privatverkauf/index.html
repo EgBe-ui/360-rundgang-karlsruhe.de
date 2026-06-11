@@ -2238,6 +2238,9 @@
             if (window.location.hash === '#download-success') {
                 leadmagnetBox.style.display = 'none';
                 leadmagnetSuccess.style.display = 'block';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'generate_lead', { lead_source: 'leadmagnet-privatverkauf' });
+                }
                 // Clean up URL
                 history.replaceState(null, '', window.location.pathname + '#rechner');
             }
@@ -2272,6 +2275,10 @@
                         // Show success state
                         leadmagnetBox.style.display = 'none';
                         leadmagnetSuccess.style.display = 'block';
+
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'generate_lead', { lead_source: 'leadmagnet-privatverkauf' });
+                        }
 
                         // Auto-start download
                         const downloadBtn = document.getElementById('downloadBtn');
