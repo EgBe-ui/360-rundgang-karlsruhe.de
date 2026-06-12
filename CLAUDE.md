@@ -44,7 +44,7 @@ firmenrundgang-karlsruhe.de/ ← Netlify auto-deploy (glittering-genie-7273c9)
 | Seite | Pfad | Beschreibung |
 |-------|------|--------------|
 | **Homepage** | `/index.html` | Hauptseite mit Vimeo-Video, Matterport-Demo, Referenzen |
-| **6 Stadt-Seiten** | `/{stadt}/index.html` | Ettlingen, Bruchsal, Rastatt, Baden-Baden, Pforzheim, Mannheim |
+| **9 Stadt-Seiten** | `/{stadt}/index.html` | Ettlingen, Bruchsal, Rastatt, Baden-Baden, Pforzheim, Mannheim, Durlach, Rheinstetten, Stutensee |
 | **3 Service-Seiten** | `/privatverkauf/`, `/immobilienmakler/`, `/drohnenaufnahmen/` | Zielgruppen-Landingpages |
 | **1 Spezialseite** | `/pv-inspektion/` | PV-Inspektion per Drohne |
 | **14 Blog-Artikel** | `/blog/*.html` | Immobilienthemen: Besichtigung, Drohnenrecht, Hausverkauf, Markt KA, KI, Homestaging, etc. |
@@ -54,18 +54,25 @@ firmenrundgang-karlsruhe.de/ ← Netlify auto-deploy (glittering-genie-7273c9)
 
 ## Design-System
 
-### firmenrundgang-karlsruhe.de
-- **Primary**: `#0F766E` (Teal)
-- **CTA**: `#0369A1` (Blue)
-- **Font**: Inter (400-800)
-- **GA**: `G-L8ESGDHHNT`
-- **Form**: FormSubmit.co mit Honeypot
+**Helles Design (Stand: Juni 2026).** Beide Sites wurden komplett auf helle Heros umgestellt — dunkle Heros, animierte Schwebe-Shapes und Endlos-Animationen sind bewusst entfernt worden und dürfen nicht wieder eingeführt werden.
 
-### 360-rundgang-karlsruhe.de
-- **Primary**: `#1a5c6b` (Blaugrün), CSS Custom Properties
-- **Font**: Inter + Merriweather (Blog)
-- **GA**: `G-27HD7V7466`
-- **Form**: FormSubmit.co mit Honeypot
+### Verbindliche Design-Regeln
+- **Helle Heros:** `linear-gradient(180deg, var(--bg-soft) 0%, #ffffff 100%)`, Text in `var(--text)` / `var(--text-light)`
+- **Echte Fotos statt Deko:** Drohnenfotos/Matterport-Portraits als abgerundete Bildkarte (`border-radius:12px`, Schatten) — keine abstrakten Farbflächen
+- **Animationen:** nur einmalige Fade-ins beim Laden (`hFU`-Keyframe, gestaffelte Delays), nichts Endloses; `prefers-reduced-motion` wird respektiert
+- **Eine Akzentfarbe:** `var(--primary)` für Hervorhebungen (z.B. zweite Hero-Zeile), `var(--cta)` für Buttons
+- **Navigation:** hell als Default (weiß-transparent + Blur), `.scrolled` ergänzt nur Schatten
+
+### Farbpalette (beide Sites identisch)
+- **Primary**: `#0F766E` (Teal), Light `#14B8A6`, Dark `#0D5D57`
+- **CTA**: `#0369A1` (Blau), Hover `#075985`
+- **Text**: `#134E4A`, Light `#5F7A78`; **BG-Soft**: `#F0FDFA`; **Border**: `#D1E4E2`
+- **Font**: Inter (400–800); 360-rundgang-Blog zusätzlich Merriweather
+
+### Tracking & Formulare
+- **GA**: 360-rundgang `G-27HD7V7466`, firmenrundgang `G-L8ESGDHHNT`
+- **Conversion:** `generate_lead`-Event (GA4-Schlüsselereignis) auf danke.html + allen Lead-Magnet-Handlern, mit `lead_source`-Parameter
+- **Form**: FormSubmit.co bzw. CRM-API (`/api/form-submit`) mit Honeypot
 
 ### Gemeinsame Patterns
 - Fade-up Scroll-Animationen via Intersection Observer
@@ -100,7 +107,7 @@ Diese echten Rundgänge werden auf den Seiten eingebettet:
 | **JSON-LD BreadcrumbList** | Alle Blog-Artikel + Stadt-Seiten | Alle Blog-Artikel + Stadt-Seiten |
 | **AggregateRating** | Stadt + Branchen Service-Schema | Homepage LocalBusiness + Stadt Service-Schema |
 | **Author Box** | Stadt + Branchen-Seiten (Eugen Beck, EB-Badge) | Stadt-Seiten |
-| **Internal Linking** | Homepage: Region-Links (6 Städte + 8 Branchen) | Homepage: Region-Links (6 Städte + 4 Services) |
+| **Internal Linking** | Homepage: Region-Links (6 Städte + 8 Branchen) | Homepage: Region-Links (9 Städte + 4 Services) |
 | **Preconnect** | `my.matterport.com` auf allen Seiten mit iFrames | `my.matterport.com` + Vimeo auf Homepage |
 | **DNS-Prefetch** | `maps.googleapis.com` auf Stadt-Seiten | `maps.googleapis.com` auf Stadt-Seiten |
 | **Sitemap** | Vollständig, alle Seiten enthalten | Vollständig, alle Seiten enthalten |
@@ -119,8 +126,8 @@ Diese echten Rundgänge werden auf den Seiten eingebettet:
 
 ### Stadt-Seiten Layout (~465 Zeilen)
 
-Alle 12 Stadt-Seiten haben folgendes Layout:
-1. Hero (Gradient bei firmenrundgang, Drohnenfoto bei 360-rundgang)
+Alle 15 Stadt-Seiten (6 firmenrundgang + 9 360-rundgang) haben folgendes Layout:
+1. Hero (hell; bei 360-rundgang mit Stadt-Drohnenfoto als Bildkarte unter dem Text)
 2. Stats-Bar (3 Kennzahlen)
 3. Warum-Sektion (3 Cards)
 4. Matterport Live-Demo (interaktiver iFrame)
@@ -192,6 +199,9 @@ Problem-Solution-Benefits-Flow:
 | Baden-Baden | `referenz-baden-baden-01.jpg` |
 | Pforzheim | `luftbild-05.jpg` |
 | Mannheim | `luftbild-07.jpg` |
+| Durlach | `luftbild-02.jpg` |
+| Rheinstetten | `luftbild-04.jpg` |
+| Stutensee | `luftbild-06.jpg` |
 
 ## Befehle
 
@@ -236,6 +246,11 @@ git pull --rebase origin main   # Dann Konflikte lösen
 - **Inline CSS:** Alle Seiten haben `<style>` im Head, kein externes Stylesheet. Bei Änderungen am Design muss jede Seite einzeln angepasst werden.
 - **WebFetch Limitation:** WebFetch kann `<head>`-Meta-Tags nicht verifizieren (HTML-to-Markdown-Konvertierung entfernt sie). Für OG-Tag-Prüfung `curl -s URL | grep "og:"` nutzen.
 - **FormSubmit.co:** Formulare senden an FormSubmit.co. Honeypot-Feld `_honey` muss immer dabei sein.
+- **CRM Build & Deploy:** CRM wird mit `npm run build` in `crm/` gebaut. Netlify hat nur `echo 'CRM pre-built'` als Build-Command — Assets muessen vorher committed werden. **WICHTIG: 3 Schritte nach jedem Build:**
+  1. `crm/index.html`: Zuerst `./src/main.jsx` als Entry fuer Build setzen, danach Asset-Hashes aus `crm/dist/index.html` uebernehmen
+  2. `git add -f crm/dist/` — Build-Output in `crm/dist/` committen
+  3. **`crm/assets/` aktualisieren!** — Netlify bedient JS/CSS aus `crm/assets/`, NICHT aus `crm/dist/assets/`. Neue Dateien von `crm/dist/assets/` nach `crm/assets/` kopieren und alte entfernen: `git rm crm/assets/index-OLDHASH.js && cp crm/dist/assets/index-NEWHASH.js crm/assets/ && git add -f crm/assets/`
+  - Wenn Schritt 3 vergessen wird → weisse Seite im CRM (404 auf JS-Bundle)
 
 ## Commit-History (relevante Änderungen)
 
@@ -252,6 +267,7 @@ f53088c  SEO: Add AggregateRating, author box, visible FAQ, internal linking to 
 
 ### 360-rundgang-karlsruhe.de
 ```
+57f3cf3  Add 3 city landing pages: Durlach, Rheinstetten, Stutensee
 56c10b6  Add branded German 404 page
 2ece28b  SEO: Add OG tags, blog schemas, internal linking, preconnect hints
 bbe45ec  SEO: Add AggregateRating, author box, internal linking, expanded FAQs
@@ -262,7 +278,7 @@ d14e9ba  Redesign 6 city landing pages: add drone hero, Matterport demos, testim
 
 ## Sprache & Inhalt
 
-Alle Websites und Blog-Artikel sind auf **Deutsch**. Region: Karlsruhe und Umgebung (Ettlingen, Bruchsal, Rastatt, Baden-Baden, Pforzheim, Mannheim). Commit-Messages dürfen Englisch sein.
+Alle Websites und Blog-Artikel sind auf **Deutsch**. Region: Karlsruhe und Umgebung (Ettlingen, Bruchsal, Rastatt, Baden-Baden, Pforzheim, Mannheim, Durlach, Rheinstetten, Stutensee). Commit-Messages dürfen Englisch sein.
 
 ## Kontaktdaten Beck360
 
