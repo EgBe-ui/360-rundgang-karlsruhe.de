@@ -21,6 +21,12 @@
   to = "/pv-inspektion/"
   status = 301
 
+# Kurz-URL fuer Google-Bewertungen (Rechnung, QR-Code)
+[[redirects]]
+  from = "/bewertung"
+  to = "https://g.page/r/CS7gYgxqXhkWEAE/review"
+  status = 302
+
 # Security headers for CRM
 [[headers]]
   for = "/crm/*"
