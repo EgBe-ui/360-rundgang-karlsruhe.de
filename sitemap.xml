@@ -87,7 +87,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-06-01</lastmod>
+        <lastmod>2026-06-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -340,6 +340,14 @@
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-verkaufen-karlsruhe-beste-jahreszeit.html</loc>
         <lastmod>2026-06-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Artikel: leerstand-verkaufen-karlsruhe-fallen-vermeiden -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/leerstand-verkaufen-karlsruhe-fallen-vermeiden.html</loc>
+        <lastmod>2026-06-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
