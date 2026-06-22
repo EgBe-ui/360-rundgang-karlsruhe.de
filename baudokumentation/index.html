@@ -237,16 +237,31 @@
     .faq-a { font-size: 14px; color: var(--text-light); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
     .faq-item.open .faq-a { max-height: 300px; padding-top: 12px; }
 
-    /* ── CTA FINAL ── */
-    .cta-final {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: #fff; text-align: center; padding: 96px 24px;
+    /* ── KONTAKT / FORMULAR ── */
+    .kontakt { background: var(--bg-soft); }
+    .kontakt-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .kontakt-intro .section-sub { margin-bottom: 28px; }
+    .kontakt-direct { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .kontakt-direct li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text-light); }
+    .kontakt-direct .ic { color: var(--primary); font-style: normal; }
+    .kontakt-direct a { color: var(--text); text-decoration: none; font-weight: 600; }
+    .kontakt-direct a:hover { color: var(--cta); }
+    .kontakt-form { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 32px; box-shadow: var(--shadow-md); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .form-group input, .form-group textarea {
+      width: 100%; font-family: inherit; font-size: 15px; color: var(--text);
+      padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius);
+      background: #fff; transition: border-color 0.2s;
     }
-    .cta-final h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
-    .cta-final p { font-size: 17px; color: #94a3b8; max-width: 480px; margin: 0 auto 40px; }
-    .cta-final .btn-primary { font-size: 17px; padding: 18px 40px; }
-    .cta-contact-row { margin-top: 28px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; font-size: 14px; color: #64748b; }
-    .cta-contact-row a { color: #14B8A6; text-decoration: none; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+    .form-group textarea { resize: vertical; min-height: 96px; }
+    .form-error { display: none; background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; border-radius: var(--radius); padding: 10px 14px; font-size: 14px; margin-bottom: 16px; }
+    .form-submit { width: 100%; border: none; cursor: pointer; font-family: inherit; }
+    .form-guarantee { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-light); margin-top: 14px; }
+    .form-guarantee .ic { color: var(--primary); font-weight: 700; font-style: normal; }
+    .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── FOOTER ── */
     footer {
@@ -264,6 +279,7 @@
       .pilot-box { grid-template-columns: 1fr; }
       .pilot-preis { padding: 36px 28px; }
       .pilot-details { padding: 32px 28px; }
+      .kontakt-inner { grid-template-columns: 1fr; gap: 36px; }
       .nav-badge { display: none; }
     }
   </style>
@@ -448,15 +464,49 @@
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="cta-final" id="kontakt">
-    <h2 class="fade-up">30 Minuten — und Sie wissen ob es passt.</h2>
-    <p class="fade-up s1">Kein Verkaufsgespräch. Wir klären Bereich, Termin und was Beck360 für Ihr konkretes Projekt bedeutet.</p>
-    <a href="mailto:rundgang@beck360.de?subject=Pilotangebot%20Baudokumentation&body=Guten%20Tag%20Eugen%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Pilotangebot%20zur%20baubegleitenden%203D-Dokumentation.%0A%0AMein%20Projekt%3A%20" class="btn-primary fade-up s2">Jetzt Gespräch anfragen →</a>
-    <div class="cta-contact-row fade-up s3">
-      <span>Eugen Beck · Beck360 · Ettlingen</span>
-      <a href="mailto:rundgang@beck360.de">rundgang@beck360.de</a>
-      <a href="tel:+491734682501">0173 468 2501</a>
+  <!-- KONTAKT -->
+  <section class="kontakt" id="kontakt">
+    <div class="inner kontakt-inner">
+      <div class="kontakt-intro">
+        <div class="section-kicker fade-up">Kontakt</div>
+        <h2 class="section-title fade-up s1">30 Minuten — und Sie wissen ob es passt.</h2>
+        <p class="section-sub fade-up s2">Kein Verkaufsgespräch. Wir klären Bereich, Termin und was Beck360 für Ihr konkretes Projekt bedeutet. Antwort innerhalb von 24 Stunden.</p>
+        <ul class="kontakt-direct fade-up s3">
+          <li><span class="ic">✉</span> <a href="mailto:rundgang@beck360.de">rundgang@beck360.de</a></li>
+          <li><span class="ic">☎</span> <a href="tel:+491734682501">0173 468 2501</a></li>
+          <li><span class="ic">📍</span> Eugen Beck · Beck360 · Ettlingen</li>
+        </ul>
+      </div>
+      <form id="contact-form" class="kontakt-form fade-up s2" aria-label="Kontaktformular" action="https://360-rundgang-karlsruhe.de/api/form-submit" method="POST">
+        <input type="hidden" name="_subject" value="Neue Anfrage Baudokumentation (360-rundgang-karlsruhe.de)">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="lead_source" value="baudokumentation">
+        <!-- Honeypot Spam Protection -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_referer" id="form-referer">
+        <input type="hidden" name="_timestamp" id="form-timestamp">
+
+        <div class="form-error" id="form-error"></div>
+
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" placeholder="Ihr Name" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail *</label>
+          <input type="email" id="email" name="email" placeholder="ihre@email.de" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefon (für Rückruf)</label>
+          <input type="tel" id="phone" name="phone" placeholder="+49 173 468 2501" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label for="message">Ihr Projekt</label>
+          <textarea id="message" name="message" rows="4" placeholder="Bauphase, Bereich/Größe, gewünschter Termin …"></textarea>
+        </div>
+        <button type="submit" class="btn-primary form-submit">Pilottermin anfragen →</button>
+        <p class="form-guarantee"><span class="ic">✓</span> Antwort innerhalb von 24h · Unverbindlich &amp; kostenlos</p>
+      </form>
     </div>
   </section>
 
@@ -485,7 +535,7 @@
       });
     });
 
-    // Conversion-Tracking: generate_lead bei Kontakt-Klick (mailto/tel)
+    // Conversion-Tracking: generate_lead bei Direkt-Kontakt (mailto/tel)
     document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach(link => {
       link.addEventListener('click', () => {
         if (typeof gtag === 'function') {
@@ -493,6 +543,47 @@
         }
       });
     });
+
+    // Kontaktformular — CRM-API + Honeypot + Bot-Check, Redirect auf /danke.html (dort feuert generate_lead)
+    const formLoadTime = Date.now();
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      const ts = document.getElementById('form-timestamp');
+      if (ts) ts.value = String(formLoadTime);
+      contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const form = this;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const errorDiv = document.getElementById('form-error');
+        const originalText = submitBtn.innerHTML;
+
+        // Bot-Erkennung: Formular zu schnell abgeschickt (< 3 s)
+        if (Date.now() - formLoadTime < 3000) { window.location.href = '/danke.html'; return; }
+        if (errorDiv) errorDiv.style.display = 'none';
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        submitBtn.innerHTML = '<span class="spinner"></span> Wird gesendet…';
+        submitBtn.disabled = true;
+        document.getElementById('form-referer').value = window.location.href;
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (response.ok) { window.location.href = '/danke.html'; }
+          else { throw new Error('Server error'); }
+        } catch (err) {
+          if (errorDiv) {
+            errorDiv.textContent = 'Fehler beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns an: 0173 468 2501';
+            errorDiv.style.display = 'block';
+          }
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
   </script>
 </body>
 </html>
