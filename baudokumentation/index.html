@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-27HD7V7466"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-27HD7V7466');
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+
+  <title>Baubegleitende 3D-Dokumentation Karlsruhe | Beck360</title>
+  <meta name="description" content="Lückenlose Bauzustandsdokumentation mit Matterport 3D-Scan und Drohne. Für Bauunternehmen und Architekten in der Metropolregion Rhein-Neckar. Rechtssicher, BIM-kompatibel, ab 1.490 €." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://360-rundgang-karlsruhe.de/baudokumentation/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://360-rundgang-karlsruhe.de/baudokumentation/" />
+  <meta property="og:title" content="Baubegleitende 3D-Dokumentation | Beck360 Karlsruhe" />
+  <meta property="og:description" content="Matterport-Scan + Drohne + strukturierter Report. Stichtagsgenau, rechtssicher, BIM-kompatibel. Pilotpaket ab 1.490 €." />
+  <meta property="og:locale" content="de_DE" />
+
+  <meta name="geo.region" content="DE-BW" />
+  <meta name="geo.placename" content="Karlsruhe" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Baubegleitende 3D-Dokumentation",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Beck360",
+      "telephone": "+491734682501",
+      "email": "rundgang@beck360.de",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ettlingen",
+        "postalCode": "76275",
+        "addressCountry": "DE"
+      }
+    },
+    "areaServed": ["Karlsruhe", "Mannheim", "Heidelberg", "Rhein-Neckar-Kreis", "Ettlingen", "Bruchsal"],
+    "description": "Baubegleitende 3D-Dokumentation mit Matterport-Scanning und Drohnenbefliegung für Bauunternehmen und Architekturbüros in der Metropolregion Rhein-Neckar"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary:      #0F766E;
+      --primary-dark: #0D5D57;
+      --cta:          #0369A1;
+      --cta-hover:    #075985;
+      --text:         #0f172a;
+      --text-light:   #475569;
+      --text-muted:   #94a3b8;
+      --bg:           #ffffff;
+      --bg-soft:      #f8fafc;
+      --border:       #e2e8f0;
+      --font:         'Inter', system-ui, sans-serif;
+      --shadow-md:    0 4px 16px rgba(0,0,0,0.08);
+      --shadow-lg:    0 12px 40px rgba(0,0,0,0.10);
+      --radius:       8px;
+      --max:          1160px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font); color: var(--text); line-height: 1.7; background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .s1 { transition-delay: 0.05s; } .s2 { transition-delay: 0.12s; } .s3 { transition-delay: 0.19s; } .s4 { transition-delay: 0.26s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: 64px;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border); z-index: 9999;
+    }
+    .nav-inner {
+      max-width: var(--max); height: 100%; margin: 0 auto;
+      padding: 0 24px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo { font-size: 20px; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.03em; }
+    .nav-logo span { color: var(--primary); }
+    .nav-badge { font-size: 11px; font-weight: 600; color: var(--text-light); letter-spacing: 0.05em; text-transform: uppercase; }
+    .nav-cta {
+      background: var(--cta); color: #fff; font-size: 13px; font-weight: 600;
+      padding: 9px 20px; border-radius: 6px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--cta-hover); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 24px 96px;
+      background: var(--bg);
+      text-align: center;
+    }
+    .hero-kicker {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--primary); background: #f0fdfa; border: 1px solid #99f6e4;
+      padding: 5px 14px; border-radius: 20px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 58px); font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.12; color: var(--text); max-width: 820px; margin: 0 auto 24px;
+    }
+    .hero h1 em { font-style: normal; color: var(--primary); }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px); color: var(--text-light); max-width: 580px;
+      margin: 0 auto 40px; line-height: 1.6;
+    }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--cta); color: #fff; font-size: 16px; font-weight: 700;
+      padding: 16px 32px; border-radius: var(--radius); text-decoration: none;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text); font-size: 15px; font-weight: 500;
+      padding: 15px 28px; border-radius: var(--radius); border: 1.5px solid var(--border);
+      text-decoration: none; transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+    }
+    .trust-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text-light); }
+    .trust-item .icon { font-size: 18px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 88px 24px; }
+    .inner { max-width: var(--max); margin: 0 auto; }
+    .section-kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+    .section-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 16px; }
+    .section-sub { font-size: 17px; color: var(--text-light); max-width: 560px; line-height: 1.6; margin-bottom: 56px; }
+
+    /* ── PROBLEM ── */
+    .problem { background: #0f172a; color: #fff; }
+    .problem .section-kicker { color: #14B8A6; }
+    .problem .section-title { color: #fff; }
+    .problem .section-sub { color: #94a3b8; }
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .problem-card {
+      background: #1e293b; border: 1px solid #334155;
+      padding: 28px 24px; border-radius: var(--radius);
+    }
+    .problem-card .icon { font-size: 28px; margin-bottom: 16px; }
+    .problem-card h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .problem-card p { font-size: 14px; color: #94a3b8; line-height: 1.6; }
+
+    /* ── LÖSUNG ── */
+    .loesung { background: var(--bg); }
+    .leistungen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .leistung-card {
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 28px 24px; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .leistung-card:hover { border-color: var(--primary); box-shadow: var(--shadow-md); }
+    .leistung-nr { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+    .leistung-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .leistung-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+    /* ── ANWENDUNGEN ── */
+    .anwendungen { background: var(--bg-soft); }
+    .anwendungen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .anwendung {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px 20px;
+    }
+    .anwendung h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .anwendung p { font-size: 13px; color: var(--text-light); line-height: 1.55; }
+    .anwendung .tag { font-size: 11px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+
+    /* ── PILOT ── */
+    .pilot { background: var(--bg); }
+    .pilot-box {
+      border: 2px solid var(--text); border-radius: 12px; overflow: hidden;
+      display: grid; grid-template-columns: 280px 1fr;
+    }
+    .pilot-preis {
+      background: var(--text); color: #fff;
+      padding: 48px 36px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .pilot-preis-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 8px; }
+    .pilot-amount { font-size: 52px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+    .pilot-amount sup { font-size: 22px; vertical-align: super; font-weight: 600; }
+    .pilot-amount-note { font-size: 12px; color: #64748b; margin-top: 10px; line-height: 1.5; }
+    .pilot-details { padding: 40px 40px; }
+    .pilot-details h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; }
+    .pilot-details .sub { font-size: 14px; color: var(--text-light); margin-bottom: 28px; }
+    .pilot-items { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+    .pilot-items li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-light); }
+    .pilot-items li::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .pilot-items li strong { color: var(--text); }
+    .pilot-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--cta); color: #fff; font-size: 15px; font-weight: 700;
+      padding: 14px 28px; border-radius: var(--radius); text-decoration: none;
+      transition: background 0.2s;
+    }
+    .pilot-cta:hover { background: var(--cta-hover); }
+
+    /* ── FAQ ── */
+    .faq { background: var(--bg-soft); }
+    .faq-list { max-width: 720px; display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { font-size: 16px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .faq-q::after { content: '+'; font-size: 22px; font-weight: 400; color: var(--text-muted); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a { font-size: 14px; color: var(--text-light); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
+    .faq-item.open .faq-a { max-height: 300px; padding-top: 12px; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #fff; text-align: center; padding: 96px 24px;
+    }
+    .cta-final h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .cta-final p { font-size: 17px; color: #94a3b8; max-width: 480px; margin: 0 auto 40px; }
+    .cta-final .btn-primary { font-size: 17px; padding: 18px 40px; }
+    .cta-contact-row { margin-top: 28px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; font-size: 14px; color: #64748b; }
+    .cta-contact-row a { color: #14B8A6; text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f172a; border-top: 1px solid #1e293b;
+      padding: 32px 24px; color: #475569; font-size: 13px;
+    }
+    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    footer a { color: #64748b; text-decoration: none; }
+    footer a:hover { color: #94a3b8; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 64px 20px; }
+      .trust-inner { gap: 20px; }
+      .pilot-box { grid-template-columns: 1fr; }
+      .pilot-preis { padding: 36px 28px; }
+      .pilot-details { padding: 32px 28px; }
+      .nav-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Beck<span>360</span></a>
+      <span class="nav-badge">Baubegleitende 3D-Dokumentation</span>
+      <a href="#kontakt" class="nav-cta">Gespräch vereinbaren</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-kicker fade-up">Metropolregion Rhein-Neckar · Spezialist für Baugewerbe</div>
+    <h1 class="fade-up s1">
+      Den Bauzustand <em>beweissicher</em> dokumentiert —<br>über den gesamten Bauverlauf.
+    </h1>
+    <p class="hero-sub fade-up s2">
+      Matterport 3D-Scan + Drohnenbefliegung + strukturierter Report. Stichtagsgenau, BIM-kompatibel, rechtssicher. Für Bauunternehmen und Architekten.
+    </p>
+    <div class="hero-actions fade-up s3">
+      <a href="#pilot" class="btn-primary">Pilotangebot ansehen — ab 1.490 €</a>
+      <a href="#kontakt" class="btn-secondary">30 Min. Gespräch vereinbaren</a>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar fade-up">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="icon">✓</span> 820+ abgeschlossene Projekte</div>
+      <div class="trust-item"><span class="icon">★</span> 5,0 Google-Bewertung</div>
+      <div class="trust-item"><span class="icon">◆</span> Matterport Zertifizierter Partner</div>
+      <div class="trust-item"><span class="icon">✈</span> EU-Drohnenlizenz A2</div>
+      <div class="trust-item"><span class="icon">⬡</span> BIM-kompatibel (E57 Point Cloud)</div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="inner">
+      <div class="section-kicker fade-up">Das Problem</div>
+      <h2 class="section-title fade-up s1">Was nicht dokumentiert ist,<br>existiert im Streitfall nicht.</h2>
+      <p class="section-sub fade-up s2">Fotos auf dem Handy sind keine Dokumentation — sie haben keine räumliche Orientierung, keinen verifizierbaren Zeitstempel, keine Vollständigkeit.</p>
+      <div class="problem-grid">
+        <div class="problem-card fade-up s1">
+          <div class="icon">🏗️</div>
+          <h3>Verdeckte Bewehrung</h3>
+          <p>Einmal betoniert ist Schluss. Wer nicht dokumentiert hat, kann bei Rückfragen zu Statik oder Gewährleistung nichts nachweisen — auch nicht intern.</p>
+        </div>
+        <div class="problem-card fade-up s2">
+          <div class="icon">🔌</div>
+          <h3>Leitungsführung vor Verkleidung</h3>
+          <p>Elektro, Wasser, Heizung — alles was hinter Wand, Decke oder Estrich verschwindet. Im Umbaufall oder bei Schäden kritisch und teuer ohne Dokumentation.</p>
+        </div>
+        <div class="problem-card fade-up s3">
+          <div class="icon">⚖️</div>
+          <h3>Übergabe ohne Nachweis</h3>
+          <p>Mängel bei Abnahme die nicht eindeutig zuzuordnen sind, kosten Nerven und Geld. Ein neutraler, datierter 3D-Nachweis entscheidet den Streitfall.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LÖSUNG -->
+  <section class="loesung">
+    <div class="inner">
+      <div class="section-kicker fade-up">Die Lösung</div>
+      <h2 class="section-title fade-up s1">Vier Deliverables. Ein Termin.</h2>
+      <p class="section-sub fade-up s2">Alles was Sie brauchen um den Bauzustand lückenlos zu sichern — geliefert innerhalb von 5 Werktagen.</p>
+      <div class="leistungen-grid">
+        <div class="leistung-card fade-up s1">
+          <div class="leistung-nr">01</div>
+          <h3>Matterport 3D-Scan</h3>
+          <p>Vollständige begehbare 3D-Aufnahme des definierten Innenbereichs. Navigierbar im Browser ohne Software, teilbar mit jedem Share-Link.</p>
+        </div>
+        <div class="leistung-card fade-up s2">
+          <div class="leistung-nr">02</div>
+          <h3>DJI Drohnenbefliegung</h3>
+          <p>Georeferenzierte Luftaufnahmen des Gebäudes und der Baustelle. Außenzustand, Dach, Gelände — zum exakten Stichtag festgehalten.</p>
+        </div>
+        <div class="leistung-card fade-up s3">
+          <div class="leistung-nr">03</div>
+          <h3>Strukturierter PDF-Report</h3>
+          <p>Datum, Bereich, Aufnahme-Overview, Schlüssel-Screenshots. Weiterleitbar an Bauherr, Subunternehmer oder Versicherung ohne Erklärung.</p>
+        </div>
+        <div class="leistung-card fade-up s4">
+          <div class="leistung-nr">04</div>
+          <h3>3D-Modell Share-Link</h3>
+          <p>Passwortgeschützter Direktlink zum Matterport-Modell für 90 Tage. Nutzbar in Baubesprechungen, Übergaben und Planungsgesprächen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANWENDUNGEN -->
+  <section class="anwendungen">
+    <div class="inner">
+      <div class="section-kicker fade-up">Typische Einsätze</div>
+      <h2 class="section-title fade-up s1">Wann Beck360 auf der Baustelle gefragt ist</h2>
+      <p class="section-sub fade-up s2">Vier häufige Szenarien — in allen geht es darum, den Bauzustand zu einem definierten Zeitpunkt festzuhalten.</p>
+      <div class="anwendungen-grid">
+        <div class="anwendung fade-up s1">
+          <div class="tag">Rohbau</div>
+          <h3>Bewehrung vor Betonage</h3>
+          <p>Einmalchance. Nachher sieht keiner mehr was drin ist. 3D-Scan vor dem Betonieren schützt beide Seiten dauerhaft.</p>
+        </div>
+        <div class="anwendung fade-up s2">
+          <div class="tag">Ausbau</div>
+          <h3>Leitungen vor Verkleidung</h3>
+          <p>Elektro, Sanitär, Heizung — alles was hinter Wand oder Decke verschwindet, lückenlos dokumentiert bevor es zu spät ist.</p>
+        </div>
+        <div class="anwendung fade-up s3">
+          <div class="tag">Übergabe</div>
+          <h3>Abnahme &amp; Fertigstellung</h3>
+          <p>Neutraler Bauzustandsnachweis bei Übergabe. Verhindert nachträgliche Mängelstreitigkeiten ohne klare Beweislage.</p>
+        </div>
+        <div class="anwendung fade-up s4">
+          <div class="tag">Bestand</div>
+          <h3>Umbau &amp; Sanierung</h3>
+          <p>Exakte Raummaße und Grundrissdaten direkt aus dem Scan — ohne extra Aufmaßtermin, BIM-kompatibel auf Anfrage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILOT -->
+  <section class="pilot" id="pilot">
+    <div class="inner">
+      <div class="section-kicker fade-up">Pilotangebot</div>
+      <h2 class="section-title fade-up s1">Einmal testen. Kein Risiko.</h2>
+      <p class="section-sub fade-up s2">Fester Preis, kein Folgeauftrag verpflichtend. Lieferung innerhalb 5 Werktagen nach Aufnahmetermin.</p>
+      <div class="pilot-box fade-up s2">
+        <div class="pilot-preis">
+          <div class="pilot-preis-label">Standard Pilot</div>
+          <div class="pilot-amount"><sup>€</sup>1.490</div>
+          <div class="pilot-amount-note">zzgl. MwSt.<br>ab Großraum Karlsruhe<br>Fahrtkostenpauschale ab 50 km</div>
+        </div>
+        <div class="pilot-details">
+          <h3>Was im Paket enthalten ist</h3>
+          <p class="sub">Alles aus einer Hand — ein Termin, ein Ansprechpartner, ein fester Preis.</p>
+          <ul class="pilot-items">
+            <li><strong>Matterport 3D-Scan</strong> des definierten Innenbereichs</li>
+            <li><strong>DJI Drohnenbefliegung</strong> Außenanlage und Dach</li>
+            <li><strong>Strukturierter PDF-Report</strong> mit Datum, Bereich, Schlüsselaufnahmen</li>
+            <li><strong>Share-Link zum 3D-Modell</strong> für 90 Tage (passwortgeschützt)</li>
+            <li><strong>Lieferung innerhalb 5 Werktagen</strong> nach Aufnahmetermin</li>
+            <li>BIM-kompatibel — <strong>E57 Point Cloud auf Anfrage</strong></li>
+          </ul>
+          <a href="#kontakt" class="pilot-cta">Pilottermin anfragen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="inner">
+      <div class="section-kicker fade-up">Häufige Fragen</div>
+      <h2 class="section-title fade-up s1">Was Bauunternehmen und Architekten fragen</h2>
+      <div class="faq-list fade-up s2">
+        <div class="faq-item">
+          <div class="faq-q">Wie viel Vorlaufzeit brauche ich für einen Termin?</div>
+          <div class="faq-a">In der Regel 3–5 Werktage. Für dringende Rohbau-Phasen (z.B. Betonage nächste Woche) sprechen Sie mich direkt an — kurzfristige Termine sind nach Verfügbarkeit möglich.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Was gilt als „definierter Bereich" für den 3D-Scan?</div>
+          <div class="faq-a">Das klären wir im Vorgespräch gemeinsam. Es kann ein Stockwerk, ein Bauabschnitt oder ein spezifischer Bereich (z.B. Technikraum, Dachgeschoss) sein. Größere Bereiche werden als separates Angebot kalkuliert.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Ist das wirklich BIM-kompatibel?</div>
+          <div class="faq-a">Matterport-Scans liefern automatisch Grundrisse und können als E57 Point Cloud exportiert werden, die in Revit, ArchiCAD und anderen BIM-Tools importierbar ist. Der E57-Export ist auf Anfrage erhältlich und wird separat kalkuliert.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Können wir das Monitoring nach dem Pilot fortführen?</div>
+          <div class="faq-a">Ja — und das ist der eigentliche Mehrwert. Nach dem Pilot biete ich ein Monitoring-Modell an: regelmäßige Bauzustandserfassung zu festen Terminen (z.B. monatlich), mit Soll-Ist-Vergleich und Bauherren-Report. Details besprechen wir nach dem ersten gemeinsamen Termin.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="kontakt">
+    <h2 class="fade-up">30 Minuten — und Sie wissen ob es passt.</h2>
+    <p class="fade-up s1">Kein Verkaufsgespräch. Wir klären Bereich, Termin und was Beck360 für Ihr konkretes Projekt bedeutet.</p>
+    <a href="mailto:rundgang@beck360.de?subject=Pilotangebot%20Baudokumentation&body=Guten%20Tag%20Eugen%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20das%20Pilotangebot%20zur%20baubegleitenden%203D-Dokumentation.%0A%0AMein%20Projekt%3A%20" class="btn-primary fade-up s2">Jetzt Gespräch anfragen →</a>
+    <div class="cta-contact-row fade-up s3">
+      <span>Eugen Beck · Beck360 · Ettlingen</span>
+      <a href="mailto:rundgang@beck360.de">rundgang@beck360.de</a>
+      <a href="tel:+491734682501">0173 468 2501</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Beck360 · Eugen Beck · Ettlingen · <a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></span>
+      <span><a href="/">360° Rundgänge</a> · <a href="/drohnenaufnahmen/">Drohnenaufnahmen</a> · <a href="/baudokumentation/">Baudokumentation</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Conversion-Tracking: generate_lead bei Kontakt-Klick (mailto/tel)
+    document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', { lead_source: 'baudokumentation' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
