@@ -595,6 +595,12 @@
         .hero-cta-btn:hover { background:var(--cta-hover); box-shadow:var(--shadow-lg); transform:translateY(-1px); }
         .hero-cta-secondary { background:#ffffff!important; border:1px solid var(--border)!important; color:var(--text)!important; box-shadow:var(--shadow-sm)!important; }
         .hero-cta-secondary:hover { border-color:var(--primary)!important; color:var(--primary)!important; transform:translateY(-1px); }
+        /* Basis-Buttons — .btn/.btn-primary/.btn-secondary (von kontextspezifischen Regeln wie .pricing-card .btn ergaenzt) */
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 28px; border-radius:8px; font-size:15px; font-weight:600; line-height:1.2; text-align:center; text-decoration:none; cursor:pointer; border:none; font-family:inherit; min-height:44px; transition:background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+        .btn-primary { background:var(--cta); color:#fff; box-shadow:var(--shadow-md); }
+        .btn-primary:hover { background:var(--cta-hover); color:#fff; box-shadow:var(--shadow-lg); transform:translateY(-1px); }
+        .btn-secondary { background:#fff; color:var(--cta); border:1.5px solid var(--border); box-shadow:var(--shadow-sm); }
+        .btn-secondary:hover { border-color:var(--cta); color:var(--cta-hover); transform:translateY(-1px); }
         .hero-trust { margin-top:40px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; opacity:0; animation:hFU .8s cubic-bezier(.25,.4,.25,1) .5s forwards; }
         .hero-trust-item { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--text-light); font-weight:500; }
         .hero-trust-item svg { width:14px; height:14px; stroke:var(--primary); fill:none; stroke-width:2; }
