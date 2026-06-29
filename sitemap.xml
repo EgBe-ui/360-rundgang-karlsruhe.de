@@ -93,7 +93,7 @@
     <!-- Blog Übersicht -->
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/</loc>
-        <lastmod>2026-06-22</lastmod>
+        <lastmod>2026-06-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -362,6 +362,14 @@
     <url>
         <loc>https://360-rundgang-karlsruhe.de/blog/scheidung-immobilie-karlsruhe-teilen-verkaufen.html</loc>
         <lastmod>2026-06-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Artikel: immobilie-verkaufen-karlsruhe-mit-oder-ohne-moebel -->
+    <url>
+        <loc>https://360-rundgang-karlsruhe.de/blog/immobilie-verkaufen-karlsruhe-mit-oder-ohne-moebel.html</loc>
+        <lastmod>2026-06-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
