@@ -195,12 +195,18 @@
       background: var(--rule);
     }
 
-    /* ── Aerial Photo ───────────────────────── */
-    .aerial-section { padding: 0 48px 52px; }
+    /* ── Galerie ────────────────────────────── */
+    .gallery-section { padding: 0 48px 52px; }
 
-    .aerial-img {
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery img {
       width: 100%;
-      max-height: 520px;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       object-position: center 55%;
       display: block;
@@ -264,6 +270,38 @@
     .download-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
     .download-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
+    /* ── Google-Bewertung ───────────────────── */
+    .review-section { padding: 48px; text-align: center; }
+
+    .review-section p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.6;
+      max-width: 460px;
+      margin: 0 auto 18px;
+    }
+
+    .review-section p strong { color: var(--ink); font-weight: 500; }
+
+    .review-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      background: transparent;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+
+    .review-btn:hover { background: var(--teal); color: #fff; }
+    .review-btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+    .review-btn svg { width: 16px; height: 16px; }
+
     /* ── Footer ─────────────────────────────── */
     footer {
       border-top: 1px solid var(--rule);
@@ -284,10 +322,10 @@
       header { padding: 0 20px; }
       .tour-hero { height: 52vh; min-height: 300px; }
       .section-label { padding: 36px 20px 20px; }
-      .aerial-section { padding: 0 20px 36px; }
-      .aerial-img { max-height: 280px; }
+      .gallery-section { padding: 0 20px 36px; }
       .divider { margin: 0 20px; }
       .download-section { padding: 36px 20px 48px; }
+      .review-section { padding: 36px 20px; }
       .download-card { flex-direction: column; align-items: flex-start; }
       .download-btn { width: 100%; justify-content: center; }
       footer { padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -328,18 +366,24 @@
       </a>
     </section>
 
-    <!-- Luftaufnahme -->
+    <!-- Impressionen -->
     <div class="section-label">
-      <h2>Luftaufnahme</h2>
+      <h2>Impressionen</h2>
     </div>
 
-    <section class="aerial-section">
-      <img
-        class="aerial-img"
-        src="/images/rundgang/bonndorf-luftaufnahme.jpg"
-        alt="Drohnen-Luftaufnahme des Objekts in Bonndorf mit Terrasse und Photovoltaik-Anlage"
-        width="1920" height="1080"
-        loading="lazy" decoding="async">
+    <section class="gallery-section">
+      <div class="gallery">
+        <img
+          src="/images/rundgang/bonndorf-luftaufnahme.jpg"
+          alt="Drohnen-Luftaufnahme des Objekts in Bonndorf mit Terrasse und Photovoltaik-Anlage"
+          width="1920" height="1080"
+          loading="lazy" decoding="async">
+        <img
+          src="/images/rundgang/bonndorf-gartenblick.jpg"
+          alt="Luftaufnahme mit Blick auf Garten und Grundstueck in Bonndorf"
+          width="1280" height="720"
+          loading="lazy" decoding="async">
+      </div>
     </section>
 
     <div class="divider"></div>
@@ -366,6 +410,15 @@
           Medien herunterladen
         </a>
       </div>
+    </section>
+
+    <!-- Google-Bewertung -->
+    <section class="review-section">
+      <p>Zufrieden mit Ihrem Rundgang? Über eine kurze <strong>Google-Bewertung</strong> freue ich mich sehr – sie hilft anderen, Beck360 zu finden.</p>
+      <a class="review-btn" href="https://360-rundgang-karlsruhe.de/bewertung" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01L12 2z"/></svg>
+        Auf Google bewerten
+      </a>
     </section>
 
   </main>
