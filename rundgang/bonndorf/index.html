@@ -213,6 +213,28 @@
       border-radius: 4px;
     }
 
+    /* ── Grundriss ──────────────────────────── */
+    .floorplan-section { padding: 0 48px 52px; }
+
+    .floorplan { display: block; max-width: 1000px; margin: 0 auto; }
+
+    .floorplan img {
+      width: 100%;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      display: block;
+      background: var(--white);
+    }
+
+    .floorplan:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+    .floorplan-hint {
+      text-align: center;
+      font-size: 12px;
+      color: var(--mid);
+      margin-top: 10px;
+    }
+
     /* ── Divider ────────────────────────────── */
     .divider {
       height: 1px;
@@ -323,6 +345,7 @@
       .tour-hero { height: 52vh; min-height: 300px; }
       .section-label { padding: 36px 20px 20px; }
       .gallery-section { padding: 0 20px 36px; }
+      .floorplan-section { padding: 0 20px 36px; }
       .divider { margin: 0 20px; }
       .download-section { padding: 36px 20px 48px; }
       .review-section { padding: 36px 20px; }
@@ -373,17 +396,39 @@
 
     <section class="gallery-section">
       <div class="gallery">
-        <img
-          src="/images/rundgang/bonndorf-luftaufnahme.jpg"
-          alt="Drohnen-Luftaufnahme des Objekts in Bonndorf mit Terrasse und Photovoltaik-Anlage"
-          width="1920" height="1080"
-          loading="lazy" decoding="async">
-        <img
-          src="/images/rundgang/bonndorf-gartenblick.jpg"
-          alt="Luftaufnahme mit Blick auf Garten und Grundstueck in Bonndorf"
-          width="1280" height="720"
-          loading="lazy" decoding="async">
+        <img src="/images/rundgang/bonndorf-01.jpg"
+          alt="Luftaufnahme des Hauses in Bonndorf mit grossem Garten und Terrasse"
+          width="1200" height="675" loading="lazy" decoding="async">
+        <img src="/images/rundgang/bonndorf-02.jpg"
+          alt="Ueberdachte Terrasse mit Sitzbereich und Bepflanzung von oben"
+          width="1200" height="675" loading="lazy" decoding="async">
+        <img src="/images/rundgang/bonndorf-03.jpg"
+          alt="Garten- und Rueckseite des Anwesens aus der Vogelperspektive"
+          width="1200" height="675" loading="lazy" decoding="async">
+        <img src="/images/rundgang/bonndorf-04.jpg"
+          alt="Dachansicht mit Terrasse und Umgebung in Bonndorf"
+          width="1200" height="675" loading="lazy" decoding="async">
+        <img src="/images/rundgang/bonndorf-05.jpg"
+          alt="Senkrechte Luftaufnahme von Dach mit Photovoltaik-Anlage und Grundstueck"
+          width="1200" height="675" loading="lazy" decoding="async">
+        <img src="/images/rundgang/bonndorf-06.jpg"
+          alt="Weitwinkel-Luftaufnahme des Anwesens mit Umgebung und Landschaft"
+          width="1200" height="675" loading="lazy" decoding="async">
       </div>
+    </section>
+
+    <!-- Grundriss -->
+    <div class="section-label">
+      <h2>Grundriss · 270,9 m²</h2>
+    </div>
+
+    <section class="floorplan-section">
+      <a class="floorplan" href="/images/rundgang/bonndorf-grundriss.jpg" target="_blank" rel="noopener" aria-label="Grundriss in voller Groesse oeffnen">
+        <img src="/images/rundgang/bonndorf-grundriss.jpg"
+          alt="2D-Grundriss Buechleweg 1a Bonndorf: Erdgeschoss 113,1 m² und Obergeschoss 157,9 m²"
+          width="2000" height="1046" loading="lazy" decoding="async">
+      </a>
+      <p class="floorplan-hint">Zum Vergrößern anklicken · vollständige Grundrisse (PDF) im Download-Paket</p>
     </section>
 
     <div class="divider"></div>
