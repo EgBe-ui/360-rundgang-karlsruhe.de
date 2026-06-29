@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Private Kundenseite: nicht indexieren -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+  <title>Virtueller Rundgang – Bonndorf | Beck360</title>
+  <meta name="description" content="Ihr virtueller 360°-Rundgang und Ihre Drohnenaufnahmen aus Bonndorf – von Beck360.">
+
+  <!-- Vorschau beim Teilen (z. B. WhatsApp / E-Mail) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Virtueller Rundgang – Bonndorf">
+  <meta property="og:description" content="Ihr 360°-Rundgang und Ihre Drohnenaufnahmen aus Bonndorf – von Beck360.">
+  <meta property="og:image" content="https://360-rundgang-karlsruhe.de/images/rundgang/bonndorf-luftaufnahme.jpg">
+  <meta property="og:locale" content="de_DE">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:   #FFFFFF;
+      --bg:      #F5F5F3;
+      --ink:     #1A1A1A;
+      --mid:     #6B6B6B;
+      --rule:    #E8E8E5;
+      --teal:    #0F766E;   /* Beck360 Akzent */
+      --teal-dk: #0C5D56;
+      --blue:    #0369A1;   /* Beck360 CTA-Blau */
+      --blue-dk: #025582;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Skip-Link (Barrierefreiheit) ────────── */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 0 0 4px 0;
+      z-index: 200;
+      font-size: 14px;
+    }
+    .skip-link:focus { left: 0; }
+
+    /* ── Header ─────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 60px;
+    }
+
+    .logo {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .header-tag {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Hero: Matterport Link ──────────────── */
+    .tour-hero-section { background: var(--ink); }
+
+    .tour-hero {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      min-height: 420px;
+      overflow: hidden;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .tour-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/rundgang/bonndorf-luftaufnahme.jpg');
+      background-size: cover;
+      background-position: center 55%;
+      transition: transform 0.45s ease;
+      z-index: 0;
+    }
+
+    .tour-hero:hover::before { transform: scale(1.02); }
+
+    .tour-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      background: rgba(0,0,0,0.28);
+      transition: background 0.3s ease;
+      z-index: 1;
+    }
+
+    .tour-hero:hover .tour-overlay { background: rgba(0,0,0,0.38); }
+
+    .play-btn {
+      width: 100px;
+      height: 100px;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+      transition: transform 0.25s ease;
+    }
+
+    .tour-hero:hover .play-btn { transform: scale(1.08); }
+    .play-btn svg { width: 100%; height: 100%; }
+
+    .tour-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tour-cta-label {
+      background: var(--teal);
+      color: white;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 10px 28px;
+      border-radius: 3px;
+    }
+
+    .tour-cta-sub {
+      color: rgba(255,255,255,0.78);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .tour-hero:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+
+    /* ── Section label ──────────────────────── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 52px 48px 28px;
+    }
+
+    .section-label h2 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── Aerial Photo ───────────────────────── */
+    .aerial-section { padding: 0 48px 52px; }
+
+    .aerial-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center 55%;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* ── Divider ────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--rule);
+      margin: 0 48px;
+    }
+
+    /* ── Download Banner ────────────────────── */
+    .download-section {
+      padding: 52px 48px 64px;
+      background: var(--bg);
+    }
+
+    .download-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .download-info h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .download-info p {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    .download-info p strong { color: var(--ink); font-weight: 500; }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue);
+      color: var(--white);
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      transition: background 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .download-btn:hover { background: var(--blue-dk); }
+    .download-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+    .download-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ── Footer ─────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer p { font-size: 12px; color: var(--mid); }
+    footer a { color: var(--teal); text-decoration: none; font-size: 12px; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Mobile ─────────────────────────────── */
+    @media (max-width: 640px) {
+      header { padding: 0 20px; }
+      .tour-hero { height: 52vh; min-height: 300px; }
+      .section-label { padding: 36px 20px 20px; }
+      .aerial-section { padding: 0 20px 36px; }
+      .aerial-img { max-height: 280px; }
+      .divider { margin: 0 20px; }
+      .download-section { padding: 36px 20px 48px; }
+      .download-card { flex-direction: column; align-items: flex-start; }
+      .download-btn { width: 100%; justify-content: center; }
+      footer { padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <!-- Header -->
+  <header>
+    <a class="logo" href="https://360-rundgang-karlsruhe.de">Beck360</a>
+    <span class="header-tag">Virtueller Rundgang · Bonndorf</span>
+  </header>
+
+  <main id="inhalt">
+
+    <!-- Matterport Tour Hero -->
+    <section class="tour-hero-section">
+      <a class="tour-hero" href="https://my.matterport.com/show/?m=wg7oXChKMzh" target="_blank" rel="noopener noreferrer" aria-label="Virtuellen 360°-Rundgang in Bonndorf starten (öffnet in neuem Tab)">
+        <div class="tour-overlay">
+          <div class="play-btn" aria-hidden="true">
+            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="#0F766E" stroke="white" stroke-width="4"/>
+              <polygon points="32,24 32,56 60,40" fill="white"/>
+            </svg>
+          </div>
+          <div class="tour-cta">
+            <span class="tour-cta-label">Virtuellen Rundgang starten</span>
+            <span class="tour-cta-sub">3D-Tour öffnet im Browser</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- Luftaufnahme -->
+    <div class="section-label">
+      <h2>Luftaufnahme</h2>
+    </div>
+
+    <section class="aerial-section">
+      <img
+        class="aerial-img"
+        src="/images/rundgang/bonndorf-luftaufnahme.jpg"
+        alt="Drohnen-Luftaufnahme des Objekts in Bonndorf mit Terrasse und Photovoltaik-Anlage"
+        width="1920" height="1080"
+        loading="lazy" decoding="async">
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Download -->
+    <section class="download-section">
+      <div class="download-card">
+        <div class="download-info">
+          <h3>Fotos, Drohnenaufnahmen &amp; Grundrisse</h3>
+          <p>
+            Alle Medien in voller Auflösung zum Download verfügbar.<br>
+            <strong>Bitte sichern Sie die Dateien zeitnah lokal</strong> auf Ihrem Gerät.
+          </p>
+        </div>
+        <a
+          class="download-btn"
+          href="https://drive.google.com/drive/folders/1ZFvaJ8LD3r9HaTKBjagawYTT1i10olvp?usp=share_link"
+          target="_blank"
+          rel="noopener noreferrer">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M8 1v9M8 10l-3-3M8 10l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Medien herunterladen
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Beck360 · Drohnenfotografie &amp; 360° Virtual Tours · Karlsruhe / Ettlingen</p>
+    <a href="https://beck360.de" target="_blank" rel="noopener">beck360.de</a>
+  </footer>
+
+</body>
+</html>
